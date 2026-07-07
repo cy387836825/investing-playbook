@@ -1,0 +1,2128 @@
+ticker,name,sector,industry,mcap_b
+NVDA,NVIDIA Corp,Technology,Semiconductors,4732310000.0
+AAPL,Apple Inc,Technology,Consumer Electronics,4592150000.0
+GOOG,Alphabet Inc,Communication Services,Internet Content & Information,4446620000.0
+GOOGL,Alphabet Inc,Communication Services,Internet Content & Information,4419350000.0
+MSFT,Microsoft Corp,Technology,Software - Infrastructure,2872870000.0
+AMZN,Amazon.com Inc,Consumer Cyclical,Internet Retail,2626460000.0
+TSM,Taiwan Semiconductor Manufacturing ADR,Technology,Semiconductors,2343200000.0
+SPCX,Space Exploration Technologies Corp,Industrials,Aerospace & Defense,2114940000.0
+AVGO,Broadcom Inc,Technology,Semiconductors,1778860000.0
+TSLA,Tesla Inc,Consumer Cyclical,Auto Manufacturers,1576540000.0
+META,Meta Platforms Inc,Communication Services,Internet Content & Information,1523790000.0
+LLY,Lilly(Eli) & Co,Healthcare,Drug Manufacturers - General,1130150000.0
+MU,Micron Technology Inc,Technology,Semiconductors,1112170000.0
+BRK-B,Berkshire Hathaway Inc,Financial,Insurance - Diversified,1092569999.9999998
+BRK-A,Berkshire Hathaway Inc,Financial,Insurance - Diversified,1088579999.9999998
+JPM,JPMorgan Chase & Co,Financial,Banks - Diversified,904920000.0
+AMD,Advanced Micro Devices Inc,Technology,Semiconductors,900170000.0
+WMT,Walmart Inc,Consumer Defensive,Discount Stores,880560000.0
+ASML,ASML Holding NV,Technology,Semiconductor Equipment & Materials,703420000.0
+V,Visa Inc,Financial,Credit Services,673100000.0
+JNJ,Johnson & Johnson,Healthcare,Drug Manufacturers - General,624260000.0
+INTC,Intel Corp,Technology,Semiconductors,614180000.0
+XOM,ExxonMobil Holdings Corp,Energy,Oil & Gas Integrated,565470000.0
+MA,Mastercard Incorporated,Financial,Credit Services,471040000.0
+AMAT,Applied Materials Inc,Technology,Semiconductor Equipment & Materials,470650000.0
+ABBV,Abbvie Inc,Healthcare,Drug Manufacturers - General,450110000.0
+CSCO,Cisco Systems Inc,Technology,Communication Equipment,449240000.0
+CAT,Caterpillar Inc,Industrials,Farm & Heavy Construction Machinery,446780000.0
+LRCX,Lam Research Corp,Technology,Semiconductor Equipment & Materials,437950000.0
+BAC,Bank Of America Corp,Financial,Banks - Diversified,425090000.0
+COST,Costco Wholesale Corp,Consumer Defensive,Discount Stores,421420000.0
+ORCL,Oracle Corp,Technology,Software - Infrastructure,414100000.0
+GE,GE Aerospace,Industrials,Aerospace & Defense,395090000.0
+UNH,Unitedhealth Group Inc,Healthcare,Healthcare Plans,379600000.0
+KO,Coca-Cola Co,Consumer Defensive,Beverages - Non-Alcoholic,356930000.0
+MS,Morgan Stanley,Financial,Capital Markets,350310000.0
+HD,Home Depot Inc,Consumer Cyclical,Home Improvement Retail,349640000.0
+PG,Procter & Gamble Co,Consumer Defensive,Household & Personal Products,347680000.0
+ARM,Arm Holdings Plc ADR,Technology,Semiconductors,342860000.0
+HSBC,HSBC Holdings plc ADR,Financial,Banks - Diversified,339340000.0
+CVX,Chevron Corp,Energy,Oil & Gas Integrated,334790000.0
+NFLX,Netflix Inc,Communication Services,Entertainment,320100000.0
+PLTR,Palantir Technologies Inc,Technology,Software - Infrastructure,317740000.0
+MRK,Merck & Co Inc,Healthcare,Drug Manufacturers - General,313120000.0
+GS,Goldman Sachs Group Inc,Financial,Capital Markets,311320000.0
+GEV,GE Vernova Inc,Industrials,Specialty Industrial Machinery,309580000.0
+KLAC,KLA Corp,Technology,Semiconductor Equipment & Materials,304770000.0
+AZN,Astrazeneca plc,Healthcare,Drug Manufacturers - General,294910000.0
+PANW,Palo Alto Networks Inc,Technology,Software - Infrastructure,291390000.0
+RY,Royal Bank Of Canada,Financial,Banks - Diversified,289140000.0
+PM,Philip Morris International Inc,Consumer Defensive,Tobacco,287960000.0
+NVS,Novartis AG ADR,Healthcare,Drug Manufacturers - General,284630000.0
+IBM,International Business Machines Corp,Technology,Information Technology Services,281510000.0
+TXN,Texas Instruments Inc,Technology,Semiconductors,276210000.0
+RTX,RTX Corp,Industrials,Aerospace & Defense,271180000.0
+WFC,Wells Fargo & Co,Financial,Banks - Diversified,267610000.0
+DELL,Dell Technologies Inc,Technology,Computer Hardware,266959999.99999997
+SNDK,Sandisk Corp,Technology,Computer Hardware,258329999.99999997
+LIN,Linde Plc,Basic Materials,Specialty Chemicals,250040000.0
+C,Citigroup Inc,Financial,Banks - Diversified,246710000.0
+AXP,American Express Co,Financial,Credit Services,242930000.0
+MUFG,Mitsubishi UFJ Financial Group Inc ADR,Financial,Banks - Diversified,238960000.0
+BABA,Alibaba Group Holding Ltd ADR,Consumer Cyclical,Internet Retail,235060000.0
+ANET,Arista Networks Inc,Technology,Computer Hardware,218190000.0
+MRVL,Marvell Technology Inc,Technology,Semiconductors,218060000.0
+SHEL,Shell Plc ADR,Energy,Oil & Gas Integrated,217860000.0
+BHP,BHP Group Limited ADR,Basic Materials,Other Industrial Metals & Mining,212470000.0
+SAN,Banco Santander SA ADR,Financial,Banks - Diversified,210930000.0
+APH,Amphenol Corp,Technology,Electronic Components,205220000.0
+TD,Toronto Dominion Bank,Financial,Banks - Diversified,203820000.0
+CRWD,Crowdstrike Holdings Inc,Technology,Software - Infrastructure,203020000.0
+WDC,Western Digital Corp,Technology,Computer Hardware,199040000.0
+MCD,McDonald's Corp,Consumer Cyclical,Restaurants,198590000.0
+AMGN,AMGEN Inc,Healthcare,Drug Manufacturers - General,197770000.0
+TMUS,T-Mobile US Inc,Communication Services,Telecom Services,196730000.0
+QCOM,Qualcomm Inc,Technology,Semiconductors,196550000.0
+PEP,PepsiCo Inc,Consumer Defensive,Beverages - Non-Alcoholic,195840000.0
+STX,Seagate Technology Holdings Plc,Technology,Computer Hardware,194690000.0
+TMO,Thermo Fisher Scientific Inc,Healthcare,Diagnostics & Research,192350000.0
+TM,Toyota Motor Corp ADR,Consumer Cyclical,Auto Manufacturers,191320000.0
+ADI,Analog Devices Inc,Technology,Semiconductors,189390000.0
+SAP,Sap SE ADR,Technology,Software - Application,187380000.0
+BA,Boeing Co,Industrials,Aerospace & Defense,184890000.0
+APP,Applovin Corp,Communication Services,Advertising Agencies,182680000.0
+NEE,NextEra Energy Inc,Utilities,Utilities - Regulated Electric,182370000.0
+VZ,Verizon Communications Inc,Communication Services,Telecom Services,175670000.0
+SCHW,Charles Schwab Corp,Financial,Capital Markets,174990000.0
+DE,Deere & Co,Industrials,Farm & Heavy Construction Machinery,171480000.0
+TTE,TotalEnergies SE,Energy,Oil & Gas Integrated,169920000.0
+DIS,Walt Disney Co,Communication Services,Entertainment,169150000.0
+UNP,Union Pacific Corp,Industrials,Railroads,167780000.0
+GLW,Corning Inc,Technology,Electronic Components,167650000.0
+TJX,TJX Companies Inc,Consumer Cyclical,Apparel Retail,167150000.0
+ABT,Abbott Laboratories,Healthcare,Medical Devices,166570000.0
+NVO,Novo Nordisk ADR,Healthcare,Drug Manufacturers - General,165410000.0
+BLK,Blackrock Inc,Financial,Asset Management,164430000.0
+WELL,Welltower Inc,Real Estate,REIT - Healthcare Facilities,164260000.0
+SMFG,Sumitomo Mitsui Financial Group Inc ADR,Financial,Banks - Diversified,162260000.0
+GILD,Gilead Sciences Inc,Healthcare,Drug Manufacturers - General,160920000.0
+ETN,Eaton Corp Plc,Industrials,Specialty Industrial Machinery,160530000.0
+UBS,UBS Group AG,Financial,Banks - Diversified,158520000.0
+SHOP,Shopify Inc,Technology,Software - Application,155900000.0
+ISRG,Intuitive Surgical Inc,Healthcare,Medical Instruments & Supplies,153290000.0
+BX,Blackstone Inc,Financial,Asset Management,150760000.0
+UBER,Uber Technologies Inc,Technology,Software - Application,147420000.0
+BBVA,Banco Bilbao Vizcaya Argentaria SA ADR,Financial,Banks - Diversified,145650000.0
+SCCO,Southern Copper Corp,Basic Materials,Copper,145060000.0
+T,AT&T Inc,Communication Services,Telecom Services,143000000.0
+HDB,HDFC Bank Ltd ADR,Financial,Banks - Regional,140670000.0
+BKNG,Booking Holdings Inc,Consumer Cyclical,Travel Services,140280000.0
+CB,Chubb Limited,Financial,Insurance - Property & Casualty,138280000.0
+BUD,Anheuser-Busch InBev SA/NV ADR,Consumer Defensive,Beverages - Brewers,137220000.0
+DHR,Danaher Corp,Healthcare,Diagnostics & Research,137039999.99999997
+CRM,Salesforce Inc,Technology,Software - Application,135669999.99999997
+PGR,Progressive Corp,Financial,Insurance - Property & Casualty,135370000.0
+PFE,Pfizer Inc,Healthcare,Drug Manufacturers - General,135190000.0
+VRTX,Vertex Pharmaceuticals Inc,Healthcare,Biotechnology,134410000.0
+PLD,Prologis Inc,Real Estate,REIT - Industrial,133470000.0
+BTI,British American Tobacco Plc ADR,Consumer Defensive,Tobacco,133080000.00000001
+UL,Unilever plc ADR,Consumer Defensive,Household & Personal Products,132660000.0
+SPGI,S&P Global Inc,Financial,Financial Data & Stock Exchanges,132380000.0
+CVS,CVS Health Corp,Healthcare,Healthcare Plans,130250000.0
+COF,Capital One Financial Corp,Financial,Credit Services,126360000.0
+COP,Conoco Phillips,Energy,Oil & Gas E&P,126190000.0
+LOW,Lowe's Cos. Inc,Consumer Cyclical,Home Improvement Retail,125480000.0
+SYK,Stryker Corp,Healthcare,Medical Devices,124490000.0
+BMO,Bank of Montreal,Financial,Banks - Diversified,124360000.0
+LMT,Lockheed Martin Corp,Industrials,Aerospace & Defense,124040000.0
+MFG,Mizuho Financial Group Inc ADR,Financial,Banks - Regional,123760000.0
+PH,Parker-Hannifin Corp,Industrials,Specialty Industrial Machinery,122480000.0
+VRT,Vertiv Holdings Co,Industrials,Electrical Equipment & Parts,122330000.0
+SONY,Sony Group Corp ADR,Technology,Consumer Electronics,121100000.0
+MO,Altria Group Inc,Consumer Defensive,Tobacco,120030000.0
+PDD,PDD Holdings Inc ADR,Consumer Cyclical,Internet Retail,119200000.0
+FTNT,Fortinet Inc,Technology,Software - Infrastructure,118950000.0
+RIO,Rio Tinto plc ADR,Basic Materials,Other Industrial Metals & Mining,117400000.0
+ENB,Enbridge Inc,Energy,Oil & Gas Midstream,116760000.0
+SBUX,Starbucks Corp,Consumer Cyclical,Restaurants,116370000.0
+BMY,Bristol-Myers Squibb Co,Healthcare,Drug Manufacturers - General,115790000.0
+NOW,ServiceNow Inc,Technology,Software - Application,111310000.0
+HWM,Howmet Aerospace Inc,Industrials,Aerospace & Defense,111190000.0
+SO,Southern Company,Utilities,Utilities - Regulated Electric,108210000.0
+IBN,ICICI Bank Ltd ADR,Financial,Banks - Regional,107890000.0
+TT,Trane Technologies plc,Industrials,Building Products & Equipment,107710000.0
+BNS,Bank Of Nova Scotia,Financial,Banks - Diversified,107340000.0
+CM,Canadian Imperial Bank Of Commerce,Financial,Banks - Diversified,106890000.0
+GSK,GSK Plc ADR,Healthcare,Drug Manufacturers - General,106330000.0
+MDT,Medtronic Plc,Healthcare,Medical Devices,106320000.0
+HOOD,Robinhood Markets Inc,Financial,Capital Markets,105950000.0
+NEM,Newmont Corp,Basic Materials,Gold,104830000.0
+CDNS,Cadence Design Systems Inc,Technology,Software - Application,103640000.0
+BNY,Bank Of New York Mellon Corp,Financial,Banks - Diversified,102930000.0
+SNY,Sanofi ADR,Healthcare,Drug Manufacturers - General,102450000.0
+GD,General Dynamics Corp,Industrials,Aerospace & Defense,101920000.0
+SBS,Companhia de Saneamento Basico do Estado de Sao Paulo ADR,Utilities,Utilities - Regulated Water,101870000.0
+PNC,PNC Financial Services Group Inc,Financial,Banks - Regional,101670000.0
+PWR,Quanta Services Inc,Industrials,Engineering & Construction,101150000.0
+MAR,Marriott International Inc,Consumer Cyclical,Lodging,100140000.0
+SPOT,Spotify Technology SA,Communication Services,Internet Content & Information,99420000.0
+EQIX,Equinix Inc,Real Estate,REIT - Specialty,98510000.0
+DUK,Duke Energy Corp,Utilities,Utilities - Regulated Electric,98210000.0
+BN,Brookfield Corp,Financial,Asset Management,98190000.0
+USB,U.S. Bancorp,Financial,Banks - Regional,97870000.0
+BP,BP plc ADR,Energy,Oil & Gas Integrated,96280000.0
+BCS,Barclays plc ADR,Financial,Banks - Diversified,95850000.0
+ADP,Automatic Data Processing Inc,Technology,Software - Application,95730000.0
+MNST,Monster Beverage Corp,Consumer Defensive,Beverages - Non-Alcoholic,95230000.0
+ASX,ASE Technology Holding CoLtd ADR,Technology,Semiconductors,95040000.0
+ING,ING Groep NV ADR,Financial,Banks - Diversified,94810000.0
+CMI,Cummins Inc,Industrials,Specialty Industrial Machinery,93590000.0
+UPS,United Parcel Service Inc,Industrials,Integrated Freight & Logistics,93520000.0
+HCA,HCA Healthcare Inc,Healthcare,Medical Care Facilities,92520000.0
+WM,Waste Management Inc,Industrials,Waste Management,91950000.0
+MCK,Mckesson Corp,Healthcare,Medical Distribution,91820000.0
+MELI,MercadoLibre Inc,Consumer Cyclical,Internet Retail,91540000.0
+DDOG,Datadog Inc,Technology,Software - Application,90900000.0
+SNOW,Snowflake Inc,Technology,Software - Application,90840000.0
+CSX,CSX Corp,Industrials,Railroads,90700000.0
+LYG,Lloyds Banking Group plc ADR,Financial,Banks - Regional,89720000.0
+WMB,Williams Cos Inc,Energy,Oil & Gas Midstream,89060000.0
+ABNB,Airbnb Inc,Consumer Cyclical,Travel Services,88990000.0
+ELV,Elevance Health Inc,Healthcare,Healthcare Plans,88640000.0
+CEG,Constellation Energy Corp,Utilities,Utilities - Independent Power Producers,88290000.0
+NET,Cloudflare Inc,Technology,Software - Infrastructure,87910000.0
+FCX,Freeport-McMoRan Inc,Basic Materials,Copper,87690000.0
+MCO,Moody's Corp,Financial,Financial Data & Stock Exchanges,87140000.0
+JCI,Johnson Controls International plc,Industrials,Building Products & Equipment,87080000.0
+ADBE,Adobe Inc,Technology,Software - Application,86680000.0
+KKR,KKR & Co Inc,Financial,Asset Management,86170000.0
+SHW,Sherwin-Williams Co,Basic Materials,Specialty Chemicals,86110000.0
+CME,CME Group Inc,Financial,Financial Data & Stock Exchanges,85070000.0
+SNPS,Synopsys Inc,Technology,Software - Infrastructure,84690000.0
+MRSH,Marsh,Financial,Insurance Brokers,84180000.0
+BE,Bloom Energy Corp,Industrials,Electrical Equipment & Parts,83930000.0
+ACN,Accenture plc,Technology,Information Technology Services,83810000.0
+NTES,NetEase Inc ADR,Communication Services,Electronic Gaming & Multimedia,83620000.0
+CMCSA,Comcast Corp,Communication Services,Telecom Services,83520000.0
+MMM,3M Co,Industrials,Conglomerates,83010000.0
+NGG,National Grid Plc ADR,Utilities,Utilities - Regulated Electric,82190000.0
+DASH,DoorDash Inc,Consumer Cyclical,Internet Retail,82120000.0
+CNQ,Canadian Natural Resources Ltd,Energy,Oil & Gas E&P,81860000.0
+EQNR,Equinor ASA ADR,Energy,Oil & Gas Integrated,81270000.0
+VLO,Valero Energy Corp,Energy,Oil & Gas Refining & Marketing,80270000.0
+AMX,America Movil SAB de CV ADR,Communication Services,Telecom Services,80000000.0
+ECL,Ecolab Inc,Basic Materials,Specialty Chemicals,79850000.0
+EMR,Emerson Electric Co,Industrials,Specialty Industrial Machinery,79290000.0
+AEM,Agnico Eagle Mines Ltd,Basic Materials,Gold,78940000.0
+ITW,Illinois Tool Works Inc,Industrials,Specialty Industrial Machinery,78910000.0
+EPD,Enterprise Products Partners L P,Energy,Oil & Gas Midstream,78900000.0
+MPC,Marathon Petroleum Corp,Energy,Oil & Gas Refining & Marketing,78530000.0
+CP,Canadian Pacific Kansas City Limited,Industrials,Railroads,78120000.0
+NOC,Northrop Grumman Corp,Industrials,Aerospace & Defense,77800000.0
+HLT,Hilton Worldwide Holdings Inc,Consumer Cyclical,Lodging,77270000.0
+CVNA,Carvana Co,Consumer Cyclical,Auto & Truck Dealerships,77200000.0
+RCL,Royal Caribbean Group,Consumer Cyclical,Travel Services,77180000.0
+ICE,Intercontinental Exchange Inc,Financial,Financial Data & Stock Exchanges,76290000.0
+AON,Aon Plc,Financial,Insurance Brokers,76230000.0
+MDLZ,Mondelez International Inc,Consumer Defensive,Confectioners,75950000.0
+AMT,American Tower Corp,Real Estate,REIT - Specialty,75530000.0
+TDG,Transdigm Group Incorporated,Industrials,Aerospace & Defense,75290000.0
+BAM,Brookfield Asset Management Ltd,Financial,Asset Management,75050000.0
+CL,Colgate-Palmolive Co,Consumer Defensive,Household & Personal Products,74730000.0
+CI,Cigna Group,Healthcare,Healthcare Plans,74590000.0
+INTU,Intuit Inc,Technology,Software - Application,74440000.0
+ALAB,Astera Labs Inc,Technology,Semiconductors,74180000.0
+AEP,American Electric Power Company Inc,Utilities,Utilities - Regulated Electric,73990000.0
+FDX,Fedex Corp,Industrials,Integrated Freight & Logistics,73950000.0
+CNI,Canadian National Railway Co,Industrials,Railroads,73800000.0
+HON,Honeywell International Inc,Industrials,Conglomerates,73240000.0
+NWG,NatWest Group Plc ADR,Financial,Banks - Regional,73110000.0
+SPG,Simon Property Group Inc,Real Estate,REIT - Retail,72970000.0
+HONIV,Honeywell International Inc,Industrials,Conglomerates,72830000.0
+NSC,Norfolk Southern Corp,Industrials,Railroads,72300000.0
+TRV,Travelers Companies Inc,Financial,Insurance - Property & Casualty,72120000.0
+CRH,CRH Plc,Basic Materials,Building Materials,71880000.0
+CTAS,Cintas Corp,Industrials,Specialty Business Services,71310000.0
+PSX,Phillips 66,Energy,Oil & Gas Refining & Marketing,71100000.0
+NXPI,NXP Semiconductors NV,Technology,Semiconductors,70820000.0
+KMI,Kinder Morgan Inc,Energy,Oil & Gas Midstream,70500000.0
+APO,Apollo Global Management Inc,Financial,Asset Management,70430000.0
+GM,General Motors Company,Consumer Cyclical,Auto Manufacturers,70190000.0
+MSI,Motorola Solutions Inc,Technology,Communication Equipment,70190000.0
+NOK,Nokia Corp ADR,Technology,Communication Equipment,69960000.0
+ORLY,O'Reilly Automotive Inc,Consumer Cyclical,Auto Parts,69810000.0
+DB,Deutsche Bank AG,Financial,Banks - Regional,69690000.0
+RACE,Ferrari NV,Consumer Cyclical,Auto Manufacturers,69170000.0
+MFC,Manulife Financial Corp,Financial,Insurance - Life,69030000.0
+EOG,EOG Resources Inc,Energy,Oil & Gas E&P,68920000.0
+URI,United Rentals Inc,Industrials,Rental & Leasing Services,68890000.0
+APD,Air Products & Chemicals Inc,Basic Materials,Specialty Chemicals,68780000.0
+SLB,SLB Ltd,Energy,Oil & Gas Equipment & Services,68349999.99999999
+NU,Nu Holdings Ltd,Financial,Banks - Regional,68340000.0
+REGN,Regeneron Pharmaceuticals Inc,Healthcare,Biotechnology,68129999.99999999
+ROST,Ross Stores Inc,Consumer Cyclical,Apparel Retail,67800000.0
+TRP,TC Energy Corp,Energy,Oil & Gas Midstream,66950000.0
+BSX,Boston Scientific Corp,Healthcare,Medical Devices,66290000.00000001
+PCAR,Paccar Inc,Industrials,Farm & Heavy Construction Machinery,66260000.00000001
+ET,Energy Transfer LP,Energy,Oil & Gas Midstream,66239999.99999999
+MPWR,Monolithic Power System Inc,Technology,Semiconductors,66140000.0
+RSG,Republic Services Inc,Industrials,Waste Management,66019999.99999999
+E,Eni Spa ADR,Energy,Oil & Gas Integrated,66000000.0
+COHR,Coherent Corp,Technology,Scientific & Technical Instruments,65680000.00000001
+WBD,Warner Bros. Discovery Inc,Communication Services,Entertainment,65489999.99999999
+UMC,United Micro Electronics ADR,Technology,Semiconductors,64970000.0
+SU,Suncor Energy Inc,Energy,Oil & Gas Integrated,64830000.0
+GWW,W.W. Grainger Inc,Industrials,Industrial Distribution,64690000.0
+VALE,Vale SA ADR,Basic Materials,Other Industrial Metals & Mining,64349999.99999999
+NKE,Nike Inc,Consumer Cyclical,Footwear & Accessories,64180000.00000001
+AJG,Arthur J. Gallagher & Co,Financial,Insurance Brokers,64170000.0
+TFC,Truist Financial Corp,Financial,Banks - Regional,64060000.0
+ALL,Allstate Corp,Financial,Insurance - Property & Casualty,63940000.0
+B,Barrick Mining Corp,Basic Materials,Gold,63850000.0
+STM,ST Microelectronics,Technology,Semiconductors,63450000.0
+FIX,Comfort Systems USA Inc,Industrials,Engineering & Construction,63120000.0
+DLR,Digital Realty Trust Inc,Real Estate,REIT - Specialty,62130000.0
+CIEN,CIENA Corp,Technology,Communication Equipment,61410000.0
+AFL,Aflac Inc,Financial,Insurance - Life,61320000.0
+D,Dominion Energy Inc,Utilities,Utilities - Regulated Electric,60920000.0
+SRE,Sempra,Utilities,Utilities - Diversified,60760000.0
+PBR,Petroleo Brasileiro SA Petrobras ADR,Energy,Oil & Gas Integrated,60510000.0
+DAL,Delta Air Lines Inc,Industrials,Airlines,60230000.0
+SE,Sea Ltd ADR,Consumer Cyclical,Internet Retail,59530000.0
+TER,Teradyne Inc,Technology,Semiconductor Equipment & Materials,59410000.0
+O,Realty Income Corp,Real Estate,REIT - Retail,58920000.0
+TEL,TE Connectivity plc,Technology,Electronic Components,58420000.0
+CARR,Carrier Global Corp,Industrials,Building Products & Equipment,58220000.0
+MET,Metlife Inc,Financial,Insurance - Life,58210000.0
+COR,Cencora Inc,Healthcare,Medical Distribution,58090000.0
+MPLX,MPLX LP,Energy,Oil & Gas Midstream,57810000.0
+CTVA,Corteva Inc,Basic Materials,Agricultural Inputs,57780000.0
+TGT,Target Corp,Consumer Defensive,Discount Stores,57270000.0
+HPE,Hewlett Packard Enterprise Co,Technology,Communication Equipment,57140000.0
+LITE,Lumentum Holdings Inc,Technology,Communication Equipment,56890000.0
+PSA,Public Storage,Real Estate,REIT - Industrial,56890000.0
+ARGX,Argen X SE ADR,Healthcare,Biotechnology,56730000.0
+TRGP,Targa Resources Corp,Energy,Oil & Gas Midstream,56560000.0
+RELX,RELX Plc ADR,Industrials,Specialty Business Services,56480000.0
+MDLN,Medline Inc,Healthcare,Medical Instruments & Supplies,56160000.0
+LHX,L3Harris Technologies Inc,Industrials,Aerospace & Defense,56130000.0
+RKLB,Rocket Lab Corp,Industrials,Aerospace & Defense,55680000.0
+CAH,Cardinal Health Inc,Healthcare,Medical Distribution,55630000.0
+FAST,Fastenal Co,Industrials,Industrial Distribution,55460000.0
+F,Ford Motor Co,Consumer Cyclical,Auto Manufacturers,55110000.0
+OKE,Oneok Inc,Energy,Oil & Gas Midstream,55080000.0
+EW,Edwards Lifesciences Corp,Healthcare,Medical Devices,54800000.0
+KEYS,Keysight Technologies Inc,Technology,Scientific & Technical Instruments,54640000.0
+IMO,Imperial Oil Ltd,Energy,Oil & Gas Integrated,54560000.0
+AME,Ametek Inc,Industrials,Specialty Industrial Machinery,54350000.0
+ROK,Rockwell Automation Inc,Industrials,Specialty Industrial Machinery,53730000.0
+NBIS,Nebius Group NV,Technology,Software - Infrastructure,53610000.0
+TAK,Takeda Pharmaceutical Co ADR,Healthcare,Drug Manufacturers - Specialty & Generic,53370000.0
+CBRS,Cerebras Systems Inc,Technology,Semiconductors,53230000.0
+VST,Vistra Corp,Utilities,Utilities - Independent Power Producers,53010000.0
+BKR,Baker Hughes Co,Energy,Oil & Gas Equipment & Services,52830000.0
+FITB,Fifth Third Bancorp,Financial,Banks - Regional,52470000.0
+WPM,Wheaton Precious Metals Corp,Basic Materials,Gold,52330000.0
+ETR,Entergy Corp,Utilities,Utilities - Regulated Electric,52120000.0
+LNG,Cheniere Energy Inc,Energy,Oil & Gas Midstream,51570000.0
+EA,Electronic Arts Inc,Communication Services,Electronic Gaming & Multimedia,51460000.0
+NUE,Nucor Corp,Basic Materials,Steel,51000000.0
+FLEX,Flex Ltd,Technology,Electronic Components,50800000.0
+EBAY,EBay Inc,Consumer Cyclical,Internet Retail,50470000.0
+XEL,Xcel Energy Inc,Utilities,Utilities - Regulated Electric,50170000.0
+AXON,Axon Enterprise Inc,Industrials,Aerospace & Defense,50160000.0
+MT,ArcelorMittal,Basic Materials,Steel,49740000.0
+CRDO,Credo Technology Group Holding Ltd,Technology,Semiconductors,49520000.0
+FER,Ferrovial N. V,Industrials,Engineering & Construction,49160000.0
+FANG,Diamondback Energy Inc,Energy,Oil & Gas E&P,48870000.0
+STT,State Street Corp,Financial,Asset Management,48700000.0
+OXY,Occidental Petroleum Corp,Energy,Oil & Gas E&P,48550000.0
+AZO,Autozone Inc,Consumer Cyclical,Auto Parts,48290000.0
+EXC,Exelon Corp,Utilities,Utilities - Regulated Electric,48140000.0
+TTWO,Take-Two Interactive Software Inc,Communication Services,Electronic Gaming & Multimedia,47980000.0
+ABEV,Ambev SA ADR,Consumer Defensive,Beverages - Brewers,47880000.0
+NDAQ,Nasdaq Inc,Financial,Financial Data & Stock Exchanges,47770000.0
+MCHP,Microchip Technology Inc,Technology,Semiconductors,47480000.0
+CCEP,Coca-Cola Europacific Partners Plc,Consumer Defensive,Beverages - Non-Alcoholic,47410000.0
+GRMN,Garmin Ltd,Technology,Scientific & Technical Instruments,47290000.0
+CRWV,CoreWeave Inc,Technology,Software - Infrastructure,47170000.0
+HUM,Humana Inc,Healthcare,Healthcare Plans,47170000.0
+XYZ,Block Inc,Technology,Software - Infrastructure,46970000.0
+DVN,Devon Energy Corp,Energy,Oil & Gas E&P,46550000.0
+VTR,Ventas Inc,Real Estate,REIT - Healthcare Facilities,45880000.0
+YUM,Yum Brands Inc,Consumer Cyclical,Restaurants,45750000.0
+AMP,Ameriprise Financial Inc,Financial,Asset Management,45620000.0
+CVE,Cenovus Energy Inc,Energy,Oil & Gas Integrated,45510000.0
+DEO,Diageo plc ADR,Consumer Defensive,Beverages - Wineries & Distilleries,45400000.0
+ODFL,Old Dominion Freight Line Inc,Industrials,Trucking,45010000.0
+VIK,Viking Holdings Ltd,Consumer Cyclical,Travel Services,44860000.0
+ITUB,Itau Unibanco Holding SA ADR,Financial,Banks - Regional,44800000.0
+MSCI,MSCI Inc,Financial,Financial Data & Stock Exchanges,44700000.0
+IDXX,Idexx Laboratories Inc,Healthcare,Diagnostics & Research,44570000.0
+COIN,Coinbase Global Inc,Financial,Financial Data & Stock Exchanges,44490000.0
+DHI,D.R. Horton Inc,Consumer Cyclical,Residential Construction,44490000.0
+FERG,Ferguson Enterprises Inc,Industrials,Industrial Distribution,44400000.0
+WAB,Westinghouse Air Brake Technologies Corp,Industrials,Railroads,44340000.0
+INFY,Infosys Ltd ADR,Technology,Information Technology Services,44150000.0
+RKT,Rocket Companies Inc,Financial,Mortgage Finance,44000000.0
+ADSK,Autodesk Inc,Technology,Software - Application,43790000.0
+IX,Orix Corp ADR,Financial,Financial Conglomerates,43780000.0
+SLF,Sun Life Financial Inc,Financial,Insurance - Diversified,43770000.0
+CMG,Chipotle Mexican Grill,Consumer Cyclical,Restaurants,43590000.0
+KDP,Keurig Dr Pepper Inc,Consumer Defensive,Beverages - Non-Alcoholic,43200000.0
+UAL,United Airlines Holdings Inc,Industrials,Airlines,43010000.0
+BDX,Becton Dickinson & Co,Healthcare,Medical Instruments & Supplies,42860000.0
+HLN,Haleon plc ADR,Healthcare,Drug Manufacturers - Specialty & Generic,42840000.0
+AIG,American International Group Inc,Financial,Insurance - Diversified,42810000.0
+IBKR,Interactive Brokers Group Inc,Financial,Capital Markets,42760000.0
+LYV,Live Nation Entertainment Inc,Communication Services,Entertainment,42650000.0
+WCN,Waste Connections Inc,Industrials,Waste Management,42590000.0
+CCJ,Cameco Corp,Energy,Uranium,42460000.0
+HEI,Heico Corp,Industrials,Aerospace & Defense,42460000.0
+AU,AngloGold Ashanti Plc,Basic Materials,Gold,42450000.0
+HEI-A,Heico Corp,Industrials,Aerospace & Defense,42240000.0
+ALNY,Alnylam Pharmaceuticals Inc,Healthcare,Biotechnology,41790000.0
+ED,Consolidated Edison Inc,Utilities,Utilities - Regulated Electric,41250000.0
+CBRE,CBRE Group Inc,Real Estate,Real Estate Services,41160000.0
+TEVA,Teva- Pharmaceutical Industries Ltd ADR,Healthcare,Drug Manufacturers - Specialty & Generic,41100000.0
+FNV,Franco-Nevada Corp,Basic Materials,Gold,41030000.0
+RBLX,Roblox Corp,Communication Services,Electronic Gaming & Multimedia,40830000.0
+NTRA,Natera Inc,Healthcare,Diagnostics & Research,40640000.0
+RVMD,Revolution Medicines Inc,Healthcare,Biotechnology,40390000.0
+SYY,Sysco Corp,Consumer Defensive,Food Distribution,40280000.0
+CLS,Celestica Inc,Technology,Electronic Components,40260000.0
+PEG,Public Service Enterprise Group Inc,Utilities,Utilities - Regulated Electric,40260000.0
+ARES,Ares Management Corp,Financial,Asset Management,40190000.0
+PBR-A,Petroleo Brasileiro SA Petrobras ADR,Energy,Oil & Gas Integrated,40000000.0
+PYPL,PayPal Holdings Inc,Financial,Credit Services,39770000.0
+PRU,Prudential Financial Inc,Financial,Insurance - Life,39660000.0
+VMC,Vulcan Materials Co,Basic Materials,Building Materials,39550000.0
+RDDT,Reddit Inc,Communication Services,Internet Content & Information,38670000.0
+HMC,Honda Motor ADR,Consumer Cyclical,Auto Manufacturers,38450000.0
+KB,KB Financial Group Inc ADR,Financial,Banks - Regional,38410000.0
+TRI,Thomson-Reuters Corp,Industrials,Specialty Business Services,38350000.0
+ESLT,Elbit Systems Ltd,Industrials,Aerospace & Defense,38000000.0
+WEC,WEC Energy Group Inc,Utilities,Utilities - Regulated Electric,37990000.0
+GFS,GlobalFoundries Inc,Technology,Semiconductors,37810000.0
+HIG,Hartford Insurance Group Inc,Financial,Insurance - Diversified,37730000.0
+CCL,Carnival Corp Ltd,Consumer Cyclical,Travel Services,37680000.0
+ADM,Archer Daniels Midland Co,Consumer Defensive,Farm Products,37560000.0
+KVUE,Kenvue Inc,Consumer Defensive,Household & Personal Products,37560000.0
+KMB,Kimberly-Clark Corp,Consumer Defensive,Household & Personal Products,37510000.0
+PAYX,Paychex Inc,Technology,Software - Application,37480000.0
+WAT,Waters Corp,Healthcare,Diagnostics & Research,37200000.0
+PCG,PG&E Corp,Utilities,Utilities - Regulated Electric,37040000.0
+A,Agilent Technologies Inc,Healthcare,Diagnostics & Research,36890000.0
+ON,ON Semiconductor Corp,Technology,Semiconductors,36850000.0
+WDS,Woodside Energy Group Ltd ADR,Energy,Oil & Gas E&P,36800000.0
+ROP,Roper Technologies Inc,Technology,Software - Application,36760000.0
+TKO,TKO Group Holdings Inc,Communication Services,Entertainment,36750000.0
+MLM,Martin Marietta Materials Inc,Basic Materials,Building Materials,36350000.0
+HBAN,Huntington Bancshares Inc,Financial,Banks - Regional,36270000.0
+HSY,Hershey Company,Consumer Defensive,Confectioners,36010000.0
+KR,Kroger Co,Consumer Defensive,Grocery Stores,35690000.0
+STRC,Strategy Inc - VR PRF PERPETUAL USD 100 - Ser A,Technology,Software - Application,35600000.0
+ACGL,Arch Capital Group Ltd,Financial,Insurance - Diversified,35570000.0
+JBL,Jabil Inc,Technology,Electronic Components,35440000.0
+MSTR,Strategy Inc,Technology,Software - Application,35310000.0
+MTB,M & T Bank Corp,Financial,Banks - Regional,35140000.0
+PUK,Prudential plc ADR,Financial,Insurance - Life,35080000.0
+EME,Emcor Group Inc,Industrials,Engineering & Construction,34990000.0
+RYAAY,Ryanair Holdings Plc ADR,Industrials,Airlines,34820000.0
+IRM,Iron Mountain Inc,Real Estate,REIT - Specialty,34630000.0
+IQV,IQVIA Holdings Inc,Healthcare,Diagnostics & Research,34380000.0
+CPNG,Coupang Inc,Consumer Cyclical,Internet Retail,34380000.0
+CHT,Chunghwa Telecom ADR,Communication Services,Telecom Services,34220000.0
+WDAY,Workday Inc,Technology,Software - Application,34080000.0
+NTRS,Northern Trust Corp,Financial,Asset Management,33520000.000000004
+ERIC,Telefonaktiebolaget L M Ericsson ADR,Technology,Communication Equipment,33450000.000000004
+QSR,Restaurant Brands International Inc,Consumer Cyclical,Restaurants,33430000.0
+SHG,Shinhan Financial Group Co Ltd ADR,Financial,Banks - Regional,33310000.000000004
+ALC,Alcon Inc,Healthcare,Medical Instruments & Supplies,33299999.999999996
+RPRX,Royalty Pharma plc,Healthcare,Biotechnology,32780000.0
+STLD,Steel Dynamics Inc,Basic Materials,Steel,32750000.0
+CCI,Crown Castle Inc,Real Estate,REIT - Specialty,32700000.000000004
+CNC,Centene Corp,Healthcare,Healthcare Plans,32619999.999999996
+UI,Ubiquiti Inc,Technology,Communication Equipment,32530000.0
+JD,JD.com Inc ADR,Consumer Cyclical,Internet Retail,32490000.000000004
+MRNA,Moderna Inc,Healthcare,Biotechnology,32460000.0
+RJF,Raymond James Financial Inc,Financial,Asset Management,32430000.0
+EQT,EQT Corp,Energy,Oil & Gas E&P,32340000.000000004
+EXR,Extra Space Storage Inc,Real Estate,REIT - Industrial,32250000.0
+NTAP,Netapp Inc,Technology,Software - Infrastructure,32040000.0
+EXPE,Expedia Group Inc,Consumer Cyclical,Travel Services,32020000.000000004
+BIDU,Baidu Inc ADR,Communication Services,Internet Content & Information,31830000.0
+TWLO,Twilio Inc,Technology,Software - Infrastructure,31730000.0
+RMD,Resmed Inc,Healthcare,Medical Instruments & Supplies,31680000.0
+ONC,BeOne Medicines Ltd ADR,Healthcare,Biotechnology,31660000.0
+ZTS,Zoetis Inc,Healthcare,Drug Manufacturers - Specialty & Generic,31620000.0
+IR,Ingersoll Rand Inc,Industrials,Specialty Industrial Machinery,31550000.0
+DTE,DTE Energy Co,Utilities,Utilities - Regulated Electric,31490000.0
+ASTS,AST SpaceMobile Inc,Technology,Communication Equipment,31300000.0
+AEE,Ameren Corp,Utilities,Utilities - Regulated Electric,31270000.0
+BAP,Credicorp Ltd,Financial,Banks - Regional,31200000.0
+VEEV,Veeva Systems Inc,Healthcare,Health Information Services,31190000.0
+NTR,Nutrien Ltd,Basic Materials,Agricultural Inputs,30980000.0
+GFI,Gold Fields Ltd ADR,Basic Materials,Gold,30980000.0
+LVS,Las Vegas Sands Corp,Consumer Cyclical,Resorts & Casinos,30870000.0
+BIIB,Biogen Inc,Healthcare,Drug Manufacturers - General,30780000.0
+CRS,Carpenter Technology Corp,Industrials,Metal Fabrication,30770000.0
+EL,Estee Lauder Cos. Inc,Consumer Defensive,Household & Personal Products,30720000.0
+Q,Qnity Electronics Inc,Technology,Semiconductor Equipment & Materials,30710000.0
+CFG,Citizens Financial Group Inc,Financial,Banks - Regional,30490000.0
+TDY,Teledyne Technologies Inc,Technology,Scientific & Technical Instruments,30340000.0
+VOD,Vodafone Group plc ADR,Communication Services,Telecom Services,30120000.0
+TECK,Teck Resources Ltd,Basic Materials,Other Industrial Metals & Mining,30090000.0
+MTZ,Mastec Inc,Industrials,Engineering & Construction,30080000.0
+SUNB,Sunbelt Rentals Holdings Inc,Industrials,Rental & Leasing Services,29990000.0
+CQP,Cheniere Energy Partners LP,Energy,Oil & Gas Midstream,29980000.0
+CASY,Casey's General Stores Inc,Consumer Cyclical,Specialty Retail,29870000.0
+AMRZ,Amrize Ltd,Basic Materials,Building Materials,29850000.0
+FICO,Fair Isaac Corp,Technology,Software - Application,29840000.0
+NRG,NRG Energy Inc,Utilities,Utilities - Independent Power Producers,29750000.0
+EC,Ecopetrol SA ADR,Energy,Oil & Gas Integrated,29750000.0
+KGC,Kinross Gold Corp,Basic Materials,Gold,29520000.0
+GEHC,GE HealthCare Technologies Inc,Healthcare,Medical Devices,29500000.0
+KHC,Kraft Heinz Co,Consumer Defensive,Packaged Foods,29430000.0
+ILMN,Illumina Inc,Healthcare,Diagnostics & Research,29400000.0
+TPR,Tapestry Inc,Consumer Cyclical,Luxury Goods,29400000.0
+CINF,Cincinnati Financial Corp,Financial,Insurance - Property & Casualty,29330000.0
+CW,Curtiss-Wright Corp,Industrials,Aerospace & Defense,29290000.0
+ATO,Atmos Energy Corp,Utilities,Utilities - Regulated Gas,29020000.0
+FTS,Fortis Inc,Utilities,Utilities - Regulated Electric,28970000.0
+DOV,Dover Corp,Industrials,Specialty Industrial Machinery,28920000.0
+EIX,Edison International,Utilities,Utilities - Regulated Electric,28800000.0
+MDB,MongoDB Inc,Technology,Software - Infrastructure,28790000.0
+CNP,Centerpoint Energy Inc,Utilities,Utilities - Regulated Electric,28780000.0
+AFRM,Affirm Holdings Inc,Financial,Credit Services,28730000.0
+VICI,VICI Properties Inc,Real Estate,REIT - Diversified,28540000.0
+ECHO,EchoStar Corp,Communication Services,Telecom Services,28490000.0
+XYL,Xylem Inc,Industrials,Specialty Industrial Machinery,28390000.0
+TCOM,Trip.com Group Ltd ADR,Consumer Cyclical,Travel Services,28250000.0
+OTIS,Otis Worldwide Corp,Industrials,Specialty Industrial Machinery,28200000.0
+DXCM,Dexcom Inc,Healthcare,Medical Devices,27930000.0
+TPL,Texas Pacific Land Corp,Energy,Oil & Gas E&P,27780000.0
+PPG,PPG Industries Inc,Basic Materials,Specialty Chemicals,27650000.0
+FISV,Fiserv Inc,Technology,Information Technology Services,27610000.0
+FE,Firstenergy Corp,Utilities,Utilities - Regulated Electric,27600000.0
+AVB,Avalonbay Communities Inc,Real Estate,REIT - Residential,27570000.0
+HAL,Halliburton Co,Energy,Oil & Gas Equipment & Services,27570000.0
+ES,Eversource Energy,Utilities,Utilities - Regulated Electric,27540000.0
+PHG,Koninklijke Philips NV ADR,Healthcare,Medical Devices,27350000.0
+WTW,Willis Towers Watson Public Limited Co,Financial,Insurance Brokers,27170000.0
+PPL,PPL Corp,Utilities,Utilities - Regulated Electric,27170000.0
+TS,Tenaris SA ADR,Energy,Oil & Gas Equipment & Services,27160000.0
+PBA,Pembina Pipeline Corp,Energy,Oil & Gas Midstream,27130000.0
+INIO,Innio NV,Industrials,Specialty Industrial Machinery,27130000.0
+CPRT,Copart Inc,Industrials,Specialty Business Services,27070000.0
+NMR,Nomura Holdings Inc ADR,Financial,Capital Markets,27010000.0
+VG,Venture Global Inc,Energy,Oil & Gas Midstream,26960000.0
+FTI,TechnipFMC plc,Energy,Oil & Gas Equipment & Services,26820000.0
+SYM,Symbotic Inc,Industrials,Specialty Industrial Machinery,26800000.0
+WRB,W.R. Berkley Corp,Financial,Insurance - Property & Casualty,26400000.0
+WSM,Williams-Sonoma Inc,Consumer Cyclical,Specialty Retail,26360000.0
+FMX,Fomento Economico Mexicano SAB de CV ADR,Consumer Defensive,Beverages - Brewers,26250000.0
+ATI,ATI Inc,Industrials,Metal Fabrication,26210000.0
+EQR,Equity Residential Properties Trust,Real Estate,REIT - Residential,26200000.0
+JBHT,J.B. Hunt Transport Services Inc,Industrials,Integrated Freight & Logistics,26190000.0
+HUBB,Hubbell Inc,Industrials,Electrical Equipment & Parts,26190000.0
+MTD,Mettler-Toledo International Inc,Healthcare,Diagnostics & Research,26180000.0
+RF,Regions Financial Corp,Financial,Banks - Regional,26010000.0
+AWK,American Water Works Co Inc,Utilities,Utilities - Regulated Water,25990000.0
+SYF,Synchrony Financial,Financial,Credit Services,25920000.0
+P,Everpure Inc,Technology,Computer Hardware,25840000.0
+OKTA,Okta Inc,Technology,Software - Infrastructure,25830000.0
+CBOE,Cboe Global Markets Inc,Financial,Financial Data & Stock Exchanges,25650000.0
+DG,Dollar General Corp,Consumer Defensive,Discount Stores,25650000.0
+TROW,T. Rowe Price Group Inc,Financial,Asset Management,25520000.0
+ROIV,Roivant Sciences Ltd,Healthcare,Biotechnology,25450000.0
+RIVN,Rivian Automotive Inc,Consumer Cyclical,Auto Manufacturers,25380000.0
+NVT,nVent Electric plc,Industrials,Electrical Equipment & Parts,25370000.0
+KEY,Keycorp,Financial,Banks - Regional,25290000.0
+WST,West Pharmaceutical Services Inc,Healthcare,Medical Instruments & Supplies,25270000.0
+WWD,Woodward Inc,Industrials,Aerospace & Defense,25230000.0
+FSLR,First Solar Inc,Technology,Solar,25040000.0
+PHM,PulteGroup Inc,Consumer Cyclical,Residential Construction,25030000.0
+MTSI,MACOM Technology Solutions Holdings Inc,Technology,Semiconductors,25000000.0
+ZM,Zoom Communications Inc,Technology,Software - Application,24910000.0
+MKSI,MKS Inc,Technology,Scientific & Technical Instruments,24860000.0
+LUV,Southwest Airlines Co,Industrials,Airlines,24830000.0
+FTAI,FTAI Aviation Ltd,Industrials,Aerospace & Defense,24780000.0
+MKL,Markel Group Inc,Financial,Insurance - Property & Casualty,24750000.0
+FWONA,Liberty Media Corp,Communication Services,Entertainment,24670000.0
+IHG,Intercontinental Hotels Group ADR,Consumer Cyclical,Lodging,24650000.0
+FWONK,Liberty Media Corp,Communication Services,Entertainment,24610000.0
+VRSK,Verisk Analytics Inc,Industrials,Consulting Services,24600000.0
+TSEM,Tower Semiconductor Ltd,Technology,Semiconductors,24470000.0
+LPLA,LPL Financial Holdings Inc,Financial,Capital Markets,24370000.0
+ZS,Zscaler Inc,Technology,Software - Infrastructure,24320000.0
+FCNCA,First Citizens Bancshares Inc (NC),Financial,Banks - Regional,24320000.0
+PFG,Principal Financial Group Inc,Financial,Asset Management,24310000.0
+XPO,XPO Inc,Industrials,Trucking,24280000.0
+AER,Aercap Holdings NV,Industrials,Rental & Leasing Services,24200000.0
+INSM,Insmed Inc,Healthcare,Biotechnology,24180000.0
+TW,Tradeweb Markets Inc,Financial,Capital Markets,24170000.0
+L,Loews Corp,Financial,Insurance - Property & Casualty,23930000.0
+SOFI,SoFi Technologies Inc,Financial,Credit Services,23870000.0
+SW,Smurfit WestRock plc,Consumer Cyclical,Packaging & Containers,23860000.0
+AXIA,Axia Energia ADR,Utilities,Utilities - Renewable,23830000.0
+BNTX,BioNTech SE ADR,Healthcare,Biotechnology,23750000.0
+FFIV,F5 Inc,Technology,Software - Infrastructure,23640000.0
+DGX,Quest Diagnostics Inc,Healthcare,Diagnostics & Research,23630000.0
+RL,Ralph Lauren Corp,Consumer Cyclical,Apparel Manufacturing,23590000.0
+VRSN,Verisign Inc,Technology,Software - Infrastructure,23580000.0
+CMS,CMS Energy Corp,Utilities,Utilities - Regulated Electric,23570000.0
+DLTR,Dollar Tree Inc,Consumer Defensive,Discount Stores,23340000.0
+LH,Labcorp Holdings Inc,Healthcare,Diagnostics & Research,23320000.0
+CPAY,Corpay Inc,Technology,Software - Infrastructure,23300000.0
+DKNG,DraftKings Inc,Consumer Cyclical,Gambling,23300000.0
+DRI,Darden Restaurants Inc,Consumer Cyclical,Restaurants,23280000.0
+UTHR,United Therapeutics Corp,Healthcare,Drug Manufacturers - Specialty & Generic,23230000.0
+BRO,Brown & Brown Inc,Financial,Insurance Brokers,23190000.0
+INCY,Incyte Corp,Healthcare,Biotechnology,23100000.0
+CHD,Church & Dwight Co Inc,Consumer Defensive,Household & Personal Products,23090000.0
+OMC,Omnicom Group Inc,Communication Services,Advertising Agencies,22770000.0
+FDXF,FedEx Freight Holding Company Inc,Industrials,Integrated Freight & Logistics,22730000.0
+VLTO,Veralto Corp,Industrials,Pollution & Treatment Controls,22710000.0
+USFD,US Foods Holding Corp,Consumer Defensive,Food Distribution,22650000.0
+NI,NiSource Inc,Utilities,Utilities - Regulated Gas,22560000.0
+BSP,Bending Spoons S.p.A,Technology,Software - Application,22500000.0
+GH,Guardant Health Inc,Healthcare,Diagnostics & Research,22390000.0
+STZ,Constellation Brands Inc,Consumer Defensive,Beverages - Brewers,22320000.0
+CHRW,C.H. Robinson Worldwide Inc,Industrials,Integrated Freight & Logistics,22230000.0
+FOXA,Fox Corp,Communication Services,Entertainment,22170000.0
+ENTG,Entegris Inc,Technology,Semiconductor Equipment & Materials,22140000.0
+FOX,Fox Corp,Communication Services,Entertainment,22120000.0
+STRL,Sterling Infrastructure Inc,Industrials,Engineering & Construction,22010000.0
+IOT,Samsara Inc,Technology,Software - Infrastructure,21930000.0
+QNT,Quantinuum Inc,Technology,Software - Application,21700000.0
+TEAM,Atlassian Corp,Technology,Software - Application,21700000.0
+EXPD,Expeditors International Of Washington Inc,Industrials,Integrated Freight & Logistics,21670000.0
+VIV,Telefonica Brasil SA ADR,Communication Services,Telecom Services,21520000.0
+UDR,UDR Inc,Real Estate,REIT - Residential,21500000.0
+SNA,Snap-on Inc,Industrials,Tools & Accessories,21430000.0
+FIS,Fidelity National Information Services Inc,Technology,Information Technology Services,21330000.0
+EXE,Expand Energy Corp,Energy,Oil & Gas E&P,21270000.0
+RBA,RB Global Inc,Industrials,Specialty Business Services,21250000.0
+GPN,Global Payments Inc,Technology,Software - Infrastructure,21170000.0
+IFF,International Flavors & Fragrances Inc,Basic Materials,Specialty Chemicals,21130000.0
+BG,Bunge Global SA,Consumer Defensive,Farm Products,21110000.0
+ROKU,Roku Inc,Communication Services,Entertainment,21100000.0
+SN,SharkNinja Inc,Consumer Cyclical,"Furnishings, Fixtures & Appliances",21080000.0
+PKG,Packaging Corp Of America,Consumer Cyclical,Packaging & Containers,21060000.0
+LEN,Lennar Corp,Consumer Cyclical,Residential Construction,21060000.0
+STE,Steris Plc,Healthcare,Medical Devices,20790000.0
+HPQ,HP Inc,Technology,Computer Hardware,20670000.0
+AMCR,Amcor Plc,Consumer Cyclical,Packaging & Containers,20630000.0
+ROL,Rollins Inc,Consumer Cyclical,Personal Services,20570000.0
+DKS,Dicks Sporting Goods Inc,Consumer Cyclical,Specialty Retail,20500000.0
+EFX,Equifax Inc,Industrials,Consulting Services,20470000.0
+IP,International Paper Co,Consumer Cyclical,Packaging & Containers,20430000.0
+TSN,Tyson Foods Inc,Consumer Defensive,Farm Products,20280000.0
+BCH,Banco de Chile ADR,Financial,Banks - Regional,20220000.0
+AS,Amer Sports Inc,Consumer Cyclical,Leisure,20150000.0
+EVRG,Evergy Inc,Utilities,Utilities - Regulated Electric,19890000.0
+BSBR,Banco Santander (Brasil) SA ADR,Financial,Banks - Regional,19800000.0
+ESS,Essex Property Trust Inc,Real Estate,REIT - Residential,19800000.0
+LNT,Alliant Energy Corp,Utilities,Utilities - Regulated Electric,19780000.0
+LII,Lennox International Inc,Industrials,Building Products & Equipment,19770000.0
+VTRS,Viatris Inc,Healthcare,Drug Manufacturers - Specialty & Generic,19720000.0
+DOW,Dow Inc,Basic Materials,Chemicals,19700000.0
+BURL,Burlington Stores Inc,Consumer Cyclical,Apparel Retail,19660000.0
+CTSH,Cognizant Technology Solutions Corp,Technology,Information Technology Services,19600000.0
+SNX,TD Synnex Corp,Technology,Electronics & Computer Distribution,19560000.0
+BCE,BCE Inc,Communication Services,Telecom Services,19460000.0
+ULTA,Ulta Beauty Inc,Consumer Cyclical,Specialty Retail,19450000.0
+FTV,Fortive Corp,Technology,Scientific & Technical Instruments,19390000.0
+WIT,Wipro Ltd ADR,Technology,Information Technology Services,19300000.0
+RBC,RBC Bearings Inc,Industrials,Tools & Accessories,19280000.0
+GIS,General Mills Inc,Consumer Defensive,Packaged Foods,19280000.0
+RS,Reliance Inc,Basic Materials,Steel,19270000.0
+SBAC,SBA Communications Corp,Real Estate,REIT - Specialty,19150000.0
+ARXS,Arxis Inc,Industrials,Aerospace & Defense,19150000.0
+DD,DuPont de Nemours Inc,Basic Materials,Specialty Chemicals,19040000.0
+MAIR,Madison Air Solutions Corp,Industrials,Building Products & Equipment,19000000.0
+PAAS,Pan American Silver Corp,Basic Materials,Gold,18970000.0
+LSCC,Lattice Semiconductor Corp,Technology,Semiconductors,18810000.0
+CHTR,Charter Communications Inc,Communication Services,Telecom Services,18760000.0
+APG,APi Group Corp,Industrials,Engineering & Construction,18730000.0
+FLUT,Flutter Entertainment Plc,Consumer Cyclical,Gambling,18690000.0
+CX,Cemex SAB de CV ADR,Basic Materials,Building Materials,18620000.0
+BBD,Banco Bradesco SA ADR,Financial,Banks - Regional,18470000.0
+PAGP,Plains GP Holdings LP,Energy,Oil & Gas Midstream,18410000.0
+IONQ,IonQ Inc,Technology,Computer Hardware,18240000.0
+H,Hyatt Hotels Corp,Consumer Cyclical,Lodging,18220000.0
+YPF,YPF ADR,Energy,Oil & Gas Integrated,18140000.0
+NVR,NVR Inc,Consumer Cyclical,Residential Construction,18070000.0
+BWXT,BWX Technologies Inc,Industrials,Aerospace & Defense,18040000.0
+EWBC,East West Bancorp Inc,Financial,Banks - Regional,18030000.0
+ULS,UL Solutions Inc,Industrials,Specialty Business Services,17990000.0
+RBRK,Rubrik Inc,Technology,Software - Infrastructure,17980000.0
+FN,Fabrinet,Technology,Electronic Components,17940000.0
+BEN,Franklin Resources Inc,Financial,Asset Management,17900000.0
+MGA,Magna International Inc,Consumer Cyclical,Auto Parts,17880000.0
+PFGC,Performance Food Group Company,Consumer Defensive,Food Distribution,17870000.0
+INVH,Invitation Homes Inc,Real Estate,REIT - Residential,17830000.0
+THC,Tenet Healthcare Corp,Healthcare,Medical Care Facilities,17760000.0
+GPC,Genuine Parts Co,Consumer Cyclical,Auto Parts,17710000.0
+SMCI,Super Micro Computer Inc,Technology,Computer Hardware,17590000.0
+CDE,Coeur Mining Inc,Basic Materials,Gold,17510000.0
+NBIX,Neurocrine Biosciences Inc,Healthcare,Drug Manufacturers - Specialty & Generic,17510000.0
+NXT,Nextpower Inc,Technology,Solar,17440000.0
+CF,CF Industries Holdings Inc,Basic Materials,Agricultural Inputs,17390000.0
+ZBH,Zimmer Biomet Holdings Inc,Healthcare,Medical Devices,17370000.0
+AMKR,AMKOR Technology Inc,Technology,Semiconductor Equipment & Materials,17320000.0
+BIP,Brookfield Infrastructure Partners L.P,Utilities,Utilities - Diversified,17240000.0
+WES,Western Midstream Partners LP,Energy,Oil & Gas Midstream,17200000.0
+TLN,Talen Energy Corp,Utilities,Utilities - Independent Power Producers,17149999.999999996
+CDW,CDW Corp,Technology,Information Technology Services,17140000.0
+KSPI,Kaspi.kz JSC ADR,Technology,Software - Infrastructure,17140000.0
+RGLD,Royal Gold Inc,Basic Materials,Gold,17140000.0
+TOST,Toast Inc,Technology,Software - Infrastructure,17100000.000000004
+LYB,LyondellBasell Industries NV,Basic Materials,Specialty Chemicals,17100000.000000004
+CRCL,Circle Internet Group Inc,Financial,Capital Markets,17059999.999999996
+ITT,ITT Inc,Industrials,Specialty Industrial Machinery,16989999.999999996
+RCI,Rogers Communications Inc,Communication Services,Telecom Services,16989999.999999996
+KIM,Kimco Realty Corp,Real Estate,REIT - Retail,16890000.0
+WY,Weyerhaeuser Co,Real Estate,REIT - Specialty,16870000.000000004
+NLY,Annaly Capital Management Inc,Real Estate,REIT - Mortgage,16850000.000000004
+QXO,QXO Inc,Industrials,Industrial Distribution,16820000.0
+MAA,Mid-America Apartment Communities Inc,Real Estate,REIT - Residential,16800000.0
+STLA,Stellantis N.V,Consumer Cyclical,Auto Manufacturers,16770000.0
+BALL,Ball Corp,Consumer Cyclical,Packaging & Containers,16760000.000000002
+BR,Broadridge Financial Solutions Inc,Technology,Information Technology Services,16739999.999999998
+GMAB,Genmab ADR,Healthcare,Biotechnology,16660000.0
+ASND,Ascendis Pharma A/S,Healthcare,Biotechnology,16640000.0
+IEX,Idex Corp,Industrials,Specialty Industrial Machinery,16610000.0
+LTM,LATAM Airlines Group SA ADR,Industrials,Airlines,16489999.999999998
+SGI,Somnigroup International Inc,Consumer Cyclical,"Furnishings, Fixtures & Appliances",16450000.0
+BBY,Best Buy Co Inc,Consumer Cyclical,Specialty Retail,16440000.000000002
+AKAM,Akamai Technologies Inc,Technology,Software - Infrastructure,16390000.0
+TPG,TPG Inc,Financial,Asset Management,16370000.000000002
+NDSN,Nordson Corp,Industrials,Specialty Industrial Machinery,16360000.0
+KEP,Korea Electric Power Corp ADR,Utilities,Utilities - Regulated Electric,16360000.0
+MAS,Masco Corp,Industrials,Building Products & Equipment,16350000.000000002
+TXT,Textron Inc,Industrials,Aerospace & Defense,16320000.0
+WSO,Watsco Inc,Industrials,Industrial Distribution,16250000.0
+SITM,SiTime Corp,Technology,Semiconductors,16250000.0
+MEDP,Medpace Holdings Inc,Healthcare,Diagnostics & Research,16140000.0
+TU,Telus Corp,Communication Services,Telecom Services,16090000.0
+LAMR,Lamar Advertising Co,Real Estate,REIT - Specialty,16030000.000000002
+GEN,Gen Digital Inc,Technology,Software - Infrastructure,16020000.0
+EMA,Emera Inc,Utilities,Utilities - Regulated Electric,16010000.000000002
+BEKE,KE Holdings Inc ADR,Real Estate,Real Estate Services,15990000.0
+HST,Host Hotels & Resorts Inc,Real Estate,REIT - Hotel & Motel,15920000.0
+TIGO,Millicom International Cellular SA,Communication Services,Telecom Services,15880000.0
+CG,Carlyle Group Inc,Financial,Asset Management,15850000.0
+TSCO,Tractor Supply Co,Consumer Cyclical,Specialty Retail,15850000.0
+WSE,Wise Group Plc,Technology,Information Technology Services,15830000.0
+CPT,Camden Property Trust,Real Estate,REIT - Residential,15810000.0
+GRAB,Grab Holdings Limited,Technology,Software - Application,15780000.0
+ALB,Albemarle Corp,Basic Materials,Specialty Chemicals,15780000.0
+SSNC,SS&C Technologies Holdings Inc,Technology,Software - Application,15730000.0
+PKX,POSCO Holdings Inc ADR,Basic Materials,Steel,15720000.0
+WPC,W. P. Carey Inc,Real Estate,REIT - Diversified,15710000.0
+PAA,Plains All American Pipeline LP,Energy,Oil & Gas Midstream,15710000.0
+IREN,IREN Ltd,Financial,Capital Markets,15670000.0
+BSAC,Banco Santander Chile SA ADR,Financial,Banks - Regional,15670000.0
+CLH,Clean Harbors Inc,Industrials,Waste Management,15570000.0
+TTMI,TTM Technologies Inc,Technology,Electronic Components,15510000.0
+WCC,Wesco International Inc,Industrials,Industrial Distribution,15440000.0
+DOC,Healthpeak Properties Inc,Real Estate,REIT - Healthcare Facilities,15360000.0
+JAZZ,Jazz Pharmaceuticals plc,Healthcare,Biotechnology,15340000.0
+JLL,Jones Lang Lasalle Inc,Real Estate,Real Estate Services,15300000.0
+TRU,TransUnion,Financial,Financial Data & Stock Exchanges,15290000.0
+PR,Permian Resources Holdings Inc,Energy,Oil & Gas E&P,15230000.0
+J,Jacobs Solutions Inc,Industrials,Engineering & Construction,15230000.0
+NWSA,News Corp,Communication Services,Entertainment,15230000.0
+BBIO,BridgeBio Pharma Inc,Healthcare,Biotechnology,15230000.0
+GNRC,Generac Holdings Inc,Industrials,Specialty Industrial Machinery,15180000.0
+PNFP,Pinnacle Financial Partners Inc,Financial,Banks - Regional,15150000.0
+NWS,News Corp,Communication Services,Entertainment,15150000.0
+DVA,DaVita Inc,Healthcare,Medical Care Facilities,15130000.0
+ONTO,Onto Innovation Inc,Technology,Semiconductor Equipment & Materials,15120000.0
+SUI,Sun Communities Inc,Real Estate,REIT - Residential,15060000.0
+RTO,Rentokil Initial Plc ADR,Industrials,Specialty Business Services,15030000.0
+OVV,Ovintiv Inc,Energy,Oil & Gas E&P,14980000.0
+PHYS,Sprott Physical Gold Trust,Financial,Asset Management,14970000.0
+WF,Woori Financial Group Inc ADR,Financial,Banks - Regional,14950000.0
+FPS,Forgent Power Solutions Inc,Industrials,Electrical Equipment & Parts,14950000.0
+JHX,James Hardie Industries plc,Basic Materials,Building Materials,14870000.0
+CSL,Carlisle Companies Inc,Industrials,Building Products & Equipment,14860000.0
+YUMC,Yum China Holdings Inc,Consumer Cyclical,Restaurants,14840000.0
+NVMI,Nova Ltd,Technology,Semiconductor Equipment & Materials,14830000.0
+OWL,Blue Owl Capital Inc,Financial,Asset Management,14800000.0
+EG,Everest Group Ltd,Financial,Insurance - Reinsurance,14760000.0
+ARMK,Aramark,Industrials,Specialty Business Services,14730000.0
+DTM,DT Midstream Inc,Energy,Oil & Gas Midstream,14710000.0
+RGA,Reinsurance Group Of America Inc,Financial,Insurance - Reinsurance,14680000.0
+DECK,Deckers Outdoor Corp,Consumer Cyclical,Footwear & Accessories,14680000.0
+GFL,GFL Environmental Inc,Industrials,Waste Management,14620000.0
+REG,Regency Centers Corp,Real Estate,REIT - Retail,14620000.0
+OHI,Omega Healthcare Investors Inc,Real Estate,REIT - Healthcare Facilities,14600000.0
+VNOM,Viper Energy Inc,Energy,Oil & Gas Midstream,14520000.0
+RRX,Regal Rexnord Corp,Industrials,Specialty Industrial Machinery,14510000.0
+TOL,Toll Brothers Inc,Consumer Cyclical,Residential Construction,14500000.0
+CHKP,Check Point Software Technologies Ltd,Technology,Software - Infrastructure,14470000.0
+PTC,PTC Inc,Technology,Software - Application,14440000.0
+LECO,Lincoln Electric Holdings Inc,Industrials,Tools & Accessories,14400000.0
+SWK,Stanley Black & Decker Inc,Industrials,Tools & Accessories,14390000.0
+UNM,Unum Group,Financial,Insurance - Life,14300000.0
+WMG,Warner Music Group Corp,Communication Services,Entertainment,14290000.0
+ALLY,Ally Financial Inc,Financial,Credit Services,14170000.0
+NTNX,Nutanix Inc,Technology,Software - Infrastructure,14170000.0
+COO,Cooper Companies Inc,Healthcare,Medical Instruments & Supplies,14160000.0
+PS,Pershing Square Inc,Financial,Asset Management,14150000.0
+RPM,RPM International Inc,Basic Materials,Specialty Chemicals,14080000.0
+LOGI,Logitech International SA,Technology,Computer Hardware,13980000.0
+CNA,CNA Financial Corp,Financial,Insurance - Property & Casualty,13980000.0
+EXEL,Exelixis Inc,Healthcare,Biotechnology,13960000.0
+MKC,McCormick & Co Inc,Consumer Defensive,Packaged Foods,13920000.0
+GIB,CGI Inc,Technology,Information Technology Services,13900000.0
+BTSG,BrightSpring Health Services Inc,Healthcare,Health Information Services,13850000.0
+SUN,Sunoco LP,Energy,Oil & Gas Refining & Marketing,13840000.0
+AIZ,Assurant Inc,Financial,Insurance - Property & Casualty,13840000.0
+TLK,Telkom Indonesia (Persero) Tbk PT ADR,Communication Services,Telecom Services,13790000.0
+RNR,RenaissanceRe Holdings Ltd,Financial,Insurance - Reinsurance,13780000.0
+EVR,Evercore Inc,Financial,Capital Markets,13750000.0
+IONS,Ionis Pharmaceuticals Inc,Healthcare,Biotechnology,13750000.0
+GL,Globe Life Inc,Financial,Insurance - Life,13740000.0
+CRBG,Corebridge Financial Inc,Financial,Asset Management,13730000.0
+LULU,Lululemon Athletica Inc,Consumer Cyclical,Apparel Retail,13720000.0
+DOCN,DigitalOcean Holdings Inc,Technology,Software - Infrastructure,13710000.0
+LDOS,Leidos Holdings Inc,Technology,Information Technology Services,13680000.0
+BWA,BorgWarner Inc,Consumer Cyclical,Auto Parts,13520000.0
+SOLV,Solventum Corp,Healthcare,Medical Instruments & Supplies,13500000.0
+ALGN,Align Technology Inc,Healthcare,Medical Instruments & Supplies,13490000.0
+MOG-A,Moog Inc,Industrials,Aerospace & Defense,13490000.0
+CNH,CNH Industrial NV,Industrials,Farm & Heavy Construction Machinery,13480000.0
+TYL,Tyler Technologies Inc,Technology,Software - Application,13450000.0
+DINO,HF Sinclair Corp,Energy,Oil & Gas Refining & Marketing,13420000.0
+IESC,IES Holdings Inc,Industrials,Engineering & Construction,13360000.0
+HRL,Hormel Foods Corp,Consumer Defensive,Packaged Foods,13360000.0
+ARCC,Ares Capital Corp,Financial,Asset Management,13330000.0
+AUR,Aurora Innovation Inc,Consumer Cyclical,Auto Parts,13320000.0
+DT,Dynatrace Inc,Technology,Software - Application,13270000.0
+AGI,Alamos Gold Inc,Basic Materials,Gold,13260000.0
+AEG,Aegon Ltd,Financial,Insurance - Diversified,13220000.0
+AA,Alcoa Corp,Basic Materials,Aluminum,13160000.0
+FNF,Fidelity National Financial Inc,Financial,Insurance - Specialty,13110000.0
+ICLR,Icon Plc,Healthcare,Diagnostics & Research,13090000.0
+ELS,Equity Lifestyle Properties Inc,Real Estate,REIT - Residential,13020000.0
+VICR,Vicor Corp,Technology,Electronic Components,13010000.0
+JBS,JBS NV,Consumer Defensive,Packaged Foods,12960000.0
+EQH,Equitable Holdings Inc,Financial,Asset Management,12960000.0
+PNW,Pinnacle West Capital Corp,Utilities,Utilities - Regulated Electric,12960000.0
+DY,Dycom Industries Inc,Industrials,Engineering & Construction,12940000.0
+U,Unity Software Inc,Technology,Software - Application,12940000.0
+SMTC,Semtech Corp,Technology,Semiconductors,12940000.0
+HTHT,H World Group Limited ADR,Consumer Cyclical,Lodging,12920000.0
+ZTO,ZTO Express (Cayman) Inc ADR,Industrials,Integrated Freight & Logistics,12910000.0
+SNN,Smith & Nephew plc ADR,Healthcare,Medical Devices,12900000.0
+ZBRA,Zebra Technologies Corp,Technology,Communication Equipment,12870000.0
+AGNC,AGNC Investment Corp,Real Estate,REIT - Mortgage,12820000.0
+CR,Crane Co,Industrials,Specialty Industrial Machinery,12710000.0
+AVY,Avery Dennison Corp,Consumer Cyclical,Packaging & Containers,12700000.0
+CCK,Crown Holdings Inc,Consumer Cyclical,Packaging & Containers,12660000.0
+APTV,Aptiv Plc,Consumer Cyclical,Auto Parts,12640000.0
+PSLV,Sprott Physical Silver Trust,Financial,Asset Management,12630000.0
+RVTY,Revvity Inc,Healthcare,Diagnostics & Research,12600000.0
+WBS,Webster Financial Corp,Financial,Banks - Regional,12570000.0
+MLI,Mueller Industries Inc,Industrials,Metal Fabrication,12570000.0
+GGG,Graco Inc,Industrials,Specialty Industrial Machinery,12560000.0
+ELAN,Elanco Animal Health Inc,Healthcare,Drug Manufacturers - Specialty & Generic,12550000.0
+PEN,Penumbra Inc,Healthcare,Medical Devices,12520000.0
+COKE,Coca-Cola Consolidated Inc,Consumer Defensive,Beverages - Non-Alcoholic,12510000.0
+AXSM,Axsome Therapeutics Inc,Healthcare,Biotechnology,12480000.0
+PINS,Pinterest Inc,Communication Services,Internet Content & Information,12460000.0
+ENLT,Enlight Renewable Energy Ltd,Utilities,Utilities - Renewable,12440000.0
+MOD,Modine Manufacturing Co,Consumer Cyclical,Auto Parts,12420000.0
+SMMT,Summit Therapeutics Inc,Healthcare,Biotechnology,12360000.0
+WTS,Watts Water Technologies Inc,Industrials,Specialty Industrial Machinery,12340000.0
+IVZ,Invesco Ltd,Financial,Asset Management,12340000.0
+GLPI,Gaming and Leisure Properties Inc,Real Estate,REIT - Specialty,12330000.0
+W,Wayfair Inc,Consumer Cyclical,Internet Retail,12300000.0
+FHN,First Horizon Corp,Financial,Banks - Regional,12270000.0
+BXP,BXP Inc,Real Estate,REIT - Office,12260000.0
+RMBS,Rambus Inc,Technology,Semiconductors,12250000.0
+TRMB,Trimble Inc,Technology,Scientific & Technical Instruments,12230000.0
+TXRH,Texas Roadhouse Inc,Consumer Cyclical,Restaurants,12230000.0
+MDGL,Madrigal Pharmaceuticals Inc,Healthcare,Biotechnology,12210000.0
+PNR,Pentair plc,Industrials,Specialty Industrial Machinery,12210000.0
+ONON,On Holding AG,Consumer Cyclical,Footwear & Accessories,12200000.0
+ARWR,Arrowhead Pharmaceuticals Inc,Healthcare,Biotechnology,12190000.0
+KNX,Knight-Swift Transportation Holdings Inc,Industrials,Trucking,12160000.0
+AMH,American Homes 4 Rent,Real Estate,REIT - Residential,12150000.0
+AIT,Applied Industrial Technologies Inc,Industrials,Industrial Distribution,12140000.0
+DRS,Leonardo DRS Inc,Industrials,Aerospace & Defense,12100000.0
+PAG,Penske Automotive Group Inc,Consumer Cyclical,Auto & Truck Dealerships,12060000.0
+ALLE,Allegion plc,Industrials,Security & Protection Services,12040000.0
+SKM,SK Telecom Co Ltd ADR,Communication Services,Telecom Services,12040000.0
+BNT,Brookfield Wealth Solutions Ltd,Financial,Insurance - Diversified,12000000.0
+MGM,MGM Resorts International,Consumer Cyclical,Resorts & Casinos,11990000.0
+ERIE,Erie Indemnity Co,Financial,Insurance Brokers,11970000.0
+BF-A,Brown-Forman Corp,Consumer Defensive,Beverages - Wineries & Distilleries,11970000.0
+EMBJ,Embraer SA ADR,Industrials,Aerospace & Defense,11970000.0
+RDY,Dr. Reddy's Laboratories Ltd ADR,Healthcare,Drug Manufacturers - Specialty & Generic,11960000.0
+SJM,J.M. Smucker Co,Consumer Defensive,Packaged Foods,11930000.0
+BF-B,Brown-Forman Corp,Consumer Defensive,Beverages - Wineries & Distilleries,11920000.0
+FROG,JFrog Ltd,Technology,Software - Application,11880000.0
+MOH,Molina Healthcare Inc,Healthcare,Healthcare Plans,11860000.0
+NYT,New York Times Co,Communication Services,Publishing,11860000.0
+AEIS,Advanced Energy Industries Inc,Industrials,Electrical Equipment & Parts,11820000.0
+OC,Owens Corning,Industrials,Building Products & Equipment,11820000.0
+AFG,American Financial Group Inc,Financial,Insurance - Property & Casualty,11800000.0
+CLX,Clorox Co,Consumer Defensive,Household & Personal Products,11760000.0
+AAL,American Airlines Group Inc,Industrials,Airlines,11740000.0
+CSGP,Costar Group Inc,Real Estate,Real Estate Services,11720000.0
+HUT,Hut 8 Corp,Financial,Capital Markets,11690000.0
+NIO,NIO Inc ADR,Consumer Cyclical,Auto Manufacturers,11680000.0
+SANM,Sanmina Corp,Technology,Electronic Components,11660000.0
+BAX,Baxter International Inc,Healthcare,Medical Instruments & Supplies,11660000.0
+UHAL,U-Haul Holding Company,Industrials,Rental & Leasing Services,11630000.0
+UHAL-B,U-Haul Holding Company,Industrials,Rental & Leasing Services,11630000.0
+SPXC,SPX Technologies Inc,Industrials,Building Products & Equipment,11620000.0
+WMS,Advanced Drainage Systems Inc,Industrials,Building Products & Equipment,11600000.0
+HII,Huntington Ingalls Industries Inc,Industrials,Aerospace & Defense,11590000.0
+FMS,Fresenius Medical Care AG ADR,Healthcare,Medical Care Facilities,11580000.0
+TFII,TFI International Inc,Industrials,Trucking,11580000.0
+CGNX,Cognex Corp,Technology,Scientific & Technical Instruments,11560000.0
+SF,Stifel Financial Corp,Financial,Capital Markets,11520000.0
+ABVX,Abivax ADR,Healthcare,Biotechnology,11490000.0
+MICC,Magnum Ice Cream Company NV,Consumer Defensive,Packaged Foods,11490000.0
+APA,APA Corp,Energy,Oil & Gas E&P,11470000.0
+GWRE,Guidewire Software Inc,Technology,Software - Application,11460000.0
+VSAT,Viasat Inc,Technology,Communication Equipment,11440000.0
+SEIC,SEI Investments Co,Financial,Asset Management,11420000.0
+EGP,Eastgroup Properties Inc,Real Estate,REIT - Industrial,11410000.0
+BMRN,Biomarin Pharmaceutical Inc,Healthcare,Biotechnology,11360000.0
+GDDY,Godaddy Inc,Technology,Software - Infrastructure,11340000.0
+PSKY,Paramount Skydance Corp,Communication Services,Entertainment,11290000.0
+AHR,American Healthcare REIT Inc,Real Estate,REIT - Healthcare Facilities,11230000.0
+BROS,Dutch Bros Inc,Consumer Cyclical,Restaurants,11220000.0
+JEF,Jefferies Financial Group Inc,Financial,Capital Markets,11210000.0
+BJ,BJ's Wholesale Club Holdings Inc,Consumer Defensive,Discount Stores,11180000.0
+CACI,Caci International Inc,Technology,Information Technology Services,11160000.0
+CRL,Charles River Laboratories International Inc,Healthcare,Diagnostics & Research,11150000.0
+SAIA,Saia Inc,Industrials,Trucking,11150000.0
+FIG,Figma Inc,Technology,Software - Application,11140000.0
+CART,Maplebear Inc,Consumer Cyclical,Internet Retail,11130000.0
+TECH,Bio-Techne Corp,Healthcare,Biotechnology,11100000.0
+PODD,Insulet Corp,Healthcare,Medical Devices,11070000.0
+KRYS,Krystal Biotech Inc,Healthcare,Biotechnology,11050000.0
+HL,Hecla Mining Co,Basic Materials,Other Precious Metals & Mining,11040000.0
+HAS,Hasbro Inc,Consumer Cyclical,Leisure,11030000.0
+WULF,TeraWulf Inc,Financial,Capital Markets,11010000.0
+PL,Planet Labs PBC,Industrials,Aerospace & Defense,11000000.0
+WTFC,Wintrust Financial Corp,Financial,Banks - Regional,10980000.0
+UMBF,UMB Financial Corp,Financial,Banks - Regional,10970000.0
+WTRG,Essential Utilities Inc,Utilities,Utilities - Regulated Water,10970000.0
+VMI,Valmont Industries Inc,Industrials,Conglomerates,10950000.0
+PAC,Grupo Aeroportuario Del Pacifico SAB de CV ADR,Industrials,Airports & Air Services,10930000.0
+GMED,Globus Medical Inc,Healthcare,Medical Devices,10920000.0
+TEM,Tempus AI Inc,Healthcare,Health Information Services,10900000.0
+BPOP,Popular Inc,Financial,Banks - Regional,10890000.0
+RYAN,Ryan Specialty Holdings Inc,Financial,Insurance - Specialty,10870000.0
+SOLS,Solstice Advanced Materials Inc,Basic Materials,Specialty Chemicals,10810000.0
+SCI,Service Corp International,Consumer Cyclical,Personal Services,10750000.0
+AR,Antero Resources Corp,Energy,Oil & Gas E&P,10750000.0
+SIMO,Silicon Motion Technology Corp ADR,Technology,Semiconductors,10700000.0
+LFUS,Littelfuse Inc,Technology,Electronic Components,10670000.0
+CYTK,Cytokinetics Inc,Healthcare,Biotechnology,10650000.0
+EHC,Encompass Health Corp,Healthcare,Medical Care Facilities,10610000.0
+XPEV,XPeng Inc ADR,Consumer Cyclical,Auto Manufacturers,10610000.0
+AYI,Acuity Inc,Industrials,Electrical Equipment & Parts,10600000.0
+DCI,Donaldson Co Inc,Industrials,Specialty Industrial Machinery,10590000.0
+ALGM,Allegro Microsystems Inc,Technology,Semiconductors,10540000.0
+SQM,Sociedad Quimica Y Minera de Chile SA ADR,Basic Materials,Specialty Chemicals,10500000.0
+AM,Antero Midstream Corp,Energy,Oil & Gas Midstream,10490000.0
+FRT,Federal Realty Investment Trust,Real Estate,REIT - Retail,10480000.0
+VIAV,Viavi Solutions Inc,Technology,Communication Equipment,10460000.0
+TIMB,TIM SA ADR,Communication Services,Telecom Services,10430000.0
+JKHY,Jack Henry & Associates Inc,Technology,Information Technology Services,10400000.0
+MUSA,Murphy USA Inc,Consumer Cyclical,Specialty Retail,10400000.0
+AES,AES Corp,Utilities,Utilities - Diversified,10390000.0
+ZION,Zions Bancorporation N.A,Financial,Banks - Regional,10380000.0
+HBM,Hudbay Minerals Inc,Basic Materials,Copper,10370000.0
+SIRI,Sirius XM Holdings Inc,Communication Services,Entertainment,10350000.0
+BEP,Brookfield Renewable Partners LP,Utilities,Utilities - Renewable,10340000.0
+GSAT,Globalstar Inc,Communication Services,Telecom Services,10330000.0
+ESI,Element Solutions Inc,Basic Materials,Specialty Chemicals,10310000.0
+SARO,StandardAero Inc,Industrials,Aerospace & Defense,10280000.0
+ONB,Old National Bancorp,Financial,Banks - Regional,10220000.0
+GME,Gamestop Corp,Consumer Cyclical,Specialty Retail,10210000.0
+HMY,Harmony Gold Mining Co Ltd ADR,Basic Materials,Gold,10180000.0
+DPZ,Dominos Pizza Inc,Consumer Cyclical,Restaurants,10180000.0
+AGX,Argan Inc,Industrials,Engineering & Construction,10170000.0
+R,Ryder System Inc,Industrials,Rental & Leasing Services,10160000.0
+ORI,Old Republic International Corp,Financial,Insurance - Property & Casualty,10120000.0
+ARW,Arrow Electronics Inc,Technology,Electronics & Computer Distribution,10120000.0
+KTOS,Kratos Defense & Security Solutions Inc,Industrials,Aerospace & Defense,10040000.0
+APGE,Apogee Therapeutics Inc,Healthcare,Biotechnology,10040000.0
+LI,Li Auto Inc ADR,Consumer Cyclical,Auto Manufacturers,10030000.0
+GTLS,Chart Industries Inc,Industrials,Specialty Industrial Machinery,9990000.0
+OGE,Oge Energy Corp,Utilities,Utilities - Regulated Electric,9960000.0
+WYNN,Wynn Resorts Ltd,Consumer Cyclical,Resorts & Casinos,9950000.0
+BLD,TopBuild Corp,Industrials,Engineering & Construction,9940000.0
+HUBS,HubSpot Inc,Technology,Software - Application,9930000.0
+HLI,Houlihan Lokey Inc,Financial,Capital Markets,9910000.0
+BSY,Bentley Systems Inc,Technology,Software - Application,9900000.0
+GLXY,Galaxy Digital Inc,Financial,Capital Markets,9900000.0
+LINE,Lineage Inc,Real Estate,REIT - Industrial,9900000.0
+PSO,Pearson plc ADR,Communication Services,Publishing,9900000.0
+AAOI,Applied Optoelectronics Inc,Technology,Communication Equipment,9900000.0
+TKR,Timken Co,Industrials,Tools & Accessories,9890000.0
+HSIC,Henry Schein Inc,Healthcare,Medical Distribution,9870000.0
+SUZ,Suzano SA ADR,Basic Materials,Paper & Paper Products,9860000.0
+SSB,SouthState Bank Corp,Financial,Banks - Regional,9850000.0
+COMP,Compass Inc,Real Estate,Real Estate Services,9840000.0
+CORT,Corcept Therapeutics Inc,Healthcare,Biotechnology,9830000.0
+FCFS,FirstCash Holdings Inc,Financial,Credit Services,9830000.0
+CFR,Cullen Frost Bankers Inc,Financial,Banks - Regional,9810000.0
+PAYP,PayPay Corp ADR,Technology,Software - Infrastructure,9800000.0
+CTRE,CareTrust REIT Inc,Real Estate,REIT - Healthcare Facilities,9780000.0
+NUVL,Nuvalent Inc,Healthcare,Biotechnology,9770000.0
+VIRT,Virtu Financial Inc,Financial,Capital Markets,9770000.0
+FIVE,Five Below Inc,Consumer Cyclical,Specialty Retail,9750000.0
+ENSG,Ensign Group Inc,Healthcare,Medical Care Facilities,9750000.0
+SNEX,StoneX Group Inc,Financial,Capital Markets,9690000.0
+LLYVA,Liberty Live Holdings Inc,Communication Services,Entertainment,9670000.0
+ALSN,Allison Transmission Holdings Inc,Consumer Cyclical,Auto Parts,9670000.0
+LLYVK,Liberty Live Holdings Inc,Communication Services,Entertainment,9670000.0
+SFD,Smithfield Foods Inc,Consumer Defensive,Packaged Foods,9660000.0
+GIL,Gildan Activewear Inc,Consumer Cyclical,Apparel Manufacturing,9590000.0
+WLK,Westlake Corp,Basic Materials,Specialty Chemicals,9580000.0
+HALO,Halozyme Therapeutics Inc,Healthcare,Biotechnology,9580000.0
+APLD,Applied Digital Corp,Technology,Information Technology Services,9570000.0
+IAG,Iamgold Corp,Basic Materials,Gold,9570000.0
+UHS,Universal Health Services Inc,Healthcare,Medical Care Facilities,9570000.0
+FLS,Flowserve Corp,Industrials,Specialty Industrial Machinery,9550000.0
+BRX,Brixmor Property Group Inc,Real Estate,REIT - Retail,9520000.0
+LEVI,Levi Strauss & Co,Consumer Cyclical,Apparel Manufacturing,9490000.0
+OSCR,Oscar Health Inc,Healthcare,Healthcare Plans,9480000.0
+KYMR,Kymera Therapeutics Inc,Healthcare,Biotechnology,9440000.0
+MP,MP Materials Corp,Basic Materials,Other Industrial Metals & Mining,9440000.0
+AMG,Affiliated Managers Group Inc,Financial,Asset Management,9420000.0
+FUTU,Futu Holdings Ltd ADR,Financial,Capital Markets,9400000.0
+BRKR,Bruker Corp,Healthcare,Medical Devices,9340000.0
+COLB,Columbia Banking System Inc,Financial,Banks - Regional,9330000.0
+IBRX,ImmunityBio Inc,Healthcare,Biotechnology,9330000.0
+PRI,Primerica Inc,Financial,Insurance - Life,9330000.0
+SWKS,Skyworks Solutions Inc,Technology,Semiconductors,9310000.0
+MSGS,Madison Square Garden Sports Corp,Communication Services,Entertainment,9300000.0
+ADC,Agree Realty Corp,Real Estate,REIT - Retail,9270000.0
+FORM,FormFactor Inc,Technology,Semiconductor Equipment & Materials,9250000.0
+TTC,Toro Co,Industrials,Tools & Accessories,9240000.0
+FRHC,Freedom Holding Corp,Financial,Financial Conglomerates,9210000.0
+DAR,Darling Ingredients Inc,Consumer Defensive,Packaged Foods,9200000.0
+ALKS,Alkermes plc,Healthcare,Drug Manufacturers - Specialty & Generic,9190000.0
+PRMB,Primo Brands Corp,Consumer Defensive,Beverages - Non-Alcoholic,9170000.0
+LTH,Life Time Group Holdings Inc,Consumer Cyclical,Leisure,9160000.0
+CUBE,CubeSmart,Real Estate,REIT - Industrial,9150000.0
+MANH,Manhattan Associates Inc,Technology,Software - Application,9100000.0
+TTD,Trade Desk Inc,Communication Services,Advertising Agencies,9080000.0
+IT,Gartner Inc,Technology,Information Technology Services,9050000.0
+POWL,Powell Industries Inc,Industrials,Electrical Equipment & Parts,9040000.0
+OKLO,Oklo Inc,Utilities,Utilities - Independent Power Producers,9020000.0
+CIB,Grupo Cibest SA ADR,Financial,Banks - Regional,9010000.0
+WAL,Western Alliance Bancorp,Financial,Banks - Regional,9010000.0
+OSK,Oshkosh Corp,Industrials,Farm & Heavy Construction Machinery,8990000.0
+SAIL,Sailpoint Inc,Technology,Software - Infrastructure,8990000.0
+ALV,Autoliv Inc,Consumer Cyclical,Auto Parts,8970000.0
+FDS,Factset Research Systems Inc,Financial,Financial Data & Stock Exchanges,8970000.0
+AAON,AAON Inc,Industrials,Building Products & Equipment,8960000.0
+DOCU,DocuSign Inc,Technology,Software - Application,8960000.0
+AVAV,AeroVironment Inc,Industrials,Aerospace & Defense,8950000.0
+ACM,AECOM,Industrials,Engineering & Construction,8950000.0
+NNN,NNN REIT Inc,Real Estate,REIT - Retail,8940000.0
+CNM,Core & Main Inc,Industrials,Industrial Distribution,8900000.0
+CIFR,Cipher Digital Inc,Technology,Information Technology Services,8890000.0
+ESE,Esco Technologies Inc,Technology,Scientific & Technical Instruments,8870000.0
+HIMS,Hims & Hers Health Inc,Healthcare,Drug Manufacturers - Specialty & Generic,8860000.0
+BMNR,BitMine Immersion Technologies Inc,Financial,Capital Markets,8860000.0
+BLDR,Builders Firstsource Inc,Industrials,Building Products & Equipment,8860000.0
+NCLH,Norwegian Cruise Line Holdings Ltd,Consumer Cyclical,Travel Services,8840000.0
+RRC,Range Resources Corp,Energy,Oil & Gas E&P,8790000.0
+MTCH,Match Group Inc,Communication Services,Internet Content & Information,8790000.0
+JOBY,Joby Aviation Inc,Industrials,Airports & Air Services,8770000.0
+PRAX,Praxis Precision Medicines Inc,Healthcare,Biotechnology,8740000.0
+GKOS,Glaukos Corp,Healthcare,Medical Devices,8730000.0
+VOYA,Voya Financial Inc,Financial,Financial Conglomerates,8730000.0
+EGO,Eldorado Gold Corp,Basic Materials,Gold,8720000.0
+CHWY,Chewy Inc,Consumer Cyclical,Internet Retail,8720000.0
+ARE,Alexandria Real Estate Equities Inc,Real Estate,REIT - Office,8690000.0
+RIOT,Riot Platforms Inc,Financial,Capital Markets,8650000.0
+FR,First Industrial Realty Trust Inc,Real Estate,REIT - Industrial,8640000.0
+ELPC,Cia Paranaense De Energia Copel ADR,Utilities,Utilities - Diversified,8620000.0
+AOS,A.O. Smith Corp,Industrials,Specialty Industrial Machinery,8610000.0
+CAE,Cae Inc,Industrials,Aerospace & Defense,8580000.0
+MXL,MaxLinear Inc,Technology,Semiconductors,8570000.0
+AGCO,AGCO Corp,Industrials,Farm & Heavy Construction Machinery,8570000.0
+CBSH,Commerce Bancshares Inc,Financial,Banks - Regional,8560000.000000002
+ASR,Grupo Aeroportuario Del Sureste SA ADR,Industrials,Airports & Air Services,8560000.000000002
+AG,First Majestic Silver Corp,Basic Materials,Silver,8550000.000000002
+BOKF,BOK Financial Corp,Financial,Banks - Regional,8510000.0
+KT,KT Corp ADR,Communication Services,Telecom Services,8510000.0
+PB,Prosperity Bancshares Inc,Financial,Banks - Regional,8500000.0
+TGTX,TG Therapeutics Inc,Healthcare,Biotechnology,8490000.0
+BIRK,Birkenstock Holding Plc,Consumer Cyclical,Footwear & Accessories,8490000.0
+XP,XP Inc,Financial,Capital Markets,8480000.0
+JAN,Janus Living Inc,Real Estate,REIT - Residential,8470000.000000002
+CDP,COPT Defense Properties,Real Estate,REIT - Office,8460000.000000002
+PTGX,Protagonist Therapeutics Inc,Healthcare,Biotechnology,8460000.000000002
+MIDDV,Middleby Corp - When Issued - June 2026,Industrials,Specialty Industrial Machinery,8460000.000000002
+CELH,Celsius Holdings Inc,Consumer Defensive,Beverages - Non-Alcoholic,8449999.999999998
+MBLY,Mobileye Global Inc,Consumer Cyclical,Auto Parts,8420000.0
+LGN,Legence Corp,Industrials,Engineering & Construction,8400000.0
+CAVA,Cava Group Inc,Consumer Cyclical,Restaurants,8380000.000000001
+IDA,Idacorp Inc,Utilities,Utilities - Regulated Electric,8369999.999999999
+QBTS,D-Wave Quantum Inc,Technology,Computer Hardware,8359999.999999999
+VNO,Vornado Realty Trust,Real Estate,REIT - Office,8350000.0
+AXS,Axis Capital Holdings Ltd,Financial,Insurance - Specialty,8340000.0
+TX,Ternium SA ADR,Basic Materials,Steel,8330000.0
+PCVX,Vaxcyte Inc,Healthcare,Biotechnology,8220000.000000001
+FRVO,Fervo Energy Co,Utilities,Utilities - Renewable,8210000.000000001
+FRO,Frontline Plc,Energy,Oil & Gas Midstream,8210000.000000001
+ZWS,Zurn Elkay Water Solutions Corp,Industrials,Pollution & Treatment Controls,8199999.999999999
+VLY,Valley National Bancorp,Financial,Banks - Regional,8199999.999999999
+CHYM,Chime Financial Inc,Technology,Software - Application,8170000.0
+FSS,Federal Signal Corp,Industrials,Farm & Heavy Construction Machinery,8170000.0
+SFM,Sprouts Farmers Market Inc,Consumer Defensive,Grocery Stores,8140000.000000001
+EQX,Equinox Gold Corp,Basic Materials,Gold,8140000.000000001
+SSD,Simpson Manufacturing Co Inc,Basic Materials,Lumber & Wood Production,8130000.000000001
+MIDD,Middleby Corp,Industrials,Specialty Industrial Machinery,8100000.0
+YMM,Full Truck Alliance Co Ltd ADR,Technology,Software - Application,8080000.0
+TTEK,Tetra Tech Inc,Industrials,Engineering & Construction,8080000.0
+RHP,Ryman Hospitality Properties Inc,Real Estate,REIT - Hotel & Motel,8080000.0
+HQY,Healthequity Inc,Healthcare,Health Information Services,8070000.0
+DDS,Dillard's Inc,Consumer Cyclical,Department Stores,8070000.0
+QGEN,Qiagen NV,Healthcare,Diagnostics & Research,8070000.0
+STN,Stantec Inc,Industrials,Engineering & Construction,8060000.000000001
+ATR,Aptargroup Inc,Healthcare,Medical Instruments & Supplies,8039999.999999999
+EDU,New Oriental Education & Technology Group Inc ADR,Consumer Defensive,Education & Training Services,8029999.999999999
+KNSL,Kinsale Capital Group Inc,Financial,Insurance - Property & Casualty,8010000.0
+JHG,Janus Henderson Group plc,Financial,Asset Management,8000000.0
+RGEN,Repligen Corp,Healthcare,Medical Instruments & Supplies,7980000.0
+BIO,Bio-Rad Laboratories Inc,Healthcare,Medical Devices,7970000.0
+TEX,Terex Corp,Industrials,Farm & Heavy Construction Machinery,7950000.0
+KNTK,Kinetik Holdings Inc,Energy,Oil & Gas Midstream,7930000.0
+IMVT,Immunovant Inc,Healthcare,Biotechnology,7920000.0
+EMN,Eastman Chemical Co,Basic Materials,Specialty Chemicals,7880000.0
+HESM,Hess Midstream LP,Energy,Oil & Gas Midstream,7870000.0
+SNAP,Snap Inc,Communication Services,Internet Content & Information,7870000.0
+POOL,Pool Corp,Industrials,Industrial Distribution,7840000.0
+RAL,Ralliant Corp,Technology,Electronic Components,7750000.0
+REXR,Rexford Industrial Realty Inc,Real Estate,REIT - Industrial,7730000.0
+PDI,PIMCO Dynamic Income Fund,Financial,Closed-End Fund - Debt,7730000.0
+CEF,Sprott Physical Gold and Silver Trust,Financial,Asset Management,7710000.0
+JBTM,JBT Marel Corp,Industrials,Specialty Industrial Machinery,7710000.0
+SYRE,Spyre Therapeutics Inc,Healthcare,Biotechnology,7710000.0
+THG,Hanover Insurance Group Inc,Financial,Insurance - Property & Casualty,7700000.0
+QRVO,Qorvo Inc,Technology,Semiconductors,7690000.0
+RYTM,Rhythm Pharmaceuticals Inc,Healthcare,Biotechnology,7660000.0
+HXL,Hexcel Corp,Industrials,Aerospace & Defense,7640000.0
+JXN,Jackson Financial Inc,Financial,Insurance - Life,7630000.0
+CBC,Central Bancompany Inc,Financial,Banks - Regional,7620000.0
+LOAR,Loar Holdings Inc,Industrials,Aerospace & Defense,7610000.0
+BVN,Compania de Minas Buenaventura SA ADR,Basic Materials,Other Precious Metals & Mining,7600000.0
+FIGR,Figure Technology Solutions Inc,Financial,Capital Markets,7590000.0
+YOU,Clear Secure Inc,Technology,Software - Application,7580000.0
+EAT,Brinker International Inc,Consumer Cyclical,Restaurants,7560000.0
+Z,Zillow Group Inc,Communication Services,Internet Content & Information,7540000.0
+ZG,Zillow Group Inc,Communication Services,Internet Content & Information,7540000.0
+ENS,Enersys,Industrials,Electrical Equipment & Parts,7530000.0
+CRUS,Cirrus Logic Inc,Technology,Semiconductors,7510000.0
+RSI,Rush Street Interactive Inc,Consumer Cyclical,Gambling,7510000.0
+KLAR,Klarna Group plc,Financial,Credit Services,7500000.0
+AXTA,Axalta Coating Systems Ltd,Basic Materials,Specialty Chemicals,7490000.0
+UGI,UGI Corp,Utilities,Utilities - Regulated Gas,7490000.0
+STAG,STAG Industrial Inc,Real Estate,REIT - Industrial,7480000.0
+BAH,Booz Allen Hamilton Holding Corp,Industrials,Consulting Services,7470000.0
+SGHC,Super Group (SGHC) Limited,Consumer Cyclical,Gambling,7450000.0
+MAC,Macerich Co,Real Estate,REIT - Retail,7450000.0
+XE,X-Energy Inc,Industrials,Specialty Industrial Machinery,7440000.0
+NFG,National Fuel Gas Co,Energy,Oil & Gas Integrated,7430000.0
+MIRM,Mirum Pharmaceuticals Inc,Healthcare,Biotechnology,7430000.0
+TTAN,ServiceTitan Inc,Technology,Software - Application,7420000.0
+MRCY,Mercury Systems Inc,Industrials,Aerospace & Defense,7390000.0
+PLXS,Plexus Corp,Technology,Electronic Components,7360000.0
+ECG,Everus Construction Group,Industrials,Engineering & Construction,7340000.0
+LNC,Lincoln National Corp,Financial,Insurance - Life,7340000.0
+TAP,Molson Coors Beverage Company,Consumer Defensive,Beverages - Brewers,7330000.0
+CWAN,Clearwater Analytics Holdings Inc,Technology,Software - Application,7330000.0
+NEU,NewMarket Corp,Basic Materials,Specialty Chemicals,7330000.0
+IDCC,Interdigital Inc,Technology,Software - Application,7310000.0
+VFS,VinFast Auto Ltd,Consumer Cyclical,Auto Manufacturers,7280000.0
+TRNO,Terreno Realty Corp,Real Estate,REIT - Industrial,7270000.0
+CORZ,Core Scientific Inc,Technology,Software - Infrastructure,7250000.0
+NPO,Enpro Inc,Industrials,Specialty Industrial Machinery,7210000.0
+SOBO,South Bow Corp,Energy,Oil & Gas Midstream,7210000.0
+FLR,Fluor Corp,Industrials,Engineering & Construction,7190000.0
+SLAB,Silicon Laboratories Inc,Technology,Semiconductors,7180000.0
+FAF,First American Financial Corp,Financial,Insurance - Specialty,7140000.0
+ACA,Arcosa Inc,Industrials,Engineering & Construction,7130000.0
+KMX,Carmax Inc,Consumer Cyclical,Auto & Truck Dealerships,7130000.0
+ETSY,Etsy Inc,Consumer Cyclical,Internet Retail,7120000.0
+PACS,PACS Group Inc,Healthcare,Medical Care Facilities,7120000.0
+KEX,Kirby Corp,Industrials,Marine Shipping,7110000.0
+PTCT,PTC Therapeutics Inc,Healthcare,Biotechnology,7090000.0
+MHK,Mohawk Industries Inc,Consumer Cyclical,"Furnishings, Fixtures & Appliances",7080000.0
+VSH,Vishay Intertechnology Inc,Technology,Semiconductors,7080000.0
+AVTR,Avantor Inc,Healthcare,Medical Instruments & Supplies,7080000.0
+KRMN,Karman Holdings Inc,Industrials,Aerospace & Defense,7070000.0
+HR,Healthcare Realty Trust Inc,Real Estate,REIT - Healthcare Facilities,7070000.0
+LAD,Lithia Motors Inc,Consumer Cyclical,Auto & Truck Dealerships,7050000.0
+LQDA,Liquidia Corp,Healthcare,Drug Manufacturers - Specialty & Generic,7040000.0
+DPC,DPC Holdings PLC,Industrials,Aerospace & Defense,7040000.0
+GGAL,Grupo Financiero Galicia ADR,Financial,Banks - Regional,7030000.0
+GAP,Gap Inc,Consumer Cyclical,Apparel Retail,6970000.0
+ORA,Ormat Technologies Inc,Utilities,Utilities - Renewable,6960000.0
+ACI,Albertsons Companies Inc,Consumer Defensive,Grocery Stores,6950000.0
+OMF,OneMain Holdings Inc,Financial,Credit Services,6940000.0
+CMC,Commercial Metals Co,Industrials,Metal Fabrication,6940000.0
+LSTR,Landstar System Inc,Industrials,Integrated Freight & Logistics,6910000.0
+GTES,Gates Industrial Corp Plc,Industrials,Specialty Industrial Machinery,6900000.0
+MYRG,MYR Group Inc,Industrials,Engineering & Construction,6890000.0
+CACC,Credit Acceptance Corp,Financial,Credit Services,6870000.0
+GOLF,Acushnet Holdings Corp,Consumer Cyclical,Leisure,6860000.0
+HNGE,Hinge Health Inc,Healthcare,Health Information Services,6850000.0
+GBCI,Glacier Bancorp Inc,Financial,Banks - Regional,6840000.0
+FNB,F.N.B. Corp,Financial,Banks - Regional,6820000.0
+PPC,Pilgrim's Pride Corp,Consumer Defensive,Packaged Foods,6820000.0
+AWI,Armstrong World Industries Inc,Industrials,Building Products & Equipment,6810000.0
+ACMR,ACM Research Inc,Technology,Semiconductor Equipment & Materials,6810000.0
+IFS,Intercorp Financial Services Inc,Financial,Banks - Regional,6800000.0
+CWEN,Clearway Energy Inc,Utilities,Utilities - Renewable,6790000.0
+RRR,Red Rock Resorts Inc,Consumer Cyclical,Resorts & Casinos,6790000.0
+MSM,MSC Industrial Direct Co Inc,Industrials,Industrial Distribution,6770000.0
+AVT,Avnet Inc,Technology,Electronics & Computer Distribution,6760000.0
+CPB,Campbells Co,Consumer Defensive,Packaged Foods,6760000.0
+COGT,Cogent Biosciences Inc,Healthcare,Biotechnology,6740000.0
+MOS,Mosaic Company,Basic Materials,Agricultural Inputs,6730000.0
+EXP,Eagle Materials Inc,Basic Materials,Building Materials,6720000.0
+ST,Sensata Technologies Holding Plc,Technology,Scientific & Technical Instruments,6710000.0
+LEA,Lear Corp,Consumer Cyclical,Auto Parts,6700000.0
+LNTH,Lantheus Holdings Inc,Healthcare,Drug Manufacturers - Specialty & Generic,6690000.0
+NAVN,Navan Inc,Technology,Software - Application,6690000.0
+KGS,Kodiak Gas Services Inc,Energy,Oil & Gas Equipment & Services,6680000.0
+BEPC,Brookfield Renewable Corp,Utilities,Utilities - Renewable,6680000.0
+VSEC,VSE Corp,Industrials,Aerospace & Defense,6680000.0
+EPRT,Essential Properties Realty Trust Inc,Real Estate,REIT - Retail,6680000.0
+LUMN,Lumen Technologies Inc,Communication Services,Telecom Services,6680000.0
+BB,BlackBerry Ltd,Technology,Software - Infrastructure,6670000.0
+PAYC,Paycom Software Inc,Technology,Software - Application,6660000.0
+FSV,FirstService Corp,Real Estate,Real Estate Services,6650000.0
+MSA,MSA Safety Inc,Industrials,Security & Protection Services,6650000.0
+MAAS,Maase Inc,Financial,Asset Management,6650000.0
+PCOR,Procore Technologies Inc,Technology,Software - Application,6650000.0
+SRRK,Scholar Rock Holding Corp,Healthcare,Biotechnology,6630000.0
+LKQ,LKQ Corp,Consumer Cyclical,Auto Parts,6620000.0
+CAMT,Camtek Ltd,Technology,Semiconductor Equipment & Materials,6620000.0
+TMHC,Taylor Morrison Home Corp,Consumer Cyclical,Residential Construction,6610000.0
+BYD,Boyd Gaming Corp,Consumer Cyclical,Resorts & Casinos,6600000.0
+CAG,Conagra Brands Inc,Consumer Defensive,Packaged Foods,6600000.0
+MWH,SOLV Energy Inc,Utilities,Utilities - Renewable,6570000.0
+BBUC,Brookfield Business Corp,Industrials,Conglomerates,6560000.0
+RYN,Rayonier Inc,Real Estate,REIT - Specialty,6530000.0
+ICL,ICL Group Ltd,Basic Materials,Agricultural Inputs,6520000.0
+GVA,Granite Construction Inc,Industrials,Engineering & Construction,6490000.0
+VFC,VF Corp,Consumer Cyclical,Apparel Manufacturing,6470000.0
+LGND,Ligand Pharmaceuticals Inc,Healthcare,Biotechnology,6420000.0
+SWX,Southwest Gas Holdings Inc,Utilities,Utilities - Regulated Gas,6420000.0
+DBX,Dropbox Inc,Technology,Software - Infrastructure,6420000.0
+NXE,NexGen Energy Ltd,Energy,Uranium,6410000.0
+UBSI,United Bankshares Inc,Financial,Banks - Regional,6410000.0
+AROC,Archrock Inc,Energy,Oil & Gas Equipment & Services,6400000.0
+NOV,NOV Inc,Energy,Oil & Gas Equipment & Services,6380000.0
+AN,Autonation Inc,Consumer Cyclical,Auto & Truck Dealerships,6380000.0
+ACT,Enact Holdings Inc,Financial,Insurance - Specialty,6380000.0
+CHE,Chemed Corp,Healthcare,Medical Care Facilities,6380000.0
+CPA,Copa Holdings SA,Industrials,Airlines,6370000.0
+LW,Lamb Weston Holdings Inc,Consumer Defensive,Packaged Foods,6360000.0
+SSRM,SSR Mining Inc,Basic Materials,Gold,6360000.0
+SBSW,Sibanye Stillwater Limited ADR,Basic Materials,Other Precious Metals & Mining,6340000.0
+MORN,Morningstar Inc,Financial,Financial Data & Stock Exchanges,6330000.0
+GLBE,Global E Online Ltd,Consumer Cyclical,Internet Retail,6320000.0
+SM,SM Energy Co,Energy,Oil & Gas E&P,6320000.0
+GATX,GATX Corp,Industrials,Rental & Leasing Services,6310000.0
+SSL,Sasol Ltd ADR,Basic Materials,Specialty Chemicals,6300000.0
+CHRD,Chord Energy Corp,Energy,Oil & Gas E&P,6280000.0
+TXNM,TXNM Energy Inc,Utilities,Utilities - Regulated Electric,6270000.0
+DSGX,Descartes Systems Group Inc,Technology,Software - Application,6270000.0
+INGR,Ingredion Inc,Consumer Defensive,Packaged Foods,6260000.0
+KLIC,Kulicke & Soffa Industries Inc,Technology,Semiconductor Equipment & Materials,6260000.0
+SNDR,Schneider National Inc,Industrials,Trucking,6260000.0
+CROX,Crocs Inc,Consumer Cyclical,Footwear & Accessories,6250000.0
+M,Macy's Inc,Consumer Cyclical,Department Stores,6230000.0
+APPF,Appfolio Inc,Technology,Software - Application,6230000.0
+TWST,Twist Bioscience Corp,Healthcare,Diagnostics & Research,6220000.0
+S,SentinelOne Inc,Technology,Software - Infrastructure,6220000.0
+CHDN,Churchill Downs Inc,Consumer Cyclical,Gambling,6220000.0
+CVLT,Commvault Systems Inc,Technology,Software - Application,6220000.0
+TFPM,Triple Flag Precious Metals Corp,Basic Materials,Other Precious Metals & Mining,6210000.0
+GTX,Garrett Motion Inc,Consumer Cyclical,Auto Parts,6210000.0
+STWD,Starwood Property Trust Inc,Real Estate,REIT - Mortgage,6200000.0
+MTDR,Matador Resources Co,Energy,Oil & Gas E&P,6190000.0
+VSXY,Victoria's Secret & Co,Consumer Cyclical,Apparel Retail,6190000.0
+MATX,Matson Inc,Industrials,Marine Shipping,6190000.0
+FLG,Flagstar Bank NA,Financial,Banks - Regional,6190000.0
+BLTE,Belite Bio Inc ADR,Healthcare,Biotechnology,6170000.0
+MCY,Mercury General Corp,Financial,Insurance - Property & Casualty,6150000.0
+FBIN,Fortune Brands Innovations Inc,Industrials,Building Products & Equipment,6150000.0
+PSN,Parsons Corp,Technology,Information Technology Services,6150000.0
+FND,Floor & Decor Holdings Inc,Consumer Cyclical,Home Improvement Retail,6140000.0
+CZR,Caesars Entertainment Inc,Consumer Cyclical,Resorts & Casinos,6140000.0
+PATH,UiPath Inc,Technology,Software - Infrastructure,6130000.0
+ENIC,Enel Chile SA ADR,Utilities,Utilities - Regulated Electric,6130000.0
+CWST,Casella Waste Systems Inc,Industrials,Waste Management,6120000.0
+WH,Wyndham Hotels & Resorts Inc,Consumer Cyclical,Lodging,6120000.0
+ABCB,Ameris Bancorp,Financial,Banks - Regional,6110000.0
+ROAD,Construction Partners Inc,Industrials,Engineering & Construction,6110000.0
+CGON,Cg Oncology Inc,Healthcare,Biotechnology,6110000.0
+BLCO,Bausch + Lomb Corp,Healthcare,Medical Instruments & Supplies,6100000.0
+NSA,National Storage Affiliates Trust,Real Estate,REIT - Industrial,6090000.0
+PCTY,Paylocity Holding Corp,Technology,Software - Application,6090000.0
+HWC,Hancock Whitney Corp,Financial,Banks - Regional,6090000.0
+INGM,Ingram Micro Holding Corp,Technology,Information Technology Services,6090000.0
+ESTC,Elastic N.V,Technology,Software - Application,6090000.0
+IBP,Installed Building Products Inc,Consumer Cyclical,Residential Construction,6080000.0
+LMND,Lemonade Inc,Financial,Insurance - Property & Casualty,6050000.0
+DUOL,Duolingo Inc,Technology,Software - Application,6040000.0
+AUB,Atlantic Union Bankshares Corp,Financial,Banks - Regional,6040000.0
+WFRD,Weatherford International plc,Energy,Oil & Gas Equipment & Services,6030000.0
+BILI,Bilibili Inc ADR,Communication Services,Internet Content & Information,6030000.0
+GDS,GDS Holdings Limited ADR,Technology,Information Technology Services,6020000.0
+SEZL,Sezzle Inc,Financial,Credit Services,6020000.0
+POR,Portland General Electric Co,Utilities,Utilities - Regulated Electric,6020000.0
+PSMT,Pricesmart Inc,Consumer Defensive,Discount Stores,6000000.0
+RGTI,Rigetti Computing Inc,Technology,Computer Hardware,5970000.0
+CRSP,CRISPR Therapeutics AG,Healthcare,Biotechnology,5970000.0
+NE,Noble Corp Plc,Energy,Oil & Gas Drilling,5970000.0
+MTG,MGIC Investment Corp,Financial,Insurance - Specialty,5970000.0
+ESNT,Essent Group Ltd,Financial,Insurance - Specialty,5950000.0
+TFX,Teleflex Incorporated,Healthcare,Medical Instruments & Supplies,5950000.0
+URBN,Urban Outfitters Inc,Consumer Cyclical,Apparel Retail,5940000.0
+BMA,Banco Macro SA ADR,Financial,Banks - Regional,5930000.0
+ESAB,ESAB Corp,Industrials,Metal Fabrication,5910000.0
+GXO,GXO Logistics Inc,Industrials,Integrated Freight & Logistics,5890000.0
+DFTX,Definium Therapeutics Inc,Healthcare,Biotechnology,5880000.0
+SIGI,Selective Insurance Group Inc,Financial,Insurance - Property & Casualty,5880000.0
+NOVT,Novanta Inc,Technology,Scientific & Technical Instruments,5870000.0
+ENPH,Enphase Energy Inc,Technology,Solar,5870000.0
+ERAS,Erasca Inc,Healthcare,Biotechnology,5860000.0
+MC,Moelis & Co,Financial,Capital Markets,5860000.0
+XENE,Xenon Pharmaceuticals Inc,Healthcare,Biotechnology,5850000.0
+LYFT,Lyft Inc,Technology,Software - Application,5840000.0
+MDA,MDA Space Ltd,Industrials,Aerospace & Defense,5840000.0
+ENVA,Enova International Inc,Financial,Credit Services,5840000.0
+PBF,PBF Energy Inc,Energy,Oil & Gas Refining & Marketing,5830000.0
+VIST,Vista Energy SAB de CV ADR,Energy,Oil & Gas E&P,5830000.0
+RUSHA,Rush Enterprises Inc,Consumer Cyclical,Auto & Truck Dealerships,5820000.0
+PECO,Phillips Edison & Company Inc,Real Estate,REIT - Retail,5800000.0
+HOMB,Home Bancshares Inc,Financial,Banks - Regional,5790000.0
+KRG,Kite Realty Group Trust,Real Estate,REIT - Retail,5780000.0
+UGP,Ultrapar Participacoes SA ADR,Energy,Oil & Gas Refining & Marketing,5780000.0
+OR,OR Royalties Inc,Basic Materials,Gold,5780000.0
+OGC,OceanaGold Corp,Basic Materials,Gold,5770000.0
+LB,Landbridge Company LLC,Energy,Oil & Gas Equipment & Services,5770000.0
+AX,Axos Financial Inc,Financial,Banks - Regional,5730000.0
+OUT,Outfront Media Inc,Real Estate,REIT - Specialty,5720000.0
+AIR,AAR Corp,Industrials,Aerospace & Defense,5710000.0
+ZGN,Ermenegildo Zegna NV,Consumer Cyclical,Apparel Manufacturing,5710000.0
+NICE,NICE Ltd ADR,Technology,Software - Application,5690000.0
+ACIW,ACI Worldwide Inc,Technology,Software - Infrastructure,5690000.0
+RLI,RLI Corp,Financial,Insurance - Property & Casualty,5680000.0
+NJR,New Jersey Resources Corp,Utilities,Utilities - Regulated Gas,5680000.0
+VCTR,Victory Capital Holdings Inc,Financial,Asset Management,5680000.0
+KOF,Coca-Cola Femsa SAB de CV ADR,Consumer Defensive,Beverages - Non-Alcoholic,5680000.0
+BLLN,Billiontoone Inc,Healthcare,Diagnostics & Research,5680000.0
+AUGO,Aura Minerals Inc,Basic Materials,Gold,5680000.0
+SON,Sonoco Products Co,Consumer Cyclical,Packaging & Containers,5640000.0
+OZK,Bank OZK,Financial,Banks - Regional,5630000.0
+ALK,Alaska Air Group Inc,Industrials,Airlines,5620000.0
+CAR,Avis Budget Group Inc,Industrials,Rental & Leasing Services,5600000.0
+NXST,Nexstar Media Group Inc,Communication Services,Broadcasting,5580000.0
+REYN,Reynolds Consumer Products Inc,Consumer Cyclical,Packaging & Containers,5580000.0
+QLYS,Qualys Inc,Technology,Software - Infrastructure,5570000.0
+CLF,Cleveland-Cliffs Inc,Basic Materials,Steel,5570000.0
+IRDM,Iridium Communications Inc,Communication Services,Telecom Services,5570000.0
+FTDR,Frontdoor Inc,Consumer Cyclical,Personal Services,5550000.0
+GTLB,Gitlab Inc,Technology,Software - Infrastructure,5550000.0
+LAUR,Laureate Education Inc,Consumer Defensive,Education & Training Services,5540000.0
+PRM,Perimeter Solutions Inc,Basic Materials,Specialty Chemicals,5530000.0
+DOX,Amdocs Ltd,Technology,Software - Infrastructure,5510000.0
+RIG,Transocean Ltd,Energy,Oil & Gas Drilling,5500000.0
+BKH,Black Hills Corp,Utilities,Utilities - Regulated Gas,5490000.0
+OTEX,Open Text Corp,Technology,Software - Application,5480000.0
+MTRN,Materion Corp,Basic Materials,Other Industrial Metals & Mining,5450000.0
+MMYT,MakeMyTrip Ltd,Consumer Cyclical,Travel Services,5440000.0
+ZETA,Zeta Global Holdings Corp,Technology,Software - Infrastructure,5440000.0
+AMTM,Amentum Holdings Inc,Industrials,Specialty Business Services,5440000.0
+SPHR,Sphere Entertainment Co,Communication Services,Entertainment,5420000.0
+LPX,Louisiana-Pacific Corp,Industrials,Building Products & Equipment,5420000.0
+OBDC,Blue Owl Capital Corp,Financial,Asset Management,5420000.0
+RDNT,Radnet Inc,Healthcare,Diagnostics & Research,5420000.0
+AMRX,Amneal Pharmaceuticals Inc,Healthcare,Drug Manufacturers - Specialty & Generic,5400000.0
+BXSL,Blackstone Secured Lending Fund,Financial,Asset Management,5400000.0
+BTG,B2gold Corp,Basic Materials,Gold,5400000.0
+VIPS,Vipshop Holdings Ltd ADR,Consumer Cyclical,Internet Retail,5370000.0
+BCPC,Balchem Corp,Basic Materials,Specialty Chemicals,5370000.0
+WTM,White Mountains Insurance Group Ltd,Financial,Insurance - Property & Casualty,5370000.0
+BZ,Kanzhun Ltd ADR,Communication Services,Internet Content & Information,5360000.0
+BIPC,Brookfield Infrastructure Corp,Utilities,Utilities - Regulated Gas,5360000.0
+TVTX,Travere Therapeutics Inc,Healthcare,Biotechnology,5350000.0
+MTH,Meritage Homes Corp,Consumer Cyclical,Residential Construction,5330000.0
+BGC,BGC Group Inc,Financial,Capital Markets,5320000.0
+SXT,Sensient Technologies Corp,Basic Materials,Specialty Chemicals,5300000.0
+WFG,West Fraser Timber Co Ltd,Basic Materials,Lumber & Wood Production,5300000.0
+CELC,Celcuity Inc,Healthcare,Biotechnology,5300000.0
+STVN,Stevanato Group Spa,Healthcare,Medical Instruments & Supplies,5260000.0
+GGB,Gerdau SA ADR,Basic Materials,Steel,5260000.0
+VSNT,Versant Media Group Inc,Communication Services,Entertainment,5250000.0
+EBC,Eastern Bankshares Inc,Financial,Banks - Regional,5250000.0
+TME,Tencent Music Entertainment Group ADR,Communication Services,Internet Content & Information,5250000.0
+STEP,StepStone Group Inc,Financial,Asset Management,5250000.0
+VRNS,Varonis Systems Inc,Technology,Software - Infrastructure,5240000.0
+UEC,Uranium Energy Corp,Energy,Uranium,5240000.0
+FRMI,Fermi Inc,Real Estate,REIT - Specialty,5230000.0
+PEGA,Pegasystems Inc,Technology,Software - Application,5230000.0
+CE,Celanese Corp,Basic Materials,Chemicals,5220000.0
+GNTX,Gentex Corp,Consumer Cyclical,Auto Parts,5210000.0
+XMTR,Xometry Inc,Industrials,Industrial Distribution,5210000.0
+LEGN,Legend Biotech Corp ADR,Healthcare,Biotechnology,5210000.0
+WEX,WEX Inc,Technology,Software - Infrastructure,5190000.0
+PIPR,Piper Sandler Co's,Financial,Capital Markets,5180000.0
+ALH,Alliance Laundry Holdings Inc,Consumer Cyclical,"Furnishings, Fixtures & Appliances",5170000.0
+RITM,Rithm Capital Corp,Real Estate,REIT - Mortgage,5150000.0
+BC,Brunswick Corp,Consumer Cyclical,Recreational Vehicles,5150000.0
+STUB,Stubhub Holdings Inc,Communication Services,Internet Content & Information,5140000.0
+DNTH,Dianthus Therapeutics Inc,Healthcare,Biotechnology,5100000.0
+RELY,Remitly Global Inc,Technology,Software - Infrastructure,5100000.0
+MANE,Veradermics Inc,Healthcare,Biotechnology,5100000.0
+GHC,Graham Holdings Co,Industrials,Conglomerates,5100000.0
+TKC,Turkcell Iletisim Hizmetleri A.S ADR,Communication Services,Telecom Services,5100000.0
+SHC,Sotera Health Co,Healthcare,Diagnostics & Research,5090000.0
+VAL,Valaris Ltd,Energy,Oil & Gas Drilling,5090000.0
+KVYO,Klaviyo Inc,Technology,Software - Application,5090000.0
+ASB,Associated Banc-Corp,Financial,Banks - Regional,5090000.0
+RDN,Radian Group Inc,Financial,Insurance - Specialty,5080000.0
+TXG,10x Genomics Inc,Healthcare,Health Information Services,5080000.0
+ALHC,Alignment Healthcare Inc,Healthcare,Healthcare Plans,5080000.0
+MTN,Vail Resorts Inc,Consumer Cyclical,Resorts & Casinos,5060000.0
+TBBB,BBB Foods Inc,Consumer Defensive,Discount Stores,5050000.0
+CIGI,Colliers International Group Inc,Real Estate,Real Estate Services,5050000.0
+CUZ,Cousins Properties Inc,Real Estate,REIT - Office,5040000.0
+DAVE,Dave Inc,Technology,Software - Application,5030000.0
+GLNG,Golar Lng,Energy,Oil & Gas Midstream,5030000.0
+CAI,Caris Life Sciences Inc,Healthcare,Biotechnology,5030000.0
+PTRN,Pattern Group Inc,Technology,Software - Application,5030000.0
+TREX,TREX Co Inc,Industrials,Building Products & Equipment,5020000.0
+ORKA,Oruka Therapeutics Inc,Healthcare,Biotechnology,5010000.0
+TFSL,TFS Financial Corp,Financial,Banks - Regional,5010000.0
+ADT,ADT Inc,Industrials,Security & Protection Services,5010000.0
+FFIN,First Financial Bankshares Inc,Financial,Banks - Regional,4980000.0
+SBRA,Sabra Healthcare REIT Inc,Real Estate,REIT - Healthcare Facilities,4980000.0
+HRB,H&R Block Inc,Consumer Cyclical,Personal Services,4970000.0
+SRAD,Sportradar Group AG,Technology,Software - Application,4960000.0
+SEI,Solaris Energy Infrastructure Inc,Energy,Oil & Gas Equipment & Services,4960000.0
+SIM,Grupo Simec SAB de CV ADR,Basic Materials,Steel,4950000.0
+MARA,MARA Holdings Inc,Financial,Capital Markets,4940000.0
+NTSK,Netskope Inc,Technology,Software - Infrastructure,4940000.0
+UFPI,UFP Industries Inc,Basic Materials,Lumber & Wood Production,4930000.0
+GPGI,GPGI Inc,Industrials,Metal Fabrication,4930000.0
+VVV,Valvoline Inc,Consumer Cyclical,Auto & Truck Dealerships,4920000.0
+CNO,CNO Financial Group Inc,Financial,Insurance - Life,4910000.0
+OPEN,Opendoor Technologies Inc,Real Estate,Real Estate Services,4910000.0
+G,Genpact Ltd,Technology,Information Technology Services,4910000.0
+SITE,SiteOne Landscape Supply Inc,Industrials,Industrial Distribution,4910000.0
+GBTG,Global Business Travel Group Inc,Consumer Cyclical,Travel Services,4900000.0
+CHH,Choice Hotels International Inc,Consumer Cyclical,Lodging,4900000.0
+OCTV,Octave Intelligence Plc,Technology,Software - Application,4900000.0
+PRIM,Primoris Services Corp,Industrials,Engineering & Construction,4890000.0
+HASI,HA Sustainable Infrastructure Capital Inc,Financial,Asset Management,4890000.0
+SLGN,Silgan Holdings Inc,Consumer Cyclical,Packaging & Containers,4880000.0
+IEP,Icahn Enterprises L P,Energy,Oil & Gas Refining & Marketing,4880000.0
+INDV,Indivior Pharmaceuticals Inc,Healthcare,Drug Manufacturers - Specialty & Generic,4880000.0
+TNGX,Tango Therapeutics Inc,Healthcare,Biotechnology,4870000.0
+MAIN,Main Street Capital Corp,Financial,Asset Management,4860000.0
+REZI,Resideo Technologies Inc,Industrials,Industrial Distribution,4860000.0
+SYNA,Synaptics Inc,Technology,Semiconductors,4850000.0
+SAIC,Science Applications International Corp,Technology,Information Technology Services,4850000.0
+KNSA,Kiniksa Pharmaceuticals International Plc,Healthcare,Drug Manufacturers - Specialty & Generic,4830000.0
+KNF,Knife River Corp,Basic Materials,Building Materials,4830000.0
+NNI,Nelnet Inc,Financial,Credit Services,4830000.0
+BOOT,Boot Barn Holdings Inc,Consumer Cyclical,Apparel Retail,4820000.0
+KTB,Kontoor Brands Inc,Consumer Cyclical,Apparel Manufacturing,4820000.0
+SLM,SLM Corp,Financial,Credit Services,4810000.0
+SFBS,ServisFirst Bancshares Inc,Financial,Banks - Regional,4800000.0
+OTF,Blue Owl Technology Finance Corp,Financial,Asset Management,4800000.0
+WSC,WillScot Holdings Corp,Industrials,Rental & Leasing Services,4800000.0
+MRX,Marex Group Ltd,Financial,Capital Markets,4770000.0
+MGY,Magnolia Oil & Gas Corp,Energy,Oil & Gas E&P,4760000.0
+OMAB,Grupo Aeroportuario del Centro Norte SAB de C.V ADR,Industrials,Airports & Air Services,4750000.0
+EQPT,Equipmentshare.Com Inc,Industrials,Rental & Leasing Services,4750000.0
+OGS,ONE Gas Inc,Utilities,Utilities - Regulated Gas,4750000.0
+KBR,KBR Inc,Industrials,Engineering & Construction,4750000.0
+DLB,Dolby Laboratories Inc,Industrials,Specialty Business Services,4730000.0
+IBOC,International Bancshares Corp,Financial,Banks - Regional,4730000.0
+UCTT,Ultra Clean Hldgs Inc,Technology,Semiconductor Equipment & Materials,4730000.0
+CNX,CNX Resources Corp,Energy,Oil & Gas E&P,4720000.0
+TNL,Travel+Leisure Co,Consumer Cyclical,Travel Services,4710000.0
+CECO,Ceco Environmental Corp,Industrials,Pollution & Treatment Controls,4710000.0
+UNF,Unifirst Corp,Industrials,Specialty Business Services,4700000.0
+FCN,FTI Consulting Inc,Industrials,Consulting Services,4690000.0
+FELE,Franklin Electric Co Inc,Industrials,Specialty Industrial Machinery,4660000.0
+FULT,Fulton Financial Corp,Financial,Banks - Regional,4650000.0
+WING,Wingstop Inc,Consumer Cyclical,Restaurants,4650000.0
+SR,Spire Inc,Utilities,Utilities - Regulated Gas,4640000.0
+VCYT,Veracyte Inc,Healthcare,Diagnostics & Research,4630000.0
+CENX,Century Aluminum Co,Basic Materials,Aluminum,4620000.0
+KRC,Kilroy Realty Corp,Real Estate,REIT - Office,4620000.0
+NP,Neptune Insurance Holdings Inc,Financial,Insurance Brokers,4620000.0
+LIVN,LivaNova PLC,Healthcare,Medical Devices,4620000.0
+ALM,Almonty Industries Inc,Basic Materials,Other Industrial Metals & Mining,4600000.0
+TCBI,Texas Capital Bancshares Inc,Financial,Banks - Regional,4600000.0
+COLD,Americold Realty Trust Inc,Real Estate,REIT - Industrial,4600000.0
+FLY,Firefly Aerospace Inc,Industrials,Aerospace & Defense,4600000.0
+LIF,Life360 Inc,Technology,Software - Application,4600000.0
+SKY,Champion Homes Inc,Consumer Cyclical,Residential Construction,4590000.0
+WAY,Waystar Holding Corp,Healthcare,Health Information Services,4590000.0
+HLNE,Hamilton Lane Inc,Financial,Asset Management,4580000.0
+AZZ,AZZ Inc,Industrials,Specialty Business Services,4580000.0
+CSW,CSW Industrials Inc,Industrials,Specialty Industrial Machinery,4570000.0
+LBRDK,Liberty Broadband Corp,Communication Services,Telecom Services,4560000.0
+LBRDA,Liberty Broadband Corp,Communication Services,Telecom Services,4560000.0
+TENB,Tenable Holdings Inc,Technology,Software - Infrastructure,4550000.0
+MUR,Murphy Oil Corp,Energy,Oil & Gas E&P,4550000.0
+EPAM,EPAM Systems Inc,Technology,Information Technology Services,4540000.0
+HRI,Herc Holdings Inc,Industrials,Rental & Leasing Services,4530000.0
+EPR,EPR Properties,Real Estate,REIT - Specialty,4530000.0
+CBT,Cabot Corp,Basic Materials,Specialty Chemicals,4520000.0
+SKT,Tanger Inc,Real Estate,REIT - Retail,4520000.0
+CVCO,Cavco Industries Inc,Consumer Cyclical,Residential Construction,4520000.0
+PI,Impinj Inc,Technology,Semiconductors,4510000.0
+DLO,DLocal Limited,Technology,Software - Infrastructure,4500000.0
+VKTX,Viking Therapeutics Inc,Healthcare,Biotechnology,4490000.0
+DIOD,Diodes Inc,Technology,Semiconductors,4490000.0
+PAM,Pampa Energia SA ADR,Industrials,Conglomerates,4480000.0
+NVST,Envista Holdings Corp,Healthcare,Medical Instruments & Supplies,4480000.0
+CRC,California Resources Corp,Energy,Oil & Gas E&P,4470000.0
+HHH,Howard Hughes Holdings Inc,Real Estate,Real Estate - Diversified,4460000.0
+QS,QuantumScape Corp,Consumer Cyclical,Auto Parts,4450000.0
+IPGP,IPG Photonics Corp,Technology,Semiconductor Equipment & Materials,4440000.0
+PJT,PJT Partners Inc,Financial,Capital Markets,4440000.0
+CRNX,Crinetics Pharmaceuticals Inc,Healthcare,Biotechnology,4430000.0
+AQN,Algonquin Power & Utilities Corp,Utilities,Utilities - Diversified,4420000.0
+USAR,USA Rare Earth Inc,Basic Materials,Other Industrial Metals & Mining,4420000.0
+BBWI,Bath & Body Works Inc,Consumer Cyclical,Specialty Retail,4420000.0
+CMBT,CMB.Tech NV,Energy,Oil & Gas Midstream,4410000.0
+ACAD,Acadia Pharmaceuticals Inc,Healthcare,Biotechnology,4410000.0
+BDC,Belden Inc,Technology,Communication Equipment,4410000.0
+CVSA,Covista Inc,Consumer Defensive,Education & Training Services,4410000.0
+EE,Excelerate Energy Inc,Energy,Oil & Gas Midstream,4410000.0
+FHI,Federated Hermes Inc,Financial,Asset Management,4400000.0
+RXO,RXO Inc,Industrials,Trucking,4390000.0
+BETA,BETA Technologies Inc,Industrials,Aerospace & Defense,4380000.0
+MRP,Millrose Properties Inc,Real Estate,REIT - Residential,4380000.0
+BMI,Badger Meter Inc,Technology,Scientific & Technical Instruments,4370000.0
+DOO,BRP Inc,Consumer Cyclical,Recreational Vehicles,4370000.0
+ELF,e.l.f. Beauty Inc,Consumer Defensive,Household & Personal Products,4370000.0
+OPLN,Openlane Inc,Consumer Cyclical,Auto & Truck Dealerships,4360000.0
+PFSI,PennyMac Financial Services Inc,Financial,Mortgage Finance,4350000.0
+BRC,Brady Corp,Industrials,Security & Protection Services,4350000.0
+KARD,Kardigan Inc,Healthcare,Biotechnology,4340000.0
+EWTX,Edgewise Therapeutics Inc,Healthcare,Biotechnology,4310000.0
+BCO,Brink's Co,Industrials,Security & Protection Services,4310000.0
+ACLS,Axcelis Technologies Inc,Technology,Semiconductor Equipment & Materials,4300000.0
+MMED,MiniMed Group Inc,Healthcare,Medical Instruments & Supplies,4290000.0
+HCC,Warrior Met Coal Inc,Basic Materials,Coking Coal,4290000.0
+NWE,NorthWestern Energy Group Inc,Utilities,Utilities - Regulated Electric,4290000.0
+ANDG,Andersen Group Inc,Consumer Cyclical,Personal Services,4280000.000000001
+UCB,United Community Banks Inc,Financial,Banks - Regional,4269999.999999999
+GFF,Griffon Corp,Industrials,Building Products & Equipment,4269999.999999999
+MMSI,Merit Medical Systems Inc,Healthcare,Medical Instruments & Supplies,4260000.0
+LFST,LifeStance Health Group Inc,Healthcare,Medical Care Facilities,4260000.0
+LAZ,Lazard Inc,Financial,Capital Markets,4260000.0
+MDU,MDU Resources Group Inc,Utilities,Utilities - Regulated Gas,4260000.0
+ATMU,Atmus Filtration Technologies Inc,Consumer Cyclical,Auto Parts,4250000.0
+SEB,Seaboard Corp,Industrials,Conglomerates,4240000.0
+BBAR,BBVA Argentina ADR,Financial,Banks - Regional,4240000.0
+MIR,Mirion Technologies Inc,Industrials,Specialty Industrial Machinery,4240000.0
+INSW,International Seaways Inc,Energy,Oil & Gas Midstream,4219999.999999999
+MNDY,Monday.Com Ltd,Technology,Software - Application,4219999.999999999
+HGTY,Hagerty Inc,Financial,Insurance - Property & Casualty,4210000.0
+TPC,Tutor Perini Corp,Industrials,Engineering & Construction,4200000.0
+CATY,Cathay General Bancorp,Financial,Banks - Regional,4190000.0000000005
+CAAP,Corporacion America Airports SA,Industrials,Airports & Air Services,4190000.0000000005
+DORM,Dorman Products Inc,Consumer Cyclical,Auto Parts,4190000.0000000005
+BFH,Bread Financial Holdings Inc,Financial,Credit Services,4179999.9999999995
+LION,Lionsgate Studios Corp,Financial,Shell Companies,4179999.9999999995
+OLLI,Ollies Bargain Outlet Holdings Inc,Consumer Defensive,Discount Stores,4179999.9999999995
+DOCS,Doximity Inc,Healthcare,Health Information Services,4179999.9999999995
+PLNT,Planet Fitness Inc,Consumer Cyclical,Leisure,4160000.0
+CRK,Comstock Resources Inc,Energy,Oil & Gas E&P,4160000.0
+AXTI,AXT Inc,Technology,Semiconductor Equipment & Materials,4160000.0
+EXLS,ExlService Holdings Inc,Technology,Information Technology Services,4150000.0000000005
+IRT,Independence Realty Trust Inc,Real Estate,REIT - Residential,4139999.9999999995
+CLBT,Cellebrite DI Ltd,Technology,Software - Infrastructure,4139999.9999999995
+IRTC,iRhythm Holdings Inc,Healthcare,Medical Devices,4139999.9999999995
+MKTX,MarketAxess Holdings Inc,Financial,Capital Markets,4139999.9999999995
+TLX,Telix Pharmaceuticals Ltd ADR,Healthcare,Biotechnology,4120000.0
+DNP,DNP Select Income Fund Inc,Financial,Closed-End Fund - Equity,4120000.0
+RLAY,Relay Therapeutics Inc,Healthcare,Biotechnology,4120000.0
+CSTM,Constellium SE,Basic Materials,Aluminum,4110000.0000000005
+LUNR,Intuitive Machines Inc,Industrials,Aerospace & Defense,4099999.9999999995
+FBP,First Bancorp PR,Financial,Banks - Regional,4099999.9999999995
+EXTR,Extreme Networks Inc,Technology,Communication Equipment,4099999.9999999995
+VNT,Vontier Corp,Technology,Scientific & Technical Instruments,4090000.0
+ONDS,Ondas Inc,Technology,Communication Equipment,4090000.0
+INDB,Independent Bank Corp,Financial,Banks - Regional,4090000.0
+DNLI,Denali Therapeutics Inc,Healthcare,Biotechnology,4090000.0
+CNS,Cohen & Steers Inc,Financial,Asset Management,4080000.0
+NAMS,NewAmsterdam Pharma Company NV,Healthcare,Biotechnology,4080000.0
+ACHR,Archer Aviation Inc,Industrials,Aerospace & Defense,4080000.0
+FOUR,Shift4 Payments Inc,Technology,Software - Infrastructure,4080000.0
+CNR,Core Natural Resources Inc,Energy,Thermal Coal,4070000.0000000005
+CON,Concentra Group Holdings Parent Inc,Healthcare,Medical Care Facilities,4070000.0000000005
+POWI,Power Integrations Inc,Technology,Semiconductors,4070000.0000000005
+HGV,Hilton Grand Vacations Inc,Consumer Cyclical,Resorts & Casinos,4070000.0000000005
+LOPE,Grand Canyon Education Inc,Consumer Defensive,Education & Training Services,4070000.0000000005
+WSFS,WSFS Financial Corp,Financial,Banks - Regional,4050000.0
+TAC,Transalta Corp,Utilities,Utilities - Independent Power Producers,4050000.0
+WHD,Cactus Inc,Energy,Oil & Gas Equipment & Services,4050000.0
+BNL,Broadstone Net Lease Inc,Real Estate,REIT - Diversified,4040000.0
+CALM,Cal-Maine Foods Inc,Consumer Defensive,Farm Products,4040000.0
+TAL,TAL Education Group ADR,Consumer Defensive,Education & Training Services,4019999.9999999995
+CVBF,CVB Financial Corp,Financial,Banks - Regional,4019999.9999999995
+POST,Post Holdings Inc,Consumer Defensive,Packaged Foods,4010000.0
+BILL,BILL Holdings Inc,Technology,Software - Application,4010000.0
+CIG,Cia Energetica DE Minas Gerais - Cemig ADR,Utilities,Utilities - Regulated Electric,4000000.0
+BLSH,Bullish,Technology,Software - Infrastructure,3990000.0
+ANF,Abercrombie & Fitch Co,Consumer Cyclical,Apparel Retail,3990000.0
+ICUI,ICU Medical Inc,Healthcare,Medical Instruments & Supplies,3980000.0
+BFAM,Bright Horizons Family Solutions Inc,Consumer Cyclical,Personal Services,3980000.0
+MIAX,Miami International Holdings Inc,Financial,Capital Markets,3970000.0
+GEO,Geo Group Inc,Industrials,Security & Protection Services,3970000.0
+WBI,WaterBridge Infrastructure LLC,Energy,Oil & Gas Equipment & Services,3970000.0
+SLG,SL Green Realty Corp,Real Estate,REIT - Office,3970000.0
+RNST,Renasant Corp,Financial,Banks - Regional,3970000.0
+MWA,Mueller Water Products Inc,Industrials,Specialty Industrial Machinery,3970000.0
+THO,Thor Industries Inc,Consumer Cyclical,Recreational Vehicles,3940000.0
+AADX,Applied Aerospace & Defense Inc,Industrials,Aerospace & Defense,3940000.0
+PLBL,Polibeli Group Ltd,Consumer Cyclical,Department Stores,3940000.0
+BOX,Box Inc,Technology,Software - Infrastructure,3930000.0
+SKYW,Skywest Inc,Industrials,Airlines,3920000.0
+PHI,PLDT Inc ADR,Communication Services,Telecom Services,3920000.0
+APLE,Apple Hospitality REIT Inc,Real Estate,REIT - Hotel & Motel,3910000.0
+SMG,Scotts Miracle-Gro Company,Basic Materials,Agricultural Inputs,3900000.0
+MHO,MI Homes Inc,Consumer Cyclical,Residential Construction,3900000.0
+GPCR,Structure Therapeutics Inc ADR,Healthcare,Biotechnology,3890000.0
+OII,Oceaneering International Inc,Energy,Oil & Gas Equipment & Services,3880000.0
+IPAR,Interparfums Inc,Consumer Defensive,Household & Personal Products,3880000.0
+SXI,Standex International Corp,Industrials,Specialty Industrial Machinery,3870000.0
+CHEF,Chefs' Warehouse Inc,Consumer Defensive,Food Distribution,3870000.0
+ABG,Asbury Automotive Group Inc,Consumer Cyclical,Auto & Truck Dealerships,3870000.0
+ORLA,Orla Mining Ltd,Basic Materials,Gold,3870000.0
+BELFB,Bel Fuse Inc,Technology,Electronic Components,3870000.0
+BWIN,Baldwin Insurance Group Inc,Financial,Insurance Brokers,3860000.0
+WSBC,Wesbanco Inc,Financial,Banks - Regional,3860000.0
+LFTO,Liftoff Mobile Inc,Communication Services,Advertising Agencies,3860000.0
+CPRX,Catalyst Pharmaceuticals Inc,Healthcare,Biotechnology,3860000.0
+ITRI,Itron Inc,Technology,Scientific & Technical Instruments,3850000.0
+LRN,Stride Inc,Consumer Defensive,Education & Training Services,3840000.0
+BANF,Bancfirst Corp,Financial,Banks - Regional,3840000.0
+MANU,Manchester United Plc,Communication Services,Entertainment,3840000.0
+BULL,Webull Corp,Technology,Software - Application,3830000.0
+BELFA,Bel Fuse Inc,Technology,Electronic Components,3830000.0
+FIBK,First Interstate BancSystem Inc,Financial,Banks - Regional,3830000.0
+CAKE,Cheesecake Factory Inc,Consumer Cyclical,Restaurants,3820000.0
+COCO,Vita Coco Company Inc,Consumer Defensive,Beverages - Non-Alcoholic,3810000.0
+STNG,Scorpio Tankers Inc,Energy,Oil & Gas Midstream,3810000.0
+PSUS,Pershing Square USA Ltd,Financial,Closed-End Fund - Equity,3810000.0
+CDNL,Cardinal Infrastructure Group Inc,Industrials,Engineering & Construction,3800000.0
+LBRT,Liberty Energy Inc,Energy,Oil & Gas Equipment & Services,3800000.0
+OTTR,Otter Tail Corp,Industrials,Conglomerates,3800000.0
+MAT,Mattel Inc,Consumer Cyclical,Leisure,3790000.0
+DYN,Dyne Therapeutics Inc,Healthcare,Biotechnology,3780000.0
+GEF,Greif Inc,Consumer Cyclical,Packaging & Containers,3770000.0
+RCUS,Arcus Biosciences Inc,Healthcare,Biotechnology,3770000.0
+PLMR,Palomar Holdings Inc,Financial,Insurance - Property & Casualty,3770000.0
+OLED,Universal Display Corp,Technology,Electronic Components,3760000.0
+FG,F&G Annuities & Life Inc,Financial,Insurance - Life,3760000.0
+TDS,Telephone And Data Systems Inc,Communication Services,Telecom Services,3760000.0
+MCHB,Mechanics Bancorp,Financial,Banks - Regional,3750000.0
+WPP,WPP Plc ADR,Communication Services,Advertising Agencies,3750000.0
+KBH,KB Home,Consumer Cyclical,Residential Construction,3750000.0
+IDYA,Ideaya Biosciences Inc,Healthcare,Biotechnology,3740000.0
+XXI,Twenty One Capital Inc,Financial,Shell Companies,3730000.0
+BHF,Brighthouse Financial Inc,Financial,Insurance - Life,3730000.0
+KYIV,Kyivstar Group Ltd,Communication Services,Telecom Services,3730000.0
+BKD,Brookdale Senior Living Inc,Healthcare,Medical Care Facilities,3720000.0
+KAI,Kadant Inc,Industrials,Specialty Industrial Machinery,3700000.0
+AGO,Assured Guaranty Ltd,Financial,Insurance - Specialty,3700000.0
+USAC,USA Compression Partners LP,Energy,Oil & Gas Equipment & Services,3700000.0
+UTG,Reaves Utility Income Fund,Financial,Closed-End Fund - Equity,3690000.0
+FHB,First Hawaiian INC,Financial,Banks - Regional,3690000.0
+NHI,National Health Investors Inc,Real Estate,REIT - Healthcare Facilities,3680000.0
+LASR,nLIGHT Inc,Technology,Semiconductors,3680000.0
+PLUG,Plug Power Inc,Industrials,Electrical Equipment & Parts,3680000.0
+KEN,Kenon Holdings Ltd,Utilities,Utilities - Independent Power Producers,3680000.0
+VEON,VEON Ltd ADR,Communication Services,Telecom Services,3680000.0
+YETI,YETI Holdings Inc,Consumer Cyclical,Leisure,3670000.0
+PII,Polaris Inc,Consumer Cyclical,Recreational Vehicles,3660000.0
+ATAT,Atour Lifestyle Holdings Ltd ADR,Consumer Cyclical,Lodging,3660000.0
+GNW,Genworth Financial Inc,Financial,Insurance - Life,3650000.0
+LPL,LG Display Co Ltd ADR,Technology,Consumer Electronics,3650000.0
+HAYW,Hayward Holdings Inc,Industrials,Electrical Equipment & Parts,3650000.0
+OSIS,OSI Systems Inc,Technology,Electronic Components,3640000.0
+LBTYK,Liberty Global Ltd,Communication Services,Telecom Services,3640000.0
+FFBC,First Financial Bancorp,Financial,Banks - Regional,3630000.0
+BEAM,Beam Therapeutics Inc,Healthcare,Biotechnology,3630000.0
+LBTYA,Liberty Global Ltd,Communication Services,Telecom Services,3630000.0
+MNSO,MINISO Group Holding Ltd ADR,Consumer Cyclical,Specialty Retail,3630000.0
+KFY,Korn Ferry,Industrials,Staffing & Employment Services,3620000.0
+BKU,BankUnited Inc,Financial,Banks - Regional,3590000.0
+MSGE,Madison Square Garden Entertainment Corp,Communication Services,Entertainment,3590000.0
+WRBY,Warby Parker Inc,Healthcare,Medical Instruments & Supplies,3590000.0
+ELVN,Enliven Therapeutics Inc,Healthcare,Biotechnology,3570000.0
+AVNT,Avient Corp,Basic Materials,Specialty Chemicals,3570000.0
+OGN,Organon & Co,Healthcare,Drug Manufacturers - General,3560000.0
+CBU,Community Financial System Inc,Financial,Banks - Regional,3550000.0
+PVH,PVH Corp,Consumer Cyclical,Apparel Manufacturing,3540000.0
+PAY,Paymentus Holdings Inc,Technology,Software - Infrastructure,3540000.0
+NEA,Nuveen AMT-Free Quality Municipal Income Fund,Financial,Closed-End Fund - Debt,3540000.0
+GPI,Group 1 Automotive Inc,Consumer Cyclical,Auto & Truck Dealerships,3530000.0
+NIC,Nicolet Bankshares Inc,Financial,Banks - Regional,3530000.0
+HIW,Highwoods Properties Inc,Real Estate,REIT - Office,3530000.0
+UWMC,UWM Holdings Corp,Financial,Mortgage Finance,3520000.0
+EMAT,Evolution Metals & Technologies Corp,Basic Materials,Other Industrial Metals & Mining,3520000.0
+XNDU,Xanadu Quantum Technologies Ltd,Technology,Software - Infrastructure,3520000.0
+PPLI,People Inc,Communication Services,Internet Content & Information,3510000.0
+SMR,NuScale Power Corp,Industrials,Specialty Industrial Machinery,3510000.0
+CNK,Cinemark Holdings Inc,Communication Services,Entertainment,3500000.0
+AMBA,Ambarella Inc,Technology,Semiconductor Equipment & Materials,3500000.0
+SUNC,SunocoCorp LLC,Energy,Oil & Gas Midstream,3500000.0
+SKE,Skeena Resources Ltd,Basic Materials,Other Industrial Metals & Mining,3490000.0
+JOE,St. Joe Co,Real Estate,Real Estate - Diversified,3490000.0
+ALMS,Alumis Inc,Healthcare,Biotechnology,3480000.0
+BTDR,Bitdeer Technologies Group,Technology,Software - Application,3470000.0
+CLSK,Cleanspark Inc,Financial,Capital Markets,3470000.0
+SEDG,Solaredge Technologies Inc,Technology,Solar,3460000.0
+FA,First Advantage Corp,Industrials,Specialty Business Services,3460000.0
+HAFN,Hafnia Ltd,Industrials,Marine Shipping,3450000.0
+PBLS,Parabilis Medicines Inc,Healthcare,Biotechnology,3450000.0
+AB,AllianceBernstein Holding Lp,Financial,Asset Management,3440000.0
+ADPT,Adaptive Biotechnologies Corp,Healthcare,Diagnostics & Research,3440000.0
+UUUU,Energy Fuels Inc,Energy,Uranium,3440000.0
+PENG,Penguin Solutions Inc,Technology,Information Technology Services,3440000.0
+CURB,Curbline Properties Corp,Real Estate,REIT - Retail,3430000.0
+TDC,Teradata Corp,Technology,Software - Infrastructure,3430000.0
+LEU,Centrus Energy Corp,Energy,Uranium,3430000.0
+NVTS,Navitas Semiconductor Corp,Technology,Semiconductors,3430000.0
+PRVA,Privia Health Group Inc,Healthcare,Health Information Services,3430000.0
+HG,Hamilton Insurance Group Ltd,Financial,Insurance - Reinsurance,3420000.0
+HAE,Haemonetics Corp,Healthcare,Medical Devices,3410000.0
+RHI,Robert Half Inc,Industrials,Staffing & Employment Services,3400000.0
+TTAM,Titan America SA,Basic Materials,Building Materials,3400000.0
+AAP,Advance Auto Parts Inc,Consumer Cyclical,Auto Parts,3400000.0
+NHC,National Healthcare Corp,Healthcare,Medical Care Facilities,3400000.0
+TDW,Tidewater Inc,Energy,Oil & Gas Equipment & Services,3390000.0
+MEOH,Methanex Corp,Basic Materials,Chemicals,3390000.0
+NSIT,Insight Enterprises Inc,Technology,Electronics & Computer Distribution,3370000.0
+VAC,Marriott Vacations Worldwide Corp,Consumer Cyclical,Resorts & Casinos,3360000.0
+AVA,Avista Corp,Utilities,Utilities - Diversified,3360000.0
+OPCH,Option Care Health Inc,Healthcare,Medical Care Facilities,3350000.0
+GBDC,Golub Capital BDC Inc,Financial,Asset Management,3350000.0
+PRK,Park National Corp,Financial,Banks - Regional,3350000.0
+TOWN,Townebank Portsmouth VA,Financial,Banks - Regional,3350000.0
+QTWO,Q2 Holdings Inc,Technology,Software - Application,3340000.0
+CCC,CCC Intelligent Solutions Holdings Inc,Technology,Software - Application,3340000.0
+ICHR,Ichor Holdings Ltd,Technology,Semiconductor Equipment & Materials,3340000.0
+BATRK,Atlanta Braves Holdings Inc,Communication Services,Entertainment,3330000.0
+VECO,Veeco Instruments Inc,Technology,Semiconductor Equipment & Materials,3320000.0
+CSQ,Calamos Strategic Total Return Fund,Financial,Closed-End Fund - Debt,3320000.0
+BATRA,Atlanta Braves Holdings Inc,Communication Services,Entertainment,3320000.0
+RARE,Ultragenyx Pharmaceutical Inc,Healthcare,Biotechnology,3320000.0
+NATL,NCR Atleos Corp,Technology,Software - Application,3320000.0
+WDFC,WD-40 Co,Basic Materials,Specialty Chemicals,3320000.0
+GRBK,Green Brick Partners Inc,Consumer Cyclical,Residential Construction,3310000.0
+SFNC,Simmons First National Corp,Financial,Banks - Regional,3300000.0
+ARIS,Aris Mining Corp,Basic Materials,Gold,3300000.0
+BOH,Bank of Hawaii Corp,Financial,Banks - Regional,3290000.0
+RNG,RingCentral Inc,Technology,Software - Application,3290000.0
+CALY,Callaway Golf Co,Consumer Cyclical,Leisure,3290000.0
+UPST,Upstart Holdings Inc,Financial,Credit Services,3290000.0
+ETOR,Etoro Group Ltd,Financial,Capital Markets,3290000.0
+FLNC,Fluence Energy Inc,Utilities,Utilities - Renewable,3280000.0
+LXP,LXP Industrial Trust,Real Estate,REIT - Industrial,3280000.0
+CGAU,Centerra Gold Inc,Basic Materials,Gold,3280000.0
+ARQT,Arcutis Biotherapeutics Inc,Healthcare,Biotechnology,3260000.0
+CRVL,Corvel Corp,Financial,Insurance Brokers,3260000.0
+AWR,American States Water Co,Utilities,Utilities - Regulated Water,3260000.0
+PTEN,Patterson-UTI Energy Inc,Energy,Oil & Gas Drilling,3250000.0
+DK,Delek US Holdings Inc,Energy,Oil & Gas Refining & Marketing,3250000.0
+COLM,Columbia Sportswear Co,Consumer Cyclical,Apparel Manufacturing,3240000.0
+ADEA,Adeia Inc,Technology,Software - Application,3230000.0
+CWK,Cushman & Wakefield Ltd,Real Estate,Real Estate Services,3230000.0
+SBCF,Seacoast Banking Corp Of Florida,Financial,Banks - Regional,3230000.0
+SIG,Signet Jewelers Ltd,Consumer Cyclical,Luxury Goods,3220000.0
+CARG,CarGurus Inc,Consumer Cyclical,Auto & Truck Dealerships,3220000.0
+CLMT,Calumet Inc,Basic Materials,Specialty Chemicals,3210000.0
+RH,RH,Consumer Cyclical,Specialty Retail,3190000.0
+OUST,Ouster Inc,Technology,Electronic Components,3170000.0
+ITGR,Integer Holdings Corp,Healthcare,Medical Devices,3170000.0
+BANC,Banc of California Inc,Financial,Banks - Regional,3170000.0
+ARCB,ArcBest Corp,Industrials,Trucking,3170000.0
+ADX,Adams Diversified Equity Fund,Financial,Closed-End Fund - Equity,3150000.0
+KN,Knowles Corp,Technology,Electronic Components,3150000.0
+NMIH,NMI Holdings Inc,Financial,Insurance - Specialty,3140000.0
+FUL,H.B. Fuller Company,Basic Materials,Specialty Chemicals,3140000.0
+GPK,Graphic Packaging Holding Co,Consumer Cyclical,Packaging & Containers,3140000.0
+MGEE,MGE Energy Inc,Utilities,Utilities - Regulated Electric,3130000.0
+AGYS,Agilysys Inc,Technology,Software - Application,3130000.0
+ALGT,Allegiant Travel,Industrials,Airlines,3110000.0
+YSS,York Space Systems Inc,Industrials,Aerospace & Defense,3100000.0
+RUN,Sunrun Inc,Technology,Solar,3090000.0
+VTMX,Corporacion Inmobiliaria Vesta Sab ADR,Real Estate,Real Estate - Development,3090000.0
+MZTI,Marzetti Co,Consumer Defensive,Packaged Foods,3080000.0
+ATRO,Astronics Corp,Industrials,Aerospace & Defense,3080000.0
+PFS,Provident Financial Services Inc,Financial,Banks - Regional,3080000.0
+BHE,Benchmark Electronics Inc,Technology,Electronic Components,3070000.0
+UTF,Cohen & Steers Infrastructure Fund Inc,Financial,Closed-End Fund - Equity,3070000.0
+ARLP,"Alliance Resource Partners, LP",Energy,Thermal Coal,3060000.0
+SII,Sprott Inc,Financial,Asset Management,3060000.0
+ASH,Ashland Inc,Basic Materials,Specialty Chemicals,3050000.0
+HP,Helmerich & Payne Inc,Energy,Oil & Gas Drilling,3050000.0
+PARR,Par Pacific Holdings Inc,Energy,Oil & Gas Refining & Marketing,3050000.0
+AAUC,Allied Gold Corp,Basic Materials,Gold,3030000.0
+FIZZ,National Beverage Corp,Consumer Defensive,Beverages - Non-Alcoholic,3030000.0
+AD,Array Digital Infrastructure Inc,Communication Services,Telecom Services,3020000.0
+KLRA,Kailera Therapeutics Inc,Healthcare,Biotechnology,3020000.0
+CRGY,Crescent Energy Co,Energy,Oil & Gas E&P,3020000.0
+VGNT,Versigent Plc,Consumer Cyclical,Auto Parts,3010000.0
+UE,Urban Edge Properties,Real Estate,REIT - Retail,3010000.0
+SOUN,SoundHound AI Inc,Technology,Software - Application,3010000.0
+NTCT,Netscout Systems Inc,Technology,Software - Infrastructure,3010000.0
+EXG,Eaton Vance Tax-Managed Global Diversified Equity Income Fund,Financial,Closed-End Fund - Foreign,3010000.0
+CXW,CoreCivic Inc,Industrials,Security & Protection Services,3010000.0
+HTGC,Hercules Capital Inc,Financial,Asset Management,3000000.0
+CXT,Crane NXT Co,Industrials,Specialty Industrial Machinery,2990000.0
+MGNI,Magnite Inc,Communication Services,Advertising Agencies,2980000.0
+CLDX,Celldex Therapeutics Inc,Healthcare,Biotechnology,2980000.0
+HNI,HNI Corp,Consumer Cyclical,"Furnishings, Fixtures & Appliances",2980000.0
+SBLK,Star Bulk Carriers Corp,Industrials,Marine Shipping,2970000.0
+GPOR,Gulfport Energy Corp,Energy,Oil & Gas E&P,2970000.0
+CSAN,Cosan S.A ADR,Energy,Oil & Gas Refining & Marketing,2970000.0
+EEFT,Euronet Worldwide Inc,Technology,Software - Infrastructure,2970000.0
+EXPO,Exponent Inc,Industrials,Engineering & Construction,2970000.0
+DBRG,DigitalBridge Group Inc,Financial,Asset Management,2960000.0
+CWT,California Water Service Group,Utilities,Utilities - Regulated Water,2960000.0
+GRAL,GRAIL Inc,Healthcare,Diagnostics & Research,2960000.0
+BKV,BKV Corp,Energy,Oil & Gas E&P,2960000.0
+PHIN,PHINIA Inc,Consumer Cyclical,Auto Parts,2950000.0
+SA,Seabridge Gold Inc,Basic Materials,Gold,2950000.0
+USLM,United States Lime & Minerals Inc,Basic Materials,Building Materials,2950000.0
+JPC,Nuveen Preferred & Income Opportunities Fund,Financial,Closed-End Fund - Debt,2950000.0
+BXMT,Blackstone Mortgage Trust Inc,Real Estate,REIT - Mortgage,2950000.0
+MMS,Maximus Inc,Industrials,Specialty Business Services,2940000.0
+IRON,Disc Medicine Inc,Healthcare,Biotechnology,2940000.0
+APAM,Artisan Partners Asset Management Inc,Financial,Asset Management,2930000.0
+DNN,Denison Mines Corp,Energy,Uranium,2930000.0
+PSNY,Polestar Automotive Holding UK PLC ADR,Consumer Cyclical,Auto Manufacturers,2930000.0
+CPK,Chesapeake Utilities Corp,Utilities,Utilities - Regulated Gas,2930000.0
+KALU,Kaiser Aluminum Corp,Basic Materials,Aluminum,2920000.0
+FRSH,Freshworks Inc,Technology,Software - Application,2920000.0
+KEEL,Keel Infrastructure Corp,Technology,Information Technology Services,2920000.0
+FBK,FB Financial Corp,Financial,Banks - Regional,2920000.0
+HWKN,Hawkins Inc,Basic Materials,Specialty Chemicals,2920000.0
+DBD,Diebold Nixdorf Inc,Technology,Software - Application,2910000.0
+ASO,Academy Sports and Outdoors Inc,Consumer Cyclical,Specialty Retail,2910000.0
+CVI,CVR Energy Inc,Energy,Oil & Gas Refining & Marketing,2900000.0
+SHOO,Steven Madden Ltd,Consumer Cyclical,Footwear & Accessories,2900000.0
+NIQ,NIQ Global Intelligence plc,Technology,Software - Application,2900000.0
+AKR,Acadia Realty Trust,Real Estate,REIT - Retail,2890000.0
+FSK,FS KKR Capital Corp,Financial,Asset Management,2890000.0
+WK,Workiva Inc,Technology,Software - Application,2890000.0
+ARX,Accelerant Holdings,Financial,Insurance Brokers,2890000.0
+SPNT,SiriusPoint Ltd,Financial,Insurance - Reinsurance,2890000.0
+TARS,Tarsus Pharmaceuticals Inc,Healthcare,Biotechnology,2880000.0
+VERA,Vera Therapeutics Inc,Healthcare,Biotechnology,2880000.0
+PK,Park Hotels & Resorts Inc,Real Estate,REIT - Hotel & Motel,2880000.0
+VC,Visteon Corp,Consumer Cyclical,Auto Parts,2880000.0
+BSM,Black Stone Minerals LP,Energy,Oil & Gas E&P,2880000.0
+UAA,Under Armour Inc,Consumer Cyclical,Apparel Manufacturing,2870000.0
+BWLP,BW LPG Limited,Energy,Oil & Gas Midstream,2870000.0
+TRMD,Torm Plc,Energy,Oil & Gas Midstream,2870000.0
+UA,Under Armour Inc,Consumer Cyclical,Apparel Manufacturing,2870000.0
+AYA,Aya Gold & Silver Inc,Basic Materials,Silver,2860000.0
+ACHC,Acadia Healthcare Company Inc,Healthcare,Medical Care Facilities,2860000.0
+ZIM,Zim Integrated Shipping Services Ltd,Industrials,Marine Shipping,2860000.0
+MGRC,McGrath Rentcorp,Industrials,Rental & Leasing Services,2860000.0
+FSLY,Fastly Inc,Technology,Software - Application,2860000.0
+DCO,Ducommun Inc,Industrials,Aerospace & Defense,2850000.0
+BTE,Baytex Energy Corp,Energy,Oil & Gas E&P,2850000.0
+DX,Dynex Capital Inc,Real Estate,REIT - Mortgage,2850000.0
+TR,Tootsie Roll Industries Inc,Consumer Defensive,Confectioners,2850000.0
+RUM,RUM Group Inc,Communication Services,Internet Content & Information,2840000.0
+NG,Novagold Resources Inc,Basic Materials,Gold,2830000.0
+PENN,PENN Entertainment Inc,Consumer Cyclical,Resorts & Casinos,2830000.0
+GRND,Grindr Inc,Technology,Software - Application,2830000.0
+TRN,Trinity Industries Inc,Industrials,Railroads,2830000.0
+PATK,Patrick Industries Inc,Consumer Cyclical,Recreational Vehicles,2830000.0
+UNFI,United Natural Foods Inc,Consumer Defensive,Food Distribution,2820000.0
+WT,WisdomTree Inc,Financial,Asset Management,2820000.0
+AMBP,Ardagh Metal Packaging SA,Consumer Cyclical,Packaging & Containers,2820000.0
+AAMI,Acadian Asset Management Inc,Financial,Asset Management,2820000.0
+WAFD,WaFd Inc,Financial,Banks - Regional,2820000.0
+NAD,Nuveen Quality Municipal Income Fund,Financial,Closed-End Fund - Debt,2820000.0
+SHAZ,SharonAI Holdings Inc,Technology,Information Technology Services,2810000.0
+QURE,uniQure NV,Healthcare,Biotechnology,2810000.0
+DAN,Dana Inc,Consumer Cyclical,Auto Parts,2810000.0
+OSW,OneSpaWorld Holdings Limited,Consumer Cyclical,Leisure,2810000.0
+HUBG,Hub Group Inc,Industrials,Integrated Freight & Logistics,2800000.0
+DKL,Delek Logistics Partners LP,Energy,Oil & Gas Refining & Marketing,2800000.0
+ATS,ATS Corp,Industrials,Specialty Industrial Machinery,2790000.0
+VISN,Vistance Networks Inc,Technology,Communication Equipment,2790000.0
+NESR,National Energy Services Reunited Corp,Energy,Oil & Gas Equipment & Services,2790000.0
+RGC,Regencell Bioscience Holdings Ltd,Healthcare,Drug Manufacturers - Specialty & Generic,2780000.0
+CTRI,Centuri Holdings Inc,Utilities,Utilities - Regulated Gas,2770000.0
+IHS,IHS Holding Ltd,Real Estate,Real Estate Services,2770000.0
+NVG,Nuveen AMT-Free Municipal Credit Income Fund,Financial,Closed-End Fund - Debt,2770000.0
+NMRK,Newmark Group Inc,Real Estate,Real Estate Services,2770000.0
+COHU,Cohu Inc,Technology,Semiconductor Equipment & Materials,2770000.0
+KWR,Quaker Houghton,Basic Materials,Specialty Chemicals,2770000.0
+AEO,American Eagle Outfitters Inc,Consumer Cyclical,Apparel Retail,2760000.0
+WIX,Wix.com Ltd,Technology,Software - Infrastructure,2760000.0
+EFXT,Enerflex Ltd,Energy,Oil & Gas Equipment & Services,2760000.0
+BTU,Peabody Energy Corp,Energy,Thermal Coal,2760000.0
+DHT,DHT Holdings Inc,Energy,Oil & Gas Midstream,2760000.0
+DGII,Digi International Inc,Technology,Communication Equipment,2760000.0
+MPT,Medical Properties Trust Inc,Real Estate,REIT - Healthcare Facilities,2760000.0
+ERO,Ero Copper Corp,Basic Materials,Copper,2750000.0
+IVT,InvenTrust Properties Corp,Real Estate,REIT - Retail,2750000.0
+GCMG,GCM Grosvenor Inc,Financial,Asset Management,2750000.0
+UTI,Universal Technical Institute Inc,Consumer Defensive,Education & Training Services,2750000.0
+MBX,MBX Biosciences Inc,Healthcare,Biotechnology,2750000.0
+FCPT,Four Corners Property Trust Inc,Real Estate,REIT - Retail,2740000.0
+SUPN,Supernus Pharmaceuticals Inc,Healthcare,Drug Manufacturers - Specialty & Generic,2740000.0
+FRME,First Merchants Corp,Financial,Banks - Regional,2740000.0
+CC,Chemours Company,Basic Materials,Specialty Chemicals,2740000.0
+TRMK,Trustmark Corp,Financial,Banks - Regional,2730000.0
+HLIO,Helios Technologies Inc,Industrials,Specialty Industrial Machinery,2730000.0
+EROK,EagleRock Land LLC,Energy,Oil & Gas Equipment & Services,2730000.0
+BRZE,Braze Inc,Technology,Software - Application,2720000.0
+SAH,Sonic Automotive Inc,Consumer Cyclical,Auto & Truck Dealerships,2720000.0
+RDW,Redwire Corp,Industrials,Aerospace & Defense,2710000.0
+KD,Kyndryl Holdings Inc,Technology,Information Technology Services,2710000.0
+BGSI,Boyd Group Services Inc,Consumer Cyclical,Auto & Truck Dealerships,2710000.0
+IMNM,Immunome Inc,Healthcare,Biotechnology,2710000.0
+WOR,Worthington Enterprises Inc,Industrials,Metal Fabrication,2700000.0
+TBBK,Bancorp Inc,Financial,Banks - Regional,2700000.0
+KC,Kingsoft Cloud Holdings Ltd ADR,Technology,Software - Application,2700000.0
+ESTA,Establishment Labs Holdings Inc,Healthcare,Medical Devices,2690000.0
+INFQ,Infleqtion Inc,Technology,Software - Infrastructure,2690000.0
+UNIT,Uniti Group Inc,Real Estate,REIT - Specialty,2680000.0
+HOG,Harley-Davidson Inc,Consumer Cyclical,Recreational Vehicles,2670000.0
+CLOV,Clover Health Investments Corp,Healthcare,Healthcare Plans,2670000.0
+WLY,John Wiley & Sons Inc,Communication Services,Publishing,2660000.0
+STNE,StoneCo Ltd,Technology,Software - Infrastructure,2660000.0
+FRPT,Freshpet Inc,Consumer Defensive,Packaged Foods,2660000.0
+CHRN,ChronoScale Holdings Corp,Technology,Information Technology Services,2650000.0
+BCC,Boise Cascade Co,Basic Materials,Lumber & Wood Production,2650000.0
+PPTA,Perpetua Resources Corp,Basic Materials,Other Precious Metals & Mining,2640000.0
+CUBI,Customers Bancorp Inc,Financial,Banks - Regional,2640000.0
+NYAX,Nayax Ltd,Technology,Software - Infrastructure,2630000.0
+FBNC,First Bancorp,Financial,Banks - Regional,2630000.0
+FSM,Fortuna Mining Corp,Basic Materials,Gold,2630000.0
+GDV,Gabelli Dividend & Income Trust,Financial,Closed-End Fund - Equity,2630000.0
+ATEN,A10 Networks Inc,Technology,Software - Infrastructure,2620000.0
+GRDN,Guardian Pharmacy Services Inc,Healthcare,Medical Care Facilities,2620000.0
+NBTB,NBT Bancorp Inc,Financial,Banks - Regional,2610000.0
+KMT,Kennametal Inc,Industrials,Tools & Accessories,2610000.0
+ABM,ABM Industries Inc,Industrials,Specialty Business Services,2600000.0
+LCID,Lucid Group Inc,Consumer Cyclical,Auto Manufacturers,2600000.0
+SLS,SELLAS Life Sciences Group Inc,Healthcare,Biotechnology,2590000.0
+BCRX,Biocryst Pharmaceuticals Inc,Healthcare,Drug Manufacturers - Specialty & Generic,2580000.0
+WERN,Werner Enterprises Inc,Industrials,Trucking,2580000.0
+PTY,PIMCO Corporate & Income Opportunity Fund,Financial,Closed-End Fund - Debt,2570000.0
+NGVT,Ingevity Corp,Basic Materials,Specialty Chemicals,2570000.0
+MLYS,Mineralys Therapeutics Inc,Healthcare,Biotechnology,2570000.0
+HTO,H2O America,Utilities,Utilities - Regulated Water,2560000.0
+AVPT,AvePoint Inc,Technology,Software - Infrastructure,2550000.0
+TRVI,Trevi Therapeutics Inc,Healthcare,Biotechnology,2550000.0
+TGB,Trekor Metals Ltd,Basic Materials,Copper,2550000.0
+WTTR,Select Water Solutions Inc,Energy,Oil & Gas Equipment & Services,2540000.0
+PTON,Peloton Interactive Inc,Consumer Cyclical,Leisure,2540000.0
+BBT,Beacon Financial Corp,Financial,Banks - Regional,2540000.0
+IMOS,Chipmos Technologies Inc ADR,Technology,Semiconductors,2540000.0
+LCII,LCI Industries,Consumer Cyclical,Recreational Vehicles,2540000.0
+AERO,Grupo Aeromexico SAB de CV ADR,Industrials,Airlines,2530000.0
+DXPE,DXP Enterprises Inc,Industrials,Industrial Distribution,2520000.0
+EXK,Endeavour Silver Corp,Basic Materials,Silver,2520000.0
+ROG,Rogers Corp,Technology,Electronic Components,2520000.0
+TNET,TriNet Group Inc,Industrials,Staffing & Employment Services,2510000.0
+INTR,Inter & Co Inc,Financial,Banks - Regional,2500000.0
+NZF,Nuveen Municipal Credit Income Fund,Financial,Closed-End Fund - Debt,2500000.0
+HIMX,Himax Technologies ADR,Technology,Semiconductors,2500000.0
+BUSE,First Busey Corp,Financial,Banks - Regional,2490000.0
+WU,Western Union Company,Financial,Credit Services,2490000.0
+NTLA,Intellia Therapeutics Inc,Healthcare,Biotechnology,2490000.0
+DRVN,Driven Brands Holdings Inc,Consumer Cyclical,Auto & Truck Dealerships,2490000.0
+NRIX,Nurix Therapeutics Inc,Healthcare,Biotechnology,2490000.0
+PAGS,PagSeguro Digital Ltd,Technology,Software - Infrastructure,2480000.0
+NKTR,Nektar Therapeutics,Healthcare,Biotechnology,2470000.0
+XRAY,DENTSPLY Sirona Inc,Healthcare,Medical Instruments & Supplies,2470000.0
+PONY,Pony AI Inc ADR,Technology,Information Technology Services,2470000.0
+BLBD,Blue Bird Corp,Industrials,Farm & Heavy Construction Machinery,2470000.0
+ALRM,Alarm.com Holdings Inc,Technology,Software - Application,2470000.0
+WHR,Whirlpool Corp,Consumer Cyclical,"Furnishings, Fixtures & Appliances",2470000.0
+TMDX,Transmedics Group Inc,Healthcare,Medical Devices,2460000.0
+CALX,Calix Inc,Technology,Software - Infrastructure,2450000.0
+DRH,Diamondrock Hospitality Co,Real Estate,REIT - Hotel & Motel,2450000.0
+AXGN,Axogen Inc,Healthcare,Medical Devices,2440000.0
+EROC,ERock Inc,Industrials,Specialty Industrial Machinery,2440000.0
+SKWD,Skyward Specialty Insurance Group Inc,Financial,Insurance - Property & Casualty,2440000.0
+BRUN,Boost Run Inc,Technology,Software - Infrastructure,2430000.0
+PGNY,Progyny Inc,Healthcare,Healthcare Plans,2420000.0
+NTB,Bank of N T Butterfield & Son Ltd,Financial,Banks - Diversified,2420000.0
+BHVN,Biohaven Ltd,Healthcare,Biotechnology,2420000.0
+TE,T1 Energy Inc,Industrials,Electrical Equipment & Parts,2420000.0
+PAYO,Payoneer Global Inc,Technology,Software - Infrastructure,2410000.0
+VVX,V2X Inc,Industrials,Aerospace & Defense,2410000.0
+CENT,Central Garden & Pet Co,Consumer Defensive,Packaged Foods,2400000.0
+ABCL,AbCellera Biologics Inc,Healthcare,Biotechnology,2400000.0
+FBYD,Falcon's Beyond Global Inc,Industrials,Conglomerates,2400000.0
+EFSC,Enterprise Financial Services Corp,Financial,Banks - Regional,2400000.0
+CENTA,Central Garden & Pet Co,Consumer Defensive,Packaged Foods,2400000.0
+SLDE,Slide Insurance Holdings Inc,Financial,Insurance - Property & Casualty,2400000.0
+XIFR,XPLR Infrastructure LP,Utilities,Utilities - Renewable,2400000.0
+DJT,Trump Media & Technology Group Corp,Communication Services,Internet Content & Information,2400000.0
+SDRL,Seadrill Ltd,Energy,Oil & Gas Drilling,2390000.0
+INOD,Innodata Inc,Technology,Information Technology Services,2390000.0
+LCLN,Lincoln International Inc,Financial,Capital Markets,2380000.0
+TNK,Teekay Tankers Ltd,Energy,Oil & Gas Midstream,2380000.0
+ATKR,Atkore Inc,Industrials,Electrical Equipment & Parts,2380000.0
+VCEL,Vericel Corp,Healthcare,Biotechnology,2380000.0
+LMAT,Lemaitre Vascular Inc,Healthcare,Medical Instruments & Supplies,2370000.0
+NWL,Newell Brands Inc,Consumer Defensive,Household & Personal Products,2370000.0
+JOYY,JOYY Inc ADR,Communication Services,Internet Content & Information,2360000.0
+AKO-B,Embotelladora Andina SA ADR,Consumer Defensive,Beverages - Non-Alcoholic,2350000.0
+KYN,Kayne Anderson Energy Infrastructure Fund Inc,Financial,Closed-End Fund - Equity,2350000.0
+AVEX,AEVEX Corp,Industrials,Aerospace & Defense,2350000.0
+NN,NextNav Inc,Technology,Software - Infrastructure,2350000.0
+DNOW,Dnow Inc,Industrials,Industrial Distribution,2340000.0
+HTFL,Heartflow Inc,Healthcare,Health Information Services,2340000.0
+PDFS,PDF Solutions Inc,Technology,Software - Application,2340000.0
+ASTH,Astrana Health Inc,Healthcare,Medical Care Facilities,2330000.0
+PHVS,Pharvaris NV,Healthcare,Biotechnology,2320000.0
+GOF,Guggenheim Strategic Opportunities Fund,Financial,Closed-End Fund - Debt,2320000.0
+HCI,HCI Group Inc,Financial,Insurance - Property & Casualty,2320000.0
+SHAK,Shake Shack Inc,Consumer Cyclical,Restaurants,2320000.0
+HE,Hawaiian Electric Industries Inc,Utilities,Utilities - Regulated Electric,2320000.0
+KOD,Kodiak Sciences Inc,Healthcare,Biotechnology,2320000.0
+ETY,Eaton Vance Tax-Managed Diversified Equity Income Fund,Financial,Closed-End Fund - Equity,2320000.0
+PBH,Prestige Consumer Healthcare Inc,Healthcare,Drug Manufacturers - Specialty & Generic,2310000.0
+MTX,Minerals Technologies Inc,Basic Materials,Specialty Chemicals,2310000.0
+ANDE,Andersons Inc,Consumer Defensive,Food Distribution,2300000.0
+SYBT,Stock Yards Bancorp Inc,Financial,Banks - Regional,2300000.0
+BANR,Banner Corp,Financial,Banks - Regional,2300000.0
+CMPR,Cimpress plc,Industrials,Specialty Business Services,2280000.0
+RAMP,LiveRamp Holdings Inc,Technology,Software - Infrastructure,2280000.0
+DAC,Danaos Corp,Industrials,Marine Shipping,2280000.0
+CDLR,Cadeler AS ADR,Industrials,Engineering & Construction,2280000.0
+HAPN,Happen Inc,Financial,Banks - Regional,2280000.0
+PBI,Pitney Bowes Inc,Industrials,Integrated Freight & Logistics,2280000.0
+AEHR,Aehr Test Systems,Technology,Semiconductor Equipment & Materials,2270000.0
+HSAI,Hesai Group ADR,Consumer Cyclical,Auto Parts,2270000.0
+NMZ,Nuveen Municipal High Income Opportunity Fund,Financial,Closed-End Fund - Debt,2270000.0
+CTOS,Custom Truck One Source Inc,Industrials,Rental & Leasing Services,2270000.0
+FLYW,Flywire Corp,Technology,Software - Infrastructure,2260000.0
+HTH,Hilltop Holdings Inc,Financial,Financial Conglomerates,2260000.0
+MCRI,Monarch Casino & Resort Inc,Consumer Cyclical,Resorts & Casinos,2260000.0
+CLM,Cornerstone Strategic Investment Fund Inc,Financial,Closed-End Fund - Equity,2260000.0
+JBLU,Jetblue Airways Corp,Industrials,Airlines,2250000.0
+GRC,Gorman-Rupp Co,Industrials,Specialty Industrial Machinery,2250000.0
+OLN,Olin Corp,Basic Materials,Chemicals,2250000.0
+MD,Pediatrix Medical Group Inc,Healthcare,Medical Care Facilities,2250000.0
+RVT,Royce Small Cap Trust Inc,Financial,Closed-End Fund - Equity,2250000.0
+CLBK,Columbia Financial Inc,Financial,Banks - Regional,2230000.0
+NVA,Nova Minerals Corp,Basic Materials,Other Industrial Metals & Mining,2230000.0
+CEPU,Central Puerto ADR,Utilities,Utilities - Regulated Electric,2230000.0
+PRKS,United Parks & Resorts Inc,Consumer Cyclical,Leisure,2220000.0
+AGIO,Agios Pharmaceuticals Inc,Healthcare,Biotechnology,2220000.0
+SGRY,Surgery Partners Inc,Healthcare,Medical Care Facilities,2220000.0
+NWBI,Northwest Bancshares Inc,Financial,Banks - Regional,2210000.0
+SPSC,SPS Commerce Inc,Technology,Software - Application,2200000.0
+TALO,Talos Energy Inc,Energy,Oil & Gas E&P,2200000.0
+SVM,Silvercorp Metals Inc,Basic Materials,Silver,2200000.0
+MBIN,Merchants Bancorp,Financial,Banks - Regional,2200000.0
+DHC,Diversified Healthcare Trust,Real Estate,REIT - Healthcare Facilities,2200000.0
+PRDO,Perdoceo Education Corp,Consumer Defensive,Education & Training Services,2190000.0
+VCX,Fundrise Innovation Fund LLC,Financial,Closed-End Fund - Equity,2190000.0
+HMN,Horace Mann Educators Corp,Financial,Insurance - Property & Casualty,2190000.0
+VNET,VNET Group Inc ADR,Technology,Information Technology Services,2180000.0
+PLUS,ePlus Inc,Technology,Software - Application,2180000.0
+RNW,ReNew Energy Global plc,Utilities,Utilities - Renewable,2170000.0
+EZPW,EZCorp Inc,Financial,Credit Services,2170000.0
+GENB,Generate Biomedicines Inc,Healthcare,Biotechnology,2170000.0
+CPRI,Capri Holdings Ltd,Consumer Cyclical,Luxury Goods,2160000.0
+ATHM,Autohome Inc ADR,Communication Services,Internet Content & Information,2160000.0
+BKE,Buckle Inc,Consumer Cyclical,Apparel Retail,2160000.0
+ZLAB,Zai Lab Limited ADR,Healthcare,Biotechnology,2150000.0
+BFLY,Butterfly Network Inc,Healthcare,Medical Devices,2150000.0
+HYMC,Hycroft Mining Holding Corp,Basic Materials,Gold,2150000.0
+HRMY,Harmony Biosciences Holdings Inc,Healthcare,Biotechnology,2140000.0000000005
+ARR,ARMOUR Residential REIT Inc,Real Estate,REIT - Mortgage,2130000.0
+NMM,Navios Maritime Partners LP,Industrials,Marine Shipping,2130000.0
+AGM,Federal Agricultural Mortgage Corp,Financial,Credit Services,2130000.0
+INTA,Intapp Inc,Technology,Software - Application,2130000.0
+ADMA,Adma Biologics Inc,Healthcare,Biotechnology,2120000.0
+OCUL,Ocular Therapeutix Inc,Healthcare,Biotechnology,2120000.0
+PEB,Pebblebrook Hotel Trust,Real Estate,REIT - Hotel & Motel,2109999.9999999995
+QUBT,Quantum Computing Inc,Technology,Computer Hardware,2109999.9999999995
+PLGO,Pelagos Insurance Capital Ltd,Financial,Insurance - Diversified,2109999.9999999995
+DEI,Douglas Emmett Inc,Real Estate,REIT - Office,2109999.9999999995
+UFPT,UFP Technologies Inc,Healthcare,Medical Devices,2100000.0
+RXRX,Recursion Pharmaceuticals Inc,Healthcare,Biotechnology,2100000.0
+AIN,Albany International Corp,Consumer Cyclical,Textile Manufacturing,2100000.0
+OFG,OFG Bancorp,Financial,Banks - Regional,2100000.0
+BOBS,Bob's Discount Furniture Inc,Consumer Cyclical,Specialty Retail,2100000.0
+VRDN,Viridian Therapeutics Inc,Healthcare,Biotechnology,2100000.0
+NTST,Netstreit Corp,Real Estate,REIT - Retail,2100000.0
+MNR,Mach Natural Resources LP,Energy,Oil & Gas E&P,2100000.0
+MHD,BlackRock MuniHoldings Fund Inc,Financial,Closed-End Fund - Debt,2089999.9999999998
+CCU,Compania Cervecerias Unidas SA ADR,Consumer Defensive,Beverages - Brewers,2089999.9999999998
+FCF,First Commonwealth Financial Corp,Financial,Banks - Regional,2080000.0
+SHO,Sunstone Hotel Investors Inc,Real Estate,REIT - Hotel & Motel,2080000.0
+NBTX,Nanobiotix ADR,Healthcare,Biotechnology,2080000.0
+ALG,Alamo Group Inc,Industrials,Farm & Heavy Construction Machinery,2080000.0
+VERX,Vertex Inc,Technology,Software - Application,2080000.0
+AVAH,Aveanna Healthcare Holdings Inc,Healthcare,Medical Care Facilities,2080000.0
+NEOG,Neogen Corp,Healthcare,Medical Devices,2069999.9999999998
+ATEX,Anterix Inc,Communication Services,Telecom Services,2069999.9999999998
+TGLS,Tecnoglass Inc,Basic Materials,Building Materials,2069999.9999999998
+STC,Stewart Information Services Corp,Financial,Insurance - Property & Casualty,2069999.9999999998
+TGS,Transportadora de Gas del Sur ADR,Energy,Oil & Gas Integrated,2060000.0
+OMCL,Omnicell Inc,Healthcare,Health Information Services,2060000.0
+GTY,Getty Realty Corp,Real Estate,REIT - Retail,2060000.0
+WOLF,Wolfspeed Inc,Technology,Semiconductors,2049999.9999999998
+EVT,Eaton Vance Tax Advantaged Dividend Income Fund,Financial,Closed-End Fund - Equity,2049999.9999999998
+IMAX,Imax Corp,Communication Services,Entertainment,2049999.9999999998
+BLX,Bladex Inc,Financial,Banks - Regional,2049999.9999999998
+NWN,Northwest Natural Holding Co,Utilities,Utilities - Regulated Gas,2049999.9999999998
+SEM,Select Medical Holdings Corp,Healthcare,Medical Care Facilities,2049999.9999999998
+BRSL,Brightstar Lottery PLC,Consumer Cyclical,Gambling,2049999.9999999998
+ECO,Okeanis Eco Tankers Corp,Industrials,Marine Shipping,2049999.9999999998
+WGS,GeneDx Holdings Corp,Healthcare,Diagnostics & Research,2049999.9999999998
+TSHA,Taysha Gene Therapies Inc,Healthcare,Biotechnology,2040000.0
+SSMR,Sunshine Silver Mining & Refining Co,Basic Materials,Other Industrial Metals & Mining,2040000.0
+BSTZ,BlackRock Science and Technology Term Trust,Financial,Closed-End Fund - Equity,2040000.0
+HCM,HUTCHMED (China) Limited ADR,Healthcare,Drug Manufacturers - Specialty & Generic,2029999.9999999998
+MLCO,Melco Resorts & Entertainment Ltd ADR,Consumer Cyclical,Resorts & Casinos,2029999.9999999998
+IOSP,Innospec Inc,Basic Materials,Specialty Chemicals,2029999.9999999998
+ALKT,Alkami Technology Inc,Technology,Software - Application,2029999.9999999998
+SRPT,Sarepta Therapeutics Inc,Healthcare,Biotechnology,2020000.0
+TILE,Interface Inc,Consumer Cyclical,"Furnishings, Fixtures & Appliances",2020000.0
+MH,McGraw Hill Inc,Consumer Defensive,Education & Training Services,2020000.0
+STOK,Stoke Therapeutics Inc,Healthcare,Biotechnology,2020000.0
+PLSE,Pulse Biosciences Inc,Healthcare,Medical Instruments & Supplies,2009999.9999999998
+PVLA,Palvella Therapeutics Inc,Healthcare,Biotechnology,2009999.9999999998
+NEXT,NextDecade Corp,Energy,Oil & Gas Equipment & Services,2009999.9999999998
+FCEL,Fuelcell Energy Inc,Industrials,Electrical Equipment & Parts,2009999.9999999998
+VOYG,Voyager Technologies Inc,Industrials,Aerospace & Defense,2009999.9999999998
+NVCR,NovoCure Ltd,Healthcare,Medical Devices,2009999.9999999998
+AMR,Alpha Metallurgical Resources Inc,Basic Materials,Coking Coal,2000000.0
+STEL,Stellar Bancorp Inc,Financial,Banks - Regional,2000000.0
+LKFT,Lakefront Biotherapeutics NV ADR,Healthcare,Biotechnology,2000000.0
