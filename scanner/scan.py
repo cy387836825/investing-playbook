@@ -320,6 +320,24 @@ SECTOR_KPI = {
 }
 
 
+def _lumpy_flag(ni_series):
+    """L5自动化: ni_series符号翻转/剧烈跳变 → 可能一次性/里程碑收入(生物药)或并购扭曲"""
+    try:
+        vals = [float(x) for x in str(ni_series).split("|") if x not in ("", "nan")]
+    except ValueError:
+        return ""
+    if len(vals) < 4:
+        return ""
+    recent = vals[:4]
+    signs = [1 if v > 0 else -1 for v in recent]
+    flips = sum(1 for i in range(len(signs) - 1) if signs[i] != signs[i + 1])
+    mag = pd.Series(recent).abs()
+    cv = mag.std() / mag.mean() if mag.mean() else 0
+    if flips >= 2 or cv > 1.5:
+        return "⚠️跳变(一次性/里程碑/并购嫌疑,查内生性)"
+    return ""
+
+
 def report():
     df = pd.read_csv(RESULTS_CSV)
     df = df[df["error"].isna() | (df["error"] == "")]
@@ -366,6 +384,14 @@ def report():
     s2b["accel_confirmed"] = (df["rev_yoy_latest"] > df["rev_yoy_prior"]).map({True: "是", False: "数据不足"})
     s2b = s2b.sort_values("rev_yoy_latest", ascending=False)
 
+    # L5自动化: 跳变检测 → 生物药里程碑/并购注水嫌疑
+    for d in (s1, s2a, s2b):
+        d["flag"] = d["ni_series"].apply(_lumpy_flag)
+    # L3自动化: 金融/材料/能源桶(营收概念不适用或商品驱动) 自动降级提示
+    NONCLEAN = {"Financial", "Basic Materials", "Energy", "Real Estate"}
+    s2b["bucket"] = s2b["sector"].apply(
+        lambda s: "⚠️非内生桶(金融/商品/REIT,营收概念存疑)" if s in NONCLEAN else "D_待验证(最可能内生)")
+
     lines = [f"# 全域扫描信号报告\n",
              f"生成时间: {time.strftime('%Y-%m-%d %H:%M')}  |  已扫描: {len(df)} 家（≥$5B）\n"]
 
@@ -379,9 +405,18 @@ def report():
             ["ticker", "name", "sector", "mcap_b", "gm_consec_improve",
              "gm_latest", "gm_ttm", "gm_hist_avg", "stage"])
     section("S2a 首次GAAP盈利", s2a,
-            ["ticker", "name", "sector", "mcap_b", "ni_series"])
-    section("S2b 营收≥25%且同比增速在加速", s2b.head(40),
-            ["ticker", "name", "sector", "mcap_b", "rev_yoy_latest", "rev_yoy_prior", "accel_confirmed"])
+            ["ticker", "name", "sector", "mcap_b", "ni_series", "flag"])
+    section("S2b 营收≥25%且同比增速在加速（D桶=最可能内生，优先深挖）",
+            s2b.sort_values(["bucket", "rev_yoy_latest"], ascending=[True, False]).head(50),
+            ["ticker", "name", "sector", "mcap_b", "rev_yoy_latest", "rev_yoy_prior", "bucket", "flag"])
+
+    # L10自动化: 相关性聚类——同sector命中数,提示"看似分散实为一笔下注"
+    lines.append("\n## 相关性聚类警告（L10：同板块命中越多=越是同一笔宏观下注，需设组敞口上限）\n")
+    allhits = pd.concat([s1, s2a, s2b]).drop_duplicates(subset="ticker")
+    conc = allhits.groupby("sector").size().sort_values(ascending=False)
+    for sec, n in conc.items():
+        mark = " 🔴组敞口上限" if n >= 5 else ""
+        lines.append(f"- {sec}: {n} 命中{mark}")
 
     # 确认层任务清单：每个命中股按行业列出必须核实的特有指标
     hits = pd.concat([s1, s2a, s2b.head(40)]).drop_duplicates(subset="ticker")
@@ -396,11 +431,140 @@ def report():
     print(f"S1={len(s1)}  S2a={len(s2a)}  S2b={len(s2b)}")
 
 
+SCORECARD_CSV = BASE / "scorecard.csv"
+SCORE_FIELDS = ["ticker", "decision", "entry_date", "entry_px", "decision_thesis",
+                "review_date", "review_px", "ret_pct", "kpi_check", "verdict", "note"]
+
+
+def track(action, tickers=None):
+    """自进化·学习回路: 记录每个决策的入场快照,日后对照实际结果打分 → 算命中率验证框架
+    track add --tickers X,Y  : 为论点卡标的建/刷新入场快照(拉当前价)
+    track grade              : 拉最新价,计算每个决策自入场的回报,更新scorecard
+    track score              : 汇总——按decision/sector统计命中率,输出到 scorecard.md
+    """
+    import yfinance as yf
+    rows = {}
+    if SCORECARD_CSV.exists():
+        for _, r in pd.read_csv(SCORECARD_CSV).iterrows():
+            rows[r["ticker"]] = r.to_dict()
+
+    def px(tk):
+        try:
+            info = yf.Ticker(tk).info
+            return info.get("currentPrice") or info.get("regularMarketPrice")
+        except Exception:
+            return None
+
+    if action == "add":
+        # 从 theses/ 目录推断决策(建卡=买入候选);也可手动传tickers
+        theses = list((BASE / "theses").glob("*.md"))
+        carded = set()
+        for f in theses:
+            for part in f.stem.replace("模拟半导体集群-", "").split("-"):
+                if part.isupper() and 2 <= len(part) <= 5:
+                    carded.add(part)
+        targets = tickers or sorted(carded)
+        for tk in targets:
+            p0 = px(tk)
+            if tk in rows and rows[tk].get("entry_px"):
+                continue  # 已有入场快照,不覆盖
+            rows[tk] = {**{k: "" for k in SCORE_FIELDS}, "ticker": tk,
+                        "decision": "买入候选", "entry_date": time.strftime("%Y-%m-%d"),
+                        "entry_px": p0, "decision_thesis": "见theses/", "verdict": "待验证"}
+            print(f"记录入场: {tk} @ {p0}")
+    elif action == "grade":
+        for tk, r in rows.items():
+            if not r.get("entry_px"):
+                continue
+            p1 = px(tk)
+            r["review_date"] = time.strftime("%Y-%m-%d")
+            r["review_px"] = p1
+            try:
+                r["ret_pct"] = round((float(p1) / float(r["entry_px"]) - 1) * 100, 1)
+            except (TypeError, ValueError, ZeroDivisionError):
+                r["ret_pct"] = ""
+            print(f"{tk}: {r['entry_px']} → {p1}  ({r['ret_pct']}%)")
+    elif action == "score":
+        df = pd.DataFrame(rows.values())
+        df["ret_pct"] = pd.to_numeric(df.get("ret_pct"), errors="coerce")
+        graded = df.dropna(subset=["ret_pct"])
+        out = ["# 决策记分卡（自进化·学习回路）\n",
+               f"生成: {time.strftime('%Y-%m-%d %H:%M')} | 记录{len(df)} 已打分{len(graded)}\n"]
+        if len(graded):
+            out.append(f"- 平均回报: {graded['ret_pct'].mean():.1f}% | 胜率(>0): "
+                       f"{(graded['ret_pct']>0).mean()*100:.0f}% | 中位: {graded['ret_pct'].median():.1f}%")
+            out.append(f"- 最佳: {graded.loc[graded['ret_pct'].idxmax(),'ticker']} "
+                       f"{graded['ret_pct'].max():.0f}% | 最差: {graded.loc[graded['ret_pct'].idxmin(),'ticker']} "
+                       f"{graded['ret_pct'].min():.0f}%")
+            out.append("\n> 学习信号: 若否决股(下方需手动标decision=否决)回报>买入股均值,说明过滤器过严;反之过松。")
+        (BASE / "scorecard.md").write_text("\n".join(out))
+        print("\n".join(out))
+        print(f"→ scorecard.md")
+
+    if action in ("add", "grade"):
+        with open(SCORECARD_CSV, "w", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=SCORE_FIELDS)
+            w.writeheader()
+            for r in rows.values():
+                w.writerow({k: r.get(k, "") for k in SCORE_FIELDS})
+        print(f"→ {SCORECARD_CSV}")
+
+
+def audit():
+    """自进化·发现遗漏回路: 体检流水线,主动找缺口"""
+    print("=== 流水线自体检 (audit) ===\n")
+    # 1. 覆盖率: 按板块看信号命中 vs 已深挖(建卡)的比例 → 找系统性遗漏的板块
+    df = pd.read_csv(RESULTS_CSV)
+    df = df[df["error"].isna() | (df["error"] == "")]
+    mc = pd.to_numeric(df["mcap_b"], errors="coerce")
+    df["mcap_b"] = mc / 1e6 if mc.max() > 1e5 else mc
+    df = df[df["mcap_b"] >= 5]
+    carded = set()
+    for f in (BASE / "theses").glob("*.md"):
+        for part in f.stem.replace("模拟半导体集群-", "").split("-"):
+            if part.isupper() and 2 <= len(part) <= 5:
+                carded.add(part)
+    print(f"[覆盖] universe={len(df)}  已建卡标的≈{len(carded)}  卡片文件={len(list((BASE/'theses').glob('*.md')))}")
+    print(f"[覆盖] 已建卡: {' '.join(sorted(carded))}\n")
+
+    # 2. 教训台账: 统计待自动化的教训数 → 提醒该升级为代码
+    lessons = (BASE / "lessons.md")
+    if lessons.exists():
+        txt = lessons.read_text()
+        todo = txt.count("[待自动化]")
+        auto = txt.count("[已自动化]")
+        manual = txt.count("[手动]")
+        print(f"[教训] 已自动化{auto} 手动{manual} 待自动化{todo}")
+        if todo:
+            print(f"[教训] ⚠️ 有 {todo} 条教训重复≥2次仍未自动化,下次迭代应写进scan.py(见lessons.md待自动化队列)\n")
+
+    # 3. 记分卡: 若有打分,检验过滤器松紧
+    if SCORECARD_CSV.exists():
+        sc = pd.read_csv(SCORECARD_CSV)
+        graded = pd.to_numeric(sc.get("ret_pct"), errors="coerce").dropna()
+        if len(graded):
+            print(f"[记分] 已打分{len(graded)} 平均{graded.mean():.1f}% 胜率{(graded>0).mean()*100:.0f}%")
+        else:
+            print("[记分] 尚无已打分决策,运行 track grade 更新(需距入场有时间跨度)")
+    else:
+        print("[记分] 尚无记分卡,运行 track add 建立入场快照")
+
+    # 4. 缺口自问清单(发现遗漏的固定反思)
+    print("\n[缺口自问] 每次迭代必答:")
+    for q in ["① 有无整个板块的信号命中从未深挖?(看上方覆盖,如医疗设备/公用事业)",
+              "② 最近的否决理由,有无第3次重复却仍手动?→ 升级代码",
+              "③ 记分卡里否决股回报是否>买入股?→ 过滤器过严的证据",
+              "④ 有无新的失败模式本次才见到?→ 立即登记lessons.md",
+              "⑤ 数据源有无新的系统性盲区?(如IFRS外国股/季度数不足)"]:
+        print(f"   {q}")
+
+
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
-    p.add_argument("cmd", choices=["universe", "scan", "report", "edgar", "deep"])
+    p.add_argument("cmd", choices=["universe", "scan", "report", "edgar", "deep", "track", "audit"])
     p.add_argument("--limit", type=int)
     p.add_argument("--tickers", type=str)
+    p.add_argument("--action", type=str, help="track的子动作: add|grade|score")
     a = p.parse_args()
     if a.cmd == "universe":
         fetch_universe()
@@ -412,5 +576,9 @@ if __name__ == "__main__":
         if not a.tickers:
             sys.exit("用法: python scan.py deep --tickers MCHP,SYM,BE")
         deep(a.tickers.split(","))
+    elif a.cmd == "track":
+        track(a.action or "add", a.tickers.split(",") if a.tickers else None)
+    elif a.cmd == "audit":
+        audit()
     else:
         report()
