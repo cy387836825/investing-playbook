@@ -5,3 +5,5 @@ __pycache__/
 
 prices.csv
 scorecard.csv
+bt_*.csv
+backtest_*.csv
