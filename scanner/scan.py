@@ -321,7 +321,8 @@ SECTOR_KPI = {
 
 
 PRICES_CSV = BASE / "prices.csv"
-PRICE_FIELDS = ["ticker", "px", "wk52_high", "wk52_low", "pos_high_pct", "pos_low_pct", "asof"]
+PRICE_FIELDS = ["ticker", "px", "wk52_high", "wk52_low", "pos_high_pct", "pos_low_pct",
+                "trailing_pe", "forward_pe", "asof"]
 
 
 def _signal_hit_tickers():
@@ -351,7 +352,8 @@ def fetch_prices(tickers=None):
     cached = {}
     if PRICES_CSV.exists():
         cached = {r["ticker"]: r.to_dict() for _, r in pd.read_csv(PRICES_CSV).iterrows()}
-    todo = [t for t in targets if t not in cached]
+    # 未缓存,或缓存行缺PE字段(旧版数据) → 需(重)拉
+    todo = [t for t in targets if t not in cached or not str(cached[t].get("forward_pe", "")).strip()]
     print(f"信号命中={len(targets)}  已缓存={len(cached)}  待拉价={len(todo)}")
     for i, tk in enumerate(todo, 1):
         row = {k: "" for k in PRICE_FIELDS}
@@ -365,6 +367,8 @@ def fetch_prices(tickers=None):
                 row["pos_high_pct"] = round((px / hi - 1) * 100, 1)   # 距高点(负数,越接近0越危险)
             if px and lo:
                 row["pos_low_pct"] = round((px / lo - 1) * 100, 1)    # 距低点(正数,越小越接近底部)
+            row["trailing_pe"] = info.get("trailingPE")
+            row["forward_pe"] = info.get("forwardPE")
         except Exception as e:
             row["px"] = f"err:{type(e).__name__}"
         row["asof"] = time.strftime("%Y-%m-%d")
@@ -380,14 +384,16 @@ def fetch_prices(tickers=None):
     print(f"→ {PRICES_CSV}  (共 {len(cached)} 只)")
 
 
-def _price_label(hi_pct, lo_pct, kind="cyclical"):
-    """L2(v2,filter-aware): 价格位置的含义取决于股票类型——
-    周期股(cyclical): 近高点=均值回归风险=退出区(VLO/STNG/BE教训)
-    成长股(growth):   近高点=动能确认,非卖点;成长靠不断创新高(NVDA/PLTR),
-                      此处真正该查的是估值+上修是否停止,价格位置本身不是卖点
-    这是关键区分: '近高点=卖'只对周期股成立,套到成长股会在起涨点卖飞。"""
+def _price_label(hi_pct, lo_pct, kind="cyclical", fpe=None):
+    """L2(v3): 价格位置只是'去查'的提示,不是'卖出'的判决。关键洞察(用户MU案例):
+    周期股的新高也可能是'真新高'——需求范式变了(MU的AI存储超级周期),天花板被重置。
+    区分'正常周期顶(会回归)'vs'结构性突破(新平台)'的可自动化线索=PE是否压缩:
+      近高+PE个位数 → 市场定价'峰值盈利'=真周期顶=退出
+      近高+PE未压缩 → 市场认为盈利还会涨=可能结构性突破,查需求范式(勿卖飞MU式超级周期)
+    成长股: 近高=动能,从来不是卖点(NVDA/PLTR靠创新高)。"""
     hi = pd.to_numeric(hi_pct, errors="coerce")
     lo = pd.to_numeric(lo_pct, errors="coerce")
+    pe = pd.to_numeric(fpe, errors="coerce")
     if pd.isna(hi):
         return "?无价"
     near_high = hi >= -15
@@ -398,9 +404,13 @@ def _price_label(hi_pct, lo_pct, kind="cyclical"):
         if near_low:
             return "深跌(困境反转候选,查基本面是否恶化)"
         return "中段"
-    # cyclical / commodity 默认
+    # cyclical / commodity
     if near_high:
-        return "⚠️退出区(周期股近高点=均值回归风险)"
+        if not pd.isna(pe) and 0 < pe < 10:
+            return f"⚠️疑周期顶(近高+PE{pe:.0f}个位数=市场定价峰值盈利→查capex潮/涨价减速)"
+        if not pd.isna(pe):
+            return f"近高但PE{pe:.0f}未压缩(市场认为盈利续增→查是否结构性突破,勿卖飞MU式超级周期)"
+        return "⚠️近高(查是否周期顶:capex潮/涨价减速/利好不涨/PE个位数)"
     if near_low:
         return "✅底部区(近52周低点,理想入场)"
     return "中段"
@@ -478,9 +488,9 @@ def report():
         pr = pd.read_csv(PRICES_CSV)
 
         def label_df(d, kind_fn):
-            m = d.merge(pr[["ticker", "pos_high_pct", "pos_low_pct"]], on="ticker", how="left")
-            return [_price_label(h, l, kind_fn(sec))
-                    for h, l, sec in zip(m["pos_high_pct"], m["pos_low_pct"], m["sector"])]
+            m = d.merge(pr[["ticker", "pos_high_pct", "pos_low_pct", "forward_pe"]], on="ticker", how="left")
+            return [_price_label(h, l, kind_fn(sec), pe)
+                    for h, l, sec, pe in zip(m["pos_high_pct"], m["pos_low_pct"], m["sector"], m["forward_pe"])]
 
         s1["price_pos"] = label_df(s1, lambda s: "cyclical")           # S1恒周期
         s2a["price_pos"] = label_df(s2a, lambda s: "growth")           # S2a恒成长

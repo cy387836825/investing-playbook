@@ -1,70 +1,70 @@
 # 全域扫描信号报告
 
-生成时间: 2026-07-08 09:44  |  已扫描: 1374 家（≥$5B）
+生成时间: 2026-07-08 09:52  |  已扫描: 1374 家（≥$5B）
 
 
 ## S1 周期反转初筛：毛利率连续≥2季环比改善 且 TTM低于4年均值（按周期阶段+价格位置分层）（58 家）
 
-| ticker   | name                                                      | sector                 |   mcap_b |   gm_consec_improve |   gm_latest |   gm_hist_avg | stage   | price_pos            |
-|:---------|:----------------------------------------------------------|:-----------------------|---------:|--------------------:|------------:|--------------:|:--------|:---------------------|
-| TSLA     | Tesla Inc                                                 | Consumer Cyclical      |  1576.54 |                   4 |       0.211 |         0.199 | 中段·已启动  | 中段                   |
-| DE       | Deere & Co                                                | Industrials            |   171.48 |                   2 |       0.369 |         0.357 | 中段·已启动  | ⚠️退出区(周期股近高点=均值回归风险) |
-| NVO      | Novo Nordisk ADR                                          | Healthcare             |   165.41 |                   2 |       0.86  |         0.835 | 中段·已启动  | 中段                   |
-| MCK      | Mckesson Corp                                             | Healthcare             |    91.82 |                   3 |       0.042 |         0.04  | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
-| AON      | Aon Plc                                                   | Financial              |    76.23 |                   3 |       0.525 |         0.479 | 中段·已启动  | ⚠️退出区(周期股近高点=均值回归风险) |
-| AMT      | American Tower Corp                                       | Real Estate            |    75.53 |                   3 |       0.743 |         0.741 | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
-| HON      | Honeywell International Inc                               | Industrials            |    73.24 |                   2 |       0.387 |         0.375 | 中段·已启动  | ⚠️退出区(周期股近高点=均值回归风险) |
-| ECHO     | EchoStar Corp                                             | Communication Services |    28.49 |                   2 |       0.309 |         0.289 | 中段·已启动  | 中段                   |
-| DXCM     | Dexcom Inc                                                | Healthcare             |    27.93 |                   4 |       0.629 |         0.621 | 中段·已启动  | 中段                   |
-| TSEM     | Tower Semiconductor Ltd                                   | Technology             |    24.47 |                   4 |       0.268 |         0.249 | 中段·已启动  | 中段                   |
-| EXE      | Expand Energy Corp                                        | Energy                 |    21.27 |                   4 |       0.639 |         0.535 | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
-| ROKU     | Roku Inc                                                  | Communication Services |    21.1  |                   2 |       0.452 |         0.444 | 中段·已启动  | ⚠️退出区(周期股近高点=均值回归风险) |
-| SITM     | SiTime Corp                                               | Technology             |    16.25 |                   4 |       0.59  |         0.567 | 中段·已启动  | 中段                   |
-| SSNC     | SS&C Technologies Holdings Inc                            | Technology             |    15.73 |                   2 |       0.487 |         0.482 | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
-| COO      | Cooper Companies Inc                                      | Healthcare             |    14.16 |                   2 |       0.68  |         0.656 | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
-| ALGN     | Align Technology Inc                                      | Healthcare             |    13.49 |                   2 |       0.708 |         0.694 | 中段·已启动  | 中段                   |
-| HRL      | Hormel Foods Corp                                         | Consumer Defensive     |    13.36 |                   2 |       0.174 |         0.166 | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
-| APA      | APA Corp                                                  | Energy                 |    11.47 |                   4 |       0.535 |         0.481 | 中段·已启动  | 中段                   |
-| PSKY     | Paramount Skydance Corp                                   | Communication Services |    11.29 |                   3 |       0.339 |         0.316 | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
-| SQM      | Sociedad Quimica Y Minera de Chile SA ADR                 | Basic Materials        |    10.5  |                   3 |       0.442 |         0.384 | 中段·已启动  | 中段                   |
-| ENSG     | Ensign Group Inc                                          | Healthcare             |     9.75 |                   2 |       0.164 |         0.161 | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
-| RHP      | Ryman Hospitality Properties Inc                          | Real Estate            |     8.08 |                   2 |       0.339 |         0.324 | 中段·已启动  | ⚠️退出区(周期股近高点=均值回归风险) |
-| LNTH     | Lantheus Holdings Inc                                     | Healthcare             |     6.69 |                   2 |       0.612 |         0.606 | 中段·已启动  | ⚠️退出区(周期股近高点=均值回归风险) |
-| LUMN     | Lumen Technologies Inc                                    | Communication Services |     6.68 |                   2 |       0.505 |         0.503 | 中段·已启动  | 中段                   |
-| DUOL     | Duolingo Inc                                              | Technology             |     6.04 |                   4 |       0.73  |         0.728 | 中段·已启动  | 中段                   |
-| TXG      | 10x Genomics Inc                                          | Healthcare             |     5.08 |                   2 |       0.704 |         0.699 | 中段·已启动  | ⚠️退出区(周期股近高点=均值回归风险) |
-| MTN      | Vail Resorts Inc                                          | Consumer Cyclical      |     5.06 |                   2 |       0.57  |         0.436 | 偏晚·谨慎   | ✅底部区(近52周低点,理想入场)    |
-| SBS      | Companhia de Saneamento Basico do Estado de Sao Paulo ADR | Utilities              |   101.87 |                   2 |       0.393 |         0.408 | 早期      | 中段                   |
-| EQNR     | Equinor ASA ADR                                           | Energy                 |    81.27 |                   2 |       0.443 |         0.456 | 早期      | 中段                   |
-| VLO      | Valero Energy Corp                                        | Energy                 |    80.27 |                   4 |       0.063 |         0.066 | 早期      | ⚠️退出区(周期股近高点=均值回归风险) |
-| MPWR     | Monolithic Power System Inc                               | Technology             |    66.14 |                   3 |       0.553 |         0.563 | 早期      | 中段                   |
-| MCHP     | Microchip Technology Inc                                  | Technology             |    47.48 |                   4 |       0.61  |         0.617 | 早期      | 中段                   |
-| HSY      | Hershey Company                                           | Consumer Defensive     |    36.01 |                   3 |       0.394 |         0.422 | 早期      | ✅底部区(近52周低点,理想入场)    |
-| MTSI     | MACOM Technology Solutions Holdings Inc                   | Technology             |    25    |                   2 |       0.569 |         0.571 | 早期      | 中段                   |
-| LPLA     | LPL Financial Holdings Inc                                | Financial              |    24.37 |                   2 |       0.248 |         0.272 | 早期      | ✅底部区(近52周低点,理想入场)    |
-| TSN      | Tyson Foods Inc                                           | Consumer Defensive     |    20.28 |                   2 |       0.07  |         0.077 | 早期      | ✅底部区(近52周低点,理想入场)    |
-| ESS      | Essex Property Trust Inc                                  | Real Estate            |    19.8  |                   2 |       0.681 |         0.681 | 早期      | ⚠️退出区(周期股近高点=均值回归风险) |
-| SBAC     | SBA Communications Corp                                   | Real Estate            |    19.15 |                   2 |       0.756 |         0.764 | 早期      | ✅底部区(近52周低点,理想入场)    |
-| GEN      | Gen Digital Inc                                           | Technology             |    16.02 |                   2 |       0.785 |         0.804 | 早期      | 中段                   |
-| BEKE     | KE Holdings Inc ADR                                       | Real Estate            |    15.99 |                   2 |       0.241 |         0.241 | 早期      | ✅底部区(近52周低点,理想入场)    |
-| JHX      | James Hardie Industries plc                               | Basic Materials        |    14.87 |                   2 |       0.373 |         0.374 | 早期      | 中段                   |
-| MGM      | MGM Resorts International                                 | Consumer Cyclical      |    11.99 |                   2 |       0.447 |         0.466 | 早期      | ⚠️退出区(周期股近高点=均值回归风险) |
-| ALGM     | Allegro Microsystems Inc                                  | Technology             |    10.54 |                   4 |       0.47  |         0.504 | 早期      | 中段                   |
-| VIAV     | Viavi Solutions Inc                                       | Technology             |    10.46 |                   3 |       0.575 |         0.581 | 早期      | 中段                   |
-| MP       | MP Materials Corp                                         | Basic Materials        |     9.44 |                   2 |      -0.174 |         0.155 | 早期      | 中段                   |
-| BRKR     | Bruker Corp                                               | Healthcare             |     9.34 |                   2 |       0.461 |         0.494 | 早期      | ⚠️退出区(周期股近高点=均值回归风险) |
-| FRHC     | Freedom Holding Corp                                      | Financial              |     9.21 |                   4 |       0.627 |         0.628 | 早期      | 中段                   |
-| AVAV     | AeroVironment Inc                                         | Industrials            |     8.95 |                   3 |       0.316 |         0.34  | 早期      | ✅底部区(近52周低点,理想入场)    |
-| TX       | Ternium SA ADR                                            | Basic Materials        |     8.33 |                   2 |       0.175 |         0.189 | 早期      | 中段                   |
-| Z        | Zillow Group Inc                                          | Communication Services |     7.54 |                   2 |       0.733 |         0.775 | 早期      | ✅底部区(近52周低点,理想入场)    |
-| VSH      | Vishay Intertechnology Inc                                | Technology             |     7.08 |                   2 |       0.21  |         0.249 | 早期      | 中段                   |
-| ORA      | Ormat Technologies Inc                                    | Utilities              |     6.96 |                   3 |       0.298 |         0.317 | 早期      | 中段                   |
-| ST       | Sensata Technologies Holding Plc                          | Technology             |     6.71 |                   2 |       0.306 |         0.306 | 早期      | 中段                   |
-| CVLT     | Commvault Systems Inc                                     | Technology             |     6.22 |                   2 |       0.814 |         0.82  | 早期      | 中段                   |
-| ENVA     | Enova International Inc                                   | Financial              |     5.84 |                   2 |       0.497 |         0.501 | 早期      | ⚠️退出区(周期股近高点=均值回归风险) |
-| NXST     | Nexstar Media Group Inc                                   | Communication Services |     5.58 |                   2 |       0.562 |         0.579 | 早期      | ✅底部区(近52周低点,理想入场)    |
-| WFG      | West Fraser Timber Co Ltd                                 | Basic Materials        |     5.3  |                   2 |       0.259 |         0.319 | 早期      | ✅底部区(近52周低点,理想入场)    |
-| GHC      | Graham Holdings Co                                        | Industrials            |     5.1  |                   2 |       0.306 |         0.306 | 早期      | ⚠️退出区(周期股近高点=均值回归风险) |
+| ticker   | name                                                      | sector                 |   mcap_b |   gm_consec_improve |   gm_latest |   gm_hist_avg | stage   | price_pos                                 |
+|:---------|:----------------------------------------------------------|:-----------------------|---------:|--------------------:|------------:|--------------:|:--------|:------------------------------------------|
+| TSLA     | Tesla Inc                                                 | Consumer Cyclical      |  1576.54 |                   4 |       0.211 |         0.199 | 中段·已启动  | 中段                                        |
+| DE       | Deere & Co                                                | Industrials            |   171.48 |                   2 |       0.369 |         0.357 | 中段·已启动  | 近高但PE26未压缩(市场认为盈利续增→查是否结构性突破,勿卖飞MU式超级周期)  |
+| NVO      | Novo Nordisk ADR                                          | Healthcare             |   165.41 |                   2 |       0.86  |         0.835 | 中段·已启动  | 中段                                        |
+| MCK      | Mckesson Corp                                             | Healthcare             |    91.82 |                   3 |       0.042 |         0.04  | 中段·已启动  | ✅底部区(近52周低点,理想入场)                         |
+| AON      | Aon Plc                                                   | Financial              |    76.23 |                   3 |       0.525 |         0.479 | 中段·已启动  | 近高但PE17未压缩(市场认为盈利续增→查是否结构性突破,勿卖飞MU式超级周期)  |
+| AMT      | American Tower Corp                                       | Real Estate            |    75.53 |                   3 |       0.743 |         0.741 | 中段·已启动  | ✅底部区(近52周低点,理想入场)                         |
+| HON      | Honeywell International Inc                               | Industrials            |    73.24 |                   2 |       0.387 |         0.375 | 中段·已启动  | 近高但PE23未压缩(市场认为盈利续增→查是否结构性突破,勿卖飞MU式超级周期)  |
+| ECHO     | EchoStar Corp                                             | Communication Services |    28.49 |                   2 |       0.309 |         0.289 | 中段·已启动  | 中段                                        |
+| DXCM     | Dexcom Inc                                                | Healthcare             |    27.93 |                   4 |       0.629 |         0.621 | 中段·已启动  | 中段                                        |
+| TSEM     | Tower Semiconductor Ltd                                   | Technology             |    24.47 |                   4 |       0.268 |         0.249 | 中段·已启动  | 中段                                        |
+| EXE      | Expand Energy Corp                                        | Energy                 |    21.27 |                   4 |       0.639 |         0.535 | 中段·已启动  | ✅底部区(近52周低点,理想入场)                         |
+| ROKU     | Roku Inc                                                  | Communication Services |    21.1  |                   2 |       0.452 |         0.444 | 中段·已启动  | 近高但PE38未压缩(市场认为盈利续增→查是否结构性突破,勿卖飞MU式超级周期)  |
+| SITM     | SiTime Corp                                               | Technology             |    16.25 |                   4 |       0.59  |         0.567 | 中段·已启动  | 中段                                        |
+| SSNC     | SS&C Technologies Holdings Inc                            | Technology             |    15.73 |                   2 |       0.487 |         0.482 | 中段·已启动  | ✅底部区(近52周低点,理想入场)                         |
+| COO      | Cooper Companies Inc                                      | Healthcare             |    14.16 |                   2 |       0.68  |         0.656 | 中段·已启动  | ✅底部区(近52周低点,理想入场)                         |
+| ALGN     | Align Technology Inc                                      | Healthcare             |    13.49 |                   2 |       0.708 |         0.694 | 中段·已启动  | 中段                                        |
+| HRL      | Hormel Foods Corp                                         | Consumer Defensive     |    13.36 |                   2 |       0.174 |         0.166 | 中段·已启动  | ✅底部区(近52周低点,理想入场)                         |
+| APA      | APA Corp                                                  | Energy                 |    11.47 |                   4 |       0.535 |         0.481 | 中段·已启动  | 中段                                        |
+| PSKY     | Paramount Skydance Corp                                   | Communication Services |    11.29 |                   3 |       0.339 |         0.316 | 中段·已启动  | ✅底部区(近52周低点,理想入场)                         |
+| SQM      | Sociedad Quimica Y Minera de Chile SA ADR                 | Basic Materials        |    10.5  |                   3 |       0.442 |         0.384 | 中段·已启动  | 中段                                        |
+| ENSG     | Ensign Group Inc                                          | Healthcare             |     9.75 |                   2 |       0.164 |         0.161 | 中段·已启动  | ✅底部区(近52周低点,理想入场)                         |
+| RHP      | Ryman Hospitality Properties Inc                          | Real Estate            |     8.08 |                   2 |       0.339 |         0.324 | 中段·已启动  | 近高但PE25未压缩(市场认为盈利续增→查是否结构性突破,勿卖飞MU式超级周期)  |
+| LNTH     | Lantheus Holdings Inc                                     | Healthcare             |     6.69 |                   2 |       0.612 |         0.606 | 中段·已启动  | 近高但PE17未压缩(市场认为盈利续增→查是否结构性突破,勿卖飞MU式超级周期)  |
+| LUMN     | Lumen Technologies Inc                                    | Communication Services |     6.68 |                   2 |       0.505 |         0.503 | 中段·已启动  | 中段                                        |
+| DUOL     | Duolingo Inc                                              | Technology             |     6.04 |                   4 |       0.73  |         0.728 | 中段·已启动  | 中段                                        |
+| TXG      | 10x Genomics Inc                                          | Healthcare             |     5.08 |                   2 |       0.704 |         0.699 | 中段·已启动  | 近高但PE179未压缩(市场认为盈利续增→查是否结构性突破,勿卖飞MU式超级周期) |
+| MTN      | Vail Resorts Inc                                          | Consumer Cyclical      |     5.06 |                   2 |       0.57  |         0.436 | 偏晚·谨慎   | ✅底部区(近52周低点,理想入场)                         |
+| SBS      | Companhia de Saneamento Basico do Estado de Sao Paulo ADR | Utilities              |   101.87 |                   2 |       0.393 |         0.408 | 早期      | 中段                                        |
+| EQNR     | Equinor ASA ADR                                           | Energy                 |    81.27 |                   2 |       0.443 |         0.456 | 早期      | 中段                                        |
+| VLO      | Valero Energy Corp                                        | Energy                 |    80.27 |                   4 |       0.063 |         0.066 | 早期      | 近高但PE13未压缩(市场认为盈利续增→查是否结构性突破,勿卖飞MU式超级周期)  |
+| MPWR     | Monolithic Power System Inc                               | Technology             |    66.14 |                   3 |       0.553 |         0.563 | 早期      | 中段                                        |
+| MCHP     | Microchip Technology Inc                                  | Technology             |    47.48 |                   4 |       0.61  |         0.617 | 早期      | 中段                                        |
+| HSY      | Hershey Company                                           | Consumer Defensive     |    36.01 |                   3 |       0.394 |         0.422 | 早期      | ✅底部区(近52周低点,理想入场)                         |
+| MTSI     | MACOM Technology Solutions Holdings Inc                   | Technology             |    25    |                   2 |       0.569 |         0.571 | 早期      | 中段                                        |
+| LPLA     | LPL Financial Holdings Inc                                | Financial              |    24.37 |                   2 |       0.248 |         0.272 | 早期      | ✅底部区(近52周低点,理想入场)                         |
+| TSN      | Tyson Foods Inc                                           | Consumer Defensive     |    20.28 |                   2 |       0.07  |         0.077 | 早期      | ✅底部区(近52周低点,理想入场)                         |
+| ESS      | Essex Property Trust Inc                                  | Real Estate            |    19.8  |                   2 |       0.681 |         0.681 | 早期      | 近高但PE49未压缩(市场认为盈利续增→查是否结构性突破,勿卖飞MU式超级周期)  |
+| SBAC     | SBA Communications Corp                                   | Real Estate            |    19.15 |                   2 |       0.756 |         0.764 | 早期      | ✅底部区(近52周低点,理想入场)                         |
+| GEN      | Gen Digital Inc                                           | Technology             |    16.02 |                   2 |       0.785 |         0.804 | 早期      | 中段                                        |
+| BEKE     | KE Holdings Inc ADR                                       | Real Estate            |    15.99 |                   2 |       0.241 |         0.241 | 早期      | ✅底部区(近52周低点,理想入场)                         |
+| JHX      | James Hardie Industries plc                               | Basic Materials        |    14.87 |                   2 |       0.373 |         0.374 | 早期      | 中段                                        |
+| MGM      | MGM Resorts International                                 | Consumer Cyclical      |    11.99 |                   2 |       0.447 |         0.466 | 早期      | 近高但PE20未压缩(市场认为盈利续增→查是否结构性突破,勿卖飞MU式超级周期)  |
+| ALGM     | Allegro Microsystems Inc                                  | Technology             |    10.54 |                   4 |       0.47  |         0.504 | 早期      | 中段                                        |
+| VIAV     | Viavi Solutions Inc                                       | Technology             |    10.46 |                   3 |       0.575 |         0.581 | 早期      | 中段                                        |
+| MP       | MP Materials Corp                                         | Basic Materials        |     9.44 |                   2 |      -0.174 |         0.155 | 早期      | 中段                                        |
+| BRKR     | Bruker Corp                                               | Healthcare             |     9.34 |                   2 |       0.461 |         0.494 | 早期      | 近高但PE23未压缩(市场认为盈利续增→查是否结构性突破,勿卖飞MU式超级周期)  |
+| FRHC     | Freedom Holding Corp                                      | Financial              |     9.21 |                   4 |       0.627 |         0.628 | 早期      | 中段                                        |
+| AVAV     | AeroVironment Inc                                         | Industrials            |     8.95 |                   3 |       0.316 |         0.34  | 早期      | ✅底部区(近52周低点,理想入场)                         |
+| TX       | Ternium SA ADR                                            | Basic Materials        |     8.33 |                   2 |       0.175 |         0.189 | 早期      | 中段                                        |
+| Z        | Zillow Group Inc                                          | Communication Services |     7.54 |                   2 |       0.733 |         0.775 | 早期      | ✅底部区(近52周低点,理想入场)                         |
+| VSH      | Vishay Intertechnology Inc                                | Technology             |     7.08 |                   2 |       0.21  |         0.249 | 早期      | 中段                                        |
+| ORA      | Ormat Technologies Inc                                    | Utilities              |     6.96 |                   3 |       0.298 |         0.317 | 早期      | 中段                                        |
+| ST       | Sensata Technologies Holding Plc                          | Technology             |     6.71 |                   2 |       0.306 |         0.306 | 早期      | 中段                                        |
+| CVLT     | Commvault Systems Inc                                     | Technology             |     6.22 |                   2 |       0.814 |         0.82  | 早期      | 中段                                        |
+| ENVA     | Enova International Inc                                   | Financial              |     5.84 |                   2 |       0.497 |         0.501 | 早期      | 近高但PE12未压缩(市场认为盈利续增→查是否结构性突破,勿卖飞MU式超级周期)  |
+| NXST     | Nexstar Media Group Inc                                   | Communication Services |     5.58 |                   2 |       0.562 |         0.579 | 早期      | ✅底部区(近52周低点,理想入场)                         |
+| WFG      | West Fraser Timber Co Ltd                                 | Basic Materials        |     5.3  |                   2 |       0.259 |         0.319 | 早期      | ✅底部区(近52周低点,理想入场)                         |
+| GHC      | Graham Holdings Co                                        | Industrials            |     5.1  |                   2 |       0.306 |         0.306 | 早期      | 近高但PE17未压缩(市场认为盈利续增→查是否结构性突破,勿卖飞MU式超级周期)  |
 
 
 ## S2a 首次GAAP盈利（34 家）
@@ -127,7 +127,7 @@
 | TLN      | Talen Energy Corp                  | Utilities              |    17.15 |            1.398 | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 中段                      |
 | BE       | Bloom Energy Corp                  | Industrials            |    83.93 |            1.338 | D_待验证(最可能内生) |                         | 中段                      |
 | NIO      | NIO Inc ADR                        | Consumer Cyclical      |    11.68 |            1.122 | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 中段                      |
-| SIMO     | Silicon Motion Technology Corp ADR | Technology             |    10.7  |            1.055 | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| SIMO     | Silicon Motion Technology Corp ADR | Technology             |    10.7  |            1.055 | D_待验证(最可能内生) |                         | 中段                      |
 | LGN      | Legence Corp                       | Industrials            |     8.4  |            1.051 | D_待验证(最可能内生) |                         | 中段                      |
 | FPS      | Forgent Power Solutions Inc        | Industrials            |    14.95 |            1.034 | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 中段                      |
 | SANM     | Sanmina Corp                       | Technology             |    11.66 |            1.023 | D_待验证(最可能内生) |                         | 中段                      |
