@@ -322,7 +322,7 @@ SECTOR_KPI = {
 
 PRICES_CSV = BASE / "prices.csv"
 PRICE_FIELDS = ["ticker", "px", "wk52_high", "wk52_low", "pos_high_pct", "pos_low_pct",
-                "trailing_pe", "forward_pe", "asof"]
+                "trailing_pe", "forward_pe", "ps", "debt_to_equity", "mrq_days", "asof"]
 
 
 def _signal_hit_tickers():
@@ -352,8 +352,8 @@ def fetch_prices(tickers=None):
     cached = {}
     if PRICES_CSV.exists():
         cached = {r["ticker"]: r.to_dict() for _, r in pd.read_csv(PRICES_CSV).iterrows()}
-    # 未缓存,或缓存行缺PE字段(旧版数据) → 需(重)拉
-    todo = [t for t in targets if t not in cached or not str(cached[t].get("forward_pe", "")).strip()]
+    # 未缓存,或缓存行缺新schema字段(旧版CSV无此列→键不存在) → 需(重)拉
+    todo = [t for t in targets if t not in cached or "ps" not in cached[t]]
     print(f"信号命中={len(targets)}  已缓存={len(cached)}  待拉价={len(todo)}")
     for i, tk in enumerate(todo, 1):
         row = {k: "" for k in PRICE_FIELDS}
@@ -369,6 +369,11 @@ def fetch_prices(tickers=None):
                 row["pos_low_pct"] = round((px / lo - 1) * 100, 1)    # 距低点(正数,越小越接近底部)
             row["trailing_pe"] = info.get("trailingPE")
             row["forward_pe"] = info.get("forwardPE")
+            row["ps"] = info.get("priceToSalesTrailing12Months")       # L17估值band
+            row["debt_to_equity"] = info.get("debtToEquity")            # L18杠杆地板(yf口径:150=1.5x)
+            mrq = info.get("mostRecentQuarter")                         # L21新鲜度
+            if mrq:
+                row["mrq_days"] = int((time.time() - mrq) / 86400)
         except Exception as e:
             row["px"] = f"err:{type(e).__name__}"
         row["asof"] = time.strftime("%Y-%m-%d")
@@ -414,6 +419,24 @@ def _price_label(hi_pct, lo_pct, kind="cyclical", fpe=None):
     if near_low:
         return "✅底部区(近52周低点,理想入场)"
     return "中段"
+
+
+def _risk_flags(ps, de, mrq_days):
+    """L17估值band + L18杠杆地板 + L21新鲜度闸门,合成一个风险提示串"""
+    out = []
+    ps = pd.to_numeric(ps, errors="coerce")
+    de = pd.to_numeric(de, errors="coerce")
+    d = pd.to_numeric(mrq_days, errors="coerce")
+    if not pd.isna(ps):
+        if ps > 25:
+            out.append(f"⚠️估值透支(PS{ps:.0f})")
+        elif ps > 15:
+            out.append(f"估值偏高(PS{ps:.0f})")
+    if not pd.isna(de) and de > 200:   # yf口径 200=2.0x
+        out.append(f"⚠️高杠杆(D/E{de/100:.1f}x)")
+    if not pd.isna(d) and d > 100:
+        out.append(f"⚠️数据陈旧({int(d)}天)")
+    return " ".join(out)
 
 
 def _lumpy_flag(ni_series):
@@ -466,6 +489,12 @@ def report():
     s1["stage"] = s1.apply(stage, axis=1)
     s1 = s1.sort_values(["stage", "mcap_b"], ascending=[True, False])
 
+    # L12: 超级周期分支——毛利率连续改善 且 TTM已突破历史均值(被S1排除) 且 营收强加速
+    # = 天花板被需求范式抬高的结构性突破(MU的AI存储),原S1对这类失明,单列不漏
+    s1_super = df[(df["gm_consec_improve"] >= 2) & (df["gm_ttm"] >= df["gm_hist_avg"])
+                  & (pd.to_numeric(df["rev_yoy_latest"], errors="coerce") >= 0.4)].copy()
+    s1_super = s1_super.sort_values("mcap_b", ascending=False)
+
     s2a = df[df["first_profit"] == 1].sort_values("mcap_b", ascending=False)
 
     # 优先用 EDGAR 完整历史（edgar 命令生成）覆盖 yfinance 的 5 季局限
@@ -493,14 +522,23 @@ def report():
                     for h, l, sec, pe in zip(m["pos_high_pct"], m["pos_low_pct"], m["sector"], m["forward_pe"])]
 
         s1["price_pos"] = label_df(s1, lambda s: "cyclical")           # S1恒周期
+        s1_super["price_pos"] = label_df(s1_super, lambda s: "growth") # 超级周期=结构突破,近高=动能非退出
         s2a["price_pos"] = label_df(s2a, lambda s: "growth")           # S2a恒成长
         s2b["price_pos"] = label_df(s2b, lambda s: "cyclical" if s in CYCLICAL_SEC else "growth")
+
+        # L17/L18/L21风险闸门: 估值band+杠杆+新鲜度(对估值敏感的S1超/S2b最有用)
+        prc = pr.set_index("ticker")
+        for d in (s1, s1_super, s2a, s2b):
+            d["risk"] = d["ticker"].map(
+                lambda t: _risk_flags(prc["ps"].get(t), prc["debt_to_equity"].get(t),
+                                      prc["mrq_days"].get(t)) if t in prc.index else "")
     else:
-        for d in (s1, s2a, s2b):
+        for d in (s1, s1_super, s2a, s2b):
             d["price_pos"] = "?(先跑 scan.py prices)"
+            d["risk"] = ""
 
     # L5自动化: 跳变检测 → 生物药里程碑/并购注水嫌疑
-    for d in (s1, s2a, s2b):
+    for d in (s1, s1_super, s2a, s2b):
         d["flag"] = d["ni_series"].apply(_lumpy_flag)
     # L3自动化: 金融/材料/能源桶(营收概念不适用或商品驱动) 自动降级提示
     NONCLEAN = {"Financial", "Basic Materials", "Energy", "Real Estate"}
@@ -516,14 +554,18 @@ def report():
             lines.append(d[cols].to_markdown(index=False))
             lines.append("")
 
-    section("S1 周期反转初筛：毛利率连续≥2季环比改善 且 TTM低于4年均值（按周期阶段+价格位置分层）", s1,
+    section("S1 周期反转初筛：毛利率连续≥2季改善 且 TTM<4年均值（早期均值回归）", s1,
             ["ticker", "name", "sector", "mcap_b", "gm_consec_improve",
-             "gm_latest", "gm_hist_avg", "stage", "price_pos"])
+             "gm_latest", "gm_hist_avg", "stage", "price_pos", "risk"])
+    section("S1超 疑超级周期/结构突破（L12：毛利率改善+TTM已破均值+营收强加速，原S1对这类失明）",
+            s1_super,
+            ["ticker", "name", "sector", "mcap_b", "gm_ttm", "gm_hist_avg",
+             "rev_yoy_latest", "price_pos", "risk", "flag"])
     section("S2a 首次GAAP盈利", s2a,
-            ["ticker", "name", "sector", "mcap_b", "ni_series", "flag", "price_pos"])
+            ["ticker", "name", "sector", "mcap_b", "ni_series", "flag", "price_pos", "risk"])
     section("S2b 营收≥25%且同比增速在加速（D桶=最可能内生，优先深挖）",
             s2b.sort_values(["bucket", "rev_yoy_latest"], ascending=[True, False]).head(50),
-            ["ticker", "name", "sector", "mcap_b", "rev_yoy_latest", "bucket", "flag", "price_pos"])
+            ["ticker", "name", "sector", "mcap_b", "rev_yoy_latest", "bucket", "flag", "price_pos", "risk"])
 
     # L10自动化: 相关性聚类——同sector命中数,提示"看似分散实为一笔下注"
     lines.append("\n## 相关性聚类警告（L10：同板块命中越多=越是同一笔宏观下注，需设组敞口上限）\n")
