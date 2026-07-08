@@ -1,166 +1,166 @@
 # 全域扫描信号报告
 
-生成时间: 2026-07-08 09:32  |  已扫描: 1374 家（≥$5B）
+生成时间: 2026-07-08 09:44  |  已扫描: 1374 家（≥$5B）
 
 
-## S1 周期反转初筛：毛利率连续≥2季环比改善 且 TTM低于4年均值（按周期阶段分层）（58 家）
+## S1 周期反转初筛：毛利率连续≥2季环比改善 且 TTM低于4年均值（按周期阶段+价格位置分层）（58 家）
 
-| ticker   | name                                                      | sector                 |   mcap_b |   gm_consec_improve |   gm_latest |   gm_ttm |   gm_hist_avg | stage   |
-|:---------|:----------------------------------------------------------|:-----------------------|---------:|--------------------:|------------:|---------:|--------------:|:--------|
-| TSLA     | Tesla Inc                                                 | Consumer Cyclical      |  1576.54 |                   4 |       0.211 |    0.191 |         0.199 | 中段·已启动  |
-| DE       | Deere & Co                                                | Industrials            |   171.48 |                   2 |       0.369 |    0.346 |         0.357 | 中段·已启动  |
-| NVO      | Novo Nordisk ADR                                          | Healthcare             |   165.41 |                   2 |       0.86  |    0.818 |         0.835 | 中段·已启动  |
-| MCK      | Mckesson Corp                                             | Healthcare             |    91.82 |                   3 |       0.042 |    0.036 |         0.04  | 中段·已启动  |
-| AON      | Aon Plc                                                   | Financial              |    76.23 |                   3 |       0.525 |    0.478 |         0.479 | 中段·已启动  |
-| AMT      | American Tower Corp                                       | Real Estate            |    75.53 |                   3 |       0.743 |    0.74  |         0.741 | 中段·已启动  |
-| HON      | Honeywell International Inc                               | Industrials            |    73.24 |                   2 |       0.387 |    0.369 |         0.375 | 中段·已启动  |
-| ECHO     | EchoStar Corp                                             | Communication Services |    28.49 |                   2 |       0.309 |    0.271 |         0.289 | 中段·已启动  |
-| DXCM     | Dexcom Inc                                                | Healthcare             |    27.93 |                   4 |       0.629 |    0.615 |         0.621 | 中段·已启动  |
-| TSEM     | Tower Semiconductor Ltd                                   | Technology             |    24.47 |                   4 |       0.268 |    0.248 |         0.249 | 中段·已启动  |
-| EXE      | Expand Energy Corp                                        | Energy                 |    21.27 |                   4 |       0.639 |    0.517 |         0.535 | 中段·已启动  |
-| ROKU     | Roku Inc                                                  | Communication Services |    21.1  |                   2 |       0.452 |    0.442 |         0.444 | 中段·已启动  |
-| SITM     | SiTime Corp                                               | Technology             |    16.25 |                   4 |       0.59  |    0.557 |         0.567 | 中段·已启动  |
-| SSNC     | SS&C Technologies Holdings Inc                            | Technology             |    15.73 |                   2 |       0.487 |    0.48  |         0.482 | 中段·已启动  |
-| COO      | Cooper Companies Inc                                      | Healthcare             |    14.16 |                   2 |       0.68  |    0.655 |         0.656 | 中段·已启动  |
-| ALGN     | Align Technology Inc                                      | Healthcare             |    13.49 |                   2 |       0.708 |    0.676 |         0.694 | 中段·已启动  |
-| HRL      | Hormel Foods Corp                                         | Consumer Defensive     |    13.36 |                   2 |       0.174 |    0.157 |         0.166 | 中段·已启动  |
-| APA      | APA Corp                                                  | Energy                 |    11.47 |                   4 |       0.535 |    0.448 |         0.481 | 中段·已启动  |
-| PSKY     | Paramount Skydance Corp                                   | Communication Services |    11.29 |                   3 |       0.339 |    0.315 |         0.316 | 中段·已启动  |
-| SQM      | Sociedad Quimica Y Minera de Chile SA ADR                 | Basic Materials        |    10.5  |                   3 |       0.442 |    0.345 |         0.384 | 中段·已启动  |
-| ENSG     | Ensign Group Inc                                          | Healthcare             |     9.75 |                   2 |       0.164 |    0.159 |         0.161 | 中段·已启动  |
-| RHP      | Ryman Hospitality Properties Inc                          | Real Estate            |     8.08 |                   2 |       0.339 |    0.319 |         0.324 | 中段·已启动  |
-| LNTH     | Lantheus Holdings Inc                                     | Healthcare             |     6.69 |                   2 |       0.612 |    0.605 |         0.606 | 中段·已启动  |
-| LUMN     | Lumen Technologies Inc                                    | Communication Services |     6.68 |                   2 |       0.505 |    0.473 |         0.503 | 中段·已启动  |
-| DUOL     | Duolingo Inc                                              | Technology             |     6.04 |                   4 |       0.73  |    0.727 |         0.728 | 中段·已启动  |
-| TXG      | 10x Genomics Inc                                          | Healthcare             |     5.08 |                   2 |       0.704 |    0.696 |         0.699 | 中段·已启动  |
-| MTN      | Vail Resorts Inc                                          | Consumer Cyclical      |     5.06 |                   2 |       0.57  |    0.416 |         0.436 | 偏晚·谨慎   |
-| SBS      | Companhia de Saneamento Basico do Estado de Sao Paulo ADR | Utilities              |   101.87 |                   2 |       0.393 |    0.366 |         0.408 | 早期      |
-| EQNR     | Equinor ASA ADR                                           | Energy                 |    81.27 |                   2 |       0.443 |    0.375 |         0.456 | 早期      |
-| VLO      | Valero Energy Corp                                        | Energy                 |    80.27 |                   4 |       0.063 |    0.055 |         0.066 | 早期      |
-| MPWR     | Monolithic Power System Inc                               | Technology             |    66.14 |                   3 |       0.553 |    0.552 |         0.563 | 早期      |
-| MCHP     | Microchip Technology Inc                                  | Technology             |    47.48 |                   4 |       0.61  |    0.577 |         0.617 | 早期      |
-| HSY      | Hershey Company                                           | Consumer Defensive     |    36.01 |                   3 |       0.394 |    0.35  |         0.422 | 早期      |
-| MTSI     | MACOM Technology Solutions Holdings Inc                   | Technology             |    25    |                   2 |       0.569 |    0.557 |         0.571 | 早期      |
-| LPLA     | LPL Financial Holdings Inc                                | Financial              |    24.37 |                   2 |       0.248 |    0.234 |         0.272 | 早期      |
-| TSN      | Tyson Foods Inc                                           | Consumer Defensive     |    20.28 |                   2 |       0.07  |    0.065 |         0.077 | 早期      |
-| ESS      | Essex Property Trust Inc                                  | Real Estate            |    19.8  |                   2 |       0.681 |    0.679 |         0.681 | 早期      |
-| SBAC     | SBA Communications Corp                                   | Real Estate            |    19.15 |                   2 |       0.756 |    0.752 |         0.764 | 早期      |
-| GEN      | Gen Digital Inc                                           | Technology             |    16.02 |                   2 |       0.785 |    0.785 |         0.804 | 早期      |
-| BEKE     | KE Holdings Inc ADR                                       | Real Estate            |    15.99 |                   2 |       0.241 |    0.221 |         0.241 | 早期      |
-| JHX      | James Hardie Industries plc                               | Basic Materials        |    14.87 |                   2 |       0.373 |    0.358 |         0.374 | 早期      |
-| MGM      | MGM Resorts International                                 | Consumer Cyclical      |    11.99 |                   2 |       0.447 |    0.442 |         0.466 | 早期      |
-| ALGM     | Allegro Microsystems Inc                                  | Technology             |    10.54 |                   4 |       0.47  |    0.463 |         0.504 | 早期      |
-| VIAV     | Viavi Solutions Inc                                       | Technology             |    10.46 |                   3 |       0.575 |    0.569 |         0.581 | 早期      |
-| MP       | MP Materials Corp                                         | Basic Materials        |     9.44 |                   2 |      -0.174 |   -0.251 |         0.155 | 早期      |
-| BRKR     | Bruker Corp                                               | Healthcare             |     9.34 |                   2 |       0.461 |    0.453 |         0.494 | 早期      |
-| FRHC     | Freedom Holding Corp                                      | Financial              |     9.21 |                   4 |       0.627 |    0.553 |         0.628 | 早期      |
-| AVAV     | AeroVironment Inc                                         | Industrials            |     8.95 |                   3 |       0.316 |    0.253 |         0.34  | 早期      |
-| TX       | Ternium SA ADR                                            | Basic Materials        |     8.33 |                   2 |       0.175 |    0.161 |         0.189 | 早期      |
-| Z        | Zillow Group Inc                                          | Communication Services |     7.54 |                   2 |       0.733 |    0.733 |         0.775 | 早期      |
-| VSH      | Vishay Intertechnology Inc                                | Technology             |     7.08 |                   2 |       0.21  |    0.199 |         0.249 | 早期      |
-| ORA      | Ormat Technologies Inc                                    | Utilities              |     6.96 |                   3 |       0.298 |    0.275 |         0.317 | 早期      |
-| ST       | Sensata Technologies Holding Plc                          | Technology             |     6.71 |                   2 |       0.306 |    0.295 |         0.306 | 早期      |
-| CVLT     | Commvault Systems Inc                                     | Technology             |     6.22 |                   2 |       0.814 |    0.812 |         0.82  | 早期      |
-| ENVA     | Enova International Inc                                   | Financial              |     5.84 |                   2 |       0.497 |    0.482 |         0.501 | 早期      |
-| NXST     | Nexstar Media Group Inc                                   | Communication Services |     5.58 |                   2 |       0.562 |    0.551 |         0.579 | 早期      |
-| WFG      | West Fraser Timber Co Ltd                                 | Basic Materials        |     5.3  |                   2 |       0.259 |    0.215 |         0.319 | 早期      |
-| GHC      | Graham Holdings Co                                        | Industrials            |     5.1  |                   2 |       0.306 |    0.302 |         0.306 | 早期      |
+| ticker   | name                                                      | sector                 |   mcap_b |   gm_consec_improve |   gm_latest |   gm_hist_avg | stage   | price_pos            |
+|:---------|:----------------------------------------------------------|:-----------------------|---------:|--------------------:|------------:|--------------:|:--------|:---------------------|
+| TSLA     | Tesla Inc                                                 | Consumer Cyclical      |  1576.54 |                   4 |       0.211 |         0.199 | 中段·已启动  | 中段                   |
+| DE       | Deere & Co                                                | Industrials            |   171.48 |                   2 |       0.369 |         0.357 | 中段·已启动  | ⚠️退出区(周期股近高点=均值回归风险) |
+| NVO      | Novo Nordisk ADR                                          | Healthcare             |   165.41 |                   2 |       0.86  |         0.835 | 中段·已启动  | 中段                   |
+| MCK      | Mckesson Corp                                             | Healthcare             |    91.82 |                   3 |       0.042 |         0.04  | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
+| AON      | Aon Plc                                                   | Financial              |    76.23 |                   3 |       0.525 |         0.479 | 中段·已启动  | ⚠️退出区(周期股近高点=均值回归风险) |
+| AMT      | American Tower Corp                                       | Real Estate            |    75.53 |                   3 |       0.743 |         0.741 | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
+| HON      | Honeywell International Inc                               | Industrials            |    73.24 |                   2 |       0.387 |         0.375 | 中段·已启动  | ⚠️退出区(周期股近高点=均值回归风险) |
+| ECHO     | EchoStar Corp                                             | Communication Services |    28.49 |                   2 |       0.309 |         0.289 | 中段·已启动  | 中段                   |
+| DXCM     | Dexcom Inc                                                | Healthcare             |    27.93 |                   4 |       0.629 |         0.621 | 中段·已启动  | 中段                   |
+| TSEM     | Tower Semiconductor Ltd                                   | Technology             |    24.47 |                   4 |       0.268 |         0.249 | 中段·已启动  | 中段                   |
+| EXE      | Expand Energy Corp                                        | Energy                 |    21.27 |                   4 |       0.639 |         0.535 | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
+| ROKU     | Roku Inc                                                  | Communication Services |    21.1  |                   2 |       0.452 |         0.444 | 中段·已启动  | ⚠️退出区(周期股近高点=均值回归风险) |
+| SITM     | SiTime Corp                                               | Technology             |    16.25 |                   4 |       0.59  |         0.567 | 中段·已启动  | 中段                   |
+| SSNC     | SS&C Technologies Holdings Inc                            | Technology             |    15.73 |                   2 |       0.487 |         0.482 | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
+| COO      | Cooper Companies Inc                                      | Healthcare             |    14.16 |                   2 |       0.68  |         0.656 | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
+| ALGN     | Align Technology Inc                                      | Healthcare             |    13.49 |                   2 |       0.708 |         0.694 | 中段·已启动  | 中段                   |
+| HRL      | Hormel Foods Corp                                         | Consumer Defensive     |    13.36 |                   2 |       0.174 |         0.166 | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
+| APA      | APA Corp                                                  | Energy                 |    11.47 |                   4 |       0.535 |         0.481 | 中段·已启动  | 中段                   |
+| PSKY     | Paramount Skydance Corp                                   | Communication Services |    11.29 |                   3 |       0.339 |         0.316 | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
+| SQM      | Sociedad Quimica Y Minera de Chile SA ADR                 | Basic Materials        |    10.5  |                   3 |       0.442 |         0.384 | 中段·已启动  | 中段                   |
+| ENSG     | Ensign Group Inc                                          | Healthcare             |     9.75 |                   2 |       0.164 |         0.161 | 中段·已启动  | ✅底部区(近52周低点,理想入场)    |
+| RHP      | Ryman Hospitality Properties Inc                          | Real Estate            |     8.08 |                   2 |       0.339 |         0.324 | 中段·已启动  | ⚠️退出区(周期股近高点=均值回归风险) |
+| LNTH     | Lantheus Holdings Inc                                     | Healthcare             |     6.69 |                   2 |       0.612 |         0.606 | 中段·已启动  | ⚠️退出区(周期股近高点=均值回归风险) |
+| LUMN     | Lumen Technologies Inc                                    | Communication Services |     6.68 |                   2 |       0.505 |         0.503 | 中段·已启动  | 中段                   |
+| DUOL     | Duolingo Inc                                              | Technology             |     6.04 |                   4 |       0.73  |         0.728 | 中段·已启动  | 中段                   |
+| TXG      | 10x Genomics Inc                                          | Healthcare             |     5.08 |                   2 |       0.704 |         0.699 | 中段·已启动  | ⚠️退出区(周期股近高点=均值回归风险) |
+| MTN      | Vail Resorts Inc                                          | Consumer Cyclical      |     5.06 |                   2 |       0.57  |         0.436 | 偏晚·谨慎   | ✅底部区(近52周低点,理想入场)    |
+| SBS      | Companhia de Saneamento Basico do Estado de Sao Paulo ADR | Utilities              |   101.87 |                   2 |       0.393 |         0.408 | 早期      | 中段                   |
+| EQNR     | Equinor ASA ADR                                           | Energy                 |    81.27 |                   2 |       0.443 |         0.456 | 早期      | 中段                   |
+| VLO      | Valero Energy Corp                                        | Energy                 |    80.27 |                   4 |       0.063 |         0.066 | 早期      | ⚠️退出区(周期股近高点=均值回归风险) |
+| MPWR     | Monolithic Power System Inc                               | Technology             |    66.14 |                   3 |       0.553 |         0.563 | 早期      | 中段                   |
+| MCHP     | Microchip Technology Inc                                  | Technology             |    47.48 |                   4 |       0.61  |         0.617 | 早期      | 中段                   |
+| HSY      | Hershey Company                                           | Consumer Defensive     |    36.01 |                   3 |       0.394 |         0.422 | 早期      | ✅底部区(近52周低点,理想入场)    |
+| MTSI     | MACOM Technology Solutions Holdings Inc                   | Technology             |    25    |                   2 |       0.569 |         0.571 | 早期      | 中段                   |
+| LPLA     | LPL Financial Holdings Inc                                | Financial              |    24.37 |                   2 |       0.248 |         0.272 | 早期      | ✅底部区(近52周低点,理想入场)    |
+| TSN      | Tyson Foods Inc                                           | Consumer Defensive     |    20.28 |                   2 |       0.07  |         0.077 | 早期      | ✅底部区(近52周低点,理想入场)    |
+| ESS      | Essex Property Trust Inc                                  | Real Estate            |    19.8  |                   2 |       0.681 |         0.681 | 早期      | ⚠️退出区(周期股近高点=均值回归风险) |
+| SBAC     | SBA Communications Corp                                   | Real Estate            |    19.15 |                   2 |       0.756 |         0.764 | 早期      | ✅底部区(近52周低点,理想入场)    |
+| GEN      | Gen Digital Inc                                           | Technology             |    16.02 |                   2 |       0.785 |         0.804 | 早期      | 中段                   |
+| BEKE     | KE Holdings Inc ADR                                       | Real Estate            |    15.99 |                   2 |       0.241 |         0.241 | 早期      | ✅底部区(近52周低点,理想入场)    |
+| JHX      | James Hardie Industries plc                               | Basic Materials        |    14.87 |                   2 |       0.373 |         0.374 | 早期      | 中段                   |
+| MGM      | MGM Resorts International                                 | Consumer Cyclical      |    11.99 |                   2 |       0.447 |         0.466 | 早期      | ⚠️退出区(周期股近高点=均值回归风险) |
+| ALGM     | Allegro Microsystems Inc                                  | Technology             |    10.54 |                   4 |       0.47  |         0.504 | 早期      | 中段                   |
+| VIAV     | Viavi Solutions Inc                                       | Technology             |    10.46 |                   3 |       0.575 |         0.581 | 早期      | 中段                   |
+| MP       | MP Materials Corp                                         | Basic Materials        |     9.44 |                   2 |      -0.174 |         0.155 | 早期      | 中段                   |
+| BRKR     | Bruker Corp                                               | Healthcare             |     9.34 |                   2 |       0.461 |         0.494 | 早期      | ⚠️退出区(周期股近高点=均值回归风险) |
+| FRHC     | Freedom Holding Corp                                      | Financial              |     9.21 |                   4 |       0.627 |         0.628 | 早期      | 中段                   |
+| AVAV     | AeroVironment Inc                                         | Industrials            |     8.95 |                   3 |       0.316 |         0.34  | 早期      | ✅底部区(近52周低点,理想入场)    |
+| TX       | Ternium SA ADR                                            | Basic Materials        |     8.33 |                   2 |       0.175 |         0.189 | 早期      | 中段                   |
+| Z        | Zillow Group Inc                                          | Communication Services |     7.54 |                   2 |       0.733 |         0.775 | 早期      | ✅底部区(近52周低点,理想入场)    |
+| VSH      | Vishay Intertechnology Inc                                | Technology             |     7.08 |                   2 |       0.21  |         0.249 | 早期      | 中段                   |
+| ORA      | Ormat Technologies Inc                                    | Utilities              |     6.96 |                   3 |       0.298 |         0.317 | 早期      | 中段                   |
+| ST       | Sensata Technologies Holding Plc                          | Technology             |     6.71 |                   2 |       0.306 |         0.306 | 早期      | 中段                   |
+| CVLT     | Commvault Systems Inc                                     | Technology             |     6.22 |                   2 |       0.814 |         0.82  | 早期      | 中段                   |
+| ENVA     | Enova International Inc                                   | Financial              |     5.84 |                   2 |       0.497 |         0.501 | 早期      | ⚠️退出区(周期股近高点=均值回归风险) |
+| NXST     | Nexstar Media Group Inc                                   | Communication Services |     5.58 |                   2 |       0.562 |         0.579 | 早期      | ✅底部区(近52周低点,理想入场)    |
+| WFG      | West Fraser Timber Co Ltd                                 | Basic Materials        |     5.3  |                   2 |       0.259 |         0.319 | 早期      | ✅底部区(近52周低点,理想入场)    |
+| GHC      | Graham Holdings Co                                        | Industrials            |     5.1  |                   2 |       0.306 |         0.306 | 早期      | ⚠️退出区(周期股近高点=均值回归风险) |
 
 
 ## S2a 首次GAAP盈利（34 家）
 
-| ticker   | name                                | sector                 |   mcap_b | ni_series                   | flag                    |
-|:---------|:------------------------------------|:-----------------------|---------:|:----------------------------|:------------------------|
-| CRWD     | Crowdstrike Holdings Inc            | Technology             |   203.02 | 28|59|-34|-78|-104          |                         |
-| BE       | Bloom Energy Corp                   | Industrials            |    83.93 | 71|1|-23|-43|-24            |                         |
-| NBIS     | Nebius Group NV                     | Technology             |    53.61 | 621|-269|-120|584|-114      | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| RKT      | Rocket Companies Inc                | Financial              |    44    | 297|68|-124|-2|-10          |                         |
-| CNC      | Centene Corp                        | Healthcare             |    32.62 | 1541|-1101|-6631|-253|1311  |                         |
-| MDB      | MongoDB Inc                         | Technology             |    28.79 | 4|16|-2|-47|-38             |                         |
-| SYM      | Symbotic Inc                        | Industrials            |    26.8  | 2|3|-4|-6|-2                |                         |
-| ROIV     | Roivant Sciences Ltd                | Healthcare             |    25.45 | 303|-266|-114|-223|-206     |                         |
-| AXIA     | Axia Energia ADR                    | Utilities              |    23.83 | 2630|13686|-5450|-1324|-353 |                         |
-| IP       | International Paper Co              | Consumer Cyclical      |    20.43 | 60|-2384|-1102|75|-105      | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| VTRS     | Viatris Inc                         | Healthcare             |    19.72 | 176|-340|-128|-5|-3042      |                         |
-| DD       | DuPont de Nemours Inc               | Basic Materials        |    19.04 | 161|-126|-123|59|-589       | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| IONQ     | IonQ Inc                            | Technology             |    18.24 | 805|754|-1055|-177|-32      |                         |
-| H        | Hyatt Hotels Corp                   | Consumer Cyclical      |    18.22 | 38|-20|-49|-3|20            |                         |
-| YPF      | YPF ADR                             | Energy                 |    18.14 | 404|-654|-206|50|-16        | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| ASND     | Ascendis Pharma A/S                 | Healthcare             |    16.64 | 629|-34|-61|-39|-95         | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| SMTC     | Semtech Corp                        | Technology             |    12.94 | 27|-30|-3|-27|19            |                         |
-| SJM      | J.M. Smucker Co                     | Consumer Defensive     |    11.93 | 388|-724|241|-44|-729       | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| VSAT     | Viasat Inc                          | Technology             |    11.44 | 59|25|-61|-56|-246          |                         |
-| COMP     | Compass Inc                         | Real Estate            |     9.84 | 22|-43|-5|39|-51            | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| OSCR     | Oscar Health Inc                    | Healthcare             |     9.48 | 679|-353|-137|-228|275      |                         |
-| ARE      | Alexandria Real Estate Equities Inc | Real Estate            |     8.69 | 362|-1081|-233|-107|-9      |                         |
-| PTGX     | Protagonist Therapeutics Inc        | Healthcare             |     8.46 | 4|-44|-39|-35|-12           |                         |
-| LGN      | Legence Corp                        | Industrials            |     8.4  | 16|-33|-1|-5|-21            |                         |
-| CHYM     | Chime Financial Inc                 | Technology             |     8.17 | 53|-45|-55|-923|13          | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| FLR      | Fluor Corp                          | Industrials            |     7.19 | 160|-1573|-697|2460|-241    | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| LQDA     | Liquidia Corp                       | Healthcare             |     7.04 | 53|15|-4|-42|-38            |                         |
-| FLG      | Flagstar Bank NA                    | Financial              |     6.19 | 21|29|-36|-70|-100          |                         |
-| ESTC     | Elastic N.V                         | Technology             |     6.09 | 436|8|-51|-25|-16           | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| RGTI     | Rigetti Computing Inc               | Technology             |     5.97 | 33|-18|-201|-40|43          |                         |
-| PRM      | Perimeter Solutions Inc             | Basic Materials        |     5.53 | 73|-140|-91|-32|57          |                         |
-| RIG      | Transocean Ltd                      | Energy                 |     5.5  | 71|25|-1923|-938|-79        |                         |
-| STUB     | Stubhub Holdings Inc                | Communication Services |     5.14 | 48|-535|-1295|-54|-22       |                         |
-| KVYO     | Klaviyo Inc                         | Technology             |     5.09 | 9|7|-0|-24|-14              |                         |
+| ticker   | name                                | sector                 |   mcap_b | ni_series                   | flag                    | price_pos               |
+|:---------|:------------------------------------|:-----------------------|---------:|:----------------------------|:------------------------|:------------------------|
+| CRWD     | Crowdstrike Holdings Inc            | Technology             |   203.02 | 28|59|-34|-78|-104          |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| BE       | Bloom Energy Corp                   | Industrials            |    83.93 | 71|1|-23|-43|-24            |                         | 中段                      |
+| NBIS     | Nebius Group NV                     | Technology             |    53.61 | 621|-269|-120|584|-114      | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 中段                      |
+| RKT      | Rocket Companies Inc                | Financial              |    44    | 297|68|-124|-2|-10          |                         | 深跌(困境反转候选,查基本面是否恶化)     |
+| CNC      | Centene Corp                        | Healthcare             |    32.62 | 1541|-1101|-6631|-253|1311  |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| MDB      | MongoDB Inc                         | Technology             |    28.79 | 4|16|-2|-47|-38             |                         | 中段                      |
+| SYM      | Symbotic Inc                        | Industrials            |    26.8  | 2|3|-4|-6|-2                |                         | 深跌(困境反转候选,查基本面是否恶化)     |
+| ROIV     | Roivant Sciences Ltd                | Healthcare             |    25.45 | 303|-266|-114|-223|-206     |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| AXIA     | Axia Energia ADR                    | Utilities              |    23.83 | 2630|13686|-5450|-1324|-353 |                         | 中段                      |
+| IP       | International Paper Co              | Consumer Cyclical      |    20.43 | 60|-2384|-1102|75|-105      | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 深跌(困境反转候选,查基本面是否恶化)     |
+| VTRS     | Viatris Inc                         | Healthcare             |    19.72 | 176|-340|-128|-5|-3042      |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| DD       | DuPont de Nemours Inc               | Basic Materials        |    19.04 | 161|-126|-123|59|-589       | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| IONQ     | IonQ Inc                            | Technology             |    18.24 | 805|754|-1055|-177|-32      |                         | 中段                      |
+| H        | Hyatt Hotels Corp                   | Consumer Cyclical      |    18.22 | 38|-20|-49|-3|20            |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| YPF      | YPF ADR                             | Energy                 |    18.14 | 404|-654|-206|50|-16        | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| ASND     | Ascendis Pharma A/S                 | Healthcare             |    16.64 | 629|-34|-61|-39|-95         | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| SMTC     | Semtech Corp                        | Technology             |    12.94 | 27|-30|-3|-27|19            |                         | 中段                      |
+| SJM      | J.M. Smucker Co                     | Consumer Defensive     |    11.93 | 388|-724|241|-44|-729       | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| VSAT     | Viasat Inc                          | Technology             |    11.44 | 59|25|-61|-56|-246          |                         | 中段                      |
+| COMP     | Compass Inc                         | Real Estate            |     9.84 | 22|-43|-5|39|-51            | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 中段                      |
+| OSCR     | Oscar Health Inc                    | Healthcare             |     9.48 | 679|-353|-137|-228|275      |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| ARE      | Alexandria Real Estate Equities Inc | Real Estate            |     8.69 | 362|-1081|-233|-107|-9      |                         | 深跌(困境反转候选,查基本面是否恶化)     |
+| PTGX     | Protagonist Therapeutics Inc        | Healthcare             |     8.46 | 4|-44|-39|-35|-12           |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| LGN      | Legence Corp                        | Industrials            |     8.4  | 16|-33|-1|-5|-21            |                         | 中段                      |
+| CHYM     | Chime Financial Inc                 | Technology             |     8.17 | 53|-45|-55|-923|13          | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 中段                      |
+| FLR      | Fluor Corp                          | Industrials            |     7.19 | 160|-1573|-697|2460|-241    | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 深跌(困境反转候选,查基本面是否恶化)     |
+| LQDA     | Liquidia Corp                       | Healthcare             |     7.04 | 53|15|-4|-42|-38            |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| FLG      | Flagstar Bank NA                    | Financial              |     6.19 | 21|29|-36|-70|-100          |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| ESTC     | Elastic N.V                         | Technology             |     6.09 | 436|8|-51|-25|-16           | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 中段                      |
+| RGTI     | Rigetti Computing Inc               | Technology             |     5.97 | 33|-18|-201|-40|43          |                         | 中段                      |
+| PRM      | Perimeter Solutions Inc             | Basic Materials        |     5.53 | 73|-140|-91|-32|57          |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| RIG      | Transocean Ltd                      | Energy                 |     5.5  | 71|25|-1923|-938|-79        |                         | 中段                      |
+| STUB     | Stubhub Holdings Inc                | Communication Services |     5.14 | 48|-535|-1295|-54|-22       |                         | 中段                      |
+| KVYO     | Klaviyo Inc                         | Technology             |     5.09 | 9|7|-0|-24|-14              |                         | 中段                      |
 
 
 ## S2b 营收≥25%且同比增速在加速（D桶=最可能内生，优先深挖）（50 家）
 
-| ticker   | name                               | sector                 |   mcap_b |   rev_yoy_latest |   rev_yoy_prior | bucket       | flag                    |
-|:---------|:-----------------------------------|:-----------------------|---------:|-----------------:|----------------:|:-------------|:------------------------|
-| AUR      | Aurora Innovation Inc              | Consumer Cyclical      |    13.32 |          inf     |         nan     | D_待验证(最可能内生) |                         |
-| LLYVA    | Liberty Live Holdings Inc          | Communication Services |     9.67 |          inf     |         nan     | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| JOBY     | Joby Aviation Inc                  | Industrials            |     8.77 |          inf     |         805.214 | D_待验证(最可能内生) |                         |
-| LQDA     | Liquidia Corp                      | Healthcare             |     7.04 |           41.585 |          11.217 | D_待验证(最可能内生) |                         |
-| CYTK     | Cytokinetics Inc                   | Healthcare             |    10.65 |           11.258 |           3.181 | D_待验证(最可能内生) |                         |
-| IONQ     | IonQ Inc                           | Technology             |    18.24 |            7.547 |           2.215 | D_待验证(最可能内生) |                         |
-| NBIS     | Nebius Group NV                    | Technology             |    53.61 |            6.839 |         nan     | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| MU       | Micron Technology Inc              | Technology             |  1112.17 |            3.457 |           1.963 | D_待验证(最可能内生) |                         |
-| MRNA     | Moderna Inc                        | Healthcare             |    32.46 |            2.602 |          -0.454 | D_待验证(最可能内生) |                         |
-| SNDK     | Sandisk Corp                       | Technology             |   258.33 |            2.51  |           0.612 | D_待验证(最可能内生) |                         |
-| INSM     | Insmed Inc                         | Healthcare             |    24.18 |            2.296 |           0.524 | D_待验证(最可能内生) |                         |
-| ALNY     | Alnylam Pharmaceuticals Inc        | Healthcare             |    41.79 |            1.493 |           0.173 | D_待验证(最可能内生) |                         |
-| ASND     | Ascendis Pharma A/S                | Healthcare             |    16.64 |            1.443 |         nan     | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| TLN      | Talen Energy Corp                  | Utilities              |    17.15 |            1.398 |           0.519 | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| BE       | Bloom Energy Corp                  | Industrials            |    83.93 |            1.338 |           0.595 | D_待验证(最可能内生) |                         |
-| NIO      | NIO Inc ADR                        | Consumer Cyclical      |    11.68 |            1.122 |         nan     | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| SIMO     | Silicon Motion Technology Corp ADR | Technology             |    10.7  |            1.055 |         nan     | D_待验证(最可能内生) |                         |
-| LGN      | Legence Corp                       | Industrials            |     8.4  |            1.051 |         nan     | D_待验证(最可能内生) |                         |
-| FPS      | Forgent Power Solutions Inc        | Industrials            |    14.95 |            1.034 |         nan     | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| SANM     | Sanmina Corp                       | Technology             |    11.66 |            1.023 |           0.59  | D_待验证(最可能内生) |                         |
-| PTGX     | Protagonist Therapeutics Inc       | Healthcare             |     8.46 |            0.99  |           0.008 | D_待验证(最可能内生) |                         |
-| STRL     | Sterling Infrastructure Inc        | Industrials            |    22.01 |            0.916 |           0.16  | D_待验证(最可能内生) |                         |
-| WAT      | Waters Corp                        | Healthcare             |    37.2  |            0.915 |           0.068 | D_待验证(最可能内生) |                         |
-| SITM     | SiTime Corp                        | Technology             |    16.25 |            0.883 |           0.448 | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| DELL     | Dell Technologies Inc              | Technology             |   266.96 |            0.875 |           0.108 | D_待验证(最可能内生) |                         |
-| IONS     | Ionis Pharmaceuticals Inc          | Healthcare             |    13.75 |            0.87  |           0.171 | D_待验证(最可能内生) |                         |
-| PLTR     | Palantir Technologies Inc          | Technology             |   317.74 |            0.847 |           0.628 | D_待验证(最可能内生) |                         |
-| RYTM     | Rhythm Pharmaceuticals Inc         | Healthcare             |     7.66 |            0.838 |           0.543 | D_待验证(最可能内生) |                         |
-| BLLN     | Billiontoone Inc                   | Healthcare             |     5.68 |            0.838 |         nan     | D_待验证(最可能内生) |                         |
-| ALSN     | Allison Transmission Holdings Inc  | Consumer Cyclical      |     9.67 |            0.836 |          -0.159 | D_待验证(最可能内生) |                         |
-| AMCR     | Amcor Plc                          | Consumer Cyclical      |    20.63 |            0.774 |           0.681 | D_待验证(最可能内生) |                         |
-| OMC      | Omnicom Group Inc                  | Communication Services |    22.77 |            0.692 |           0.04  | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) |
-| RDDT     | Reddit Inc                         | Communication Services |    38.67 |            0.691 |           0.679 | D_待验证(最可能内生) |                         |
-| CRSP     | CRISPR Therapeutics AG             | Healthcare             |     5.97 |            0.686 |           0.477 | D_待验证(最可能内生) |                         |
-| FTAI     | FTAI Aviation Ltd                  | Industrials            |    24.78 |            0.655 |           0.432 | D_待验证(最可能内生) |                         |
-| ARGX     | Argen X SE ADR                     | Healthcare             |    56.73 |            0.643 |         nan     | D_待验证(最可能内生) |                         |
-| GIL      | Gildan Activewear Inc              | Consumer Cyclical      |     9.59 |            0.638 |         nan     | D_待验证(最可能内生) |                         |
-| RKLB     | Rocket Lab Corp                    | Industrials            |    55.68 |            0.635 |           0.48  | D_待验证(最可能内生) |                         |
-| GPN      | Global Payments Inc                | Technology             |    21.17 |            0.631 |           0.005 | D_待验证(最可能内生) |                         |
-| DKS      | Dicks Sporting Goods Inc           | Consumer Cyclical      |    20.5  |            0.627 |           0.363 | D_待验证(最可能内生) |                         |
-| FWONA    | Liberty Media Corp                 | Communication Services |    24.67 |            0.591 |           0.379 | D_待验证(最可能内生) |                         |
-| APH      | Amphenol Corp                      | Technology             |   205.22 |            0.584 |           0.534 | D_待验证(最可能内生) |                         |
-| LEGN     | Legend Biotech Corp ADR            | Healthcare             |     5.21 |            0.565 |         nan     | D_待验证(最可能内生) |                         |
-| DY       | Dycom Industries Inc               | Industrials            |    12.94 |            0.561 |           0.141 | D_待验证(最可能内生) |                         |
-| KYMR     | Kymera Therapeutics Inc            | Healthcare             |     9.44 |            0.555 |          -0.261 | D_待验证(最可能内生) |                         |
-| LLY      | Lilly(Eli) & Co                    | Healthcare             |  1130.15 |            0.555 |           0.539 | D_待验证(最可能内生) |                         |
-| AAON     | AAON Inc                           | Industrials            |     8.96 |            0.543 |           0.174 | D_待验证(最可能内生) |                         |
-| NVT      | nVent Electric plc                 | Industrials            |    25.37 |            0.535 |           0.348 | D_待验证(最可能内生) |                         |
-| CLS      | Celestica Inc                      | Technology             |    40.26 |            0.528 |           0.278 | D_待验证(最可能内生) |                         |
-| KRMN     | Karman Holdings Inc                | Industrials            |     7.07 |            0.51  |           0.417 | D_待验证(最可能内生) |                         |
+| ticker   | name                               | sector                 |   mcap_b |   rev_yoy_latest | bucket       | flag                    | price_pos               |
+|:---------|:-----------------------------------|:-----------------------|---------:|-----------------:|:-------------|:------------------------|:------------------------|
+| AUR      | Aurora Innovation Inc              | Consumer Cyclical      |    13.32 |          inf     | D_待验证(最可能内生) |                         | 中段                      |
+| LLYVA    | Liberty Live Holdings Inc          | Communication Services |     9.67 |          inf     | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| JOBY     | Joby Aviation Inc                  | Industrials            |     8.77 |          inf     | D_待验证(最可能内生) |                         | 深跌(困境反转候选,查基本面是否恶化)     |
+| LQDA     | Liquidia Corp                      | Healthcare             |     7.04 |           41.585 | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| CYTK     | Cytokinetics Inc                   | Healthcare             |    10.65 |           11.258 | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| IONQ     | IonQ Inc                           | Technology             |    18.24 |            7.547 | D_待验证(最可能内生) |                         | 中段                      |
+| NBIS     | Nebius Group NV                    | Technology             |    53.61 |            6.839 | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 中段                      |
+| MU       | Micron Technology Inc              | Technology             |  1112.17 |            3.457 | D_待验证(最可能内生) |                         | 中段                      |
+| MRNA     | Moderna Inc                        | Healthcare             |    32.46 |            2.602 | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| SNDK     | Sandisk Corp                       | Technology             |   258.33 |            2.51  | D_待验证(最可能内生) |                         | 中段                      |
+| INSM     | Insmed Inc                         | Healthcare             |    24.18 |            2.296 | D_待验证(最可能内生) |                         | 深跌(困境反转候选,查基本面是否恶化)     |
+| ALNY     | Alnylam Pharmaceuticals Inc        | Healthcare             |    41.79 |            1.493 | D_待验证(最可能内生) |                         | 深跌(困境反转候选,查基本面是否恶化)     |
+| ASND     | Ascendis Pharma A/S                | Healthcare             |    16.64 |            1.443 | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| TLN      | Talen Energy Corp                  | Utilities              |    17.15 |            1.398 | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 中段                      |
+| BE       | Bloom Energy Corp                  | Industrials            |    83.93 |            1.338 | D_待验证(最可能内生) |                         | 中段                      |
+| NIO      | NIO Inc ADR                        | Consumer Cyclical      |    11.68 |            1.122 | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 中段                      |
+| SIMO     | Silicon Motion Technology Corp ADR | Technology             |    10.7  |            1.055 | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| LGN      | Legence Corp                       | Industrials            |     8.4  |            1.051 | D_待验证(最可能内生) |                         | 中段                      |
+| FPS      | Forgent Power Solutions Inc        | Industrials            |    14.95 |            1.034 | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 中段                      |
+| SANM     | Sanmina Corp                       | Technology             |    11.66 |            1.023 | D_待验证(最可能内生) |                         | 中段                      |
+| PTGX     | Protagonist Therapeutics Inc       | Healthcare             |     8.46 |            0.99  | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| STRL     | Sterling Infrastructure Inc        | Industrials            |    22.01 |            0.916 | D_待验证(最可能内生) |                         | 中段                      |
+| WAT      | Waters Corp                        | Healthcare             |    37.2  |            0.915 | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| SITM     | SiTime Corp                        | Technology             |    16.25 |            0.883 | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 中段                      |
+| DELL     | Dell Technologies Inc              | Technology             |   266.96 |            0.875 | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| IONS     | Ionis Pharmaceuticals Inc          | Healthcare             |    13.75 |            0.87  | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| PLTR     | Palantir Technologies Inc          | Technology             |   317.74 |            0.847 | D_待验证(最可能内生) |                         | 深跌(困境反转候选,查基本面是否恶化)     |
+| RYTM     | Rhythm Pharmaceuticals Inc         | Healthcare             |     7.66 |            0.838 | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| BLLN     | Billiontoone Inc                   | Healthcare             |     5.68 |            0.838 | D_待验证(最可能内生) |                         | 中段                      |
+| ALSN     | Allison Transmission Holdings Inc  | Consumer Cyclical      |     9.67 |            0.836 | D_待验证(最可能内生) |                         | 中段                      |
+| AMCR     | Amcor Plc                          | Consumer Cyclical      |    20.63 |            0.774 | D_待验证(最可能内生) |                         | 深跌(困境反转候选,查基本面是否恶化)     |
+| OMC      | Omnicom Group Inc                  | Communication Services |    22.77 |            0.692 | D_待验证(最可能内生) | ⚠️跳变(一次性/里程碑/并购嫌疑,查内生性) | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| RDDT     | Reddit Inc                         | Communication Services |    38.67 |            0.691 | D_待验证(最可能内生) |                         | 中段                      |
+| CRSP     | CRISPR Therapeutics AG             | Healthcare             |     5.97 |            0.686 | D_待验证(最可能内生) |                         | 中段                      |
+| FTAI     | FTAI Aviation Ltd                  | Industrials            |    24.78 |            0.655 | D_待验证(最可能内生) |                         | 中段                      |
+| ARGX     | Argen X SE ADR                     | Healthcare             |    56.73 |            0.643 | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| GIL      | Gildan Activewear Inc              | Consumer Cyclical      |     9.59 |            0.638 | D_待验证(最可能内生) |                         | 深跌(困境反转候选,查基本面是否恶化)     |
+| RKLB     | Rocket Lab Corp                    | Industrials            |    55.68 |            0.635 | D_待验证(最可能内生) |                         | 中段                      |
+| GPN      | Global Payments Inc                | Technology             |    21.17 |            0.631 | D_待验证(最可能内生) |                         | 深跌(困境反转候选,查基本面是否恶化)     |
+| DKS      | Dicks Sporting Goods Inc           | Consumer Cyclical      |    20.5  |            0.627 | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| FWONA    | Liberty Media Corp                 | Communication Services |    24.67 |            0.591 | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| APH      | Amphenol Corp                      | Technology             |   205.22 |            0.584 | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| LEGN     | Legend Biotech Corp ADR            | Healthcare             |     5.21 |            0.565 | D_待验证(最可能内生) |                         | 中段                      |
+| DY       | Dycom Industries Inc               | Industrials            |    12.94 |            0.561 | D_待验证(最可能内生) |                         | 中段                      |
+| KYMR     | Kymera Therapeutics Inc            | Healthcare             |     9.44 |            0.555 | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| LLY      | Lilly(Eli) & Co                    | Healthcare             |  1130.15 |            0.555 | D_待验证(最可能内生) |                         | 创新高(成长动能,非卖点;查估值/上修是否停) |
+| AAON     | AAON Inc                           | Industrials            |     8.96 |            0.543 | D_待验证(最可能内生) |                         | 中段                      |
+| NVT      | nVent Electric plc                 | Industrials            |    25.37 |            0.535 | D_待验证(最可能内生) |                         | 中段                      |
+| CLS      | Celestica Inc                      | Technology             |    40.26 |            0.528 | D_待验证(最可能内生) |                         | 中段                      |
+| KRMN     | Karman Holdings Inc                | Industrials            |     7.07 |            0.51  | D_待验证(最可能内生) |                         | 深跌(困境反转候选,查基本面是否恶化)     |
 
 
 ## 相关性聚类警告（L10：同板块命中越多=越是同一笔宏观下注，需设组敞口上限）

@@ -320,6 +320,92 @@ SECTOR_KPI = {
 }
 
 
+PRICES_CSV = BASE / "prices.csv"
+PRICE_FIELDS = ["ticker", "px", "wk52_high", "wk52_low", "pos_high_pct", "pos_low_pct", "asof"]
+
+
+def _signal_hit_tickers():
+    """重算信号命中并集(S1∪S2a∪S2b确认),用于只给命中股拉价格(不重扫全域)"""
+    df = pd.read_csv(RESULTS_CSV)
+    df = df[df["error"].isna() | (df["error"] == "")]
+    mc = pd.to_numeric(df["mcap_b"], errors="coerce")
+    df["mcap_b"] = mc / 1e6 if mc.max() > 1e5 else mc
+    df = df[df["mcap_b"] >= 5]
+    for c in ["gm_consec_improve", "gm_ttm", "gm_hist_avg", "first_profit",
+              "rev_yoy_latest", "rev_yoy_prior"]:
+        df[c] = pd.to_numeric(df[c], errors="coerce")
+    if EDGAR_CSV.exists():
+        e = pd.read_csv(EDGAR_CSV)
+        df = df.merge(e[["ticker", "e_yoy_latest", "e_yoy_prior"]], on="ticker", how="left")
+        df["rev_yoy_latest"] = pd.to_numeric(df["e_yoy_latest"], errors="coerce").fillna(df["rev_yoy_latest"])
+    s1 = df[(df["gm_consec_improve"] >= 2) & (df["gm_ttm"] < df["gm_hist_avg"])]
+    s2a = df[df["first_profit"] == 1]
+    s2b = df[df["rev_yoy_latest"] >= 0.25]
+    return sorted(set(s1["ticker"]) | set(s2a["ticker"]) | set(s2b["ticker"]))
+
+
+def fetch_prices(tickers=None):
+    """L2自动化: 只为信号命中股拉52周高/低/现价,增量缓存 prices.csv"""
+    import yfinance as yf
+    targets = tickers or _signal_hit_tickers()
+    cached = {}
+    if PRICES_CSV.exists():
+        cached = {r["ticker"]: r.to_dict() for _, r in pd.read_csv(PRICES_CSV).iterrows()}
+    todo = [t for t in targets if t not in cached]
+    print(f"信号命中={len(targets)}  已缓存={len(cached)}  待拉价={len(todo)}")
+    for i, tk in enumerate(todo, 1):
+        row = {k: "" for k in PRICE_FIELDS}
+        row["ticker"] = tk
+        try:
+            info = yf.Ticker(tk).info or {}
+            px = info.get("currentPrice") or info.get("regularMarketPrice")
+            hi, lo = info.get("fiftyTwoWeekHigh"), info.get("fiftyTwoWeekLow")
+            row["px"], row["wk52_high"], row["wk52_low"] = px, hi, lo
+            if px and hi:
+                row["pos_high_pct"] = round((px / hi - 1) * 100, 1)   # 距高点(负数,越接近0越危险)
+            if px and lo:
+                row["pos_low_pct"] = round((px / lo - 1) * 100, 1)    # 距低点(正数,越小越接近底部)
+        except Exception as e:
+            row["px"] = f"err:{type(e).__name__}"
+        row["asof"] = time.strftime("%Y-%m-%d")
+        cached[tk] = row
+        if i % 25 == 0:
+            print(f"  {i}/{len(todo)} ... {tk}")
+        time.sleep(0.35)
+    with open(PRICES_CSV, "w", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=PRICE_FIELDS)
+        w.writeheader()
+        for r in cached.values():
+            w.writerow({k: r.get(k, "") for k in PRICE_FIELDS})
+    print(f"→ {PRICES_CSV}  (共 {len(cached)} 只)")
+
+
+def _price_label(hi_pct, lo_pct, kind="cyclical"):
+    """L2(v2,filter-aware): 价格位置的含义取决于股票类型——
+    周期股(cyclical): 近高点=均值回归风险=退出区(VLO/STNG/BE教训)
+    成长股(growth):   近高点=动能确认,非卖点;成长靠不断创新高(NVDA/PLTR),
+                      此处真正该查的是估值+上修是否停止,价格位置本身不是卖点
+    这是关键区分: '近高点=卖'只对周期股成立,套到成长股会在起涨点卖飞。"""
+    hi = pd.to_numeric(hi_pct, errors="coerce")
+    lo = pd.to_numeric(lo_pct, errors="coerce")
+    if pd.isna(hi):
+        return "?无价"
+    near_high = hi >= -15
+    near_low = (not pd.isna(lo)) and lo <= 30
+    if kind == "growth":
+        if near_high:
+            return "创新高(成长动能,非卖点;查估值/上修是否停)"
+        if near_low:
+            return "深跌(困境反转候选,查基本面是否恶化)"
+        return "中段"
+    # cyclical / commodity 默认
+    if near_high:
+        return "⚠️退出区(周期股近高点=均值回归风险)"
+    if near_low:
+        return "✅底部区(近52周低点,理想入场)"
+    return "中段"
+
+
 def _lumpy_flag(ni_series):
     """L5自动化: ni_series符号翻转/剧烈跳变 → 可能一次性/里程碑收入(生物药)或并购扭曲"""
     try:
@@ -384,6 +470,25 @@ def report():
     s2b["accel_confirmed"] = (df["rev_yoy_latest"] > df["rev_yoy_prior"]).map({True: "是", False: "数据不足"})
     s2b = s2b.sort_values("rev_yoy_latest", ascending=False)
 
+    # L2自动化(v2,filter-aware): 价格位置的含义按筛选器类型区分
+    # S1周期股→近高点=退出; S2a成长→近高点=动能; S2b→按sector(商品=周期,其余=成长)
+    price_ok = PRICES_CSV.exists()
+    CYCLICAL_SEC = {"Energy", "Basic Materials"}
+    if price_ok:
+        pr = pd.read_csv(PRICES_CSV)
+
+        def label_df(d, kind_fn):
+            m = d.merge(pr[["ticker", "pos_high_pct", "pos_low_pct"]], on="ticker", how="left")
+            return [_price_label(h, l, kind_fn(sec))
+                    for h, l, sec in zip(m["pos_high_pct"], m["pos_low_pct"], m["sector"])]
+
+        s1["price_pos"] = label_df(s1, lambda s: "cyclical")           # S1恒周期
+        s2a["price_pos"] = label_df(s2a, lambda s: "growth")           # S2a恒成长
+        s2b["price_pos"] = label_df(s2b, lambda s: "cyclical" if s in CYCLICAL_SEC else "growth")
+    else:
+        for d in (s1, s2a, s2b):
+            d["price_pos"] = "?(先跑 scan.py prices)"
+
     # L5自动化: 跳变检测 → 生物药里程碑/并购注水嫌疑
     for d in (s1, s2a, s2b):
         d["flag"] = d["ni_series"].apply(_lumpy_flag)
@@ -401,14 +506,14 @@ def report():
             lines.append(d[cols].to_markdown(index=False))
             lines.append("")
 
-    section("S1 周期反转初筛：毛利率连续≥2季环比改善 且 TTM低于4年均值（按周期阶段分层）", s1,
+    section("S1 周期反转初筛：毛利率连续≥2季环比改善 且 TTM低于4年均值（按周期阶段+价格位置分层）", s1,
             ["ticker", "name", "sector", "mcap_b", "gm_consec_improve",
-             "gm_latest", "gm_ttm", "gm_hist_avg", "stage"])
+             "gm_latest", "gm_hist_avg", "stage", "price_pos"])
     section("S2a 首次GAAP盈利", s2a,
-            ["ticker", "name", "sector", "mcap_b", "ni_series", "flag"])
+            ["ticker", "name", "sector", "mcap_b", "ni_series", "flag", "price_pos"])
     section("S2b 营收≥25%且同比增速在加速（D桶=最可能内生，优先深挖）",
             s2b.sort_values(["bucket", "rev_yoy_latest"], ascending=[True, False]).head(50),
-            ["ticker", "name", "sector", "mcap_b", "rev_yoy_latest", "rev_yoy_prior", "bucket", "flag"])
+            ["ticker", "name", "sector", "mcap_b", "rev_yoy_latest", "bucket", "flag", "price_pos"])
 
     # L10自动化: 相关性聚类——同sector命中数,提示"看似分散实为一笔下注"
     lines.append("\n## 相关性聚类警告（L10：同板块命中越多=越是同一笔宏观下注，需设组敞口上限）\n")
@@ -561,7 +666,7 @@ def audit():
 
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
-    p.add_argument("cmd", choices=["universe", "scan", "report", "edgar", "deep", "track", "audit"])
+    p.add_argument("cmd", choices=["universe", "scan", "report", "edgar", "deep", "prices", "track", "audit"])
     p.add_argument("--limit", type=int)
     p.add_argument("--tickers", type=str)
     p.add_argument("--action", type=str, help="track的子动作: add|grade|score")
@@ -576,6 +681,8 @@ if __name__ == "__main__":
         if not a.tickers:
             sys.exit("用法: python scan.py deep --tickers MCHP,SYM,BE")
         deep(a.tickers.split(","))
+    elif a.cmd == "prices":
+        fetch_prices(a.tickers.split(",") if a.tickers else None)
     elif a.cmd == "track":
         track(a.action or "add", a.tickers.split(",") if a.tickers else None)
     elif a.cmd == "audit":
