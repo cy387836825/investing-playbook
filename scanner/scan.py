@@ -421,17 +421,36 @@ def _price_label(hi_pct, lo_pct, kind="cyclical", fpe=None):
     return "中段"
 
 
-def _risk_flags(ps, de, mrq_days):
-    """L17估值band + L18杠杆地板 + L21新鲜度闸门,合成一个风险提示串"""
+def _risk_flags(ps, de, mrq_days, fpe=None, growth=None):
+    """L17估值band + L18杠杆地板 + L21新鲜度闸门,合成一个风险提示串。
+    估值逻辑(修正:之前只用PS,利润率盲): 盈利公司用forward PE为主(真估值指标),
+    不盈利公司(PE≤0或缺)才回退PS。PE再用营收增速做PEG式生长调整——高增长可支撑高PE,
+    避免把优质成长股误标透支(否则等于L12式过度筛选)。"""
     out = []
     ps = pd.to_numeric(ps, errors="coerce")
     de = pd.to_numeric(de, errors="coerce")
     d = pd.to_numeric(mrq_days, errors="coerce")
-    if not pd.isna(ps):
+    pe = pd.to_numeric(fpe, errors="coerce")
+    g = pd.to_numeric(growth, errors="coerce")  # 营收同比,做PEG分母(粗略,earnings growth的代理)
+    if not pd.isna(pe) and pe > 0:
+        # 有正forward PE=盈利公司,用PE。PEG=PE/(增速%),>2偏贵,>3透支(增速缺失时退回纯PE阈值)
+        if not pd.isna(g) and g > 0:
+            peg = pe / (g * 100)
+            if peg > 3:
+                out.append(f"⚠️估值透支(PE{pe:.0f}/PEG{peg:.1f})")
+            elif peg > 2:
+                out.append(f"估值偏高(PE{pe:.0f}/PEG{peg:.1f})")
+        else:
+            if pe > 60:
+                out.append(f"⚠️估值透支(PE{pe:.0f})")
+            elif pe > 40:
+                out.append(f"估值偏高(PE{pe:.0f})")
+    elif not pd.isna(ps):
+        # 无正PE=不盈利,只能用PS(利润率盲,阈值放宽)
         if ps > 25:
-            out.append(f"⚠️估值透支(PS{ps:.0f})")
+            out.append(f"⚠️估值透支(PS{ps:.0f},未盈利)")
         elif ps > 15:
-            out.append(f"估值偏高(PS{ps:.0f})")
+            out.append(f"估值偏高(PS{ps:.0f},未盈利)")
     if not pd.isna(de) and de > 200:   # yf口径 200=2.0x
         out.append(f"⚠️高杠杆(D/E{de/100:.1f}x)")
     if not pd.isna(d) and d > 100:
@@ -526,12 +545,23 @@ def report():
         s2a["price_pos"] = label_df(s2a, lambda s: "growth")           # S2a恒成长
         s2b["price_pos"] = label_df(s2b, lambda s: "cyclical" if s in CYCLICAL_SEC else "growth")
 
-        # L17/L18/L21风险闸门: 估值band+杠杆+新鲜度(对估值敏感的S1超/S2b最有用)
+        # L17/L18/L21风险闸门: 估值(PE优先,PS回退)+杠杆+新鲜度
         prc = pr.set_index("ticker")
+
+        def risk_col(d):
+            g = pd.to_numeric(d.get("rev_yoy_latest"), errors="coerce") if "rev_yoy_latest" in d else None
+            res = []
+            for i, t in enumerate(d["ticker"]):
+                if t in prc.index:
+                    gi = g.iloc[i] if g is not None else None
+                    res.append(_risk_flags(prc["ps"].get(t), prc["debt_to_equity"].get(t),
+                                           prc["mrq_days"].get(t), prc["forward_pe"].get(t), gi))
+                else:
+                    res.append("")
+            return res
+
         for d in (s1, s1_super, s2a, s2b):
-            d["risk"] = d["ticker"].map(
-                lambda t: _risk_flags(prc["ps"].get(t), prc["debt_to_equity"].get(t),
-                                      prc["mrq_days"].get(t)) if t in prc.index else "")
+            d["risk"] = risk_col(d)
     else:
         for d in (s1, s1_super, s2a, s2b):
             d["price_pos"] = "?(先跑 scan.py prices)"
