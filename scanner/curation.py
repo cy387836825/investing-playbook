@@ -20,6 +20,21 @@ SHARE_TAGS = ["CommonStockSharesOutstanding", "WeightedAverageNumberOfDilutedSha
               "WeightedAverageNumberOfSharesOutstandingBasic", "EntityCommonStockSharesOutstanding"]
 
 
+def curate_pass(sigs, profitable, lumpy, val_ok):
+    """信号专属curation(拆解验证:比一刀切更优,保住右尾)。sigs=触发信号集合。
+    S1/S1超(周期反转): 只用非一次性(底部盈利/估值本就畸变,勿滤)
+    S2a(首次盈利): 只用要求盈利TTM(首盈本就跳变,勿用非一次性——同义反复冲突)
+    S2b(营收加速): 只用估值(超高增长常未盈利,勿滤盈利)"""
+    ok = True
+    if ("S1" in sigs) or ("S1超" in sigs):
+        ok = ok and (not lumpy)
+    if "S2a" in sigs:
+        ok = ok and profitable
+    if "S2b" in sigs:
+        ok = ok and val_ok
+    return ok
+
+
 def _units(facts, tag):
     return facts.get("facts", {}).get("us-gaap", {}).get(tag, {}).get("units", {}).get("USD") \
         or facts.get("facts", {}).get("dei", {}).get(tag, {}).get("units", {}).get("shares")
@@ -101,10 +116,11 @@ def run():
                 val_ok = ps <= 15   # 不盈利:PS宽松阈值
             else:
                 val_ok = True       # 数据缺失不因此剔除
-            # 改善版(拆解发现,2026-07-09): 只用估值+非一次性,不硬性'要求盈利'。
-            # "要求盈利"单独用会砍右尾(大牛16→12%,扔掉QBTS/RKLB式早期烧钱暴涨股),降级为可选。
-            REQUIRE_PROFIT = False   # 极度厌恶风险才设True(代价:牺牲约半数大牛捕获)
-            pass_cur = val_ok and (not lumpy) and (profitable if REQUIRE_PROFIT else True)
+            # 信号专属curation(2026-07-09,拆解验证优于一刀切): 每信号配对的闸门
+            row0 = sub.iloc[0]
+            sigset = {s for s in ("S1", "S1超", "S2a", "S2b")
+                      if str(row0.get(s, "")).strip() in ("1", "1.0")}
+            pass_cur = curate_pass(sigset, profitable, lumpy, val_ok)
             for hz in (12, 36):
                 r = sub.iloc[0].get(f"ret{hz}")
                 if pd.isna(r) or r == "":
