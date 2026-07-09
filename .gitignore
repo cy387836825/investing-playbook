@@ -11,3 +11,4 @@ backtest_signals.csv
 cache/
 backtest_perticker.csv
 momentum_perticker.csv
+curation_perticker.csv

@@ -269,9 +269,17 @@ def _price_hist(tk, start, end):
     ser = None
     if fp.exists():
         try:
-            df = pd.read_csv(fp, index_col=0, parse_dates=True)
+            df = pd.read_csv(fp, index_col=0)
             if not df.empty:
                 ser = df.iloc[:, 0]
+                idx = pd.to_datetime(ser.index, errors="coerce")
+                if getattr(idx, "tz", None) is not None:
+                    idx = idx.tz_convert(None)
+                ser.index = idx
+                ser = ser[ser.index.notna()]
+                ser = pd.to_numeric(ser, errors="coerce").dropna()
+                if ser.empty:
+                    ser = None
         except Exception:
             ser = None
     if ser is None:
