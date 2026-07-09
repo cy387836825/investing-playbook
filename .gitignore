@@ -10,3 +10,4 @@ backtest_*.csv
 backtest_signals.csv
 cache/
 backtest_perticker.csv
+momentum_perticker.csv
