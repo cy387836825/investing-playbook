@@ -7,7 +7,7 @@ from signals import pit_qseries, yoy
 
 uni = pd.read_csv('universe.csv')
 uni['mcap_b'] = pd.to_numeric(uni['mcap_b'], errors='coerce')
-if uni['mcap_b'].max() > 1e5: uni['mcap_b'] = uni['mcap_b']/1e9
+if uni['mcap_b'].max() > 1e5: uni['mcap_b'] = uni['mcap_b']/1e6  # 与scan.py一致(universe.csv市值单位需/1e6得十亿)
 meta = {r['ticker']: (r['name'], r['sector'], round(r['mcap_b'],1)) for _,r in uni.iterrows()}
 ee = pd.read_csv('earnings_entry.csv')
 ee_map = {r.ticker: r for r in ee.itertuples()}

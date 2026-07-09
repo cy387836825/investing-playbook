@@ -11,7 +11,7 @@ import time
 import pandas as pd
 from pathlib import Path
 from signals import pit_qseries, yoy
-from backtest import (_companyfacts_cached, _cik_map, _pit_from_units, _pit_qseries,
+from backtest import (_companyfacts_cached, _cik_map, _pit_qseries,
                       _price_hist, _px_from_hist, REV_TAGS)
 
 BASE = Path(__file__).resolve().parent
