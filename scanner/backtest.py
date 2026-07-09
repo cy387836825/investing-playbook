@@ -23,6 +23,11 @@ from pathlib import Path
 import pandas as pd
 
 BASE = Path(__file__).resolve().parent
+CACHE = BASE / "cache"
+EDGAR_CACHE = CACHE / "edgar"
+PX_CACHE = CACHE / "prices"
+for _d in (EDGAR_CACHE, PX_CACHE):
+    _d.mkdir(parents=True, exist_ok=True)
 UA = {"User-Agent": "Personal investment research cy387836825@gmail.com"}
 REV_TAGS = ["RevenueFromContractWithCustomerExcludingAssessedTax", "Revenues",
             "RevenueFromContractWithCustomerIncludingAssessedTax",
@@ -53,11 +58,29 @@ def _fetch_facts(cik):
     return None
 
 
-def _fetch_all(cik):
-    """一次companyfacts提取 营收/净利/毛利 三组units(companyfacts含全字段,无额外网络成本)"""
+def _companyfacts_cached(cik):
+    """companyfacts原始JSON,磁盘缓存(历史申报不可变,下载一次永久复用)"""
+    fp = EDGAR_CACHE / f"CIK{cik}.json"
+    if fp.exists():
+        try:
+            return json.loads(fp.read_text())
+        except Exception:
+            pass
     try:
         facts = _get(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json")
     except Exception:
+        return None
+    try:
+        fp.write_text(json.dumps(facts))
+    except Exception:
+        pass
+    return facts
+
+
+def _fetch_all(cik):
+    """一次companyfacts提取 营收/净利/毛利 三组units(带磁盘缓存)"""
+    facts = _companyfacts_cached(cik)
+    if facts is None:
         return None
     gaap = facts.get("facts", {}).get("us-gaap", {})
     rev = None
@@ -239,16 +262,35 @@ def _price_on(tk, date, window=15):
 
 
 def _price_hist(tk, start, end):
-    """一次拉全区间日线,返回Series(date→close),供多锚点切片"""
+    """全区间日线Series,磁盘缓存(缓存全历史,按需切片;历史价不可变)。
+    缓存策略: 每票存一次尽量宽的历史(2015→今),后续任意start/end从盘上切。"""
     import yfinance as yf
-    try:
-        h = yf.Ticker(tk).history(start=start, end=end)
-        if h.empty:
+    fp = PX_CACHE / f"{tk}.csv"
+    ser = None
+    if fp.exists():
+        try:
+            df = pd.read_csv(fp, index_col=0, parse_dates=True)
+            if not df.empty:
+                ser = df.iloc[:, 0]
+        except Exception:
+            ser = None
+    if ser is None:
+        try:
+            h = yf.Ticker(tk).history(start="2015-01-01")
+            if h.empty:
+                # 存空标记避免反复重试
+                fp.write_text("date,close\n")
+                return None
+            h.index = h.index.tz_localize(None)
+            ser = h["Close"]
+            ser.to_csv(fp, header=["close"])
+        except Exception:
             return None
-        h.index = h.index.tz_localize(None)
-        return h["Close"]
-    except Exception:
+    if ser is None or ser.empty:
         return None
+    s, e = pd.Timestamp(start), pd.Timestamp(end)
+    sub = ser[(ser.index >= s) & (ser.index <= e)]
+    return sub if not sub.empty else None
 
 
 def _px_from_hist(h, date, window=15):
@@ -343,6 +385,7 @@ def backtest_signals(anchors, horizons, limit):
     print(f"价格区间{hmin}~{hmax}, 每股EDGAR+价格各拉一次\n", flush=True)
     # recs[(sig,anchor,h)] = list of (hit, ret)
     recs = {}
+    perrows = []   # per-ticker: 用于召回率分析(哪些牛股被哪些信号抓到)
     n_ok = 0
     for i, tk in enumerate(uni, 1):
         cik = ciks.get(tk.upper())
@@ -362,22 +405,34 @@ def backtest_signals(anchors, horizons, limit):
             p0 = _px_from_hist(h, a)
             if not p0:
                 continue
+            rets = {}
             for hz in horizons:
                 fwd = (pd.Timestamp(a) + pd.DateOffset(months=hz)).strftime("%Y-%m-%d")
                 p1 = _px_from_hist(h, fwd)
                 if not p1:
                     continue
                 ret = (p1 / p0 - 1) * 100
+                rets[hz] = ret
                 for name, v in sigvals.items():
                     if v is None:
                         continue
                     recs.setdefault((name, a, hz), []).append((v, ret))
                 used = True
+            if rets:
+                row = {"ticker": tk, "anchor": a}
+                for name, v in sigvals.items():
+                    row[name] = "" if v is None else int(bool(v))
+                row["any_hit"] = int(any(bool(v) for v in sigvals.values() if v is not None))
+                for hz in horizons:
+                    row[f"ret{hz}"] = round(rets[hz]) if hz in rets else ""
+                perrows.append(row)
         if used:
             n_ok += 1
         if i % 100 == 0:
             print(f"  {i}/{len(uni)} 有效{n_ok}只", flush=True)
         time.sleep(0.1)
+    pd.DataFrame(perrows).to_csv(BASE / "backtest_perticker.csv", index=False)
+    print(f"per-ticker明细 → backtest_perticker.csv ({len(perrows)}行)", flush=True)
 
     spy_h = _price_hist("SPY", hmin, hmax)
     rows = []
