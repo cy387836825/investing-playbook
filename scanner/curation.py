@@ -101,7 +101,10 @@ def run():
                 val_ok = ps <= 15   # 不盈利:PS宽松阈值
             else:
                 val_ok = True       # 数据缺失不因此剔除
-            pass_cur = val_ok and profitable and (not lumpy)
+            # 改善版(拆解发现,2026-07-09): 只用估值+非一次性,不硬性'要求盈利'。
+            # "要求盈利"单独用会砍右尾(大牛16→12%,扔掉QBTS/RKLB式早期烧钱暴涨股),降级为可选。
+            REQUIRE_PROFIT = False   # 极度厌恶风险才设True(代价:牺牲约半数大牛捕获)
+            pass_cur = val_ok and (not lumpy) and (profitable if REQUIRE_PROFIT else True)
             for hz in (12, 36):
                 r = sub.iloc[0].get(f"ret{hz}")
                 if pd.isna(r) or r == "":
