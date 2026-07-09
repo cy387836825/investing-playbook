@@ -27,6 +27,11 @@ tr:hover td{background:#161b22}
 .tag{display:inline-block;background:#1f6feb22;color:#58a6ff;border:1px solid #1f6feb44;border-radius:4px;padding:1px 6px;font-size:11px;margin-right:3px}
 .tag.sup{background:#a371f722;color:#a371f7;border-color:#a371f744}
 .note{color:#8b949e;font-size:12px;margin-top:8px;font-style:italic}
+.dtag{display:inline-block;padding:2px 7px;border-radius:5px;font-size:11px;font-weight:600;margin-right:5px}
+.d-fund{background:#3fb95022;color:#3fb950;border:1px solid #3fb95055}
+.d-part{background:#4a9eff22;color:#58a6ff;border:1px solid #4a9eff55}
+.d-weak{background:#d2992222;color:#e3b341;border:1px solid #d2992255}
+.d-none{background:#8b949e22;color:#8b949e;border:1px solid #8b949e55}
 /* funnel */
 .funnel{display:flex;flex-direction:column;gap:6px;margin:20px 0;align-items:center}
 .flayer{border-radius:8px;padding:14px 20px;text-align:center;color:#fff;transition:.2s;position:relative}
@@ -52,11 +57,19 @@ def sig_tags(s):
     return out
 
 # ============ PAGE 1: winners.html ============
+DRIVER_CLS={'fund':'d-fund','partial':'d-part','weak':'d-weak','none':'d-none'}
+def driver_tag(w):
+    cls=DRIVER_CLS.get(w.get('driver_tier'),'d-weak')
+    g=w.get('rev_growth_pct')
+    gtxt=f' 营收{"+"if(g and g>0)else""}{g}%' if g is not None else ' 无营收'
+    return f'<span class="dtag {cls}">{w.get("driver","")}</span><span class=mut style=font-size:11px>{gtxt}</span>'
+
 def winners_rows():
     r=''
     for w in winners:
-        r+=f"""<tr>
+        r+=f"""<tr data-tier="{w.get('driver_tier','')}">
 <td class=l data-v="{w['ticker']}"><b>{w['ticker']}</b><br><span class=mut style=font-size:11px>{(w['name'] or '')[:22]}</span></td>
+<td class=l data-v="{w.get('driver_tier','')}">{driver_tag(w)}</td>
 <td class=l data-v="{w['sector'] or ''}">{w['sector'] or ''}</td>
 <td data-v="{w['low'] or 0}">${w['low']}<br><span class=mut style=font-size:11px>{w['low_date'] or ''}</span></td>
 <td data-v="{w['high'] or 0}">${w['high']}<br><span class=mut style=font-size:11px>{w['high_date'] or ''}</span></td>
@@ -86,29 +99,31 @@ page1=f"""<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=view
 <div class=sub>信号命中且"财报次日入场→峰值>300%"的股票 · point-in-time回测(EDGAR防前视+yfinance价) · ⚠️事后选中的赢家,非可复制策略</div>
 <div class=stats>
 <div class=stat><div class=v>{len(winners)}</div><div class=l>大牛股(峰值>300%)</div></div>
-<div class=stat><div class=v>+{sorted([w['peak_pct'] for w in winners])[len(winners)//2]}%</div><div class=l>峰值涨幅中位</div></div>
+<div class=stat><div class="v pos">{sum(1 for w in winners if w.get('driver_tier') in ('fund','partial'))}</div><div class=l>基本面驱动(营收兑现)</div></div>
+<div class=stat><div class="v" style=color:#e3b341>{sum(1 for w in winners if w.get('driver_tier') in ('weak','none'))}</div><div class=l>非基本面(商品/加密/投机)</div></div>
 <div class=stat><div class=v>{round(sum(w['maxdd_pct'] for w in winners)/len(winners))}%</div><div class=l>平均最大回调</div></div>
 <div class=stat><div class=v>{round(sum(w['maxloss_pct'] for w in winners)/len(winners))}%</div><div class=l>平均最大浮亏</div></div>
 </div>
 <div class=ctrl>
 <input id=q placeholder="搜索代码/名称..." oninput=filt()>
+<select id=fd onchange=filt()><option value="">全部驱动</option><option value=fund>基本面·营收翻倍+</option><option value=partial>基本面·营收增长</option><option value=weak>弱基本面(商品/加密/生物/投机)</option><option value=none>无营收·投机叙事</option></select>
 <select id=fs onchange=filt()><option value="">全部行业</option>{sec_opts}</select>
 </div>
 <div class=wrap><table id=t>
 <thead><tr>
-<th class=l onclick=srt(0,0)>股票</th><th class=l onclick=srt(1,0)>行业</th>
-<th onclick=srt(2,1)>低点/日期</th><th onclick=srt(3,1)>高点/日期</th><th onclick=srt(4,1)>低→高</th>
-<th class=l onclick=srt(5,0)>信号日期</th><th class=l onclick=srt(6,0)>信号类型</th>
-<th onclick=srt(7,1)>入场价</th><th onclick=srt(8,1)>持有至今</th>
-<th onclick=srt(9,1)>峰值(潜在)</th><th onclick=srt(10,1)>最大回调</th><th onclick=srt(11,1)>最大浮亏</th>
+<th class=l onclick=srt(0,0)>股票</th><th class=l onclick=srt(1,0)>驱动类型</th><th class=l onclick=srt(2,0)>行业</th>
+<th onclick=srt(3,1)>低点/日期</th><th onclick=srt(4,1)>高点/日期</th><th onclick=srt(5,1)>低→高</th>
+<th class=l onclick=srt(6,0)>信号日期</th><th class=l onclick=srt(7,0)>信号类型</th>
+<th onclick=srt(8,1)>入场价</th><th onclick=srt(9,1)>持有至今</th>
+<th onclick=srt(10,1)>峰值(潜在)</th><th onclick=srt(11,1)>最大回调</th><th onclick=srt(12,1)>最大浮亏</th>
 </tr></thead><tbody>{winners_rows()}</tbody></table></div>
 <div class=note>低点/高点=2020-06至今全期极值(yfinance,回溯复权;极端值可能含仙股/拆股artifact) · 持有至今/峰值/回调/浮亏=从信号财报次日买入起算</div>
 <script>{JS_TABLE}
 let asc={{}};const t=document.getElementById('t');
 function srt(c,n){{asc[c]=!asc[c];sortTable(t,c,n,asc[c]);}}
-function filt(){{const q=document.getElementById('q').value.toUpperCase(),s=document.getElementById('fs').value;
-for(const r of t.tBodies[0].rows){{const tx=r.cells[0].innerText.toUpperCase(),sec=r.cells[1].innerText;
-r.style.display=(tx.includes(q)&&(!s||sec===s))?'':'none';}}}}
+function filt(){{const q=document.getElementById('q').value.toUpperCase(),s=document.getElementById('fs').value,d=document.getElementById('fd').value;
+for(const r of t.tBodies[0].rows){{const tx=r.cells[0].innerText.toUpperCase(),sec=r.cells[2].innerText,ti=r.dataset.tier;
+r.style.display=(tx.includes(q)&&(!s||sec===s)&&(!d||ti===d))?'':'none';}}}}
 </script></body></html>"""
 (OUT/'winners.html').write_text(page1)
 

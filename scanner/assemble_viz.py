@@ -1,9 +1,40 @@
 #!/usr/bin/env python3
 """装配两个可视化页面的数据: winners.json(大牛股列表) + funnel.json(漏斗)"""
-import json, pandas as pd
+import json, pandas as pd, time
 from backtest import _price_hist, _px_from_hist, _companyfacts_cached, _cik_map, REV_TAGS
 from curation import _units, _pit_latest, _ttm, _lumpy, SHARE_TAGS, curate_pass
 from signals import pit_qseries, yoy
+
+TODAY = time.strftime('%Y-%m-%d')
+
+def classify_driver(rev_sig, rev_now, ni_sig, ni_now, sector):
+    """驱动分类:基本面兑现可在'营收端'(S2b成长)或'利润端'(S1周期修复/S2a扭亏)。
+    只看营收会误判周期股(如WDC:营收降但利润率修复)。故同时看营收增长+盈利改善。
+    返回 (driver_label, tier, rev_growth_pct)。tier: fund/partial/weak/none 决定颜色。"""
+    g = round((rev_now / rev_sig - 1) * 100) if (rev_sig and rev_now and rev_sig > 0) else None
+    turned_profit = (ni_sig is not None and ni_now is not None and ni_sig <= 0 < ni_now)      # 扭亏为盈
+    profit_grew = (ni_sig is not None and ni_now is not None and ni_sig > 0 and ni_now > ni_sig * 1.5)  # 利润扩张
+    # 强基本面
+    if g is not None and g >= 100:
+        return ('基本面·营收翻倍+', 'fund', g)
+    if turned_profit:
+        return ('基本面·扭亏为盈', 'fund', g)
+    # 中基本面
+    if g is not None and g >= 40:
+        return ('基本面·营收增长', 'partial', g)
+    if profit_grew:
+        return ('基本面·利润扩张', 'partial', g)
+    # 营收利润都弱 → 用板块解释真实驱动
+    sec = sector or ''
+    if sec in ('Energy', 'Basic Materials'):
+        return ('商品周期驱动', 'weak', g)
+    if sec == 'Financial':
+        return ('金融/加密驱动', 'weak', g)
+    if sec == 'Healthcare':
+        return ('生物药催化驱动', 'weak', g)
+    if g is None:
+        return ('无营收·投机/叙事', 'none', g)
+    return ('弱基本面·情绪投机', 'weak', g)
 
 uni = pd.read_csv('universe.csv')
 uni['mcap_b'] = pd.to_numeric(uni['mcap_b'], errors='coerce')
@@ -33,12 +64,29 @@ for tk in uni['ticker']:
                 'now': round(float(h.iloc[-1]),2)}
 
 # ==== 1) winners.json: 信号命中的大牛股(峰值>300%) ====
+ciks = _cik_map()
 winners = []
 for r in ee.itertuples():
     if r.pkr <= 3.0: continue           # 峰值>300%
     f = feat.get(r.ticker, {})
     nm, sec, mc = meta.get(r.ticker, ('','',None))
+    # 持有期营收增长(信号日TTM vs 今日TTM) → 驱动分类
+    cik = ciks.get(str(r.ticker).upper()); rev_sig=rev_now=ni_sig=ni_now=None
+    if cik:
+        fc = _companyfacts_cached(cik)
+        if fc:
+            ru=None
+            for tg in REV_TAGS:
+                ru=_units(fc,tg)
+                if ru: break
+            niu=_units(fc,'NetIncomeLoss')
+            rev_sig=_ttm(ru,r.earn_date) if ru else None
+            rev_now=_ttm(ru,TODAY) if ru else None
+            ni_sig=_ttm(niu,r.earn_date) if niu else None
+            ni_now=_ttm(niu,TODAY) if niu else None
+    driver, tier, revg = classify_driver(rev_sig, rev_now, ni_sig, ni_now, sec)
     winners.append({
+        'driver': driver, 'driver_tier': tier, 'rev_growth_pct': revg,
         'ticker': r.ticker, 'name': nm, 'sector': sec,
         'low': f.get('low'), 'low_date': f.get('low_date'),
         'high': f.get('high'), 'high_date': f.get('high_date'),
@@ -55,8 +103,7 @@ json.dump(winners, open('winners.json','w'), ensure_ascii=False)
 print(f"winners.json: {len(winners)}只大牛股")
 
 # ==== 2) funnel.json ====
-# 定义大牛股(全≥5B universe中低→高>300%)、暴雷股(峰值后回调>70%)
-ciks = _cik_map()
+# 定义大牛股(全≥5B universe中低→高>300%)、暴雷股(峰值后回调>70%)  (ciks 已在上方定义)
 def curation_status(tk):
     """返回(pass:bool, reason:str, sig:str) — 信号命中股的signal-specific curation"""
     if tk not in ee_map: return (None, '未触发信号', '')
