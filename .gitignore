@@ -16,3 +16,7 @@ earnings_entry.csv
 archive/
 live_curated.csv
 curation_earnings.csv
+scanner/winners.json
+scanner/funnel.json
+scanner/curation_earnings.csv
+.claude/
