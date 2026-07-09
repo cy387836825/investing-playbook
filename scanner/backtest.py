@@ -53,6 +53,111 @@ def _fetch_facts(cik):
     return None
 
 
+def _fetch_all(cik):
+    """一次companyfacts提取 营收/净利/毛利 三组units(companyfacts含全字段,无额外网络成本)"""
+    try:
+        facts = _get(f"https://data.sec.gov/api/xbrl/companyfacts/CIK{cik}.json")
+    except Exception:
+        return None
+    gaap = facts.get("facts", {}).get("us-gaap", {})
+    rev = None
+    for tag in REV_TAGS:
+        u = gaap.get(tag, {}).get("units", {}).get("USD")
+        if u:
+            rev = u
+            break
+    ni = gaap.get("NetIncomeLoss", {}).get("units", {}).get("USD")
+    gp = gaap.get("GrossProfit", {}).get("units", {}).get("USD")
+    if rev is None and ni is None:
+        return None
+    return {"rev": rev, "ni": ni, "gp": gp}
+
+
+def _pit_qseries(units, asof):
+    """通用: filed<=asof 的季度序列(end→val),point-in-time。单季=75-100天区间"""
+    if not units:
+        return None
+    q = {}
+    for r in units:
+        if "start" not in r or "end" not in r or "filed" not in r:
+            continue
+        if r["filed"] > asof:
+            continue
+        try:
+            days = (pd.Timestamp(r["end"]) - pd.Timestamp(r["start"])).days
+        except Exception:
+            continue
+        if 75 <= days <= 100:
+            if r["end"] not in q or r["filed"] > q[r["end"]][1]:
+                q[r["end"]] = (r["val"], r["filed"])
+    if len(q) >= 6:
+        s = pd.Series({k: v[0] for k, v in q.items()})
+        s.index = pd.to_datetime(s.index)
+        return s.sort_index(ascending=False)
+    return None
+
+
+def sig_s2b(f, asof):
+    """营收同比≥25%且加速"""
+    s = _pit_qseries(f.get("rev"), asof)
+    y0, y1 = _yoy(s, 0), _yoy(s, 1)
+    if y0 is None or y1 is None:
+        return None
+    return (y0 >= 0.25) and (y0 > y1)
+
+
+def sig_s2a(f, asof):
+    """首次盈利: 最新季净利>0 且 前4季≥3季≤0"""
+    s = _pit_qseries(f.get("ni"), asof)
+    if s is None or len(s) < 5:
+        return None
+    v = list(s.values)
+    return v[0] > 0 and sum(1 for x in v[1:5] if x <= 0) >= 3
+
+
+def _s1_core(f, asof):
+    """返回(consec改善, ttm_gm, hist_gm, rev_yoy) 供S1/S1超判定"""
+    rev = _pit_qseries(f.get("rev"), asof)
+    gp = _pit_qseries(f.get("gp"), asof)
+    if rev is None or gp is None or len(gp) < 8:
+        return None
+    gm = (gp / rev.reindex(gp.index)).dropna()
+    if len(gm) < 8:
+        return None
+    vals = list(gm.values)  # 最新在前
+    consec = 0
+    for i in range(len(vals) - 1):
+        if vals[i] > vals[i + 1]:
+            consec += 1
+        else:
+            break
+    ttm = gm.iloc[:4].mean()
+    hist = gm.iloc[4:].mean()   # 更早季度的均值=历史基线
+    ry = _yoy(rev, 0)
+    return consec, ttm, hist, (ry if ry is not None else 0)
+
+
+def sig_s1(f, asof):
+    """周期反转: 毛利率连续≥2季改善 且 TTM<历史基线"""
+    c = _s1_core(f, asof)
+    if c is None:
+        return None
+    consec, ttm, hist, _ = c
+    return consec >= 2 and ttm < hist
+
+
+def sig_s1super(f, asof):
+    """超级周期: 连续≥2季改善 且 TTM≥历史基线 且 营收加速≥40%"""
+    c = _s1_core(f, asof)
+    if c is None:
+        return None
+    consec, ttm, hist, ry = c
+    return consec >= 2 and ttm >= hist and ry >= 0.4
+
+
+SIGNALS = {"S1": sig_s1, "S1超": sig_s1super, "S2a": sig_s2a, "S2b": sig_s2b}
+
+
 def _pit_from_units(units, asof):
     """从已拉取的units,按filed<=asof重构季度营收序列(point-in-time)"""
     q = {}
@@ -226,6 +331,84 @@ def backtest_multi(anchors, months, limit):
     return summ
 
 
+def backtest_signals(anchors, horizons, limit):
+    """全信号×全锚点×全horizon: 每股EDGAR+价格各拉一次,复用。
+    输出每个(信号,锚点,horizon)的 命中中位 vs 未命中中位 vs SPY。"""
+    uni = pd.read_csv(BASE / "universe.csv")["ticker"].astype(str).tolist()[:limit]
+    ciks = _cik_map()
+    maxh = max(horizons)
+    hmin = (pd.Timestamp(min(anchors)) - pd.Timedelta(days=30)).strftime("%Y-%m-%d")
+    hmax = (pd.Timestamp(max(anchors)) + pd.DateOffset(months=maxh) + pd.Timedelta(days=30)).strftime("%Y-%m-%d")
+    print(f"全信号回测: 样本≤{len(uni)} 信号{list(SIGNALS)} 锚点{anchors} horizon{horizons}月", flush=True)
+    print(f"价格区间{hmin}~{hmax}, 每股EDGAR+价格各拉一次\n", flush=True)
+    # recs[(sig,anchor,h)] = list of (hit, ret)
+    recs = {}
+    n_ok = 0
+    for i, tk in enumerate(uni, 1):
+        cik = ciks.get(tk.upper())
+        if not cik:
+            continue
+        f = _fetch_all(cik)
+        if f is None:
+            continue
+        h = _price_hist(tk, hmin, hmax)
+        if h is None:
+            continue
+        used = False
+        for a in anchors:
+            sigvals = {name: fn(f, a) for name, fn in SIGNALS.items()}
+            if all(v is None for v in sigvals.values()):
+                continue
+            p0 = _px_from_hist(h, a)
+            if not p0:
+                continue
+            for hz in horizons:
+                fwd = (pd.Timestamp(a) + pd.DateOffset(months=hz)).strftime("%Y-%m-%d")
+                p1 = _px_from_hist(h, fwd)
+                if not p1:
+                    continue
+                ret = (p1 / p0 - 1) * 100
+                for name, v in sigvals.items():
+                    if v is None:
+                        continue
+                    recs.setdefault((name, a, hz), []).append((v, ret))
+                used = True
+        if used:
+            n_ok += 1
+        if i % 100 == 0:
+            print(f"  {i}/{len(uni)} 有效{n_ok}只", flush=True)
+        time.sleep(0.1)
+
+    spy_h = _price_hist("SPY", hmin, hmax)
+    rows = []
+    for (name, a, hz), lst in sorted(recs.items()):
+        df = pd.DataFrame(lst, columns=["hit", "ret"])
+        hits, miss = df[df["hit"]], df[~df["hit"]]
+        if len(hits) < 5:   # 命中太少无意义,跳过
+            continue
+        fwd = (pd.Timestamp(a) + pd.DateOffset(months=hz)).strftime("%Y-%m-%d")
+        s0, s1 = _px_from_hist(spy_h, a), _px_from_hist(spy_h, fwd)
+        spy = round((s1 / s0 - 1) * 100) if s0 and s1 else float("nan")
+        hmed = round(hits["ret"].median())
+        mmed = round(miss["ret"].median()) if len(miss) else float("nan")
+        rows.append({"信号": name, "锚点": a, "月": hz, "命中": len(hits),
+                     "命中中位%": hmed, "未命中中位%": mmed, "SPY%": spy,
+                     "超额vs未命中": hmed - mmed, "超额vsSPY": hmed - spy})
+    out = pd.DataFrame(rows)
+    if out.empty:
+        print("\n无足够命中(每组需≥5),扩大样本或换锚点", flush=True)
+        return out
+    out.to_csv(BASE / "backtest_signals.csv", index=False)
+    print("\n\n========= 全信号回测 (中位数口径) =========", flush=True)
+    for name in SIGNALS:
+        sub = out[out["信号"] == name]
+        if len(sub):
+            print(f"\n--- {name} ---", flush=True)
+            print(sub.drop(columns="信号").to_string(index=False), flush=True)
+    print("\n判定: 某信号的'超额vs未命中'在多锚点多horizon下一致为正 → 该信号有稳健edge", flush=True)
+    return out
+
+
 def backtest(anchor, months, limit):
     fwd = (pd.Timestamp(anchor) + pd.DateOffset(months=months)).strftime("%Y-%m-%d")
     uni = pd.read_csv(BASE / "universe.csv")["ticker"].astype(str).tolist()[:limit]
@@ -281,9 +464,14 @@ if __name__ == "__main__":
     p.add_argument("--anchors", type=str, help="逗号分隔多锚点,覆盖--anchor")
     p.add_argument("--months", type=int, default=12)
     p.add_argument("--limit", type=int, default=99999)
+    p.add_argument("--signals", action="store_true", help="全信号(S1/S1超/S2a/S2b)模式")
+    p.add_argument("--horizons", type=str, default="12,36", help="逗号分隔的horizon月数")
     a = p.parse_args()
     anchors = a.anchors.split(",") if a.anchors else [a.anchor]
-    if len(anchors) > 1:
-        backtest_multi(anchors, a.months, a.limit)      # 全universe多锚点(优化版)
+    if a.signals:
+        hz = [int(x) for x in a.horizons.split(",")]
+        backtest_signals(anchors, hz, a.limit)          # 全信号×多锚点×多horizon
+    elif len(anchors) > 1:
+        backtest_multi(anchors, a.months, a.limit)
     else:
         backtest(anchors[0], a.months, a.limit)

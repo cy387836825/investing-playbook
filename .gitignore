@@ -7,3 +7,4 @@ prices.csv
 scorecard.csv
 bt_*.csv
 backtest_*.csv
+backtest_signals.csv
