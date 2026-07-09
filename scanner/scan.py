@@ -746,15 +746,58 @@ def audit():
         print(f"   {q}")
 
 
+def live(limit=None, tickers=None):
+    """实时扫描(canonical): 用 signals.py 唯一真源 + EDGAR(缓存),对当前日期判定信号。
+    与回测共用同一定义 → 回测测的=实时flag的。输出 signals_live.md。"""
+    import signals as SG
+    from backtest import _fetch_all, _cik_map
+    asof = time.strftime("%Y-%m-%d")
+    uni = pd.read_csv(UNIVERSE_CSV)
+    if tickers:
+        uni = uni[uni["ticker"].isin(tickers)]
+    if limit:
+        uni = uni.head(limit)
+    ciks = _cik_map()
+    print(f"实时扫描(signals.py统一定义) asof={asof}  样本≤{len(uni)}", flush=True)
+    hits = []
+    for i, (_, row) in enumerate(uni.iterrows(), 1):
+        tk = row["ticker"]
+        cik = ciks.get(str(tk).upper())
+        if not cik:
+            continue
+        f = _fetch_all(cik)
+        if f is None:
+            continue
+        fl = [name for name, fn in SG.SIGNALS.items() if fn(f, asof) is True]
+        if fl:
+            hits.append({"ticker": tk, "name": row.get("name", ""), "sector": row.get("sector", ""),
+                         "mcap_b": row.get("mcap_b", ""), "signals": "+".join(fl)})
+        if i % 200 == 0:
+            print(f"  {i}/{len(uni)} 命中{len(hits)}", flush=True)
+        time.sleep(0.03)
+    df = pd.DataFrame(hits)
+    lines = [f"# 实时信号扫描（canonical, signals.py 统一定义）\n",
+             f"asof: {asof} | 命中 {len(df)} 只（≥$5B）| 定义与回测完全一致\n"]
+    for sig in ["S1", "S1超", "S2a", "S2b"]:
+        sub = df[df["signals"].str.contains(sig, na=False)] if len(df) else df
+        lines.append(f"\n## {sig}（{len(sub)}）\n")
+        if len(sub):
+            lines.append(sub[["ticker", "name", "sector", "mcap_b", "signals"]].to_markdown(index=False))
+    (BASE / "signals_live.md").write_text("\n".join(str(x) for x in lines))
+    print(f"→ signals_live.md  命中 {len(df)} 只", flush=True)
+
+
 if __name__ == "__main__":
     p = argparse.ArgumentParser()
-    p.add_argument("cmd", choices=["universe", "scan", "report", "edgar", "deep", "prices", "track", "audit"])
+    p.add_argument("cmd", choices=["universe", "scan", "report", "edgar", "deep", "prices", "track", "audit", "live"])
     p.add_argument("--limit", type=int)
     p.add_argument("--tickers", type=str)
     p.add_argument("--action", type=str, help="track的子动作: add|grade|score")
     a = p.parse_args()
     if a.cmd == "universe":
         fetch_universe()
+    elif a.cmd == "live":
+        live(a.limit, a.tickers.split(",") if a.tickers else None)
     elif a.cmd == "scan":
         run_scan(a.limit, a.tickers.split(",") if a.tickers else None)
     elif a.cmd == "edgar":

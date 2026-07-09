@@ -120,65 +120,9 @@ def _pit_qseries(units, asof):
     return None
 
 
-def sig_s2b(f, asof):
-    """营收同比≥25%且加速"""
-    s = _pit_qseries(f.get("rev"), asof)
-    y0, y1 = _yoy(s, 0), _yoy(s, 1)
-    if y0 is None or y1 is None:
-        return None
-    return (y0 >= 0.25) and (y0 > y1)
-
-
-def sig_s2a(f, asof):
-    """首次盈利: 最新季净利>0 且 前4季≥3季≤0"""
-    s = _pit_qseries(f.get("ni"), asof)
-    if s is None or len(s) < 5:
-        return None
-    v = list(s.values)
-    return v[0] > 0 and sum(1 for x in v[1:5] if x <= 0) >= 3
-
-
-def _s1_core(f, asof):
-    """返回(consec改善, ttm_gm, hist_gm, rev_yoy) 供S1/S1超判定"""
-    rev = _pit_qseries(f.get("rev"), asof)
-    gp = _pit_qseries(f.get("gp"), asof)
-    if rev is None or gp is None or len(gp) < 8:
-        return None
-    gm = (gp / rev.reindex(gp.index)).dropna()
-    if len(gm) < 8:
-        return None
-    vals = list(gm.values)  # 最新在前
-    consec = 0
-    for i in range(len(vals) - 1):
-        if vals[i] > vals[i + 1]:
-            consec += 1
-        else:
-            break
-    ttm = gm.iloc[:4].mean()
-    hist = gm.iloc[4:].mean()   # 更早季度的均值=历史基线
-    ry = _yoy(rev, 0)
-    return consec, ttm, hist, (ry if ry is not None else 0)
-
-
-def sig_s1(f, asof):
-    """周期反转: 毛利率连续≥2季改善 且 TTM<历史基线"""
-    c = _s1_core(f, asof)
-    if c is None:
-        return None
-    consec, ttm, hist, _ = c
-    return consec >= 2 and ttm < hist
-
-
-def sig_s1super(f, asof):
-    """超级周期: 连续≥2季改善 且 TTM≥历史基线 且 营收加速≥40%"""
-    c = _s1_core(f, asof)
-    if c is None:
-        return None
-    consec, ttm, hist, ry = c
-    return consec >= 2 and ttm >= hist and ry >= 0.4
-
-
-SIGNALS = {"S1": sig_s1, "S1超": sig_s1super, "S2a": sig_s2a, "S2b": sig_s2b}
+# 信号定义统一至 signals.py(唯一真源) —— 回测与实时扫描共用同一定义
+from signals import sig_s2b, sig_s2a, sig_s1, sig_s1super, SIGNALS
+from signals import s1_core as _s1_core  # 向后兼容别名
 
 
 def _pit_from_units(units, asof):
