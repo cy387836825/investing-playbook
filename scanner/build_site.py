@@ -171,12 +171,13 @@ def blow_rows():
     r=''
     # 漏网(passed)优先显示(关键洞察),再curation,再signal,上限300
     order={'passed':0,'curation':1,'signal':2}
-    bs=sorted(funnel['blowups'], key=lambda x:(order.get(x['exit_layer'],9), x['dd_peak_pct']))
+    bs=sorted(funnel['blowups'], key=lambda x:(order.get(x['exit_layer'],9), x.get('blow_dd_pct',x['dd_peak_pct'])))
     for b in bs[:300]:
+        dd=b.get('blow_dd_pct',b['dd_peak_pct'])
         r+=f"""<tr data-layer="{b['exit_layer']}">
 <td class=l data-v="{b['ticker']}"><b>{b['ticker']}</b> <span class=mut style=font-size:11px>{(b['name']or'')[:18]}</span></td>
 <td class=l>{b['sector'] or ''}</td>
-<td data-v="{b['dd_peak_pct']}">{fmtPct_py(b['dd_peak_pct'])}</td>
+<td data-v="{dd}">{fmtPct_py(dd)}</td>
 <td class=l>{sig_tags(b['signal_type']) if b['signal_type'] else '<span class=mut>未触发</span>'}</td>
 <td class=l>{badge(b['exit_layer'])}</td></tr>"""
     return r
@@ -204,7 +205,7 @@ page2=f"""<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=view
 </tr></thead><tbody>{win_rows()}</tbody></table></div>
 <div class=note>信号层漏掉484只多为:信号滞后于股价(暴涨在财报确认前)/不达阈值/币-仙股-生物二元等非基本面驱动(框架本就不抓)</div>
 
-<h2>暴雷股(峰值后回调>70%,共{len(funnel['blowups'])}只) — 有多少漏过了过滤网</h2>
+<h2>暴雷股(回撤>70%,共{len(funnel['blowups'])}只;已触发信号的按"首次入场后回撤"计,入场前的崩盘不算) — 有多少漏过了过滤网</h2>
 <div class=stats>
 <div class=stat><div class="v neg">{bc['passed']}</div><div class=l>⚠️漏网(通过全部三层)</div></div>
 <div class=stat><div class="v" style=color:#8b949e>{bc['signal']}</div><div class=l>被信号层挡住(未触发)</div></div>
@@ -213,7 +214,7 @@ page2=f"""<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=view
 <div class=ctrl><input id=bq placeholder="搜索..." oninput=filtB()>
 <select id=bl onchange=filtB()><option value="">全部</option><option value=passed>⚠️漏网</option><option value=signal>信号层挡住</option><option value=curation>curation挡住</option></select></div>
 <div class=wrap><table id=bt><thead><tr>
-<th class=l onclick=srtB(0,0)>股票</th><th class=l>行业</th><th onclick=srtB(2,1)>峰值后回调</th><th class=l>信号类型</th><th class=l>过滤结果</th>
+<th class=l onclick=srtB(0,0)>股票</th><th class=l>行业</th><th onclick=srtB(2,1)>暴雷回撤(入场后/全期)</th><th class=l>信号类型</th><th class=l>过滤结果</th>
 </tr></thead><tbody>{blow_rows()}</tbody></table></div>
 <div class=note>⚠️{bc['passed']}只暴雷股穿过全部三层=框架假阳性(如CVNA/OPEN/PTON疫情泡沫:峰值时营收加速触发S2b+通过curation,随后崩99%)。这是"营收加速信号无法区分真成长与泡沫"的直接证据</div>
 

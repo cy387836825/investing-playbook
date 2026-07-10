@@ -1855,24 +1855,19 @@ tr:hover td{background:#161b22}
 <td class="l reason">信号滞后·拐点晚于测试窗口或未达阈值</td></tr></tbody></table></div>
 <div class=note>信号层漏掉484只多为:信号滞后于股价(暴涨在财报确认前)/不达阈值/币-仙股-生物二元等非基本面驱动(框架本就不抓)</div>
 
-<h2>暴雷股(峰值后回调>70%,共517只) — 有多少漏过了过滤网</h2>
+<h2>暴雷股(回撤>70%,共446只;已触发信号的按"首次入场后回撤"计,入场前的崩盘不算) — 有多少漏过了过滤网</h2>
 <div class=stats>
-<div class=stat><div class="v neg">161</div><div class=l>⚠️漏网(通过全部三层)</div></div>
+<div class=stat><div class="v neg">131</div><div class=l>⚠️漏网(通过全部三层)</div></div>
 <div class=stat><div class="v" style=color:#8b949e>208</div><div class=l>被信号层挡住(未触发)</div></div>
-<div class=stat><div class="v" style=color:#d29922>148</div><div class=l>被curation挡住</div></div>
+<div class=stat><div class="v" style=color:#d29922>107</div><div class=l>被curation挡住</div></div>
 </div>
 <div class=ctrl><input id=bq placeholder="搜索..." oninput=filtB()>
 <select id=bl onchange=filtB()><option value="">全部</option><option value=passed>⚠️漏网</option><option value=signal>信号层挡住</option><option value=curation>curation挡住</option></select></div>
 <div class=wrap><table id=bt><thead><tr>
-<th class=l onclick=srtB(0,0)>股票</th><th class=l>行业</th><th onclick=srtB(2,1)>峰值后回调</th><th class=l>信号类型</th><th class=l>过滤结果</th>
+<th class=l onclick=srtB(0,0)>股票</th><th class=l>行业</th><th onclick=srtB(2,1)>暴雷回撤(入场后/全期)</th><th class=l>信号类型</th><th class=l>过滤结果</th>
 </tr></thead><tbody><tr data-layer="passed">
 <td class=l data-v="CVNA"><b>CVNA</b> <span class=mut style=font-size:11px>Carvana Co</span></td>
 <td class=l>Consumer Cyclical</td>
-<td data-v="-99"><span class=neg>-99%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="OPEN"><b>OPEN</b> <span class=mut style=font-size:11px>Opendoor Technolog</span></td>
-<td class=l>Real Estate</td>
 <td data-v="-99"><span class=neg>-99%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -1881,82 +1876,27 @@ tr:hover td{background:#161b22}
 <td data-v="-98"><span class=neg>-98%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="OPEN"><b>OPEN</b> <span class=mut style=font-size:11px>Opendoor Technolog</span></td>
+<td class=l>Real Estate</td>
+<td data-v="-98"><span class=neg>-98%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="PTON"><b>PTON</b> <span class=mut style=font-size:11px>Peloton Interactiv</span></td>
 <td class=l>Consumer Cyclical</td>
 <td data-v="-98"><span class=neg>-98%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="CIFR"><b>CIFR</b> <span class=mut style=font-size:11px>Cipher Digital Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-97"><span class=neg>-97%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="QBTS"><b>QBTS</b> <span class=mut style=font-size:11px>D-Wave Quantum Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-97"><span class=neg>-97%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="LUNR"><b>LUNR</b> <span class=mut style=font-size:11px>Intuitive Machines</span></td>
-<td class=l>Industrials</td>
-<td data-v="-97"><span class=neg>-97%</span></td>
-<td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="SEDG"><b>SEDG</b> <span class=mut style=font-size:11px>Solaredge Technolo</span></td>
 <td class=l>Technology</td>
 <td data-v="-97"><span class=neg>-97%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="CLOV"><b>CLOV</b> <span class=mut style=font-size:11px>Clover Health Inve</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-97"><span class=neg>-97%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="ABCL"><b>ABCL</b> <span class=mut style=font-size:11px>AbCellera Biologic</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-97"><span class=neg>-97%</span></td>
-<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="MARA"><b>MARA</b> <span class=mut style=font-size:11px>MARA Holdings Inc</span></td>
 <td class=l>Financial</td>
 <td data-v="-96"><span class=neg>-96%</span></td>
 <td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="FSLY"><b>FSLY</b> <span class=mut style=font-size:11px>Fastly Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-96"><span class=neg>-96%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="AFRM"><b>AFRM</b> <span class=mut style=font-size:11px>Affirm Holdings In</span></td>
-<td class=l>Financial</td>
-<td data-v="-95"><span class=neg>-95%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="HUT"><b>HUT</b> <span class=mut style=font-size:11px>Hut 8 Corp</span></td>
-<td class=l>Financial</td>
-<td data-v="-95"><span class=neg>-95%</span></td>
-<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="RNG"><b>RNG</b> <span class=mut style=font-size:11px>RingCentral Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-95"><span class=neg>-95%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="ARQT"><b>ARQT</b> <span class=mut style=font-size:11px>Arcutis Biotherape</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-95"><span class=neg>-95%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="OSCR"><b>OSCR</b> <span class=mut style=font-size:11px>Oscar Health Inc</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-94"><span class=neg>-94%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="TNGX"><b>TNGX</b> <span class=mut style=font-size:11px>Tango Therapeutics</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-94"><span class=neg>-94%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="RUN"><b>RUN</b> <span class=mut style=font-size:11px>Sunrun Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-94"><span class=neg>-94%</span></td>
 <td class=l><span class="tag">S2b</span></td>
@@ -1966,27 +1906,17 @@ tr:hover td{background:#161b22}
 <td data-v="-93"><span class=neg>-93%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="TNGX"><b>TNGX</b> <span class=mut style=font-size:11px>Tango Therapeutics</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-92"><span class=neg>-92%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="CLOV"><b>CLOV</b> <span class=mut style=font-size:11px>Clover Health Inve</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-92"><span class=neg>-92%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="AXTI"><b>AXTI</b> <span class=mut style=font-size:11px>AXT Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-92"><span class=neg>-92%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="NVTS"><b>NVTS</b> <span class=mut style=font-size:11px>Navitas Semiconduc</span></td>
-<td class=l>Technology</td>
-<td data-v="-92"><span class=neg>-92%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="WBD"><b>WBD</b> <span class=mut style=font-size:11px>Warner Bros. Disco</span></td>
-<td class=l>Communication Services</td>
-<td data-v="-91"><span class=neg>-91%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="COIN"><b>COIN</b> <span class=mut style=font-size:11px>Coinbase Global In</span></td>
-<td class=l>Financial</td>
-<td data-v="-91"><span class=neg>-91%</span></td>
-<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="AAOI"><b>AAOI</b> <span class=mut style=font-size:11px>Applied Optoelectr</span></td>
 <td class=l>Technology</td>
 <td data-v="-91"><span class=neg>-91%</span></td>
 <td class=l><span class="tag">S2b</span></td>
@@ -1996,34 +1926,9 @@ tr:hover td{background:#161b22}
 <td data-v="-91"><span class=neg>-91%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="PENN"><b>PENN</b> <span class=mut style=font-size:11px>PENN Entertainment</span></td>
-<td class=l>Consumer Cyclical</td>
-<td data-v="-91"><span class=neg>-91%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="DHC"><b>DHC</b> <span class=mut style=font-size:11px>Diversified Health</span></td>
-<td class=l>Real Estate</td>
-<td data-v="-91"><span class=neg>-91%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="NEOG"><b>NEOG</b> <span class=mut style=font-size:11px>Neogen Corp</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-91"><span class=neg>-91%</span></td>
-<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="ZM"><b>ZM</b> <span class=mut style=font-size:11px>Zoom Communication</span></td>
+<td class=l data-v="RUN"><b>RUN</b> <span class=mut style=font-size:11px>Sunrun Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-90"><span class=neg>-90%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="FLNC"><b>FLNC</b> <span class=mut style=font-size:11px>Fluence Energy Inc</span></td>
-<td class=l>Utilities</td>
-<td data-v="-90"><span class=neg>-90%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="RSI"><b>RSI</b> <span class=mut style=font-size:11px>Rush Street Intera</span></td>
-<td class=l>Consumer Cyclical</td>
-<td data-v="-89"><span class=neg>-89%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="EPAM"><b>EPAM</b> <span class=mut style=font-size:11px>EPAM Systems Inc</span></td>
@@ -2031,23 +1936,13 @@ tr:hover td{background:#161b22}
 <td data-v="-89"><span class=neg>-89%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="GME"><b>GME</b> <span class=mut style=font-size:11px>Gamestop Corp</span></td>
-<td class=l>Consumer Cyclical</td>
-<td data-v="-88"><span class=neg>-88%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="TTD"><b>TTD</b> <span class=mut style=font-size:11px>Trade Desk Inc</span></td>
 <td class=l>Communication Services</td>
 <td data-v="-88"><span class=neg>-88%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="VFC"><b>VFC</b> <span class=mut style=font-size:11px>VF Corp</span></td>
-<td class=l>Consumer Cyclical</td>
-<td data-v="-88"><span class=neg>-88%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="LYFT"><b>LYFT</b> <span class=mut style=font-size:11px>Lyft Inc</span></td>
-<td class=l>Technology</td>
+<td class=l data-v="FLNC"><b>FLNC</b> <span class=mut style=font-size:11px>Fluence Energy Inc</span></td>
+<td class=l>Utilities</td>
 <td data-v="-88"><span class=neg>-88%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -2056,29 +1951,14 @@ tr:hover td{background:#161b22}
 <td data-v="-88"><span class=neg>-88%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="HIMS"><b>HIMS</b> <span class=mut style=font-size:11px>Hims & Hers Health</span></td>
+<td class=l data-v="ABCL"><b>ABCL</b> <span class=mut style=font-size:11px>AbCellera Biologic</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-87"><span class=neg>-87%</span></td>
-<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="ACMR"><b>ACMR</b> <span class=mut style=font-size:11px>ACM Research Inc</span></td>
+<td class=l data-v="ZM"><b>ZM</b> <span class=mut style=font-size:11px>Zoom Communication</span></td>
 <td class=l>Technology</td>
-<td data-v="-87"><span class=neg>-87%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="XMTR"><b>XMTR</b> <span class=mut style=font-size:11px>Xometry Inc</span></td>
-<td class=l>Industrials</td>
-<td data-v="-87"><span class=neg>-87%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="RDW"><b>RDW</b> <span class=mut style=font-size:11px>Redwire Corp</span></td>
-<td class=l>Industrials</td>
-<td data-v="-87"><span class=neg>-87%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="NWL"><b>NWL</b> <span class=mut style=font-size:11px>Newell Brands Inc</span></td>
-<td class=l>Consumer Defensive</td>
-<td data-v="-87"><span class=neg>-87%</span></td>
+<td data-v="-86"><span class=neg>-86%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="ETSY"><b>ETSY</b> <span class=mut style=font-size:11px>Etsy Inc</span></td>
@@ -2086,18 +1966,23 @@ tr:hover td{background:#161b22}
 <td data-v="-86"><span class=neg>-86%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="RELY"><b>RELY</b> <span class=mut style=font-size:11px>Remitly Global Inc</span></td>
+<td class=l data-v="VFC"><b>VFC</b> <span class=mut style=font-size:11px>VF Corp</span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-86"><span class=neg>-86%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="LYFT"><b>LYFT</b> <span class=mut style=font-size:11px>Lyft Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-86"><span class=neg>-86%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="LASR"><b>LASR</b> <span class=mut style=font-size:11px>nLIGHT Inc</span></td>
-<td class=l>Technology</td>
+<td class=l data-v="PENN"><b>PENN</b> <span class=mut style=font-size:11px>PENN Entertainment</span></td>
+<td class=l>Consumer Cyclical</td>
 <td data-v="-86"><span class=neg>-86%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="QTWO"><b>QTWO</b> <span class=mut style=font-size:11px>Q2 Holdings Inc</span></td>
-<td class=l>Technology</td>
+<td class=l data-v="NWL"><b>NWL</b> <span class=mut style=font-size:11px>Newell Brands Inc</span></td>
+<td class=l>Consumer Defensive</td>
 <td data-v="-86"><span class=neg>-86%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -2111,8 +1996,8 @@ tr:hover td{background:#161b22}
 <td data-v="-85"><span class=neg>-85%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="WAL"><b>WAL</b> <span class=mut style=font-size:11px>Western Alliance B</span></td>
-<td class=l>Financial</td>
+<td class=l data-v="ACMR"><b>ACMR</b> <span class=mut style=font-size:11px>ACM Research Inc</span></td>
+<td class=l>Technology</td>
 <td data-v="-85"><span class=neg>-85%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -2121,15 +2006,10 @@ tr:hover td{background:#161b22}
 <td data-v="-85"><span class=neg>-85%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="GTLB"><b>GTLB</b> <span class=mut style=font-size:11px>Gitlab Inc</span></td>
+<td class=l data-v="NVTS"><b>NVTS</b> <span class=mut style=font-size:11px>Navitas Semiconduc</span></td>
 <td class=l>Technology</td>
 <td data-v="-85"><span class=neg>-85%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="SYNA"><b>SYNA</b> <span class=mut style=font-size:11px>Synaptics Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-85"><span class=neg>-85%</span></td>
-<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="CALY"><b>CALY</b> <span class=mut style=font-size:11px>Callaway Golf Co</span></td>
 <td class=l>Consumer Cyclical</td>
@@ -2156,8 +2036,8 @@ tr:hover td{background:#161b22}
 <td data-v="-84"><span class=neg>-84%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="ALHC"><b>ALHC</b> <span class=mut style=font-size:11px>Alignment Healthca</span></td>
-<td class=l>Healthcare</td>
+<td class=l data-v="GME"><b>GME</b> <span class=mut style=font-size:11px>Gamestop Corp</span></td>
+<td class=l>Consumer Cyclical</td>
 <td data-v="-84"><span class=neg>-84%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -2171,38 +2051,13 @@ tr:hover td{background:#161b22}
 <td data-v="-84"><span class=neg>-84%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="BTU"><b>BTU</b> <span class=mut style=font-size:11px>Peabody Energy Cor</span></td>
-<td class=l>Energy</td>
-<td data-v="-84"><span class=neg>-84%</span></td>
-<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="MPT"><b>MPT</b> <span class=mut style=font-size:11px>Medical Properties</span></td>
 <td class=l>Real Estate</td>
 <td data-v="-84"><span class=neg>-84%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="XRAY"><b>XRAY</b> <span class=mut style=font-size:11px>DENTSPLY Sirona In</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-84"><span class=neg>-84%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="FLYW"><b>FLYW</b> <span class=mut style=font-size:11px>Flywire Corp</span></td>
-<td class=l>Technology</td>
-<td data-v="-84"><span class=neg>-84%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="RBLX"><b>RBLX</b> <span class=mut style=font-size:11px>Roblox Corp</span></td>
-<td class=l>Communication Services</td>
-<td data-v="-83"><span class=neg>-83%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="ALGN"><b>ALGN</b> <span class=mut style=font-size:11px>Align Technology I</span></td>
 <td class=l>Healthcare</td>
-<td data-v="-83"><span class=neg>-83%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="PINS"><b>PINS</b> <span class=mut style=font-size:11px>Pinterest Inc</span></td>
-<td class=l>Communication Services</td>
 <td data-v="-83"><span class=neg>-83%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -2211,20 +2066,10 @@ tr:hover td{background:#161b22}
 <td data-v="-83"><span class=neg>-83%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="SSRM"><b>SSRM</b> <span class=mut style=font-size:11px>SSR Mining Inc</span></td>
-<td class=l>Basic Materials</td>
-<td data-v="-83"><span class=neg>-83%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="DUOL"><b>DUOL</b> <span class=mut style=font-size:11px>Duolingo Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-83"><span class=neg>-83%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="AMRX"><b>AMRX</b> <span class=mut style=font-size:11px>Amneal Pharmaceuti</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-83"><span class=neg>-83%</span></td>
-<td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="TVTX"><b>TVTX</b> <span class=mut style=font-size:11px>Travere Therapeuti</span></td>
 <td class=l>Healthcare</td>
@@ -2236,13 +2081,13 @@ tr:hover td{background:#161b22}
 <td data-v="-83"><span class=neg>-83%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="BRZE"><b>BRZE</b> <span class=mut style=font-size:11px>Braze Inc</span></td>
-<td class=l>Technology</td>
+<td class=l data-v="XRAY"><b>XRAY</b> <span class=mut style=font-size:11px>DENTSPLY Sirona In</span></td>
+<td class=l>Healthcare</td>
 <td data-v="-83"><span class=neg>-83%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="DASH"><b>DASH</b> <span class=mut style=font-size:11px>DoorDash Inc</span></td>
-<td class=l>Consumer Cyclical</td>
+<td class=l data-v="AFRM"><b>AFRM</b> <span class=mut style=font-size:11px>Affirm Holdings In</span></td>
+<td class=l>Financial</td>
 <td data-v="-82"><span class=neg>-82%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -2251,8 +2096,8 @@ tr:hover td{background:#161b22}
 <td data-v="-82"><span class=neg>-82%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="GTX"><b>GTX</b> <span class=mut style=font-size:11px>Garrett Motion Inc</span></td>
-<td class=l>Consumer Cyclical</td>
+<td class=l data-v="XMTR"><b>XMTR</b> <span class=mut style=font-size:11px>Xometry Inc</span></td>
+<td class=l>Industrials</td>
 <td data-v="-82"><span class=neg>-82%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -2261,13 +2106,8 @@ tr:hover td{background:#161b22}
 <td data-v="-82"><span class=neg>-82%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="DOCS"><b>DOCS</b> <span class=mut style=font-size:11px>Doximity Inc</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-82"><span class=neg>-82%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="WHR"><b>WHR</b> <span class=mut style=font-size:11px>Whirlpool Corp</span></td>
-<td class=l>Consumer Cyclical</td>
+<td class=l data-v="LASR"><b>LASR</b> <span class=mut style=font-size:11px>nLIGHT Inc</span></td>
+<td class=l>Technology</td>
 <td data-v="-82"><span class=neg>-82%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -2276,33 +2116,28 @@ tr:hover td{background:#161b22}
 <td data-v="-82"><span class=neg>-82%</span></td>
 <td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="BAX"><b>BAX</b> <span class=mut style=font-size:11px>Baxter Internation</span></td>
+<td class=l data-v="NEOG"><b>NEOG</b> <span class=mut style=font-size:11px>Neogen Corp</span></td>
 <td class=l>Healthcare</td>
+<td data-v="-82"><span class=neg>-82%</span></td>
+<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="PINS"><b>PINS</b> <span class=mut style=font-size:11px>Pinterest Inc</span></td>
+<td class=l>Communication Services</td>
 <td data-v="-81"><span class=neg>-81%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="IPGP"><b>IPGP</b> <span class=mut style=font-size:11px>IPG Photonics Corp</span></td>
+<td class=l data-v="QTWO"><b>QTWO</b> <span class=mut style=font-size:11px>Q2 Holdings Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-81"><span class=neg>-81%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="PAY"><b>PAY</b> <span class=mut style=font-size:11px>Paymentus Holdings</span></td>
-<td class=l>Technology</td>
+<td class=l data-v="WHR"><b>WHR</b> <span class=mut style=font-size:11px>Whirlpool Corp</span></td>
+<td class=l>Consumer Cyclical</td>
 <td data-v="-81"><span class=neg>-81%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="BE"><b>BE</b> <span class=mut style=font-size:11px>Bloom Energy Corp</span></td>
-<td class=l>Industrials</td>
-<td data-v="-80"><span class=neg>-80%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="KMX"><b>KMX</b> <span class=mut style=font-size:11px>Carmax Inc</span></td>
 <td class=l>Consumer Cyclical</td>
-<td data-v="-80"><span class=neg>-80%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="SM"><b>SM</b> <span class=mut style=font-size:11px>SM Energy Co</span></td>
-<td class=l>Energy</td>
 <td data-v="-80"><span class=neg>-80%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -2311,18 +2146,18 @@ tr:hover td{background:#161b22}
 <td data-v="-80"><span class=neg>-80%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="PRM"><b>PRM</b> <span class=mut style=font-size:11px>Perimeter Solution</span></td>
-<td class=l>Basic Materials</td>
-<td data-v="-80"><span class=neg>-80%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="DBRG"><b>DBRG</b> <span class=mut style=font-size:11px>DigitalBridge Grou</span></td>
 <td class=l>Financial</td>
 <td data-v="-80"><span class=neg>-80%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="PGNY"><b>PGNY</b> <span class=mut style=font-size:11px>Progyny Inc</span></td>
-<td class=l>Healthcare</td>
+<td class=l data-v="FSLY"><b>FSLY</b> <span class=mut style=font-size:11px>Fastly Inc</span></td>
+<td class=l>Technology</td>
+<td data-v="-80"><span class=neg>-80%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="RDW"><b>RDW</b> <span class=mut style=font-size:11px>Redwire Corp</span></td>
+<td class=l>Industrials</td>
 <td data-v="-80"><span class=neg>-80%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -2330,6 +2165,16 @@ tr:hover td{background:#161b22}
 <td class=l>Consumer Cyclical</td>
 <td data-v="-79"><span class=neg>-79%</span></td>
 <td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="HIMS"><b>HIMS</b> <span class=mut style=font-size:11px>Hims & Hers Health</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-79"><span class=neg>-79%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="AMRX"><b>AMRX</b> <span class=mut style=font-size:11px>Amneal Pharmaceuti</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-79"><span class=neg>-79%</span></td>
+<td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="CE"><b>CE</b> <span class=mut style=font-size:11px>Celanese Corp</span></td>
 <td class=l>Basic Materials</td>
@@ -2356,18 +2201,8 @@ tr:hover td{background:#161b22}
 <td data-v="-79"><span class=neg>-79%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="AVPT"><b>AVPT</b> <span class=mut style=font-size:11px>AvePoint Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-79"><span class=neg>-79%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="HCI"><b>HCI</b> <span class=mut style=font-size:11px>HCI Group Inc</span></td>
 <td class=l>Financial</td>
-<td data-v="-79"><span class=neg>-79%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="ALKT"><b>ALKT</b> <span class=mut style=font-size:11px>Alkami Technology </span></td>
-<td class=l>Technology</td>
 <td data-v="-79"><span class=neg>-79%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -2386,8 +2221,8 @@ tr:hover td{background:#161b22}
 <td data-v="-78"><span class=neg>-78%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="ARE"><b>ARE</b> <span class=mut style=font-size:11px>Alexandria Real Es</span></td>
-<td class=l>Real Estate</td>
+<td class=l data-v="DOCS"><b>DOCS</b> <span class=mut style=font-size:11px>Doximity Inc</span></td>
+<td class=l>Healthcare</td>
 <td data-v="-78"><span class=neg>-78%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -2395,11 +2230,6 @@ tr:hover td{background:#161b22}
 <td class=l>Communication Services</td>
 <td data-v="-78"><span class=neg>-78%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="LEU"><b>LEU</b> <span class=mut style=font-size:11px>Centrus Energy Cor</span></td>
-<td class=l>Energy</td>
-<td data-v="-78"><span class=neg>-78%</span></td>
-<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="META"><b>META</b> <span class=mut style=font-size:11px>Meta Platforms Inc</span></td>
 <td class=l>Communication Services</td>
@@ -2411,13 +2241,13 @@ tr:hover td{background:#161b22}
 <td data-v="-77"><span class=neg>-77%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="TFX"><b>TFX</b> <span class=mut style=font-size:11px>Teleflex Incorpora</span></td>
+<td class=l data-v="BAX"><b>BAX</b> <span class=mut style=font-size:11px>Baxter Internation</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-77"><span class=neg>-77%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="HASI"><b>HASI</b> <span class=mut style=font-size:11px>HA Sustainable Inf</span></td>
-<td class=l>Financial</td>
+<td class=l data-v="IPGP"><b>IPGP</b> <span class=mut style=font-size:11px>IPG Photonics Corp</span></td>
+<td class=l>Technology</td>
 <td data-v="-77"><span class=neg>-77%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -2426,23 +2256,13 @@ tr:hover td{background:#161b22}
 <td data-v="-77"><span class=neg>-77%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="UWMC"><b>UWMC</b> <span class=mut style=font-size:11px>UWM Holdings Corp</span></td>
-<td class=l>Financial</td>
-<td data-v="-77"><span class=neg>-77%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="ICHR"><b>ICHR</b> <span class=mut style=font-size:11px>Ichor Holdings Ltd</span></td>
-<td class=l>Technology</td>
-<td data-v="-77"><span class=neg>-77%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="HLIO"><b>HLIO</b> <span class=mut style=font-size:11px>Helios Technologie</span></td>
 <td class=l>Industrials</td>
 <td data-v="-77"><span class=neg>-77%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="PR"><b>PR</b> <span class=mut style=font-size:11px>Permian Resources </span></td>
-<td class=l>Energy</td>
+<td class=l data-v="BE"><b>BE</b> <span class=mut style=font-size:11px>Bloom Energy Corp</span></td>
+<td class=l>Industrials</td>
 <td data-v="-76"><span class=neg>-76%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -2456,8 +2276,18 @@ tr:hover td{background:#161b22}
 <td data-v="-76"><span class=neg>-76%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="CGNX"><b>CGNX</b> <span class=mut style=font-size:11px>Cognex Corp</span></td>
+<td class=l data-v="FLYW"><b>FLYW</b> <span class=mut style=font-size:11px>Flywire Corp</span></td>
 <td class=l>Technology</td>
+<td data-v="-76"><span class=neg>-76%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="ALHC"><b>ALHC</b> <span class=mut style=font-size:11px>Alignment Healthca</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-75"><span class=neg>-75%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="HASI"><b>HASI</b> <span class=mut style=font-size:11px>HA Sustainable Inf</span></td>
+<td class=l>Financial</td>
 <td data-v="-75"><span class=neg>-75%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
@@ -2465,6 +2295,16 @@ tr:hover td{background:#161b22}
 <td class=l>Consumer Cyclical</td>
 <td data-v="-75"><span class=neg>-75%</span></td>
 <td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="UWMC"><b>UWMC</b> <span class=mut style=font-size:11px>UWM Holdings Corp</span></td>
+<td class=l>Financial</td>
+<td data-v="-75"><span class=neg>-75%</span></td>
+<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="LEU"><b>LEU</b> <span class=mut style=font-size:11px>Centrus Energy Cor</span></td>
+<td class=l>Energy</td>
+<td data-v="-75"><span class=neg>-75%</span></td>
+<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="CARG"><b>CARG</b> <span class=mut style=font-size:11px>CarGurus Inc</span></td>
 <td class=l>Consumer Cyclical</td>
@@ -2474,6 +2314,16 @@ tr:hover td{background:#161b22}
 <td class=l data-v="TALO"><b>TALO</b> <span class=mut style=font-size:11px>Talos Energy Inc</span></td>
 <td class=l>Energy</td>
 <td data-v="-75"><span class=neg>-75%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="CGNX"><b>CGNX</b> <span class=mut style=font-size:11px>Cognex Corp</span></td>
+<td class=l>Technology</td>
+<td data-v="-74"><span class=neg>-74%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="ARE"><b>ARE</b> <span class=mut style=font-size:11px>Alexandria Real Es</span></td>
+<td class=l>Real Estate</td>
+<td data-v="-74"><span class=neg>-74%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="BIO"><b>BIO</b> <span class=mut style=font-size:11px>Bio-Rad Laboratori</span></td>
@@ -2486,22 +2336,17 @@ tr:hover td{background:#161b22}
 <td data-v="-74"><span class=neg>-74%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="PTCT"><b>PTCT</b> <span class=mut style=font-size:11px>PTC Therapeutics I</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-74"><span class=neg>-74%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="CROX"><b>CROX</b> <span class=mut style=font-size:11px>Crocs Inc</span></td>
 <td class=l>Consumer Cyclical</td>
 <td data-v="-74"><span class=neg>-74%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="KVYO"><b>KVYO</b> <span class=mut style=font-size:11px>Klaviyo Inc</span></td>
-<td class=l>Technology</td>
+<td class=l data-v="TFX"><b>TFX</b> <span class=mut style=font-size:11px>Teleflex Incorpora</span></td>
+<td class=l>Healthcare</td>
 <td data-v="-74"><span class=neg>-74%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="TENB"><b>TENB</b> <span class=mut style=font-size:11px>Tenable Holdings I</span></td>
+<td class=l data-v="KVYO"><b>KVYO</b> <span class=mut style=font-size:11px>Klaviyo Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-74"><span class=neg>-74%</span></td>
 <td class=l><span class="tag">S2b</span></td>
@@ -2511,10 +2356,10 @@ tr:hover td{background:#161b22}
 <td data-v="-74"><span class=neg>-74%</span></td>
 <td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="BLBD"><b>BLBD</b> <span class=mut style=font-size:11px>Blue Bird Corp</span></td>
-<td class=l>Industrials</td>
+<td class=l data-v="BRZE"><b>BRZE</b> <span class=mut style=font-size:11px>Braze Inc</span></td>
+<td class=l>Technology</td>
 <td data-v="-74"><span class=neg>-74%</span></td>
-<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="INTA"><b>INTA</b> <span class=mut style=font-size:11px>Intapp Inc</span></td>
 <td class=l>Technology</td>
@@ -2526,15 +2371,15 @@ tr:hover td{background:#161b22}
 <td data-v="-73"><span class=neg>-73%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="YOU"><b>YOU</b> <span class=mut style=font-size:11px>Clear Secure Inc</span></td>
+<td class=l data-v="GTLB"><b>GTLB</b> <span class=mut style=font-size:11px>Gitlab Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-73"><span class=neg>-73%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="UCTT"><b>UCTT</b> <span class=mut style=font-size:11px>Ultra Clean Hldgs </span></td>
+<td class=l data-v="SYNA"><b>SYNA</b> <span class=mut style=font-size:11px>Synaptics Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-73"><span class=neg>-73%</span></td>
-<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="AEO"><b>AEO</b> <span class=mut style=font-size:11px>American Eagle Out</span></td>
 <td class=l>Consumer Cyclical</td>
@@ -2546,12 +2391,12 @@ tr:hover td{background:#161b22}
 <td data-v="-73"><span class=neg>-73%</span></td>
 <td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="ADBE"><b>ADBE</b> <span class=mut style=font-size:11px>Adobe Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-72"><span class=neg>-72%</span></td>
-<td class=l><span class="tag">S2b</span></td>
+<td class=l data-v="DHC"><b>DHC</b> <span class=mut style=font-size:11px>Diversified Health</span></td>
+<td class=l>Real Estate</td>
+<td data-v="-73"><span class=neg>-73%</span></td>
+<td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="COHR"><b>COHR</b> <span class=mut style=font-size:11px>Coherent Corp</span></td>
+<td class=l data-v="ADBE"><b>ADBE</b> <span class=mut style=font-size:11px>Adobe Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-72"><span class=neg>-72%</span></td>
 <td class=l><span class="tag">S2b</span></td>
@@ -2565,6 +2410,11 @@ tr:hover td{background:#161b22}
 <td class=l>Healthcare</td>
 <td data-v="-72"><span class=neg>-72%</span></td>
 <td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="CIFR"><b>CIFR</b> <span class=mut style=font-size:11px>Cipher Digital Inc</span></td>
+<td class=l>Technology</td>
+<td data-v="-72"><span class=neg>-72%</span></td>
+<td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="ST"><b>ST</b> <span class=mut style=font-size:11px>Sensata Technologi</span></td>
 <td class=l>Technology</td>
@@ -2581,10 +2431,15 @@ tr:hover td{background:#161b22}
 <td data-v="-72"><span class=neg>-72%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="TDS"><b>TDS</b> <span class=mut style=font-size:11px>Telephone And Data</span></td>
-<td class=l>Communication Services</td>
+<td class=l data-v="LUNR"><b>LUNR</b> <span class=mut style=font-size:11px>Intuitive Machines</span></td>
+<td class=l>Industrials</td>
 <td data-v="-72"><span class=neg>-72%</span></td>
 <td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="ICHR"><b>ICHR</b> <span class=mut style=font-size:11px>Ichor Holdings Ltd</span></td>
+<td class=l>Technology</td>
+<td data-v="-72"><span class=neg>-72%</span></td>
+<td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="NMRK"><b>NMRK</b> <span class=mut style=font-size:11px>Newmark Group Inc</span></td>
 <td class=l>Real Estate</td>
@@ -2594,6 +2449,11 @@ tr:hover td{background:#161b22}
 <td class=l data-v="CTOS"><b>CTOS</b> <span class=mut style=font-size:11px>Custom Truck One S</span></td>
 <td class=l>Industrials</td>
 <td data-v="-72"><span class=neg>-72%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
+<td class=l data-v="RBLX"><b>RBLX</b> <span class=mut style=font-size:11px>Roblox Corp</span></td>
+<td class=l>Communication Services</td>
+<td data-v="-71"><span class=neg>-71%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="SWK"><b>SWK</b> <span class=mut style=font-size:11px>Stanley Black & De</span></td>
@@ -2606,10 +2466,10 @@ tr:hover td{background:#161b22}
 <td data-v="-71"><span class=neg>-71%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="KNSA"><b>KNSA</b> <span class=mut style=font-size:11px>Kiniksa Pharmaceut</span></td>
-<td class=l>Healthcare</td>
+<td class=l data-v="QBTS"><b>QBTS</b> <span class=mut style=font-size:11px>D-Wave Quantum Inc</span></td>
+<td class=l>Technology</td>
 <td data-v="-71"><span class=neg>-71%</span></td>
-<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="NVST"><b>NVST</b> <span class=mut style=font-size:11px>Envista Holdings C</span></td>
 <td class=l>Healthcare</td>
@@ -2631,22 +2491,17 @@ tr:hover td{background:#161b22}
 <td data-v="-71"><span class=neg>-71%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="ADMA"><b>ADMA</b> <span class=mut style=font-size:11px>Adma Biologics Inc</span></td>
-<td class=l>Healthcare</td>
+<td class=l data-v="BLBD"><b>BLBD</b> <span class=mut style=font-size:11px>Blue Bird Corp</span></td>
+<td class=l>Industrials</td>
 <td data-v="-71"><span class=neg>-71%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="SEM"><b>SEM</b> <span class=mut style=font-size:11px>Select Medical Hol</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-71"><span class=neg>-71%</span></td>
-<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="ON"><b>ON</b> <span class=mut style=font-size:11px>ON Semiconductor C</span></td>
 <td class=l>Technology</td>
 <td data-v="-70"><span class=neg>-70%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="GPN"><b>GPN</b> <span class=mut style=font-size:11px>Global Payments In</span></td>
+<td class=l data-v="UCTT"><b>UCTT</b> <span class=mut style=font-size:11px>Ultra Clean Hldgs </span></td>
 <td class=l>Technology</td>
 <td data-v="-70"><span class=neg>-70%</span></td>
 <td class=l><span class="tag">S2b</span></td>
@@ -2656,107 +2511,32 @@ tr:hover td{background:#161b22}
 <td data-v="-70"><span class=neg>-70%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="DAN"><b>DAN</b> <span class=mut style=font-size:11px>Dana Inc</span></td>
-<td class=l>Consumer Cyclical</td>
-<td data-v="-70"><span class=neg>-70%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="DRVN"><b>DRVN</b> <span class=mut style=font-size:11px>Driven Brands Hold</span></td>
 <td class=l>Consumer Cyclical</td>
 <td data-v="-70"><span class=neg>-70%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="DEI"><b>DEI</b> <span class=mut style=font-size:11px>Douglas Emmett Inc</span></td>
-<td class=l>Real Estate</td>
+<td class=l data-v="SEM"><b>SEM</b> <span class=mut style=font-size:11px>Select Medical Hol</span></td>
+<td class=l>Healthcare</td>
 <td data-v="-70"><span class=neg>-70%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="curation">
-<td class=l data-v="WGS"><b>WGS</b> <span class=mut style=font-size:11px>GeneDx Holdings Co</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-100"><span class=neg>-100%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="FCEL"><b>FCEL</b> <span class=mut style=font-size:11px>Fuelcell Energy In</span></td>
 <td class=l>Industrials</td>
 <td data-v="-100"><span class=neg>-100%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="DAVE"><b>DAVE</b> <span class=mut style=font-size:11px>Dave Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-99"><span class=neg>-99%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="PLUG"><b>PLUG</b> <span class=mut style=font-size:11px>Plug Power Inc</span></td>
 <td class=l>Industrials</td>
-<td data-v="-99"><span class=neg>-99%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="HYMC"><b>HYMC</b> <span class=mut style=font-size:11px>Hycroft Mining Hol</span></td>
-<td class=l>Basic Materials</td>
-<td data-v="-99"><span class=neg>-99%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="ONDS"><b>ONDS</b> <span class=mut style=font-size:11px>Ondas Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-98"><span class=neg>-98%</span></td>
-<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="OUST"><b>OUST</b> <span class=mut style=font-size:11px>Ouster Inc</span></td>
-<td class=l>Technology</td>
 <td data-v="-98"><span class=neg>-98%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="QUBT"><b>QUBT</b> <span class=mut style=font-size:11px>Quantum Computing </span></td>
-<td class=l>Technology</td>
-<td data-v="-98"><span class=neg>-98%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="IBRX"><b>IBRX</b> <span class=mut style=font-size:11px>ImmunityBio Inc</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-97"><span class=neg>-97%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="RLAY"><b>RLAY</b> <span class=mut style=font-size:11px>Relay Therapeutics</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-97"><span class=neg>-97%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="ADPT"><b>ADPT</b> <span class=mut style=font-size:11px>Adaptive Biotechno</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-97"><span class=neg>-97%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="BFLY"><b>BFLY</b> <span class=mut style=font-size:11px>Butterfly Network </span></td>
-<td class=l>Healthcare</td>
-<td data-v="-97"><span class=neg>-97%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="RIOT"><b>RIOT</b> <span class=mut style=font-size:11px>Riot Platforms Inc</span></td>
-<td class=l>Financial</td>
-<td data-v="-96"><span class=neg>-96%</span></td>
-<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="CHRD"><b>CHRD</b> <span class=mut style=font-size:11px>Chord Energy Corp</span></td>
-<td class=l>Energy</td>
-<td data-v="-96"><span class=neg>-96%</span></td>
-<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="TXG"><b>TXG</b> <span class=mut style=font-size:11px>10x Genomics Inc</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-96"><span class=neg>-96%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="CLSK"><b>CLSK</b> <span class=mut style=font-size:11px>Cleanspark Inc</span></td>
-<td class=l>Financial</td>
-<td data-v="-96"><span class=neg>-96%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="VISN"><b>VISN</b> <span class=mut style=font-size:11px>Vistance Networks </span></td>
-<td class=l>Technology</td>
-<td data-v="-96"><span class=neg>-96%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="NTLA"><b>NTLA</b> <span class=mut style=font-size:11px>Intellia Therapeut</span></td>
+<td class=l data-v="WGS"><b>WGS</b> <span class=mut style=font-size:11px>GeneDx Holdings Co</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-96"><span class=neg>-96%</span></td>
 <td class=l><span class="tag">S2b</span></td>
@@ -2766,49 +2546,14 @@ tr:hover td{background:#161b22}
 <td data-v="-96"><span class=neg>-96%</span></td>
 <td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="MRNA"><b>MRNA</b> <span class=mut style=font-size:11px>Moderna Inc</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-95"><span class=neg>-95%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="SNAP"><b>SNAP</b> <span class=mut style=font-size:11px>Snap Inc</span></td>
 <td class=l>Communication Services</td>
 <td data-v="-95"><span class=neg>-95%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="IMNM"><b>IMNM</b> <span class=mut style=font-size:11px>Immunome Inc</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-95"><span class=neg>-95%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="AVAH"><b>AVAH</b> <span class=mut style=font-size:11px>Aveanna Healthcare</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-95"><span class=neg>-95%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="STOK"><b>STOK</b> <span class=mut style=font-size:11px>Stoke Therapeutics</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-95"><span class=neg>-95%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="SMMT"><b>SMMT</b> <span class=mut style=font-size:11px>Summit Therapeutic</span></td>
+<td class=l data-v="ADPT"><b>ADPT</b> <span class=mut style=font-size:11px>Adaptive Biotechno</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-94"><span class=neg>-94%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="TWST"><b>TWST</b> <span class=mut style=font-size:11px>Twist Bioscience C</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-94"><span class=neg>-94%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="LMND"><b>LMND</b> <span class=mut style=font-size:11px>Lemonade Inc</span></td>
-<td class=l>Financial</td>
-<td data-v="-94"><span class=neg>-94%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="BBIO"><b>BBIO</b> <span class=mut style=font-size:11px>BridgeBio Pharma I</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-93"><span class=neg>-93%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="U"><b>U</b> <span class=mut style=font-size:11px>Unity Software Inc</span></td>
@@ -2816,23 +2561,18 @@ tr:hover td{background:#161b22}
 <td data-v="-93"><span class=neg>-93%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="TGTX"><b>TGTX</b> <span class=mut style=font-size:11px>TG Therapeutics In</span></td>
-<td class=l>Healthcare</td>
+<td class=l data-v="RIOT"><b>RIOT</b> <span class=mut style=font-size:11px>Riot Platforms Inc</span></td>
+<td class=l>Financial</td>
 <td data-v="-93"><span class=neg>-93%</span></td>
 <td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="SRRK"><b>SRRK</b> <span class=mut style=font-size:11px>Scholar Rock Holdi</span></td>
+<td class=l data-v="TWST"><b>TWST</b> <span class=mut style=font-size:11px>Twist Bioscience C</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-93"><span class=neg>-93%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="ZLAB"><b>ZLAB</b> <span class=mut style=font-size:11px>Zai Lab Limited AD</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-93"><span class=neg>-93%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="RXRX"><b>RXRX</b> <span class=mut style=font-size:11px>Recursion Pharmace</span></td>
-<td class=l>Healthcare</td>
+<td class=l data-v="HYMC"><b>HYMC</b> <span class=mut style=font-size:11px>Hycroft Mining Hol</span></td>
+<td class=l>Basic Materials</td>
 <td data-v="-93"><span class=neg>-93%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
@@ -2846,42 +2586,32 @@ tr:hover td{background:#161b22}
 <td data-v="-92"><span class=neg>-92%</span></td>
 <td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="BB"><b>BB</b> <span class=mut style=font-size:11px>BlackBerry Ltd</span></td>
-<td class=l>Technology</td>
-<td data-v="-92"><span class=neg>-92%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="ENPH"><b>ENPH</b> <span class=mut style=font-size:11px>Enphase Energy Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-92"><span class=neg>-92%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="ASTS"><b>ASTS</b> <span class=mut style=font-size:11px>AST SpaceMobile In</span></td>
-<td class=l>Technology</td>
-<td data-v="-91"><span class=neg>-91%</span></td>
+<td class=l data-v="CLSK"><b>CLSK</b> <span class=mut style=font-size:11px>Cleanspark Inc</span></td>
+<td class=l>Financial</td>
+<td data-v="-92"><span class=neg>-92%</span></td>
+<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="BFLY"><b>BFLY</b> <span class=mut style=font-size:11px>Butterfly Network </span></td>
+<td class=l>Healthcare</td>
+<td data-v="-92"><span class=neg>-92%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="COMP"><b>COMP</b> <span class=mut style=font-size:11px>Compass Inc</span></td>
-<td class=l>Real Estate</td>
+<td class=l data-v="VISN"><b>VISN</b> <span class=mut style=font-size:11px>Vistance Networks </span></td>
+<td class=l>Technology</td>
 <td data-v="-91"><span class=neg>-91%</span></td>
 <td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="MGNI"><b>MGNI</b> <span class=mut style=font-size:11px>Magnite Inc</span></td>
-<td class=l>Communication Services</td>
-<td data-v="-91"><span class=neg>-91%</span></td>
-<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="OCUL"><b>OCUL</b> <span class=mut style=font-size:11px>Ocular Therapeutix</span></td>
+<td class=l data-v="NTLA"><b>NTLA</b> <span class=mut style=font-size:11px>Intellia Therapeut</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-91"><span class=neg>-91%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="TWLO"><b>TWLO</b> <span class=mut style=font-size:11px>Twilio Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-90"><span class=neg>-90%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="IONQ"><b>IONQ</b> <span class=mut style=font-size:11px>IonQ Inc</span></td>
+<td class=l data-v="TWLO"><b>TWLO</b> <span class=mut style=font-size:11px>Twilio Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-90"><span class=neg>-90%</span></td>
 <td class=l><span class="tag">S2b</span></td>
@@ -2891,37 +2621,22 @@ tr:hover td{background:#161b22}
 <td data-v="-90"><span class=neg>-90%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="RARE"><b>RARE</b> <span class=mut style=font-size:11px>Ultragenyx Pharmac</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-90"><span class=neg>-90%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="MSTR"><b>MSTR</b> <span class=mut style=font-size:11px>Strategy Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-89"><span class=neg>-89%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="ARWR"><b>ARWR</b> <span class=mut style=font-size:11px>Arrowhead Pharmace</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-89"><span class=neg>-89%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="PATH"><b>PATH</b> <span class=mut style=font-size:11px>UiPath Inc</span></td>
+<td class=l data-v="ONDS"><b>ONDS</b> <span class=mut style=font-size:11px>Ondas Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-89"><span class=neg>-89%</span></td>
-<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="BEAM"><b>BEAM</b> <span class=mut style=font-size:11px>Beam Therapeutics </span></td>
-<td class=l>Healthcare</td>
+<td class=l data-v="MGNI"><b>MGNI</b> <span class=mut style=font-size:11px>Magnite Inc</span></td>
+<td class=l>Communication Services</td>
 <td data-v="-89"><span class=neg>-89%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="TEAM"><b>TEAM</b> <span class=mut style=font-size:11px>Atlassian Corp</span></td>
-<td class=l>Technology</td>
-<td data-v="-88"><span class=neg>-88%</span></td>
 <td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="KYMR"><b>KYMR</b> <span class=mut style=font-size:11px>Kymera Therapeutic</span></td>
+<td class=l data-v="SMMT"><b>SMMT</b> <span class=mut style=font-size:11px>Summit Therapeutic</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-88"><span class=neg>-88%</span></td>
 <td class=l><span class="tag">S2b</span></td>
@@ -2936,39 +2651,29 @@ tr:hover td{background:#161b22}
 <td data-v="-88"><span class=neg>-88%</span></td>
 <td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="DNLI"><b>DNLI</b> <span class=mut style=font-size:11px>Denali Therapeutic</span></td>
+<td class=l data-v="SRRK"><b>SRRK</b> <span class=mut style=font-size:11px>Scholar Rock Holdi</span></td>
 <td class=l>Healthcare</td>
-<td data-v="-88"><span class=neg>-88%</span></td>
+<td data-v="-87"><span class=neg>-87%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="SMR"><b>SMR</b> <span class=mut style=font-size:11px>NuScale Power Corp</span></td>
-<td class=l>Industrials</td>
-<td data-v="-88"><span class=neg>-88%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="CHWY"><b>CHWY</b> <span class=mut style=font-size:11px>Chewy Inc</span></td>
-<td class=l>Consumer Cyclical</td>
-<td data-v="-87"><span class=neg>-87%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="ZG"><b>ZG</b> <span class=mut style=font-size:11px>Zillow Group Inc</span></td>
-<td class=l>Communication Services</td>
-<td data-v="-87"><span class=neg>-87%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="GRND"><b>GRND</b> <span class=mut style=font-size:11px>Grindr Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-87"><span class=neg>-87%</span></td>
-<td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="AEHR"><b>AEHR</b> <span class=mut style=font-size:11px>Aehr Test Systems</span></td>
 <td class=l>Technology</td>
 <td data-v="-87"><span class=neg>-87%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="OCUL"><b>OCUL</b> <span class=mut style=font-size:11px>Ocular Therapeutix</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-87"><span class=neg>-87%</span></td>
+<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="OMCL"><b>OMCL</b> <span class=mut style=font-size:11px>Omnicell Inc</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-87"><span class=neg>-87%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="ASTS"><b>ASTS</b> <span class=mut style=font-size:11px>AST SpaceMobile In</span></td>
+<td class=l>Technology</td>
+<td data-v="-86"><span class=neg>-86%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="ILMN"><b>ILMN</b> <span class=mut style=font-size:11px>Illumina Inc</span></td>
@@ -2976,49 +2681,24 @@ tr:hover td{background:#161b22}
 <td data-v="-86"><span class=neg>-86%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="MBLY"><b>MBLY</b> <span class=mut style=font-size:11px>Mobileye Global In</span></td>
-<td class=l>Consumer Cyclical</td>
-<td data-v="-86"><span class=neg>-86%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="Z"><b>Z</b> <span class=mut style=font-size:11px>Zillow Group Inc</span></td>
-<td class=l>Communication Services</td>
-<td data-v="-86"><span class=neg>-86%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="RCUS"><b>RCUS</b> <span class=mut style=font-size:11px>Arcus Biosciences </span></td>
-<td class=l>Healthcare</td>
-<td data-v="-86"><span class=neg>-86%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="ALGT"><b>ALGT</b> <span class=mut style=font-size:11px>Allegiant Travel</span></td>
-<td class=l>Industrials</td>
-<td data-v="-86"><span class=neg>-86%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="NN"><b>NN</b> <span class=mut style=font-size:11px>NextNav Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-86"><span class=neg>-86%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="PLTR"><b>PLTR</b> <span class=mut style=font-size:11px>Palantir Technolog</span></td>
-<td class=l>Technology</td>
-<td data-v="-85"><span class=neg>-85%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="OKTA"><b>OKTA</b> <span class=mut style=font-size:11px>Okta Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-85"><span class=neg>-85%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="DOCN"><b>DOCN</b> <span class=mut style=font-size:11px>DigitalOcean Holdi</span></td>
 <td class=l>Technology</td>
 <td data-v="-85"><span class=neg>-85%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="CRSP"><b>CRSP</b> <span class=mut style=font-size:11px>CRISPR Therapeutic</span></td>
+<td class=l data-v="MBLY"><b>MBLY</b> <span class=mut style=font-size:11px>Mobileye Global In</span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-85"><span class=neg>-85%</span></td>
+<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="DNLI"><b>DNLI</b> <span class=mut style=font-size:11px>Denali Therapeutic</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-85"><span class=neg>-85%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="KYMR"><b>KYMR</b> <span class=mut style=font-size:11px>Kymera Therapeutic</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-84"><span class=neg>-84%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="MTCH"><b>MTCH</b> <span class=mut style=font-size:11px>Match Group Inc</span></td>
@@ -3026,8 +2706,13 @@ tr:hover td{background:#161b22}
 <td data-v="-84"><span class=neg>-84%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="S"><b>S</b> <span class=mut style=font-size:11px>SentinelOne Inc</span></td>
-<td class=l>Technology</td>
+<td class=l data-v="CHWY"><b>CHWY</b> <span class=mut style=font-size:11px>Chewy Inc</span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-84"><span class=neg>-84%</span></td>
+<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="LMND"><b>LMND</b> <span class=mut style=font-size:11px>Lemonade Inc</span></td>
+<td class=l>Financial</td>
 <td data-v="-84"><span class=neg>-84%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
@@ -3036,13 +2721,13 @@ tr:hover td{background:#161b22}
 <td data-v="-84"><span class=neg>-84%</span></td>
 <td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="IRTC"><b>IRTC</b> <span class=mut style=font-size:11px>iRhythm Holdings I</span></td>
+<td class=l data-v="RARE"><b>RARE</b> <span class=mut style=font-size:11px>Ultragenyx Pharmac</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-84"><span class=neg>-84%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="WRBY"><b>WRBY</b> <span class=mut style=font-size:11px>Warby Parker Inc</span></td>
-<td class=l>Healthcare</td>
+<td class=l data-v="ALGT"><b>ALGT</b> <span class=mut style=font-size:11px>Allegiant Travel</span></td>
+<td class=l>Industrials</td>
 <td data-v="-84"><span class=neg>-84%</span></td>
 <td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
@@ -3051,30 +2736,40 @@ tr:hover td{background:#161b22}
 <td data-v="-84"><span class=neg>-84%</span></td>
 <td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="JBLU"><b>JBLU</b> <span class=mut style=font-size:11px>Jetblue Airways Co</span></td>
-<td class=l>Industrials</td>
-<td data-v="-84"><span class=neg>-84%</span></td>
-<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="NET"><b>NET</b> <span class=mut style=font-size:11px>Cloudflare Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-83"><span class=neg>-83%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="RKLB"><b>RKLB</b> <span class=mut style=font-size:11px>Rocket Lab Corp</span></td>
+<td class=l data-v="MSTR"><b>MSTR</b> <span class=mut style=font-size:11px>Strategy Inc</span></td>
+<td class=l>Technology</td>
+<td data-v="-83"><span class=neg>-83%</span></td>
+<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="OKTA"><b>OKTA</b> <span class=mut style=font-size:11px>Okta Inc</span></td>
+<td class=l>Technology</td>
+<td data-v="-83"><span class=neg>-83%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="RLAY"><b>RLAY</b> <span class=mut style=font-size:11px>Relay Therapeutics</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-83"><span class=neg>-83%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="SMR"><b>SMR</b> <span class=mut style=font-size:11px>NuScale Power Corp</span></td>
 <td class=l>Industrials</td>
 <td data-v="-83"><span class=neg>-83%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="SOFI"><b>SOFI</b> <span class=mut style=font-size:11px>SoFi Technologies </span></td>
-<td class=l>Financial</td>
+<td class=l data-v="OUST"><b>OUST</b> <span class=mut style=font-size:11px>Ouster Inc</span></td>
+<td class=l>Technology</td>
 <td data-v="-83"><span class=neg>-83%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="CPNG"><b>CPNG</b> <span class=mut style=font-size:11px>Coupang Inc</span></td>
-<td class=l>Consumer Cyclical</td>
+<td class=l data-v="TEAM"><b>TEAM</b> <span class=mut style=font-size:11px>Atlassian Corp</span></td>
+<td class=l>Technology</td>
 <td data-v="-82"><span class=neg>-82%</span></td>
-<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="CDE"><b>CDE</b> <span class=mut style=font-size:11px>Coeur Mining Inc</span></td>
 <td class=l>Basic Materials</td>
@@ -3086,37 +2781,32 @@ tr:hover td{background:#161b22}
 <td data-v="-82"><span class=neg>-82%</span></td>
 <td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="RIG"><b>RIG</b> <span class=mut style=font-size:11px>Transocean Ltd</span></td>
-<td class=l>Energy</td>
-<td data-v="-82"><span class=neg>-82%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="AMBA"><b>AMBA</b> <span class=mut style=font-size:11px>Ambarella Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-82"><span class=neg>-82%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="RAMP"><b>RAMP</b> <span class=mut style=font-size:11px>LiveRamp Holdings </span></td>
+<td class=l data-v="QUBT"><b>QUBT</b> <span class=mut style=font-size:11px>Quantum Computing </span></td>
 <td class=l>Technology</td>
 <td data-v="-82"><span class=neg>-82%</span></td>
-<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="RXRX"><b>RXRX</b> <span class=mut style=font-size:11px>Recursion Pharmace</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-82"><span class=neg>-82%</span></td>
+<td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="VERX"><b>VERX</b> <span class=mut style=font-size:11px>Vertex Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-82"><span class=neg>-82%</span></td>
 <td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="TOST"><b>TOST</b> <span class=mut style=font-size:11px>Toast Inc</span></td>
-<td class=l>Technology</td>
+<td class=l data-v="CRSP"><b>CRSP</b> <span class=mut style=font-size:11px>CRISPR Therapeutic</span></td>
+<td class=l>Healthcare</td>
 <td data-v="-81"><span class=neg>-81%</span></td>
-<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="VSXY"><b>VSXY</b> <span class=mut style=font-size:11px>Victoria's Secret </span></td>
-<td class=l>Consumer Cyclical</td>
-<td data-v="-81"><span class=neg>-81%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="VCYT"><b>VCYT</b> <span class=mut style=font-size:11px>Veracyte Inc</span></td>
+<td class=l data-v="RCUS"><b>RCUS</b> <span class=mut style=font-size:11px>Arcus Biosciences </span></td>
 <td class=l>Healthcare</td>
 <td data-v="-81"><span class=neg>-81%</span></td>
 <td class=l><span class="tag">S2b</span></td>
@@ -3126,17 +2816,7 @@ tr:hover td{background:#161b22}
 <td data-v="-81"><span class=neg>-81%</span></td>
 <td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="CCL"><b>CCL</b> <span class=mut style=font-size:11px>Carnival Corp Ltd</span></td>
-<td class=l>Consumer Cyclical</td>
-<td data-v="-80"><span class=neg>-80%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="VICR"><b>VICR</b> <span class=mut style=font-size:11px>Vicor Corp</span></td>
-<td class=l>Technology</td>
-<td data-v="-80"><span class=neg>-80%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="FROG"><b>FROG</b> <span class=mut style=font-size:11px>JFrog Ltd</span></td>
 <td class=l>Technology</td>
 <td data-v="-80"><span class=neg>-80%</span></td>
 <td class=l><span class="tag">S2b</span></td>
@@ -3146,22 +2826,12 @@ tr:hover td{background:#161b22}
 <td data-v="-80"><span class=neg>-80%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="LQDA"><b>LQDA</b> <span class=mut style=font-size:11px>Liquidia Corp</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-80"><span class=neg>-80%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="RUM"><b>RUM</b> <span class=mut style=font-size:11px>RUM Group Inc</span></td>
-<td class=l>Communication Services</td>
-<td data-v="-80"><span class=neg>-80%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="ROIV"><b>ROIV</b> <span class=mut style=font-size:11px>Roivant Sciences L</span></td>
-<td class=l>Healthcare</td>
+<td class=l data-v="PAYC"><b>PAYC</b> <span class=mut style=font-size:11px>Paycom Software In</span></td>
+<td class=l>Technology</td>
 <td data-v="-79"><span class=neg>-79%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="PAYC"><b>PAYC</b> <span class=mut style=font-size:11px>Paycom Software In</span></td>
+<td class=l data-v="PATH"><b>PATH</b> <span class=mut style=font-size:11px>UiPath Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-79"><span class=neg>-79%</span></td>
 <td class=l><span class="tag">S2b</span></td>
@@ -3171,28 +2841,43 @@ tr:hover td{background:#161b22}
 <td data-v="-79"><span class=neg>-79%</span></td>
 <td class=l><span class="tag sup">S1超</span><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="BEAM"><b>BEAM</b> <span class=mut style=font-size:11px>Beam Therapeutics </span></td>
+<td class=l>Healthcare</td>
+<td data-v="-79"><span class=neg>-79%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="FRPT"><b>FRPT</b> <span class=mut style=font-size:11px>Freshpet Inc</span></td>
 <td class=l>Consumer Defensive</td>
 <td data-v="-79"><span class=neg>-79%</span></td>
 <td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="JBLU"><b>JBLU</b> <span class=mut style=font-size:11px>Jetblue Airways Co</span></td>
+<td class=l>Industrials</td>
+<td data-v="-79"><span class=neg>-79%</span></td>
+<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="NTRA"><b>NTRA</b> <span class=mut style=font-size:11px>Natera Inc</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-78"><span class=neg>-78%</span></td>
 <td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="GAP"><b>GAP</b> <span class=mut style=font-size:11px>Gap Inc</span></td>
-<td class=l>Consumer Cyclical</td>
-<td data-v="-78"><span class=neg>-78%</span></td>
-<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="IEP"><b>IEP</b> <span class=mut style=font-size:11px>Icahn Enterprises </span></td>
-<td class=l>Energy</td>
+<td class=l data-v="Z"><b>Z</b> <span class=mut style=font-size:11px>Zillow Group Inc</span></td>
+<td class=l>Communication Services</td>
 <td data-v="-78"><span class=neg>-78%</span></td>
 <td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="TARS"><b>TARS</b> <span class=mut style=font-size:11px>Tarsus Pharmaceuti</span></td>
-<td class=l>Healthcare</td>
+<td class=l data-v="ZG"><b>ZG</b> <span class=mut style=font-size:11px>Zillow Group Inc</span></td>
+<td class=l>Communication Services</td>
+<td data-v="-78"><span class=neg>-78%</span></td>
+<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="BB"><b>BB</b> <span class=mut style=font-size:11px>BlackBerry Ltd</span></td>
+<td class=l>Technology</td>
+<td data-v="-78"><span class=neg>-78%</span></td>
+<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="IEP"><b>IEP</b> <span class=mut style=font-size:11px>Icahn Enterprises </span></td>
+<td class=l>Energy</td>
 <td data-v="-78"><span class=neg>-78%</span></td>
 <td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
@@ -3201,24 +2886,19 @@ tr:hover td{background:#161b22}
 <td data-v="-78"><span class=neg>-78%</span></td>
 <td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="AXSM"><b>AXSM</b> <span class=mut style=font-size:11px>Axsome Therapeutic</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-77"><span class=neg>-77%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="ESTC"><b>ESTC</b> <span class=mut style=font-size:11px>Elastic N.V</span></td>
 <td class=l>Technology</td>
 <td data-v="-77"><span class=neg>-77%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="ACAD"><b>ACAD</b> <span class=mut style=font-size:11px>Acadia Pharmaceuti</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-77"><span class=neg>-77%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="SPSC"><b>SPSC</b> <span class=mut style=font-size:11px>SPS Commerce Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-77"><span class=neg>-77%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="CCL"><b>CCL</b> <span class=mut style=font-size:11px>Carnival Corp Ltd</span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-76"><span class=neg>-76%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="MDB"><b>MDB</b> <span class=mut style=font-size:11px>MongoDB Inc</span></td>
@@ -3236,18 +2916,13 @@ tr:hover td{background:#161b22}
 <td data-v="-76"><span class=neg>-76%</span></td>
 <td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="PBF"><b>PBF</b> <span class=mut style=font-size:11px>PBF Energy Inc</span></td>
-<td class=l>Energy</td>
+<td class=l data-v="GAP"><b>GAP</b> <span class=mut style=font-size:11px>Gap Inc</span></td>
+<td class=l>Consumer Cyclical</td>
 <td data-v="-76"><span class=neg>-76%</span></td>
 <td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="PII"><b>PII</b> <span class=mut style=font-size:11px>Polaris Inc</span></td>
-<td class=l>Consumer Cyclical</td>
-<td data-v="-76"><span class=neg>-76%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="PAYO"><b>PAYO</b> <span class=mut style=font-size:11px>Payoneer Global In</span></td>
-<td class=l>Technology</td>
+<td class=l data-v="PBF"><b>PBF</b> <span class=mut style=font-size:11px>PBF Energy Inc</span></td>
+<td class=l>Energy</td>
 <td data-v="-76"><span class=neg>-76%</span></td>
 <td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
@@ -3256,27 +2931,17 @@ tr:hover td{background:#161b22}
 <td data-v="-75"><span class=neg>-75%</span></td>
 <td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="TPC"><b>TPC</b> <span class=mut style=font-size:11px>Tutor Perini Corp</span></td>
-<td class=l>Industrials</td>
-<td data-v="-75"><span class=neg>-75%</span></td>
-<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="ESTA"><b>ESTA</b> <span class=mut style=font-size:11px>Establishment Labs</span></td>
-<td class=l>Healthcare</td>
+<td class=l data-v="PII"><b>PII</b> <span class=mut style=font-size:11px>Polaris Inc</span></td>
+<td class=l>Consumer Cyclical</td>
 <td data-v="-75"><span class=neg>-75%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="SLG"><b>SLG</b> <span class=mut style=font-size:11px>SL Green Realty Co</span></td>
-<td class=l>Real Estate</td>
-<td data-v="-74"><span class=neg>-74%</span></td>
-<td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="COHU"><b>COHU</b> <span class=mut style=font-size:11px>Cohu Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="-74"><span class=neg>-74%</span></td>
 <td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="TMDX"><b>TMDX</b> <span class=mut style=font-size:11px>Transmedics Group </span></td>
+<td class=l data-v="ESTA"><b>ESTA</b> <span class=mut style=font-size:11px>Establishment Labs</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-74"><span class=neg>-74%</span></td>
 <td class=l><span class="tag">S2b</span></td>
@@ -3286,45 +2951,25 @@ tr:hover td{background:#161b22}
 <td data-v="-74"><span class=neg>-74%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="SNOW"><b>SNOW</b> <span class=mut style=font-size:11px>Snowflake Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-73"><span class=neg>-73%</span></td>
-<td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="RVMD"><b>RVMD</b> <span class=mut style=font-size:11px>Revolution Medicin</span></td>
+<td class=l data-v="IRTC"><b>IRTC</b> <span class=mut style=font-size:11px>iRhythm Holdings I</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-73"><span class=neg>-73%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="KTOS"><b>KTOS</b> <span class=mut style=font-size:11px>Kratos Defense & S</span></td>
-<td class=l>Industrials</td>
-<td data-v="-73"><span class=neg>-73%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="BKD"><b>BKD</b> <span class=mut style=font-size:11px>Brookdale Senior L</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-73"><span class=neg>-73%</span></td>
-<td class=l><span class="tag">S2a</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="VAC"><b>VAC</b> <span class=mut style=font-size:11px>Marriott Vacations</span></td>
-<td class=l>Consumer Cyclical</td>
-<td data-v="-73"><span class=neg>-73%</span></td>
-<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="CLDX"><b>CLDX</b> <span class=mut style=font-size:11px>Celldex Therapeuti</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-73"><span class=neg>-73%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="RAMP"><b>RAMP</b> <span class=mut style=font-size:11px>LiveRamp Holdings </span></td>
+<td class=l>Technology</td>
+<td data-v="-73"><span class=neg>-73%</span></td>
+<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="SYM"><b>SYM</b> <span class=mut style=font-size:11px>Symbotic Inc</span></td>
 <td class=l>Industrials</td>
 <td data-v="-72"><span class=neg>-72%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="FIS"><b>FIS</b> <span class=mut style=font-size:11px>Fidelity National </span></td>
-<td class=l>Technology</td>
-<td data-v="-72"><span class=neg>-72%</span></td>
-<td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="CYTK"><b>CYTK</b> <span class=mut style=font-size:11px>Cytokinetics Inc</span></td>
 <td class=l>Healthcare</td>
@@ -3335,6 +2980,11 @@ tr:hover td{background:#161b22}
 <td class=l>Basic Materials</td>
 <td data-v="-72"><span class=neg>-72%</span></td>
 <td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="VCYT"><b>VCYT</b> <span class=mut style=font-size:11px>Veracyte Inc</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-72"><span class=neg>-72%</span></td>
+<td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="FOUR"><b>FOUR</b> <span class=mut style=font-size:11px>Shift4 Payments In</span></td>
 <td class=l>Technology</td>
@@ -3356,17 +3006,367 @@ tr:hover td{background:#161b22}
 <td data-v="-72"><span class=neg>-72%</span></td>
 <td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="AGIO"><b>AGIO</b> <span class=mut style=font-size:11px>Agios Pharmaceutic</span></td>
+<td class=l data-v="ZLAB"><b>ZLAB</b> <span class=mut style=font-size:11px>Zai Lab Limited AD</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-72"><span class=neg>-72%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
-<td class=l data-v="ATEX"><b>ATEX</b> <span class=mut style=font-size:11px>Anterix Inc</span></td>
-<td class=l>Communication Services</td>
-<td data-v="-72"><span class=neg>-72%</span></td>
+<td class=l data-v="VRT"><b>VRT</b> <span class=mut style=font-size:11px>Vertiv Holdings Co</span></td>
+<td class=l>Industrials</td>
+<td data-v="-71"><span class=neg>-71%</span></td>
+<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="SNOW"><b>SNOW</b> <span class=mut style=font-size:11px>Snowflake Inc</span></td>
+<td class=l>Technology</td>
+<td data-v="-71"><span class=neg>-71%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-cur">curation剔除</span></td></tr></tbody></table></div>
-<div class=note>⚠️161只暴雷股穿过全部三层=框架假阳性(如CVNA/OPEN/PTON疫情泡沫:峰值时营收加速触发S2b+通过curation,随后崩99%)。这是"营收加速信号无法区分真成长与泡沫"的直接证据</div>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="CAVA"><b>CAVA</b> <span class=mut style=font-size:11px>Cava Group Inc</span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-71"><span class=neg>-71%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="COLD"><b>COLD</b> <span class=mut style=font-size:11px>Americold Realty T</span></td>
+<td class=l>Real Estate</td>
+<td data-v="-71"><span class=neg>-71%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="TARS"><b>TARS</b> <span class=mut style=font-size:11px>Tarsus Pharmaceuti</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-71"><span class=neg>-71%</span></td>
+<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="RUM"><b>RUM</b> <span class=mut style=font-size:11px>RUM Group Inc</span></td>
+<td class=l>Communication Services</td>
+<td data-v="-71"><span class=neg>-71%</span></td>
+<td class=l><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="BWIN"><b>BWIN</b> <span class=mut style=font-size:11px>Baldwin Insurance </span></td>
+<td class=l>Financial</td>
+<td data-v="-70"><span class=neg>-70%</span></td>
+<td class=l><span class="tag">S2a</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="VAC"><b>VAC</b> <span class=mut style=font-size:11px>Marriott Vacations</span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-70"><span class=neg>-70%</span></td>
+<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="PEB"><b>PEB</b> <span class=mut style=font-size:11px>Pebblebrook Hotel </span></td>
+<td class=l>Real Estate</td>
+<td data-v="-70"><span class=neg>-70%</span></td>
+<td class=l><span class="tag">S2a</span><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="signal">
+<td class=l data-v="MAAS"><b>MAAS</b> <span class=mut style=font-size:11px>Maase Inc</span></td>
+<td class=l>Financial</td>
+<td data-v="-100"><span class=neg>-100%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="PRAX"><b>PRAX</b> <span class=mut style=font-size:11px>Praxis Precision M</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-99"><span class=neg>-99%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="SYRE"><b>SYRE</b> <span class=mut style=font-size:11px>Spyre Therapeutics</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-99"><span class=neg>-99%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="CHRN"><b>CHRN</b> <span class=mut style=font-size:11px>ChronoScale Holdin</span></td>
+<td class=l>Technology</td>
+<td data-v="-99"><span class=neg>-99%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="LCID"><b>LCID</b> <span class=mut style=font-size:11px>Lucid Group Inc</span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-99"><span class=neg>-99%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="KOD"><b>KOD</b> <span class=mut style=font-size:11px>Kodiak Sciences In</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-99"><span class=neg>-99%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="PVLA"><b>PVLA</b> <span class=mut style=font-size:11px>Palvella Therapeut</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-99"><span class=neg>-99%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="DNTH"><b>DNTH</b> <span class=mut style=font-size:11px>Dianthus Therapeut</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-98"><span class=neg>-98%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="TAL"><b>TAL</b> <span class=mut style=font-size:11px>TAL Education Grou</span></td>
+<td class=l>Consumer Defensive</td>
+<td data-v="-98"><span class=neg>-98%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="ELVN"><b>ELVN</b> <span class=mut style=font-size:11px>Enliven Therapeuti</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-98"><span class=neg>-98%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="NKTR"><b>NKTR</b> <span class=mut style=font-size:11px>Nektar Therapeutic</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-98"><span class=neg>-98%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="TSHA"><b>TSHA</b> <span class=mut style=font-size:11px>Taysha Gene Therap</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-98"><span class=neg>-98%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="VFS"><b>VFS</b> <span class=mut style=font-size:11px>VinFast Auto Ltd</span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-97"><span class=neg>-97%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="RGTI"><b>RGTI</b> <span class=mut style=font-size:11px>Rigetti Computing </span></td>
+<td class=l>Technology</td>
+<td data-v="-97"><span class=neg>-97%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="DFTX"><b>DFTX</b> <span class=mut style=font-size:11px>Definium Therapeut</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-97"><span class=neg>-97%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="QS"><b>QS</b> <span class=mut style=font-size:11px>QuantumScape Corp</span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-97"><span class=neg>-97%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="UPST"><b>UPST</b> <span class=mut style=font-size:11px>Upstart Holdings I</span></td>
+<td class=l>Financial</td>
+<td data-v="-97"><span class=neg>-97%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="IRON"><b>IRON</b> <span class=mut style=font-size:11px>Disc Medicine Inc</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-97"><span class=neg>-97%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="PSNY"><b>PSNY</b> <span class=mut style=font-size:11px>Polestar Automotiv</span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-97"><span class=neg>-97%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="KC"><b>KC</b> <span class=mut style=font-size:11px>Kingsoft Cloud Hol</span></td>
+<td class=l>Technology</td>
+<td data-v="-97"><span class=neg>-97%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="SLS"><b>SLS</b> <span class=mut style=font-size:11px>SELLAS Life Scienc</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-97"><span class=neg>-97%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="VNET"><b>VNET</b> <span class=mut style=font-size:11px>VNET Group Inc ADR</span></td>
+<td class=l>Technology</td>
+<td data-v="-97"><span class=neg>-97%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="PLSE"><b>PLSE</b> <span class=mut style=font-size:11px>Pulse Biosciences </span></td>
+<td class=l>Healthcare</td>
+<td data-v="-97"><span class=neg>-97%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="IREN"><b>IREN</b> <span class=mut style=font-size:11px>IREN Ltd</span></td>
+<td class=l>Financial</td>
+<td data-v="-96"><span class=neg>-96%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="EDU"><b>EDU</b> <span class=mut style=font-size:11px>New Oriental Educa</span></td>
+<td class=l>Consumer Defensive</td>
+<td data-v="-96"><span class=neg>-96%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="GDS"><b>GDS</b> <span class=mut style=font-size:11px>GDS Holdings Limit</span></td>
+<td class=l>Technology</td>
+<td data-v="-96"><span class=neg>-96%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="ERAS"><b>ERAS</b> <span class=mut style=font-size:11px>Erasca Inc</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-96"><span class=neg>-96%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="KEEL"><b>KEEL</b> <span class=mut style=font-size:11px>Keel Infrastructur</span></td>
+<td class=l>Technology</td>
+<td data-v="-96"><span class=neg>-96%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="RIVN"><b>RIVN</b> <span class=mut style=font-size:11px>Rivian Automotive </span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-95"><span class=neg>-95%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="QXO"><b>QXO</b> <span class=mut style=font-size:11px>QXO Inc</span></td>
+<td class=l>Industrials</td>
+<td data-v="-95"><span class=neg>-95%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="NIO"><b>NIO</b> <span class=mut style=font-size:11px>NIO Inc ADR</span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-95"><span class=neg>-95%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="PHVS"><b>PHVS</b> <span class=mut style=font-size:11px>Pharvaris NV</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-95"><span class=neg>-95%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="IMVT"><b>IMVT</b> <span class=mut style=font-size:11px>Immunovant Inc</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-94"><span class=neg>-94%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="BILI"><b>BILI</b> <span class=mut style=font-size:11px>Bilibili Inc ADR</span></td>
+<td class=l>Communication Services</td>
+<td data-v="-94"><span class=neg>-94%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="SOUN"><b>SOUN</b> <span class=mut style=font-size:11px>SoundHound AI Inc</span></td>
+<td class=l>Technology</td>
+<td data-v="-94"><span class=neg>-94%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="QURE"><b>QURE</b> <span class=mut style=font-size:11px>uniQure NV</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-94"><span class=neg>-94%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="TRVI"><b>TRVI</b> <span class=mut style=font-size:11px>Trevi Therapeutics</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-94"><span class=neg>-94%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="TE"><b>TE</b> <span class=mut style=font-size:11px>T1 Energy Inc</span></td>
+<td class=l>Industrials</td>
+<td data-v="-94"><span class=neg>-94%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="AUR"><b>AUR</b> <span class=mut style=font-size:11px>Aurora Innovation </span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-93"><span class=neg>-93%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="W"><b>W</b> <span class=mut style=font-size:11px>Wayfair Inc</span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-93"><span class=neg>-93%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="LUMN"><b>LUMN</b> <span class=mut style=font-size:11px>Lumen Technologies</span></td>
+<td class=l>Communication Services</td>
+<td data-v="-93"><span class=neg>-93%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="BULL"><b>BULL</b> <span class=mut style=font-size:11px>Webull Corp</span></td>
+<td class=l>Technology</td>
+<td data-v="-93"><span class=neg>-93%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="RGC"><b>RGC</b> <span class=mut style=font-size:11px>Regencell Bioscien</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-93"><span class=neg>-93%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="DJT"><b>DJT</b> <span class=mut style=font-size:11px>Trump Media & Tech</span></td>
+<td class=l>Communication Services</td>
+<td data-v="-93"><span class=neg>-93%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="RYTM"><b>RYTM</b> <span class=mut style=font-size:11px>Rhythm Pharmaceuti</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-92"><span class=neg>-92%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="MCHB"><b>MCHB</b> <span class=mut style=font-size:11px>Mechanics Bancorp</span></td>
+<td class=l>Financial</td>
+<td data-v="-92"><span class=neg>-92%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="IVT"><b>IVT</b> <span class=mut style=font-size:11px>InvenTrust Propert</span></td>
+<td class=l>Real Estate</td>
+<td data-v="-92"><span class=neg>-92%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="STNE"><b>STNE</b> <span class=mut style=font-size:11px>StoneCo Ltd</span></td>
+<td class=l>Technology</td>
+<td data-v="-92"><span class=neg>-92%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="NRIX"><b>NRIX</b> <span class=mut style=font-size:11px>Nurix Therapeutics</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-92"><span class=neg>-92%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="GH"><b>GH</b> <span class=mut style=font-size:11px>Guardant Health In</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-91"><span class=neg>-91%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="XPEV"><b>XPEV</b> <span class=mut style=font-size:11px>XPeng Inc ADR</span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-91"><span class=neg>-91%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="HOOD"><b>HOOD</b> <span class=mut style=font-size:11px>Robinhood Markets </span></td>
+<td class=l>Financial</td>
+<td data-v="-90"><span class=neg>-90%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="SE"><b>SE</b> <span class=mut style=font-size:11px>Sea Ltd ADR</span></td>
+<td class=l>Consumer Cyclical</td>
+<td data-v="-90"><span class=neg>-90%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="PSKY"><b>PSKY</b> <span class=mut style=font-size:11px>Paramount Skydance</span></td>
+<td class=l>Communication Services</td>
+<td data-v="-90"><span class=neg>-90%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="BMNR"><b>BMNR</b> <span class=mut style=font-size:11px>BitMine Immersion </span></td>
+<td class=l>Financial</td>
+<td data-v="-90"><span class=neg>-90%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="SEZL"><b>SEZL</b> <span class=mut style=font-size:11px>Sezzle Inc</span></td>
+<td class=l>Financial</td>
+<td data-v="-90"><span class=neg>-90%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="TME"><b>TME</b> <span class=mut style=font-size:11px>Tencent Music Ente</span></td>
+<td class=l>Communication Services</td>
+<td data-v="-90"><span class=neg>-90%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="DLO"><b>DLO</b> <span class=mut style=font-size:11px>DLocal Limited</span></td>
+<td class=l>Technology</td>
+<td data-v="-90"><span class=neg>-90%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="ACHR"><b>ACHR</b> <span class=mut style=font-size:11px>Archer Aviation In</span></td>
+<td class=l>Industrials</td>
+<td data-v="-90"><span class=neg>-90%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="XXI"><b>XXI</b> <span class=mut style=font-size:11px>Twenty One Capital</span></td>
+<td class=l>Financial</td>
+<td data-v="-90"><span class=neg>-90%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="PAGS"><b>PAGS</b> <span class=mut style=font-size:11px>PagSeguro Digital </span></td>
+<td class=l>Technology</td>
+<td data-v="-90"><span class=neg>-90%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr><tr data-layer="signal">
+<td class=l data-v="HAPN"><b>HAPN</b> <span class=mut style=font-size:11px>Happen Inc</span></td>
+<td class=l>Financial</td>
+<td data-v="-90"><span class=neg>-90%</span></td>
+<td class=l><span class=mut>未触发</span></td>
+<td class=l><span class="badge b-sig">信号层漏掉</span></td></tr></tbody></table></div>
+<div class=note>⚠️131只暴雷股穿过全部三层=框架假阳性(如CVNA/OPEN/PTON疫情泡沫:峰值时营收加速触发S2b+通过curation,随后崩99%)。这是"营收加速信号无法区分真成长与泡沫"的直接证据</div>
 
 <script>
 function fmtPct(v){if(v==null)return '<span class=mut>-</span>';const c=v>0?'pos':(v<0?'neg':'mut');const s=v>0?'+':'';return `<span class=${c}>${s}${v}%</span>`;}

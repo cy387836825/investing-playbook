@@ -209,11 +209,13 @@ def facts_and_driver(tk):
 winset, blowset = [], []
 for tk, f in feat.items():
     nm, sec, mc = meta.get(tk, ('','',None))
+    triggered = tk in ee_map
     is_win = f['low2high'] > 3.0                 # 低→高>300%
-    is_blow = f['dd_peak'] < -0.70               # 峰值后回调>70%=暴雷
+    # 暴雷判定按入场时点对齐:已触发的用"首次信号入场后回撤"(入场前的崩盘不算漏网),未触发的用全期回撤
+    blow_dd = float(ee_map[tk].dd) if triggered else f['dd_peak']
+    is_blow = blow_dd < -0.70
     if not (is_win or is_blow): continue
     cur_pass, cur_reason, sig = curation_status(tk)
-    triggered = tk in ee_map
     ru, niu, gpu, driver, tier = facts_and_driver(tk)
     # 判定退出层 + 具体原因
     if not triggered:
@@ -229,13 +231,14 @@ for tk, f in feat.items():
         layer, why = 'passed', '通过全部三层'
     rec = {'ticker':tk,'name':nm,'sector':sec,'mcap_b':mc,
            'low2high_pct':round(f['low2high']*100),'dd_peak_pct':round(f['dd_peak']*100),
+           'blow_dd_pct':round(blow_dd*100),   # 暴雷回撤:已触发=入场后,未触发=全期
            'signal_type':sig,'exit_layer':layer,'why':why,'triggered':triggered,
            'driver':driver,'driver_tier':tier}
     if is_win: winset.append(rec)
     if is_blow: blowset.append(rec)
 
 winset.sort(key=lambda x:-x['low2high_pct'])
-blowset.sort(key=lambda x: x['dd_peak_pct'])
+blowset.sort(key=lambda x: x['blow_dd_pct'])
 # 漏斗层计数
 n_all = len(uni)
 n_sig = sum(1 for tk in uni['ticker'] if tk in ee_map)
