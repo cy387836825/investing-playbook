@@ -24,6 +24,7 @@ th:hover{color:#58a6ff}
 td{padding:8px 12px;border-bottom:1px solid #21262d;font-variant-numeric:tabular-nums}
 tr:hover td{background:#161b22}
 .pos{color:#3fb950}.neg{color:#f85149}.mut{color:#8b949e}
+a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration:underline}
 .tag{display:inline-block;background:#1f6feb22;color:#58a6ff;border:1px solid #1f6feb44;border-radius:4px;padding:1px 6px;font-size:11px;margin-right:3px}
 .tag.sup{background:#a371f722;color:#a371f7;border-color:#a371f744}
 .note{color:#8b949e;font-size:12px;margin-top:8px;font-style:italic}
@@ -49,6 +50,10 @@ function fmtPct(v){if(v==null)return '<span class=mut>-</span>';const c=v>0?'pos
 function sortTable(tbl,col,num,asc){const rows=[...tbl.tBodies[0].rows];rows.sort((a,b)=>{let x=a.cells[col].dataset.v??a.cells[col].innerText,y=b.cells[col].dataset.v??b.cells[col].innerText;if(num){x=parseFloat(x)||-1e15;y=parseFloat(y)||-1e15;return asc?x-y:y-x;}return asc?String(x).localeCompare(y):String(y).localeCompare(x);});rows.forEach(r=>tbl.tBodies[0].appendChild(r));}
 """
 
+def tk_link(t):
+    """ticker→Google Finance报价页(?q=会自动重定向到带交易所的URL)"""
+    return f'<a class=tk href="https://www.google.com/finance?q={t}" target=_blank rel=noopener><b>{t}</b></a>'
+
 def sig_tags(s):
     out=''
     for p in s.replace('+',' ').split():
@@ -73,7 +78,7 @@ def winners_rows():
     r=''
     for w in winners:
         r+=f"""<tr data-tier="{w.get('driver_tier','')}">
-<td class=l data-v="{w['ticker']}"><b>{w['ticker']}</b><br><span class=mut style=font-size:11px>{(w['name'] or '')[:22]}</span></td>
+<td class=l data-v="{w['ticker']}">{tk_link(w['ticker'])}<br><span class=mut style=font-size:11px>{(w['name'] or '')[:22]}</span></td>
 <td class=l data-v="{w.get('driver_tier','')}">{driver_tag(w)}</td>
 <td class=l data-v="{w['sector'] or ''}">{w['sector'] or ''}</td>
 <td data-v="{w['low'] or 0}">${w['low']}<br><span class=mut style=font-size:11px>{w['low_date'] or ''}</span></td>
@@ -159,7 +164,7 @@ def win_rows():
     ws.sort(key=lambda x:(order.get(x['exit_layer'],9), -(x['low2high_pct'] or 0)))
     for w in ws[:300]:
         r+=f"""<tr data-layer="{w['exit_layer']}">
-<td class=l data-v="{w['ticker']}"><b>{w['ticker']}</b> <span class=mut style=font-size:11px>{(w['name']or'')[:18]}</span></td>
+<td class=l data-v="{w['ticker']}">{tk_link(w['ticker'])} <span class=mut style=font-size:11px>{(w['name']or'')[:18]}</span></td>
 <td class=l>{w['sector'] or ''}</td>
 <td data-v="{w['low2high_pct']}">{fmtPct_py(cap(w['low2high_pct']))}</td>
 <td class=l>{sig_tags(w['signal_type']) if w['signal_type'] else '<span class=mut>未触发</span>'}</td>
@@ -175,7 +180,7 @@ def blow_rows():
     for b in bs[:300]:
         dd=b.get('blow_dd_pct',b['dd_peak_pct'])
         r+=f"""<tr data-layer="{b['exit_layer']}">
-<td class=l data-v="{b['ticker']}"><b>{b['ticker']}</b> <span class=mut style=font-size:11px>{(b['name']or'')[:18]}</span></td>
+<td class=l data-v="{b['ticker']}">{tk_link(b['ticker'])} <span class=mut style=font-size:11px>{(b['name']or'')[:18]}</span></td>
 <td class=l>{b['sector'] or ''}</td>
 <td data-v="{dd}">{fmtPct_py(dd)}</td>
 <td class=l>{sig_tags(b['signal_type']) if b['signal_type'] else '<span class=mut>未触发</span>'}</td>
