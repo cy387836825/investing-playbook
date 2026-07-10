@@ -6,6 +6,7 @@ from curation import _units, _pit_latest, _ttm, _lumpy, SHARE_TAGS, curate_pass
 from signals import pit_qseries, yoy
 
 TODAY = time.strftime('%Y-%m-%d')
+FLOOR_B = 1.0   # 第一层过滤:信号触发时市值(股数×入场价)≥$1B。调此一处即可换下限
 
 def classify_driver(rev_sig, rev_now, ni_sig, ni_now, sector):
     """驱动分类:基本面兑现可在'营收端'(S2b成长)或'利润端'(S1周期修复/S2a扭亏)。
@@ -67,7 +68,11 @@ for tk in uni['ticker']:
 
 # ==== 1) winners.json: 信号命中的大牛股(峰值>300%),每次命中一行 ====
 ciks = _cik_map()
-big = {tk for tk, r in ee_map.items() if r.pkr > 3.0}   # 大牛股定义:首次触发入场→峰值>300%
+def _mcp(r):   # 触发时市值($B),缺失当0
+    v = getattr(r, 'mcap_pit', None)
+    return float(v) if v == v and v is not None else 0.0
+# 大牛股定义:首次触发时市值≥$1B(第一层) + 入场→峰值>300%
+big = {tk for tk, r in ee_map.items() if r.pkr > 3.0 and _mcp(r) >= FLOOR_B}
 winners = []; hit_n = {}
 for r in ee.itertuples():
     if r.ticker not in big: continue    # 大牛股的每一次命中都出一行
@@ -92,6 +97,7 @@ for r in ee.itertuples():
     winners.append({
         'driver': driver, 'driver_tier': tier, 'rev_growth_pct': revg,
         'hit_n': hit_n[r.ticker],              # 该票第几次命中(按财报日升序)
+        'mcap_pit_b': round(_mcp(r), 2),       # 触发时市值($B)
         'ticker': r.ticker, 'name': nm, 'sector': sec,
         'low': f.get('low'), 'low_date': f.get('low_date'),
         'high': f.get('high'), 'high_date': f.get('high_date'),
@@ -210,6 +216,7 @@ winset, blowset = [], []
 for tk, f in feat.items():
     nm, sec, mc = meta.get(tk, ('','',None))
     triggered = tk in ee_map
+    mcap_pit = _mcp(ee_map[tk]) if triggered else None   # 触发时市值($B)
     is_win = f['low2high'] > 3.0                 # 低→高>300%
     # 暴雷判定按入场时点对齐:已触发的用"首次信号入场后回撤"(入场前的崩盘不算漏网),未触发的用全期回撤
     blow_dd = float(ee_map[tk].dd) if triggered else f['dd_peak']
@@ -217,7 +224,7 @@ for tk, f in feat.items():
     if not (is_win or is_blow): continue
     cur_pass, cur_reason, sig = curation_status(tk)
     ru, niu, gpu, driver, tier = facts_and_driver(tk)
-    # 判定退出层 + 具体原因
+    # 判定退出层 + 具体原因(第一层已改为"触发时市值≥$1B")
     if not triggered:
         layer = 'signal'
         # 基本面驱动的漏网股→跑具体诊断; 非基本面→标注驱动
@@ -225,11 +232,13 @@ for tk, f in feat.items():
             why = diagnose_miss(ru, niu, gpu)
         else:
             why = f'非基本面({driver})—框架本就不抓'
+    elif mcap_pit < FLOOR_B:
+        layer, why = 'mcap', f'触发时市值${mcap_pit:.2f}B<${FLOOR_B:.0f}B(第一层市值门槛)'
     elif cur_pass is False:
         layer, why = 'curation', cur_reason
     else:
         layer, why = 'passed', '通过全部三层'
-    rec = {'ticker':tk,'name':nm,'sector':sec,'mcap_b':mc,
+    rec = {'ticker':tk,'name':nm,'sector':sec,'mcap_b':mc,'mcap_pit_b':round(mcap_pit,2) if mcap_pit is not None else None,
            'low2high_pct':round(f['low2high']*100),'dd_peak_pct':round(f['dd_peak']*100),
            'blow_dd_pct':round(blow_dd*100),   # 暴雷回撤:已触发=入场后,未触发=全期
            'signal_type':sig,'exit_layer':layer,'why':why,'triggered':triggered,
@@ -239,15 +248,19 @@ for tk, f in feat.items():
 
 winset.sort(key=lambda x:-x['low2high_pct'])
 blowset.sort(key=lambda x: x['blow_dd_pct'])
-# 漏斗层计数
+# 漏斗层计数(第一层市值门槛现按触发时市值算,故排在信号命中之后)
+trig = [tk for tk in uni['ticker'] if tk in ee_map]
 n_all = len(uni)
-n_sig = sum(1 for tk in uni['ticker'] if tk in ee_map)
-n_cur = sum(1 for tk in uni['ticker'] if tk in ee_map and curation_status(tk)[0] is True)
+n_sig = len(trig)
+n_mcap = sum(1 for tk in trig if _mcp(ee_map[tk]) >= FLOOR_B)
+n_cur = sum(1 for tk in trig if _mcp(ee_map[tk]) >= FLOOR_B and curation_status(tk)[0] is True)
 funnel = {
+    'floor_b': FLOOR_B,
     'layers': [
-        {'name':'全市场美股','n':'~4000+','note':'免费数据未覆盖<$5B,此层不可枚举'},
-        {'name':'第1层·市值≥$5B','n':n_all,'note':'universe(Finviz)'},
-        {'name':'第2层·信号命中','n':n_sig,'note':'S1/S1超/S2a/S2b任一触发(财报次日,2021-2025)'},
+        {'name':'全市场美股','n':'~4000+','note':'免费数据未覆盖全域,此层不可枚举'},
+        {'name':'universe·有数据','n':n_all,'note':'Finviz当前快照(EDGAR+价数据可得),数据覆盖上界'},
+        {'name':'第1层·信号命中','n':n_sig,'note':'S1/S1超/S2a/S2b任一触发(财报次日,2021-2025)'},
+        {'name':f'第2层·触发时市值≥${FLOOR_B:.0f}B','n':n_mcap,'note':'point-in-time市值=当时股数×入场价(无前视)'},
         {'name':'第3层·curation通过','n':n_cur,'note':'信号专属过滤(估值/盈利/非一次性)'},
     ],
     'winners': winset,      # 大牛股(低→高>300%)及其退出层
@@ -258,5 +271,5 @@ json.dump(funnel, open('funnel.json','w'), ensure_ascii=False)
 from collections import Counter
 wc = Counter(w['exit_layer'] for w in winset)
 bc = Counter(b['exit_layer'] for b in blowset)
-print(f"funnel.json: 大牛股{len(winset)}只 (信号层漏{wc['signal']}/curation剔{wc['curation']}/通过{wc['passed']})")
-print(f"           暴雷股{len(blowset)}只 (通过全部三层=漏网{bc['passed']}/被信号层挡{bc['signal']}/被curation挡{bc['curation']})")
+print(f"funnel.json: 大牛股{len(winset)}只 (信号层漏{wc['signal']}/市值<${FLOOR_B:.0f}B剔{wc['mcap']}/curation剔{wc['curation']}/通过{wc['passed']})")
+print(f"           暴雷股{len(blowset)}只 (漏网{bc['passed']}/被信号层挡{bc['signal']}/被市值门槛挡{bc['mcap']}/被curation挡{bc['curation']})")

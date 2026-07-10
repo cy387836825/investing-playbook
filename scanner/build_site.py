@@ -41,6 +41,7 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 .reason{color:#8b949e;font-size:12px;white-space:normal}
 .badge{padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
 .b-sig{background:#f8514922;color:#f85149;border:1px solid #f8514944}
+.b-mcap{background:#db6d2822;color:#db6d28;border:1px solid #db6d2844}
 .b-cur{background:#d2992222;color:#d29922;border:1px solid #d2992244}
 .b-pass{background:#3fb95022;color:#3fb950;border:1px solid #3fb95044}
 """
@@ -70,9 +71,13 @@ def driver_tag(w):
     return f'<span class="dtag {cls}">{w.get("driver","")}</span><span class=mut style=font-size:11px>{gtxt}</span>'
 
 def hit_mark(w):
-    """多次命中的票,在信号日期下标注第几次"""
-    if w.get('hit_total', 1) <= 1: return ''
-    return f'<br><span class=mut style=font-size:11px>第{w.get("hit_n","?")}/{w["hit_total"]}次命中</span>'
+    """信号日期下标注:触发时市值 + 第几次命中"""
+    out=''
+    if w.get('mcap_pit_b') is not None:
+        out+=f'<br><span class=mut style=font-size:11px>触发时市值 ${w["mcap_pit_b"]}B</span>'
+    if w.get('hit_total', 1) > 1:
+        out+=f'<br><span class=mut style=font-size:11px>第{w.get("hit_n","?")}/{w["hit_total"]}次命中</span>'
+    return out
 
 def winners_rows():
     r=''
@@ -109,7 +114,7 @@ page1=f"""<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=view
 <title>回测大牛股列表</title><style>{CSS}</style></head><body>
 <div class=nav><a href=index.html>← 漏斗视图</a><a href=winners.html>大牛股列表</a></div>
 <h1>回测大牛股列表</h1>
-<div class=sub>信号命中且"首次触发财报次日入场→峰值>300%"的股票,每次信号命中一行 · point-in-time回测(EDGAR防前视+yfinance价) · ⚠️事后选中的赢家,非可复制策略</div>
+<div class=sub>第一层=信号触发当时市值≥$1B(股数×入场价,point-in-time),且"首次触发财报次日入场→峰值>300%"的股票,每次信号命中一行 · ⚠️事后选中的赢家,非可复制策略</div>
 <div class=stats>
 <div class=stat><div class=v>{n_stk}</div><div class=l>大牛股(峰值>300%) · 共{len(winners)}次命中</div></div>
 <div class=stat><div class="v pos">{sum(1 for w in firsts if w.get('driver_tier') in ('fund','partial'))}</div><div class=l>基本面驱动(营收兑现)</div></div>
@@ -141,28 +146,27 @@ r.style.display=(tx.includes(q)&&(!s||sec===s)&&(!d||ti===d))?'':'none';}}}}
 (OUT/'winners.html').write_text(page1)
 
 # ============ PAGE 2: index.html (funnel) ============
-cols=['#f85149','#d29922']  # not used
-LC=['#30363d','#1f6feb','#8957e5','#238636']
+LC=['#30363d','#1f6feb','#8957e5','#db6d28','#238636']
 def flayer(L,w,c):
     n=L['n'];note=L.get('note','')
     return f'<div class=flayer style="width:{w}%;background:{c}"><div class=fn>{L["name"]}</div><div class=fc>{n}</div><div class=fnote>{note}</div></div>'
 lys=funnel['layers']
-widths=[100,88,52,40]
+widths=[100,90,62,46,36][:len(lys)]
 fun_html=''.join(flayer(L,widths[i],LC[i]) for i,L in enumerate(lys))
 
 def badge(layer):
-    return {'signal':'<span class="badge b-sig">信号层漏掉</span>','curation':'<span class="badge b-cur">curation剔除</span>','passed':'<span class="badge b-pass">通过全部三层</span>'}.get(layer,layer)
+    return {'signal':'<span class="badge b-sig">信号层漏掉</span>','mcap':'<span class="badge b-mcap">市值门槛剔除</span>','curation':'<span class="badge b-cur">curation剔除</span>','passed':'<span class="badge b-pass">通过全部三层</span>'}.get(layer,layer)
 
 def cap(v):  # 极端值截断显示
     return '&gt;5000' if v and v>5000 else v
 
 def win_rows():
     r=''
-    # 过滤极端artifact(低→高>3000%多为仙股/拆股),按退出层重要性+涨幅排,上限300
-    order={'signal':0,'curation':1,'passed':2}
+    # 过滤极端artifact(低→高>3000%多为仙股/拆股),按退出层重要性+涨幅排,全量展示(可筛选)
+    order={'mcap':0,'curation':1,'passed':2,'signal':3}
     ws=[w for w in funnel['winners'] if (w['low2high_pct'] or 0)<=3000]
     ws.sort(key=lambda x:(order.get(x['exit_layer'],9), -(x['low2high_pct'] or 0)))
-    for w in ws[:300]:
+    for w in ws:
         r+=f"""<tr data-layer="{w['exit_layer']}">
 <td class=l data-v="{w['ticker']}">{tk_link(w['ticker'])} <span class=mut style=font-size:11px>{(w['name']or'')[:18]}</span></td>
 <td class=l>{w['sector'] or ''}</td>
@@ -174,10 +178,10 @@ def win_rows():
 
 def blow_rows():
     r=''
-    # 漏网(passed)优先显示(关键洞察),再curation,再signal,上限300
-    order={'passed':0,'curation':1,'signal':2}
+    # 漏网(passed)优先显示(关键洞察),再mcap/curation/signal,全量展示(可筛选)
+    order={'passed':0,'mcap':1,'curation':2,'signal':3}
     bs=sorted(funnel['blowups'], key=lambda x:(order.get(x['exit_layer'],9), x.get('blow_dd_pct',x['dd_peak_pct'])))
-    for b in bs[:300]:
+    for b in bs:
         dd=b.get('blow_dd_pct',b['dd_peak_pct'])
         r+=f"""<tr data-layer="{b['exit_layer']}">
 <td class=l data-v="{b['ticker']}">{tk_link(b['ticker'])} <span class=mut style=font-size:11px>{(b['name']or'')[:18]}</span></td>
@@ -194,30 +198,32 @@ page2=f"""<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=view
 <title>漏斗视图 · 大牛股与暴雷股</title><style>{CSS}</style></head><body>
 <div class=nav><a href=index.html>漏斗视图</a><a href=winners.html>大牛股列表 →</a></div>
 <h1>过滤漏斗 · 大牛股在哪层被过滤 / 暴雷股是否漏网</h1>
-<div class=sub>全市场 → 市值≥$5B → 信号命中 → curation通过 · 追踪每只大牛股的退出层,每只暴雷股是否穿过过滤网</div>
+<div class=sub>全市场 → 信号命中 → 触发时市值≥${funnel.get('floor_b',1):.0f}B → curation通过 · 第一层市值门槛按信号触发当时(股数×入场价)计,非今天市值 · 追踪每只大牛股的退出层,每只暴雷股是否穿过过滤网</div>
 <div class=funnel>{fun_html}</div>
 
 <h2>大牛股(低→高>300%,共{len(funnel['winners'])}只)在哪一层被过滤</h2>
 <div class=stats>
 <div class=stat><div class="v neg">{wc['signal']}</div><div class=l>信号层漏掉(未触发)</div></div>
+<div class=stat><div class="v" style=color:#db6d28>{wc['mcap']}</div><div class=l>触发时市值&lt;${funnel.get('floor_b',1):.0f}B剔除</div></div>
 <div class=stat><div class="v" style=color:#d29922>{wc['curation']}</div><div class=l>curation剔除</div></div>
 <div class=stat><div class="v pos">{wc['passed']}</div><div class=l>通过全部三层</div></div>
 </div>
 <div class=ctrl><input id=wq placeholder="搜索..." oninput=filtW()>
-<select id=wl onchange=filtW()><option value="">全部退出层</option><option value=signal>信号层漏掉</option><option value=curation>curation剔除</option><option value=passed>通过全部三层</option></select></div>
+<select id=wl onchange=filtW()><option value="">全部退出层</option><option value=signal>信号层漏掉</option><option value=mcap>市值门槛剔除</option><option value=curation>curation剔除</option><option value=passed>通过全部三层</option></select></div>
 <div class=wrap><table id=wt><thead><tr>
 <th class=l onclick=srtW(0,0)>股票</th><th class=l>行业</th><th onclick=srtW(2,1)>低→高</th><th class=l>信号类型</th><th class=l>退出层</th><th class=l>原因</th>
 </tr></thead><tbody>{win_rows()}</tbody></table></div>
-<div class=note>信号层漏掉484只多为:信号滞后于股价(暴涨在财报确认前)/不达阈值/币-仙股-生物二元等非基本面驱动(框架本就不抓)</div>
+<div class=note>信号层漏掉多为:信号滞后于股价(暴涨在财报确认前)/不达阈值/币-仙股-生物二元等非基本面驱动(框架本就不抓)。市值门槛剔除=触发当时市值不足${funnel.get('floor_b',1):.0f}B的大牛(多为最猛的微盘,如QBTS/DAVE入场时仅$0.1-0.3B)</div>
 
 <h2>暴雷股(回撤>70%,共{len(funnel['blowups'])}只;已触发信号的按"首次入场后回撤"计,入场前的崩盘不算) — 有多少漏过了过滤网</h2>
 <div class=stats>
 <div class=stat><div class="v neg">{bc['passed']}</div><div class=l>⚠️漏网(通过全部三层)</div></div>
 <div class=stat><div class="v" style=color:#8b949e>{bc['signal']}</div><div class=l>被信号层挡住(未触发)</div></div>
+<div class=stat><div class="v" style=color:#db6d28>{bc['mcap']}</div><div class=l>被市值门槛挡住</div></div>
 <div class=stat><div class="v" style=color:#d29922>{bc['curation']}</div><div class=l>被curation挡住</div></div>
 </div>
 <div class=ctrl><input id=bq placeholder="搜索..." oninput=filtB()>
-<select id=bl onchange=filtB()><option value="">全部</option><option value=passed>⚠️漏网</option><option value=signal>信号层挡住</option><option value=curation>curation挡住</option></select></div>
+<select id=bl onchange=filtB()><option value="">全部</option><option value=passed>⚠️漏网</option><option value=signal>信号层挡住</option><option value=mcap>市值门槛挡住</option><option value=curation>curation挡住</option></select></div>
 <div class=wrap><table id=bt><thead><tr>
 <th class=l onclick=srtB(0,0)>股票</th><th class=l>行业</th><th onclick=srtB(2,1)>暴雷回撤(入场后/全期)</th><th class=l>信号类型</th><th class=l>过滤结果</th>
 </tr></thead><tbody>{blow_rows()}</tbody></table></div>

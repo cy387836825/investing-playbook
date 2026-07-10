@@ -10,7 +10,8 @@
 import time
 import pandas as pd
 from pathlib import Path
-from backtest import _fetch_all, _cik_map, _price_hist, REV_TAGS, SIGNALS
+from backtest import _fetch_all, _companyfacts_cached, _cik_map, _price_hist, REV_TAGS, SIGNALS
+from curation import _pit_latest, SHARE_TAGS
 
 BASE = Path(__file__).resolve().parent
 WIN_START, WIN_END = "2021-01-01", "2025-06-30"   # 财报日窗口(留12月远期)
@@ -62,6 +63,7 @@ def run():
         h = _price_hist(tk, "2020-06-01", END)
         if h is None:
             continue
+        facts = _companyfacts_cached(cik)   # 缓存,取PIT股数用
         # 记录每次信号触发的财报(first=首次触发;回测统计只用首次,与买入持有结论一致)
         seen = False
         for F in edates:
@@ -75,8 +77,11 @@ def run():
             if after.empty:
                 continue
             now = float(after.iloc[-1]); peak = float(after.max())
+            # 触发时市值($B) = filed<=F的最新股数 × 入场价 (point-in-time,无前视)
+            sh = _pit_latest(facts, SHARE_TAGS, F) if facts else None
+            mcap_pit = round(sh * entry / 1e9, 3) if sh else None
             rows.append({"ticker": tk, "earn_date": F, "sig": "+".join(fl), "first": not seen,
-                         "entry": round(entry, 2), "now": round(now, 2),
+                         "entry": round(entry, 2), "now": round(now, 2), "mcap_pit": mcap_pit,
                          "ret": round(now / entry - 1, 3), "pkr": round(peak / entry - 1, 3),
                          "mul": round(after.min() / entry - 1, 3), "dd": round(_mdd(after), 3)})
             seen = True
