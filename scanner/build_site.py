@@ -64,6 +64,11 @@ def driver_tag(w):
     gtxt=f' 营收{"+"if(g and g>0)else""}{g}%' if g is not None else ' 无营收'
     return f'<span class="dtag {cls}">{w.get("driver","")}</span><span class=mut style=font-size:11px>{gtxt}</span>'
 
+def hit_mark(w):
+    """多次命中的票,在信号日期下标注第几次"""
+    if w.get('hit_total', 1) <= 1: return ''
+    return f'<br><span class=mut style=font-size:11px>第{w.get("hit_n","?")}/{w["hit_total"]}次命中</span>'
+
 def winners_rows():
     r=''
     for w in winners:
@@ -74,7 +79,7 @@ def winners_rows():
 <td data-v="{w['low'] or 0}">${w['low']}<br><span class=mut style=font-size:11px>{w['low_date'] or ''}</span></td>
 <td data-v="{w['high'] or 0}">${w['high']}<br><span class=mut style=font-size:11px>{w['high_date'] or ''}</span></td>
 <td data-v="{w['low2high_pct'] or 0}">{fmtPct_py(w['low2high_pct'])}</td>
-<td class=l data-v="{w['signal_date']}">{w['signal_date']}</td>
+<td class=l data-v="{w['signal_date']}">{w['signal_date']}{hit_mark(w)}</td>
 <td class=l data-v="{w['signal_type']}">{sig_tags(w['signal_type'])}</td>
 <td data-v="{w['entry']}">${w['entry']}</td>
 <td data-v="{w['hold_pct']}">{fmtPct_py(w['hold_pct'])}</td>
@@ -92,17 +97,20 @@ def fmtPct_py(v):
 
 secs=sorted({w['sector'] for w in winners if w['sector']})
 sec_opts=''.join(f'<option>{s}</option>' for s in secs)
+# 每票可有多次命中:统计卡按"股票"计(取首次命中那行),表格按"命中"逐行展示
+firsts=[w for w in winners if w.get('hit_n',1)==1]
+n_stk=len({w['ticker'] for w in winners})
 page1=f"""<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
 <title>回测大牛股列表</title><style>{CSS}</style></head><body>
 <div class=nav><a href=index.html>← 漏斗视图</a><a href=winners.html>大牛股列表</a></div>
 <h1>回测大牛股列表</h1>
-<div class=sub>信号命中且"财报次日入场→峰值>300%"的股票 · point-in-time回测(EDGAR防前视+yfinance价) · ⚠️事后选中的赢家,非可复制策略</div>
+<div class=sub>信号命中且"首次触发财报次日入场→峰值>300%"的股票,每次信号命中一行 · point-in-time回测(EDGAR防前视+yfinance价) · ⚠️事后选中的赢家,非可复制策略</div>
 <div class=stats>
-<div class=stat><div class=v>{len(winners)}</div><div class=l>大牛股(峰值>300%)</div></div>
-<div class=stat><div class="v pos">{sum(1 for w in winners if w.get('driver_tier') in ('fund','partial'))}</div><div class=l>基本面驱动(营收兑现)</div></div>
-<div class=stat><div class="v" style=color:#e3b341>{sum(1 for w in winners if w.get('driver_tier') in ('weak','none'))}</div><div class=l>非基本面(商品/加密/投机)</div></div>
-<div class=stat><div class=v>{round(sum(w['maxdd_pct'] for w in winners)/len(winners))}%</div><div class=l>平均最大回调</div></div>
-<div class=stat><div class=v>{round(sum(w['maxloss_pct'] for w in winners)/len(winners))}%</div><div class=l>平均最大浮亏</div></div>
+<div class=stat><div class=v>{n_stk}</div><div class=l>大牛股(峰值>300%) · 共{len(winners)}次命中</div></div>
+<div class=stat><div class="v pos">{sum(1 for w in firsts if w.get('driver_tier') in ('fund','partial'))}</div><div class=l>基本面驱动(营收兑现)</div></div>
+<div class=stat><div class="v" style=color:#e3b341>{sum(1 for w in firsts if w.get('driver_tier') in ('weak','none'))}</div><div class=l>非基本面(商品/加密/投机)</div></div>
+<div class=stat><div class=v>{round(sum(w['maxdd_pct'] for w in firsts)/len(firsts))}%</div><div class=l>平均最大回调(首次入场)</div></div>
+<div class=stat><div class=v>{round(sum(w['maxloss_pct'] for w in firsts)/len(firsts))}%</div><div class=l>平均最大浮亏(首次入场)</div></div>
 </div>
 <div class=ctrl>
 <input id=q placeholder="搜索代码/名称..." oninput=filt()>

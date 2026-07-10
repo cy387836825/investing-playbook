@@ -41,7 +41,9 @@ uni['mcap_b'] = pd.to_numeric(uni['mcap_b'], errors='coerce')
 if uni['mcap_b'].max() > 1e5: uni['mcap_b'] = uni['mcap_b']/1e6  # 与scan.py一致(universe.csv市值单位需/1e6得十亿)
 meta = {r['ticker']: (r['name'], r['sector'], round(r['mcap_b'],1)) for _,r in uni.iterrows()}
 ee = pd.read_csv('earnings_entry.csv')
-ee_map = {r.ticker: r for r in ee.itertuples()}
+ee_map = {}
+for _r in ee.itertuples():
+    ee_map.setdefault(_r.ticker, _r)   # 每票可有多次命中(按财报日升序),curation/漏斗只看首次触发
 START, END = '2020-06-01', '2026-07-05'
 
 def lowhigh(h):
@@ -63,11 +65,13 @@ for tk in uni['ticker']:
                 'low2high': round(hi/lo-1,3), 'dd_peak': round(dd_from_peak(h),3),
                 'now': round(float(h.iloc[-1]),2)}
 
-# ==== 1) winners.json: 信号命中的大牛股(峰值>300%) ====
+# ==== 1) winners.json: 信号命中的大牛股(峰值>300%),每次命中一行 ====
 ciks = _cik_map()
-winners = []
+big = {tk for tk, r in ee_map.items() if r.pkr > 3.0}   # 大牛股定义:首次触发入场→峰值>300%
+winners = []; hit_n = {}
 for r in ee.itertuples():
-    if r.pkr <= 3.0: continue           # 峰值>300%
+    if r.ticker not in big: continue    # 大牛股的每一次命中都出一行
+    hit_n[r.ticker] = hit_n.get(r.ticker, 0) + 1
     f = feat.get(r.ticker, {})
     nm, sec, mc = meta.get(r.ticker, ('','',None))
     # 持有期营收增长(信号日TTM vs 今日TTM) → 驱动分类
@@ -87,6 +91,7 @@ for r in ee.itertuples():
     driver, tier, revg = classify_driver(rev_sig, rev_now, ni_sig, ni_now, sec)
     winners.append({
         'driver': driver, 'driver_tier': tier, 'rev_growth_pct': revg,
+        'hit_n': hit_n[r.ticker],              # 该票第几次命中(按财报日升序)
         'ticker': r.ticker, 'name': nm, 'sector': sec,
         'low': f.get('low'), 'low_date': f.get('low_date'),
         'high': f.get('high'), 'high_date': f.get('high_date'),
@@ -98,9 +103,48 @@ for r in ee.itertuples():
         'maxdd_pct': round(r.dd*100),          # 买入后最大回调
         'maxloss_pct': round(r.mul*100),       # 买入后最大浮亏
     })
-winners.sort(key=lambda x: -x['peak_pct'])
+# 同票各次命中相邻排列:按该票最高峰值降序,票内按财报日升序
+peak_tk = {}
+for w in winners:
+    peak_tk[w['ticker']] = max(peak_tk.get(w['ticker'], -10**9), w['peak_pct'])
+for w in winners:
+    w['hit_total'] = hit_n[w['ticker']]
+winners.sort(key=lambda x: (-peak_tk[x['ticker']], x['ticker'], x['signal_date']))
 json.dump(winners, open('winners.json','w'), ensure_ascii=False)
-print(f"winners.json: {len(winners)}只大牛股")
+print(f"winners.json: {len(big)}只大牛股 / {len(winners)}次命中")
+
+def diagnose_miss(rev_u, ni_u, gp_u):
+    """诊断一只'从未触发信号'的股票,具体卡在哪(用全历史数据看各信号为何都不触发)。"""
+    revs = pit_qseries(rev_u, TODAY) if rev_u else None
+    nis = pit_qseries(ni_u, TODAY) if ni_u else None
+    gps = pit_qseries(gp_u, TODAY) if gp_u else None
+    # S2b诊断: 营收增速峰值 + 是否曾加速
+    max_yoy, accel_ever = None, False
+    if revs is not None and len(revs) >= 6:
+        ys = [yoy(revs, i) for i in range(min(10, len(revs) - 4))]
+        ys = [y for y in ys if y is not None]
+        if ys:
+            max_yoy = max(ys)
+            accel_ever = any(ys[i] >= 0.25 and ys[i] > ys[i + 1] for i in range(len(ys) - 1))
+    # S2a诊断: 是否曾有"扭亏"形态
+    first_profit_ever = False
+    if nis is not None and len(nis) >= 5:
+        v = list(nis.values)
+        first_profit_ever = any(v[i] > 0 and sum(1 for x in v[i+1:i+5] if x <= 0) >= 3
+                                for i in range(len(v) - 4))
+    # 归因(优先给最具体的)
+    if max_yoy is not None and max_yoy >= 0.25 and not accel_ever:
+        return 'L13·营收高增长但从不"加速"(稳定复利,被S2b排除)'
+    if gps is None and not first_profit_ever:
+        return 'S1失明·无毛利数据 + 无首盈拐点(信号形状全不匹配)'
+    if max_yoy is not None and max_yoy < 0.25:
+        return f'增速不足·营收同比峰值仅{round(max_yoy*100)}%<25%阈值(基本面兑现在利润端)'
+    if gps is None:
+        return 'S1失明·无毛利数据(周期反转信号无法判定)'
+    if max_yoy is None:
+        return '数据缺口·营收季度数不足/IFRS外国股'
+    return '信号滞后·拐点晚于测试窗口或未达阈值'
+
 
 # ==== 2) funnel.json ====
 # 定义大牛股(全≥5B universe中低→高>300%)、暴雷股(峰值后回调>70%)  (ciks 已在上方定义)
@@ -137,6 +181,31 @@ def curation_status(tk):
         reasons.append(f'S2b估值透支({vm.strip()})' if vm.strip() else 'S2b估值透支')
     return (False, '+'.join(reasons) or '未过curation', r.sig)
 
+def facts_and_driver(tk):
+    """拉EDGAR,算全期营收/利润→驱动分类。返回(rev_u,ni_u,gp_u,driver,tier)"""
+    cik = ciks.get(str(tk).upper())
+    if not cik:
+        return (None, None, None, '数据缺口', 'none')
+    fc = _companyfacts_cached(cik)
+    if not fc:
+        return (None, None, None, '数据缺口', 'none')
+    ru = None
+    for tg in REV_TAGS:
+        ru = _units(fc, tg)
+        if ru:
+            break
+    niu, gpu = _units(fc, 'NetIncomeLoss'), _units(fc, 'GrossProfit')
+    rs = pit_qseries(ru, TODAY) if ru else None
+    ns = pit_qseries(niu, TODAY) if niu else None
+    # 全期(最早→最新)营收/利润增长做驱动分类
+    rev_early = float(rs.iloc[-4:].sum()) if (rs is not None and len(rs) >= 8) else None
+    rev_now = float(rs.iloc[:4].sum()) if (rs is not None and len(rs) >= 4) else None
+    ni_early = float(ns.iloc[-4:].sum()) if (ns is not None and len(ns) >= 8) else None
+    ni_now = float(ns.iloc[:4].sum()) if (ns is not None and len(ns) >= 4) else None
+    _, _, sector = meta.get(tk, ('', '', '')), None, meta.get(tk, ('', '', ''))[1]
+    driver, tier, _ = classify_driver(rev_early, rev_now, ni_early, ni_now, sector)
+    return (ru, niu, gpu, driver, tier)
+
 winset, blowset = [], []
 for tk, f in feat.items():
     nm, sec, mc = meta.get(tk, ('','',None))
@@ -145,13 +214,23 @@ for tk, f in feat.items():
     if not (is_win or is_blow): continue
     cur_pass, cur_reason, sig = curation_status(tk)
     triggered = tk in ee_map
-    # 判定退出层
-    if not triggered: layer, why = 'signal', '信号层未触发(信号滞后/不达阈值/板块指标缺)'
-    elif cur_pass is False: layer, why = 'curation', cur_reason
-    else: layer, why = 'passed', '通过全部三层'
+    ru, niu, gpu, driver, tier = facts_and_driver(tk)
+    # 判定退出层 + 具体原因
+    if not triggered:
+        layer = 'signal'
+        # 基本面驱动的漏网股→跑具体诊断; 非基本面→标注驱动
+        if tier in ('fund', 'partial'):
+            why = diagnose_miss(ru, niu, gpu)
+        else:
+            why = f'非基本面({driver})—框架本就不抓'
+    elif cur_pass is False:
+        layer, why = 'curation', cur_reason
+    else:
+        layer, why = 'passed', '通过全部三层'
     rec = {'ticker':tk,'name':nm,'sector':sec,'mcap_b':mc,
            'low2high_pct':round(f['low2high']*100),'dd_peak_pct':round(f['dd_peak']*100),
-           'signal_type':sig,'exit_layer':layer,'why':why,'triggered':triggered}
+           'signal_type':sig,'exit_layer':layer,'why':why,'triggered':triggered,
+           'driver':driver,'driver_tier':tier}
     if is_win: winset.append(rec)
     if is_blow: blowset.append(rec)
 

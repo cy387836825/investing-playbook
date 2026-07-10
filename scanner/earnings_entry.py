@@ -62,32 +62,34 @@ def run():
         h = _price_hist(tk, "2020-06-01", END)
         if h is None:
             continue
-        # 找第一次信号触发的财报
+        # 记录每次信号触发的财报(first=首次触发;回测统计只用首次,与买入持有结论一致)
+        seen = False
         for F in edates:
             fl = [s for s, fn in SIGNALS.items() if fn(f, F) is True]
             if not fl:
                 continue
             entry = _px_after(h, F)         # 财报次日买入
             if not entry:
-                break
+                continue
             after = h[h.index > pd.Timestamp(F)]
             if after.empty:
-                break
+                continue
             now = float(after.iloc[-1]); peak = float(after.max())
-            rows.append({"ticker": tk, "earn_date": F, "sig": "+".join(fl),
+            rows.append({"ticker": tk, "earn_date": F, "sig": "+".join(fl), "first": not seen,
                          "entry": round(entry, 2), "now": round(now, 2),
                          "ret": round(now / entry - 1, 3), "pkr": round(peak / entry - 1, 3),
                          "mul": round(after.min() / entry - 1, 3), "dd": round(_mdd(after), 3)})
-            break
+            seen = True
         if i % 200 == 0:
-            print(f"  {i}/{len(uni)} 触发{len(rows)}只", flush=True)
+            print(f"  {i}/{len(uni)} 触发{len(rows)}次", flush=True)
         time.sleep(0.02)
     df = pd.DataFrame(rows)
     df.to_csv(BASE / "earnings_entry.csv", index=False)
-    print(f"\n信号触发(财报次日入场)的股票: {len(df)}只", flush=True)
-    print(f"全体: 持有至今 中位{df['ret'].median()*100:.0f}% 均值{df['ret'].mean()*100:.0f}%  峰值 中位{df['pkr'].median()*100:.0f}%", flush=True)
-    big = df[df["pkr"] > 3.0]
-    print(f"\n大牛股(财报次日入场→峰值>300%): {len(big)}只 ({len(big)/len(df)*100:.0f}%)", flush=True)
+    fdf = df[df["first"]]   # 回测统计只看首次触发入场
+    print(f"\n信号触发(财报次日入场)的股票: {len(fdf)}只 / 共{len(df)}次命中", flush=True)
+    print(f"全体(首次入场): 持有至今 中位{fdf['ret'].median()*100:.0f}% 均值{fdf['ret'].mean()*100:.0f}%  峰值 中位{fdf['pkr'].median()*100:.0f}%", flush=True)
+    big = fdf[fdf["pkr"] > 3.0]
+    print(f"\n大牛股(首次入场→峰值>300%): {len(big)}只 ({len(big)/len(fdf)*100:.0f}%)", flush=True)
     print(f"  持有至今 中位{big['ret'].median()*100:.0f}% 均值{big['ret'].mean()*100:.0f}%", flush=True)
     print(f"  最大浮亏 平均{big['mul'].mean()*100:.0f}% 最深{big['mul'].min()*100:.0f}%", flush=True)
     print(f"  最大回撤 平均{big['dd'].mean()*100:.0f}% ({(big['dd']<-0.5).sum()}/{len(big)}次>50%)", flush=True)
