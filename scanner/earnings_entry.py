@@ -19,8 +19,10 @@ END = "2026-07-01"
 
 
 def _earnings_dates(rev_units):
-    """从营收units提取季度财报的申报日(filed),排序去重"""
-    ds = set()
+    """从营收units提取季度财报的申报日(filed):按季度末(end)去重,每个财报周期只留最早filed。
+    同一季度会在多份申报里重复出现(10-K/10-K/A的对比列、后续季报的去年同期列),
+    只有'首次披露该季度'的那份是真财报事件。故对每个end取min(filed),避免年报/修正案重复触发。"""
+    first_filed = {}   # end(季度末) -> 最早filed日期
     for r in rev_units or []:
         if "start" not in r or "end" not in r or "filed" not in r:
             continue
@@ -28,9 +30,13 @@ def _earnings_dates(rev_units):
             days = (pd.Timestamp(r["end"]) - pd.Timestamp(r["start"])).days
         except Exception:
             continue
-        if 75 <= days <= 100 and WIN_START <= r["filed"] <= WIN_END:
-            ds.add(r["filed"])
-    return sorted(ds)
+        if not (75 <= days <= 100):
+            continue
+        e, fd = r["end"], r["filed"]
+        if e not in first_filed or fd < first_filed[e]:
+            first_filed[e] = fd
+    # 每个季度末取其最早filed;再按回测窗口过滤(用最早披露日,重报的对比列不再触发)
+    return sorted({fd for fd in first_filed.values() if WIN_START <= fd <= WIN_END})
 
 
 def _px_after(h, date):
