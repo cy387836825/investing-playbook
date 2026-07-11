@@ -77,11 +77,13 @@ def run():
             if after.empty:
                 continue
             now = float(after.iloc[-1]); peak = float(after.max())
+            peak_date = str(after.idxmax().date())   # 峰值出现日期(用于峰值年化)
             # 触发时市值($B) = filed<=F的最新股数 × 入场价 (point-in-time,无前视)
             sh = _pit_latest(facts, SHARE_TAGS, F) if facts else None
             mcap_pit = round(sh * entry / 1e9, 3) if sh else None
             rows.append({"ticker": tk, "earn_date": F, "sig": "+".join(fl), "first": not seen,
                          "entry": round(entry, 2), "now": round(now, 2), "mcap_pit": mcap_pit,
+                         "peak_date": peak_date,
                          "ret": round(now / entry - 1, 3), "pkr": round(peak / entry - 1, 3),
                          "mul": round(after.min() / entry - 1, 3), "dd": round(_mdd(after), 3)})
             seen = True

@@ -8,6 +8,18 @@ from signals import pit_qseries, yoy
 TODAY = time.strftime('%Y-%m-%d')
 FLOOR_B = 1.0   # 第一层过滤:信号触发时市值(股数×入场价)≥$1B。调此一处即可换下限
 
+def annualize(mult, d0, d1):
+    """把总倍数mult(=终值/初值)按d0→d1的时长年化。返回百分数(int)或None(时长<30天不年化)。"""
+    if mult is None or mult <= 0:
+        return None
+    try:
+        days = (pd.Timestamp(d1) - pd.Timestamp(d0)).days
+    except Exception:
+        return None
+    if days < 30:
+        return None
+    return round((mult ** (365.25 / days) - 1) * 100)
+
 def classify_driver(rev_sig, rev_now, ni_sig, ni_now, sector):
     """驱动分类:基本面兑现可在'营收端'(S2b成长)或'利润端'(S1周期修复/S2a扭亏)。
     只看营收会误判周期股(如WDC:营收降但利润率修复)。故同时看营收增长+盈利改善。
@@ -153,6 +165,8 @@ for r in ee.itertuples():
         'entry': round(r.entry,2), 'now': round(r.now,2),
         'hold_pct': round(r.ret*100),          # 买入持有至今
         'peak_pct': round(r.pkr*100),          # 买入潜在最大回报
+        'ann_hold_pct': annualize(1+r.ret, r.earn_date, TODAY),                          # 持有至今年化
+        'ann_peak_pct': annualize(1+r.pkr, r.earn_date, getattr(r,'peak_date',TODAY)),   # 到峰值年化
         'maxdd_pct': round(r.dd*100),          # 买入后最大回调
         'maxloss_pct': round(r.mul*100),       # 买入后最大浮亏
     })
