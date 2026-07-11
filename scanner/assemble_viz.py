@@ -61,7 +61,10 @@ feat = {}
 for tk in uni['ticker']:
     h = _price_hist(tk, START, END)
     if h is None or len(h) < 50: continue
+    h = h[h > 0]                                 # 剔除微盘价格里的0/坏点(否则low2high除零)
+    if len(h) < 50: continue
     lo, lod, hi, hid = lowhigh(h)
+    if lo <= 0: continue
     feat[tk] = {'low':round(lo,2),'low_date':lod,'high':round(hi,2),'high_date':hid,
                 'low2high': round(hi/lo-1,3), 'dd_peak': round(dd_from_peak(h),3),
                 'now': round(float(h.iloc[-1]),2)}

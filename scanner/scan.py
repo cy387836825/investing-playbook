@@ -46,18 +46,19 @@ RESULT_FIELDS = [
 
 def fetch_universe():
     from finvizfinance.screener.overview import Overview
-    print("从 Finviz 拉取市值 >$2B 的全部美股（分页较多，约几分钟）...")
+    print("从 Finviz 拉取全市值美股（不设市值下限，分页较多，约几分钟）...")
     ov = Overview()
-    ov.set_filter(filters_dict={"Market Cap.": "+Mid (over $2bln)"})
+    # 排除ETF/基金(它们无EDGAR基本面),只留真股票;不设市值下限→全市值。注:仍是当前存活股,不含退市
+    ov.set_filter(filters_dict={"Industry": "Stocks only (ex-Funds)"})
     df = ov.screener_view(order="Market Cap.", ascend=False, sleep_sec=1)
-    # finviz 的 Market Cap 列为美元原值
+    # finviz 的 Market Cap 列为美元原值(下游 assemble/scan 用 /1e6 归一化,保持此计算不变)
     df = df.rename(columns={"Market Cap": "mcap_m"})
     df["mcap_b"] = pd.to_numeric(df["mcap_m"], errors="coerce") / 1e9
-    df = df[df["mcap_b"] >= MIN_MCAP / 1e9].copy()
+    df = df.dropna(subset=["mcap_b"]).copy()   # 丢弃无市值的行(部分ADR/异常)
     df = df[["Ticker", "Company", "Sector", "Industry", "mcap_b"]]
     df.columns = ["ticker", "name", "sector", "industry", "mcap_b"]
     df.to_csv(UNIVERSE_CSV, index=False)
-    print(f"universe.csv 已保存: {len(df)} 家市值 ≥$5B 的公司")
+    print(f"universe.csv 已保存: {len(df)} 家(全市值)")
 
 
 def _row(stmt, names):
