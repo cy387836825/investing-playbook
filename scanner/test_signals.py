@@ -134,9 +134,14 @@ class TestS1(unittest.TestCase):
 
 class TestCuratePass(unittest.TestCase):
     def test_s1_only_lumpy(self):
-        # S1: 只看非一次性,不看盈利/估值
+        # S1(普通,周期底部): 只看非一次性,不看盈利/估值。亏损属正常早期反转,勿滤盈利。
         self.assertTrue(curate_pass({"S1"}, profitable=False, lumpy=False, val_ok=False))
         self.assertFalse(curate_pass({"S1"}, profitable=True, lumpy=True, val_ok=True))
+
+    def test_s1super_needs_profit(self):
+        # S1超(毛利突破基线): 要求盈利+非一次性。亏损=伪周期故事股(实测~100%暴雷)。
+        self.assertTrue(curate_pass({"S1超"}, profitable=True, lumpy=False, val_ok=False))
+        self.assertFalse(curate_pass({"S1超"}, profitable=False, lumpy=False, val_ok=False))  # 亏损被剔
 
     def test_s2a_only_profit(self):
         # S2a: 只看要求盈利,不看非一次性

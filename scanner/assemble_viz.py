@@ -113,6 +113,7 @@ def curation_status(tk):
     if ok: return (True, '', r.sig)
     reasons=[]
     if ('S2a' in sigset) and not prof: reasons.append('S2a要求盈利未过')
+    if ('S1超' in sigset) and not prof: reasons.append('S1超要求盈利未过(伪周期)')
     if (('S1' in sigset)or('S1超'in sigset)) and lum: reasons.append('S1非一次性未过')
     if ('S2b' in sigset) and not valok:
         vm = (f"PE{pe:.0f}" if pe else "") + (f" PS{ps:.0f}" if ps else "")

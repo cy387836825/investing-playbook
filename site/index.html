@@ -46,14 +46,14 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <div class=nav><a href=index.html>漏斗视图</a><a href=winners.html>大牛股列表 →</a></div>
 <h1>过滤漏斗 · 大牛股在哪层被过滤 / 暴雷股是否漏网</h1>
 <div class=sub>全市场 → 信号命中 → 触发时市值≥$1B → curation通过 · 第一层市值门槛按信号触发当时(股数×入场价)计,非今天市值 · 追踪每只大牛股的退出层,每只暴雷股是否穿过过滤网</div>
-<div class=funnel><div class=flayer style="width:100%;background:#30363d"><div class=fn>全市场美股</div><div class=fc>~4000+</div><div class=fnote>免费数据未覆盖全域,此层不可枚举</div></div><div class=flayer style="width:90%;background:#1f6feb"><div class=fn>universe·有数据</div><div class=fc>4629</div><div class=fnote>Finviz当前快照(EDGAR+价数据可得),数据覆盖上界</div></div><div class=flayer style="width:62%;background:#8957e5"><div class=fn>第1层·信号命中</div><div class=fc>2074</div><div class=fnote>S1/S1超/S2a/S2b任一触发(财报次日,2021-2025)</div></div><div class=flayer style="width:46%;background:#db6d28"><div class=fn>第2层·触发时市值≥$1B</div><div class=fc>1317</div><div class=fnote>point-in-time市值=当时股数×入场价(无前视)</div></div><div class=flayer style="width:36%;background:#238636"><div class=fn>第3层·curation通过</div><div class=fc>921</div><div class=fnote>信号专属过滤(估值/盈利/非一次性)</div></div></div>
+<div class=funnel><div class=flayer style="width:100%;background:#30363d"><div class=fn>全市场美股</div><div class=fc>~4000+</div><div class=fnote>免费数据未覆盖全域,此层不可枚举</div></div><div class=flayer style="width:90%;background:#1f6feb"><div class=fn>universe·有数据</div><div class=fc>4629</div><div class=fnote>Finviz当前快照(EDGAR+价数据可得),数据覆盖上界</div></div><div class=flayer style="width:62%;background:#8957e5"><div class=fn>第1层·信号命中</div><div class=fc>2074</div><div class=fnote>S1/S1超/S2a/S2b任一触发(财报次日,2021-2025)</div></div><div class=flayer style="width:46%;background:#db6d28"><div class=fn>第2层·触发时市值≥$1B</div><div class=fc>1317</div><div class=fnote>point-in-time市值=当时股数×入场价(无前视)</div></div><div class=flayer style="width:36%;background:#238636"><div class=fn>第3层·curation通过</div><div class=fc>916</div><div class=fnote>信号专属过滤(估值/盈利/非一次性)</div></div></div>
 
 <h2>大牛股(低→高>300%,共2649只)在哪一层被过滤</h2>
 <div class=stats>
 <div class=stat><div class="v neg">1273</div><div class=l>信号层漏掉(未触发)</div></div>
 <div class=stat><div class="v" style=color:#db6d28>587</div><div class=l>触发时市值&lt;$1B剔除</div></div>
-<div class=stat><div class="v" style=color:#d29922>305</div><div class=l>curation剔除</div></div>
-<div class=stat><div class="v pos">484</div><div class=l>通过全部三层</div></div>
+<div class=stat><div class="v" style=color:#d29922>310</div><div class=l>curation剔除</div></div>
+<div class=stat><div class="v pos">479</div><div class=l>通过全部三层</div></div>
 </div>
 <div class=ctrl><input id=wq placeholder="搜索..." oninput=filtW()>
 <select id=wl onchange=filtW()><option value="">全部退出层</option><option value=signal>信号层漏掉</option><option value=mcap>市值门槛剔除</option><option value=curation>curation剔除</option><option value=passed>通过全部三层</option></select></div>
@@ -2928,6 +2928,12 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td>
 <td class="l reason">S2b估值透支(PS55)</td></tr><tr data-layer="curation">
+<td class=l data-v="SITM"><a class=tk href="https://www.google.com/finance?q=SITM" target=_blank rel=noopener><b>SITM</b></a> <span class=mut style=font-size:11px>SiTime Corp</span></td>
+<td class=l>Technology</td>
+<td data-v="2808"><span class=pos>+2808%</span></td>
+<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td>
+<td class="l reason">S1超要求盈利未过(伪周期)</td></tr><tr data-layer="curation">
 <td class=l data-v="ADPT"><a class=tk href="https://www.google.com/finance?q=ADPT" target=_blank rel=noopener><b>ADPT</b></a> <span class=mut style=font-size:11px>Adaptive Biotechno</span></td>
 <td class=l>Healthcare</td>
 <td data-v="2801"><span class=pos>+2801%</span></td>
@@ -3096,6 +3102,12 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td>
 <td class="l reason">S2b估值透支(PS164)</td></tr><tr data-layer="curation">
+<td class=l data-v="TNDM"><a class=tk href="https://www.google.com/finance?q=TNDM" target=_blank rel=noopener><b>TNDM</b></a> <span class=mut style=font-size:11px>Tandem Diabetes Ca</span></td>
+<td class=l>Healthcare</td>
+<td data-v="1415"><span class=pos>+1415%</span></td>
+<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td>
+<td class="l reason">S1超要求盈利未过(伪周期)</td></tr><tr data-layer="curation">
 <td class=l data-v="PBF"><a class=tk href="https://www.google.com/finance?q=PBF" target=_blank rel=noopener><b>PBF</b></a> <span class=mut style=font-size:11px>PBF Energy Inc</span></td>
 <td class=l>Energy</td>
 <td data-v="1396"><span class=pos>+1396%</span></td>
@@ -3113,7 +3125,7 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td data-v="1366"><span class=pos>+1366%</span></td>
 <td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td>
-<td class="l reason">S2b估值透支(PS289)</td></tr><tr data-layer="curation">
+<td class="l reason">S1超要求盈利未过(伪周期)+S2b估值透支(PS289)</td></tr><tr data-layer="curation">
 <td class=l data-v="SRRK"><a class=tk href="https://www.google.com/finance?q=SRRK" target=_blank rel=noopener><b>SRRK</b></a> <span class=mut style=font-size:11px>Scholar Rock Holdi</span></td>
 <td class=l>Healthcare</td>
 <td data-v="1360"><span class=pos>+1360%</span></td>
@@ -3306,6 +3318,12 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td class=l><span class="tag">S2a</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td>
 <td class="l reason">S2a要求盈利未过</td></tr><tr data-layer="curation">
+<td class=l data-v="NEOG"><a class=tk href="https://www.google.com/finance?q=NEOG" target=_blank rel=noopener><b>NEOG</b></a> <span class=mut style=font-size:11px>Neogen Corp</span></td>
+<td class=l>Healthcare</td>
+<td data-v="1001"><span class=pos>+1001%</span></td>
+<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td>
+<td class="l reason">S1超要求盈利未过(伪周期)</td></tr><tr data-layer="curation">
 <td class=l data-v="FANG"><a class=tk href="https://www.google.com/finance?q=FANG" target=_blank rel=noopener><b>FANG</b></a> <span class=mut style=font-size:11px>Diamondback Energy</span></td>
 <td class=l>Energy</td>
 <td data-v="992"><span class=pos>+992%</span></td>
@@ -3336,6 +3354,12 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td>
 <td class="l reason">S2b估值透支(PS50)</td></tr><tr data-layer="curation">
+<td class=l data-v="PI"><a class=tk href="https://www.google.com/finance?q=PI" target=_blank rel=noopener><b>PI</b></a> <span class=mut style=font-size:11px>Impinj Inc</span></td>
+<td class=l>Technology</td>
+<td data-v="962"><span class=pos>+962%</span></td>
+<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td>
+<td class="l reason">S1超要求盈利未过(伪周期)</td></tr><tr data-layer="curation">
 <td class=l data-v="TWLO"><a class=tk href="https://www.google.com/finance?q=TWLO" target=_blank rel=noopener><b>TWLO</b></a> <span class=mut style=font-size:11px>Twilio Inc</span></td>
 <td class=l>Technology</td>
 <td data-v="938"><span class=pos>+938%</span></td>
@@ -3383,7 +3407,7 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td data-v="893"><span class=pos>+893%</span></td>
 <td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td>
-<td class="l reason">S2b估值透支(PS18)</td></tr><tr data-layer="curation">
+<td class="l reason">S1超要求盈利未过(伪周期)+S2b估值透支(PS18)</td></tr><tr data-layer="curation">
 <td class=l data-v="SYM"><a class=tk href="https://www.google.com/finance?q=SYM" target=_blank rel=noopener><b>SYM</b></a> <span class=mut style=font-size:11px>Symbotic Inc</span></td>
 <td class=l>Industrials</td>
 <td data-v="891"><span class=pos>+891%</span></td>
@@ -3539,7 +3563,7 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td data-v="705"><span class=pos>+705%</span></td>
 <td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td>
-<td class="l reason">S2b估值透支(PS31)</td></tr><tr data-layer="curation">
+<td class="l reason">S1超要求盈利未过(伪周期)+S2b估值透支(PS31)</td></tr><tr data-layer="curation">
 <td class=l data-v="AUPH"><a class=tk href="https://www.google.com/finance?q=AUPH" target=_blank rel=noopener><b>AUPH</b></a> <span class=mut style=font-size:11px>Aurinia Pharmaceut</span></td>
 <td class=l>Healthcare</td>
 <td data-v="705"><span class=pos>+705%</span></td>
@@ -3629,7 +3653,7 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td data-v="640"><span class=pos>+640%</span></td>
 <td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td>
-<td class="l reason">S2b估值透支(PS6228)</td></tr><tr data-layer="curation">
+<td class="l reason">S1超要求盈利未过(伪周期)+S2b估值透支(PS6228)</td></tr><tr data-layer="curation">
 <td class=l data-v="AAP"><a class=tk href="https://www.google.com/finance?q=AAP" target=_blank rel=noopener><b>AAP</b></a> <span class=mut style=font-size:11px>Advance Auto Parts</span></td>
 <td class=l>Consumer Cyclical</td>
 <td data-v="636"><span class=pos>+636%</span></td>
@@ -4049,7 +4073,7 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td data-v="381"><span class=pos>+381%</span></td>
 <td class=l><span class="tag sup">S1超</span><span class="tag">S2a</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td>
-<td class="l reason">S2a要求盈利未过</td></tr><tr data-layer="curation">
+<td class="l reason">S2a要求盈利未过+S1超要求盈利未过(伪周期)</td></tr><tr data-layer="curation">
 <td class=l data-v="PAYC"><a class=tk href="https://www.google.com/finance?q=PAYC" target=_blank rel=noopener><b>PAYC</b></a> <span class=mut style=font-size:11px>Paycom Software In</span></td>
 <td class=l>Technology</td>
 <td data-v="376"><span class=pos>+376%</span></td>
@@ -4121,7 +4145,7 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td data-v="339"><span class=pos>+339%</span></td>
 <td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td>
-<td class="l reason">S2b估值透支(PS16)</td></tr><tr data-layer="curation">
+<td class="l reason">S1超要求盈利未过(伪周期)+S2b估值透支(PS16)</td></tr><tr data-layer="curation">
 <td class=l data-v="LYV"><a class=tk href="https://www.google.com/finance?q=LYV" target=_blank rel=noopener><b>LYV</b></a> <span class=mut style=font-size:11px>Live Nation Entert</span></td>
 <td class=l>Communication Services</td>
 <td data-v="338"><span class=pos>+338%</span></td>
@@ -4276,12 +4300,6 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td class=l>Technology</td>
 <td data-v="2817"><span class=pos>+2817%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td>
-<td class="l reason">通过全部三层</td></tr><tr data-layer="passed">
-<td class=l data-v="SITM"><a class=tk href="https://www.google.com/finance?q=SITM" target=_blank rel=noopener><b>SITM</b></a> <span class=mut style=font-size:11px>SiTime Corp</span></td>
-<td class=l>Technology</td>
-<td data-v="2808"><span class=pos>+2808%</span></td>
-<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td>
 <td class="l reason">通过全部三层</td></tr><tr data-layer="passed">
 <td class=l data-v="REAL"><a class=tk href="https://www.google.com/finance?q=REAL" target=_blank rel=noopener><b>REAL</b></a> <span class=mut style=font-size:11px>Therealreal Inc</span></td>
@@ -4510,12 +4528,6 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td class=l>Technology</td>
 <td data-v="1443"><span class=pos>+1443%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td>
-<td class="l reason">通过全部三层</td></tr><tr data-layer="passed">
-<td class=l data-v="TNDM"><a class=tk href="https://www.google.com/finance?q=TNDM" target=_blank rel=noopener><b>TNDM</b></a> <span class=mut style=font-size:11px>Tandem Diabetes Ca</span></td>
-<td class=l>Healthcare</td>
-<td data-v="1415"><span class=pos>+1415%</span></td>
-<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td>
 <td class="l reason">通过全部三层</td></tr><tr data-layer="passed">
 <td class=l data-v="VST"><a class=tk href="https://www.google.com/finance?q=VST" target=_blank rel=noopener><b>VST</b></a> <span class=mut style=font-size:11px>Vistra Corp</span></td>
@@ -4788,12 +4800,6 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td>
 <td class="l reason">通过全部三层</td></tr><tr data-layer="passed">
-<td class=l data-v="NEOG"><a class=tk href="https://www.google.com/finance?q=NEOG" target=_blank rel=noopener><b>NEOG</b></a> <span class=mut style=font-size:11px>Neogen Corp</span></td>
-<td class=l>Healthcare</td>
-<td data-v="1001"><span class=pos>+1001%</span></td>
-<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td>
-<td class="l reason">通过全部三层</td></tr><tr data-layer="passed">
 <td class=l data-v="AXON"><a class=tk href="https://www.google.com/finance?q=AXON" target=_blank rel=noopener><b>AXON</b></a> <span class=mut style=font-size:11px>Axon Enterprise In</span></td>
 <td class=l>Industrials</td>
 <td data-v="999"><span class=pos>+999%</span></td>
@@ -4822,12 +4828,6 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td class=l>Energy</td>
 <td data-v="967"><span class=pos>+967%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td>
-<td class="l reason">通过全部三层</td></tr><tr data-layer="passed">
-<td class=l data-v="PI"><a class=tk href="https://www.google.com/finance?q=PI" target=_blank rel=noopener><b>PI</b></a> <span class=mut style=font-size:11px>Impinj Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="962"><span class=pos>+962%</span></td>
-<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td>
 <td class="l reason">通过全部三层</td></tr><tr data-layer="passed">
 <td class=l data-v="NUS"><a class=tk href="https://www.google.com/finance?q=NUS" target=_blank rel=noopener><b>NUS</b></a> <span class=mut style=font-size:11px>Nu Skin Enterprise</span></td>
@@ -12856,10 +12856,10 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 
 <h2>暴雷股(回撤>70%,共1726只;已触发信号的按"首次入场后回撤"计,入场前的崩盘不算) — 有多少漏过了过滤网</h2>
 <div class=stats>
-<div class=stat><div class="v neg">242</div><div class=l>⚠️漏网(通过全部三层)</div></div>
+<div class=stat><div class="v neg">237</div><div class=l>⚠️漏网(通过全部三层)</div></div>
 <div class=stat><div class="v" style=color:#8b949e>927</div><div class=l>被信号层挡住(未触发)</div></div>
 <div class=stat><div class="v" style=color:#db6d28>335</div><div class=l>被市值门槛挡住</div></div>
-<div class=stat><div class="v" style=color:#d29922>222</div><div class=l>被curation挡住</div></div>
+<div class=stat><div class="v" style=color:#d29922>227</div><div class=l>被curation挡住</div></div>
 </div>
 <div class=ctrl><input id=bq placeholder="搜索..." oninput=filtB()>
 <select id=bl onchange=filtB()><option value="">全部</option><option value=passed>⚠️漏网</option><option value=signal>信号层挡住</option><option value=mcap>市值门槛挡住</option><option value=curation>curation挡住</option></select></div>
@@ -12870,11 +12870,6 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td class=l>Technology</td>
 <td data-v="-100"><span class=neg>-100%</span></td>
 <td class=l><span class="tag">S1</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="OM"><a class=tk href="https://www.google.com/finance?q=OM" target=_blank rel=noopener><b>OM</b></a> <span class=mut style=font-size:11px>Outset Medical Inc</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-100"><span class=neg>-100%</span></td>
-<td class=l><span class="tag sup">S1超</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="NXTT"><a class=tk href="https://www.google.com/finance?q=NXTT" target=_blank rel=noopener><b>NXTT</b></a> <span class=mut style=font-size:11px>Next Technology Ho</span></td>
 <td class=l>Technology</td>
@@ -13085,11 +13080,6 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td class=l>Healthcare</td>
 <td data-v="-93"><span class=neg>-93%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="TNDM"><a class=tk href="https://www.google.com/finance?q=TNDM" target=_blank rel=noopener><b>TNDM</b></a> <span class=mut style=font-size:11px>Tandem Diabetes Ca</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-93"><span class=neg>-93%</span></td>
-<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="FOXF"><a class=tk href="https://www.google.com/finance?q=FOXF" target=_blank rel=noopener><b>FOXF</b></a> <span class=mut style=font-size:11px>Fox Factory Holdin</span></td>
 <td class=l>Consumer Cyclical</td>
@@ -13531,11 +13521,6 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td data-v="-82"><span class=neg>-82%</span></td>
 <td class=l><span class="tag">S1</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="NEOG"><a class=tk href="https://www.google.com/finance?q=NEOG" target=_blank rel=noopener><b>NEOG</b></a> <span class=mut style=font-size:11px>Neogen Corp</span></td>
-<td class=l>Healthcare</td>
-<td data-v="-82"><span class=neg>-82%</span></td>
-<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="CPRI"><a class=tk href="https://www.google.com/finance?q=CPRI" target=_blank rel=noopener><b>CPRI</b></a> <span class=mut style=font-size:11px>Capri Holdings Ltd</span></td>
 <td class=l>Consumer Cyclical</td>
 <td data-v="-82"><span class=neg>-82%</span></td>
@@ -13680,11 +13665,6 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td class=l>Consumer Cyclical</td>
 <td data-v="-79"><span class=neg>-79%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="SITM"><a class=tk href="https://www.google.com/finance?q=SITM" target=_blank rel=noopener><b>SITM</b></a> <span class=mut style=font-size:11px>SiTime Corp</span></td>
-<td class=l>Technology</td>
-<td data-v="-78"><span class=neg>-78%</span></td>
-<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="ELAN"><a class=tk href="https://www.google.com/finance?q=ELAN" target=_blank rel=noopener><b>ELAN</b></a> <span class=mut style=font-size:11px>Elanco Animal Heal</span></td>
 <td class=l>Healthcare</td>
@@ -13875,11 +13855,6 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td class=l>Technology</td>
 <td data-v="-74"><span class=neg>-74%</span></td>
 <td class=l><span class="tag">S2b</span></td>
-<td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
-<td class=l data-v="PI"><a class=tk href="https://www.google.com/finance?q=PI" target=_blank rel=noopener><b>PI</b></a> <span class=mut style=font-size:11px>Impinj Inc</span></td>
-<td class=l>Technology</td>
-<td data-v="-74"><span class=neg>-74%</span></td>
-<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-pass">通过全部三层</span></td></tr><tr data-layer="passed">
 <td class=l data-v="TENB"><a class=tk href="https://www.google.com/finance?q=TENB" target=_blank rel=noopener><b>TENB</b></a> <span class=mut style=font-size:11px>Tenable Holdings I</span></td>
 <td class=l>Technology</td>
@@ -15801,6 +15776,11 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td data-v="-100"><span class=neg>-100%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="OM"><a class=tk href="https://www.google.com/finance?q=OM" target=_blank rel=noopener><b>OM</b></a> <span class=mut style=font-size:11px>Outset Medical Inc</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-100"><span class=neg>-100%</span></td>
+<td class=l><span class="tag sup">S1超</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="GPUS"><a class=tk href="https://www.google.com/finance?q=GPUS" target=_blank rel=noopener><b>GPUS</b></a> <span class=mut style=font-size:11px>Hyperscale Data In</span></td>
 <td class=l>Industrials</td>
 <td data-v="-100"><span class=neg>-100%</span></td>
@@ -16181,6 +16161,11 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td data-v="-93"><span class=neg>-93%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="TNDM"><a class=tk href="https://www.google.com/finance?q=TNDM" target=_blank rel=noopener><b>TNDM</b></a> <span class=mut style=font-size:11px>Tandem Diabetes Ca</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-93"><span class=neg>-93%</span></td>
+<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="XRX"><a class=tk href="https://www.google.com/finance?q=XRX" target=_blank rel=noopener><b>XRX</b></a> <span class=mut style=font-size:11px>Xerox Holdings Cor</span></td>
 <td class=l>Industrials</td>
 <td data-v="-93"><span class=neg>-93%</span></td>
@@ -16496,6 +16481,11 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td data-v="-82"><span class=neg>-82%</span></td>
 <td class=l><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="NEOG"><a class=tk href="https://www.google.com/finance?q=NEOG" target=_blank rel=noopener><b>NEOG</b></a> <span class=mut style=font-size:11px>Neogen Corp</span></td>
+<td class=l>Healthcare</td>
+<td data-v="-82"><span class=neg>-82%</span></td>
+<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="RXRX"><a class=tk href="https://www.google.com/finance?q=RXRX" target=_blank rel=noopener><b>RXRX</b></a> <span class=mut style=font-size:11px>Recursion Pharmace</span></td>
 <td class=l>Healthcare</td>
 <td data-v="-82"><span class=neg>-82%</span></td>
@@ -16608,6 +16598,11 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="NTRA"><a class=tk href="https://www.google.com/finance?q=NTRA" target=_blank rel=noopener><b>NTRA</b></a> <span class=mut style=font-size:11px>Natera Inc</span></td>
 <td class=l>Healthcare</td>
+<td data-v="-78"><span class=neg>-78%</span></td>
+<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="SITM"><a class=tk href="https://www.google.com/finance?q=SITM" target=_blank rel=noopener><b>SITM</b></a> <span class=mut style=font-size:11px>SiTime Corp</span></td>
+<td class=l>Technology</td>
 <td data-v="-78"><span class=neg>-78%</span></td>
 <td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
@@ -16735,6 +16730,11 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td class=l>Communication Services</td>
 <td data-v="-74"><span class=neg>-74%</span></td>
 <td class=l><span class="tag">S1</span></td>
+<td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
+<td class=l data-v="PI"><a class=tk href="https://www.google.com/finance?q=PI" target=_blank rel=noopener><b>PI</b></a> <span class=mut style=font-size:11px>Impinj Inc</span></td>
+<td class=l>Technology</td>
+<td data-v="-74"><span class=neg>-74%</span></td>
+<td class=l><span class="tag sup">S1超</span><span class="tag">S2b</span></td>
 <td class=l><span class="badge b-cur">curation剔除</span></td></tr><tr data-layer="curation">
 <td class=l data-v="COHU"><a class=tk href="https://www.google.com/finance?q=COHU" target=_blank rel=noopener><b>COHU</b></a> <span class=mut style=font-size:11px>Cohu Inc</span></td>
 <td class=l>Technology</td>
@@ -21496,7 +21496,7 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 <td data-v="-70"><span class=neg>-70%</span></td>
 <td class=l><span class=mut>未触发</span></td>
 <td class=l><span class="badge b-sig">信号层漏掉</span></td></tr></tbody></table></div>
-<div class=note>⚠️242只暴雷股穿过全部三层=框架假阳性(如CVNA/OPEN/PTON疫情泡沫:峰值时营收加速触发S2b+通过curation,随后崩99%)。这是"营收加速信号无法区分真成长与泡沫"的直接证据</div>
+<div class=note>⚠️237只暴雷股穿过全部三层=框架假阳性(如CVNA/OPEN/PTON疫情泡沫:峰值时营收加速触发S2b+通过curation,随后崩99%)。这是"营收加速信号无法区分真成长与泡沫"的直接证据</div>
 
 <script>
 function fmtPct(v){if(v==null)return '<span class=mut>-</span>';const c=v>0?'pos':(v<0?'neg':'mut');const s=v>0?'+':'';return `<span class=${c}>${s}${v}%</span>`;}

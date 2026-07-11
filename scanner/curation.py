@@ -28,6 +28,10 @@ def curate_pass(sigs, profitable, lumpy, val_ok):
     ok = True
     if ("S1" in sigs) or ("S1超" in sigs):
         ok = ok and (not lumpy)
+    if "S1超" in sigs:
+        # 强周期反转(毛利率已突破基线):真周期此时应已盈利。亏损=伪周期故事股(实测~100%暴雷)。
+        # 普通S1不加此条:S1触发在周期底部(毛利率仍低于基线),此时亏损是正常的早期反转,加了会误杀。
+        ok = ok and profitable
     if "S2a" in sigs:
         ok = ok and profitable
     if "S2b" in sigs:
