@@ -60,8 +60,15 @@ for _r in ee.itertuples():
 START, END = '2020-06-01', '2026-07-05'
 
 def lowhigh(h):
-    lo_d, hi_d = h.idxmin(), h.idxmax()
-    return float(h.min()), str(lo_d.date()), float(h.max()), str(hi_d.date())
+    """尊重时间顺序的最大涨幅:低点必须在高点之前(否则是崩盘,不是低→高)。
+    与dd_from_peak的cummax对称——用cummin求"从此前最低点到之后某高点"的最大涨幅。
+    用位置索引(iloc/argmax),对价格序列中的重复日期免疫。"""
+    ratio = (h / h.cummin()).values
+    hi_pos = int(ratio.argmax())           # 最大涨幅出现位置(高点)
+    hi = float(h.iloc[hi_pos]); hi_d = h.index[hi_pos]
+    lo_pos = int(h.iloc[:hi_pos + 1].values.argmin())   # 高点之前(含)的最低点
+    lo = float(h.iloc[lo_pos]); lo_d = h.index[lo_pos]
+    return lo, str(lo_d.date()), hi, str(hi_d.date())
 
 def dd_from_peak(h):
     """峰值后最大回调"""
