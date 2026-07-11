@@ -4,6 +4,34 @@ import json, pathlib
 OUT = pathlib.Path('../site'); OUT.mkdir(exist_ok=True)
 winners = json.load(open('winners.json'))
 funnel = json.load(open('funnel.json'))
+try:
+    IDX_ASOF = json.load(open('cache/index_membership.json')).get('asof', '')
+except Exception:
+    IDX_ASOF = ''
+
+# 市值分层展示(代码→中文短标签 / 下拉全标签)
+CAP_SHORT = {'mega':'巨盘','large':'大盘','mid':'中盘','small':'小盘','micro':'微盘','nano':'纳盘'}
+CAP_OPTS = [('mega','巨盘 ≥$200B'),('large','大盘 $10–200B'),('mid','中盘 $2–10B'),
+            ('small','小盘 $0.3–2B'),('micro','微盘 $50–300M'),('nano','纳盘 <$50M')]
+def cap_badge(tier):
+    return f'<span class="captag cap-{tier}">{CAP_SHORT[tier]}</span>' if tier in CAP_SHORT else ''
+def ix_badges(w):
+    out = ''
+    if w.get('in_sp500'): out += '<span class="ixtag ix-sp">S&amp;P 500</span>'
+    if w.get('in_ndx'):   out += '<span class="ixtag ix-ndx">N100</span>'
+    return out
+def cap_cell(w):
+    m = w.get('mcap_pit_b')
+    mtxt = f'${m}B' if m is not None else '<span class=mut>-</span>'
+    ix = ix_badges(w) or '<span class=mut style=font-size:11px>—</span>'
+    return f'{mtxt} {cap_badge(w.get("cap_tier",""))}<br>{ix}'
+def cap_sel(sid, onch):
+    return (f'<select id={sid} onchange="{onch}"><option value="">全部市值</option>'
+            + ''.join(f'<option value={c}>{lab}</option>' for c, lab in CAP_OPTS) + '</select>')
+def ix_sel(sid, onch):
+    return (f'<select id={sid} onchange="{onch}"><option value="">全部(指数无关)</option>'
+            '<option value=sp>S&amp;P 500成分</option><option value=ndx>Nasdaq-100成分</option>'
+            '<option value=any>任一指数成分</option><option value=none>非指数成分</option></select>')
 
 CSS = """
 *{box-sizing:border-box;margin:0;padding:0}
@@ -37,6 +65,17 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 .c-win{background:#3fb95022;color:#3fb950;border:1px solid #3fb95055}
 .c-pass{background:#4a9eff22;color:#58a6ff;border:1px solid #4a9eff55}
 .c-miss{background:#d2992222;color:#e3b341;border:1px solid #d2992255}
+/* 市值分层 + 指数 */
+.captag{display:inline-block;padding:1px 6px;border-radius:4px;font-size:11px;font-weight:600;border:1px solid;white-space:nowrap}
+.cap-mega{background:#a371f722;color:#a371f7;border-color:#a371f755}
+.cap-large{background:#3fb95022;color:#3fb950;border-color:#3fb95055}
+.cap-mid{background:#4a9eff22;color:#58a6ff;border-color:#4a9eff55}
+.cap-small{background:#d2992222;color:#e3b341;border-color:#d2992255}
+.cap-micro{background:#db6d2822;color:#db6d28;border-color:#db6d2855}
+.cap-nano{background:#f8514922;color:#f85149;border-color:#f8514955}
+.ixtag{display:inline-block;padding:1px 5px;border-radius:4px;font-size:10px;font-weight:700;margin-left:3px;white-space:nowrap}
+.ix-sp{background:#238636;color:#fff}
+.ix-ndx{background:#1f6feb;color:#fff}
 /* funnel */
 .funnel{display:flex;flex-direction:column;gap:6px;margin:20px 0;align-items:center}
 .flayer{border-radius:8px;padding:14px 20px;text-align:center;color:#fff;transition:.2s;position:relative}
@@ -75,10 +114,8 @@ def driver_tag(w):
     return f'<span class="dtag {cls}">{w.get("driver","")}</span><span class=mut style=font-size:11px>{gtxt}</span>'
 
 def hit_mark(w):
-    """信号日期下标注:触发时市值 + 第几次命中"""
+    """信号日期下标注:第几次命中(触发时市值已移到独立列)"""
     out=''
-    if w.get('mcap_pit_b') is not None:
-        out+=f'<br><span class=mut style=font-size:11px>触发时市值 ${w["mcap_pit_b"]}B</span>'
     if w.get('hit_total', 1) > 1:
         out+=f'<br><span class=mut style=font-size:11px>第{w.get("hit_n","?")}/{w["hit_total"]}次命中</span>'
     return out
@@ -91,11 +128,12 @@ def cat_tag(w):
 def winners_rows():
     r=''
     for w in winners:
-        r+=f"""<tr data-tier="{w.get('driver_tier','')}" data-cat="{w.get('cat','')}">
+        r+=f"""<tr data-tier="{w.get('driver_tier','')}" data-cat="{w.get('cat','')}" data-cap="{w.get('cap_tier','')}" data-sp="{1 if w.get('in_sp500') else 0}" data-ndx="{1 if w.get('in_ndx') else 0}">
 <td class=l data-v="{w['ticker']}">{tk_link(w['ticker'])}<br><span class=mut style=font-size:11px>{(w['name'] or '')[:22]}</span></td>
 <td class=l data-v="{w.get('cat','')}">{cat_tag(w)}</td>
 <td class=l data-v="{w.get('driver_tier','')}">{driver_tag(w)}</td>
 <td class=l data-v="{w['sector'] or ''}">{w['sector'] or ''}</td>
+<td data-v="{w.get('mcap_pit_b') or 0}">{cap_cell(w)}</td>
 <td data-v="{w['low'] or 0}">${w['low']}<br><span class=mut style=font-size:11px>{w['low_date'] or ''}</span></td>
 <td data-v="{w['high'] or 0}">${w['high']}<br><span class=mut style=font-size:11px>{w['high_date'] or ''}</span></td>
 <td data-v="{w['low2high_pct'] or 0}">{fmtPct_py(w['low2high_pct'])}</td>
@@ -162,24 +200,29 @@ page1=f"""<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=view
 <div class=ctrl>
 <input id=q placeholder="搜索代码/名称..." oninput=filt()>
 <select id=fc onchange=filt()><option value="">全部类别</option><option value=大牛·过三层>大牛·过三层</option><option value=过三层·非大牛>过三层·非大牛</option><option value=大牛·被curation挡>大牛·被curation挡</option></select>
+{cap_sel('fcap','filt()')}
+{ix_sel('fi','filt()')}
 <select id=fd onchange=filt()><option value="">全部驱动</option><option value=fund>基本面·营收翻倍+</option><option value=partial>基本面·营收增长</option><option value=weak>弱基本面(商品/加密/生物/投机)</option><option value=none>无营收·投机叙事</option></select>
 <select id=fs onchange=filt()><option value="">全部行业</option>{sec_opts}</select>
 </div>
 <div class=wrap><table id=t>
 <thead><tr>
 <th class=l onclick=srt(0,0)>股票</th><th class=l onclick=srt(1,0)>类别</th><th class=l onclick=srt(2,0)>驱动类型</th><th class=l onclick=srt(3,0)>行业</th>
-<th onclick=srt(4,1)>低点/日期</th><th onclick=srt(5,1)>高点/日期</th><th onclick=srt(6,1)>低→高</th>
-<th class=l onclick=srt(7,0)>信号日期</th><th class=l onclick=srt(8,0)>信号类型</th>
-<th onclick=srt(9,1)>入场价</th><th onclick=srt(10,1)>持有至今</th><th onclick=srt(11,1)>持有年化</th>
-<th onclick=srt(12,1)>峰值(潜在)</th><th onclick=srt(13,1)>峰值年化</th><th onclick=srt(14,1)>最大回调</th><th onclick=srt(15,1)>最大浮亏</th>
+<th onclick=srt(4,1)>触发市值/分层</th>
+<th onclick=srt(5,1)>低点/日期</th><th onclick=srt(6,1)>高点/日期</th><th onclick=srt(7,1)>低→高</th>
+<th class=l onclick=srt(8,0)>信号日期</th><th class=l onclick=srt(9,0)>信号类型</th>
+<th onclick=srt(10,1)>入场价</th><th onclick=srt(11,1)>持有至今</th><th onclick=srt(12,1)>持有年化</th>
+<th onclick=srt(13,1)>峰值(潜在)</th><th onclick=srt(14,1)>峰值年化</th><th onclick=srt(15,1)>最大回调</th><th onclick=srt(16,1)>最大浮亏</th>
 </tr></thead><tbody>{winners_rows()}</tbody></table></div>
 <div class=note>类别:大牛·过三层=框架推荐且峰值>300% · 过三层·非大牛=框架推荐但未成大牛 · 大牛·被curation挡=成了大牛但curation会剔除(框架漏掉) · 持有至今/峰值/回调/浮亏=从信号财报次日买入起算 · 持有年化=入场到今日的复合年化;峰值年化=入场到峰值日的复合年化(到峰时间短则年化偏高,仅供横向比较)</div>
+<div class=note>市值分层=传统定义,按<b>信号触发当时</b>的point-in-time市值(股数×入场价)分箱:巨盘≥$200B · 大盘$10–200B · 中盘$2–10B · 小盘$0.3–2B · 微盘$50–300M · 纳盘<$50M。⚠️第一层按<b>首次触发</b>市值≥$1B过滤,故首次入选时至少是小盘;但同一票<b>后续命中</b>若已崩成微盘/纳盘,会作为独立行出现(如TDUP $1.86B→$0.07B、BBBY)。触发时市值本就<$1B的那批大牛在<a href=index.html style=color:#58a6ff>漏斗页</a>的"市值门槛剔除"里。市值缺失(股数数据缺口)不分层。指数标注 <span class="ixtag ix-sp">S&amp;P 500</span>/<span class="ixtag ix-ndx">N100</span> 为<b>截至{IDX_ASOF}的当前成分</b>,非触发当时——免费数据无历史成分,很多是触发后才成长纳入指数的。</div>
 <script>{JS_TABLE}
 let asc={{}};const t=document.getElementById('t');
 function srt(c,n){{asc[c]=!asc[c];sortTable(t,c,n,asc[c]);}}
-function filt(){{const q=document.getElementById('q').value.toUpperCase(),s=document.getElementById('fs').value,d=document.getElementById('fd').value,c=document.getElementById('fc').value;
-for(const r of t.tBodies[0].rows){{const tx=r.cells[0].innerText.toUpperCase(),sec=r.cells[3].innerText,ti=r.dataset.tier,ca=r.dataset.cat;
-r.style.display=(tx.includes(q)&&(!s||sec===s)&&(!d||ti===d)&&(!c||ca===c))?'':'none';}}}}
+function filt(){{const q=document.getElementById('q').value.toUpperCase(),s=document.getElementById('fs').value,d=document.getElementById('fd').value,c=document.getElementById('fc').value,cp=document.getElementById('fcap').value,ix=document.getElementById('fi').value;
+for(const r of t.tBodies[0].rows){{const tx=r.cells[0].innerText.toUpperCase(),sec=r.cells[3].innerText,ti=r.dataset.tier,ca=r.dataset.cat,cap=r.dataset.cap,sp=r.dataset.sp==='1',nd=r.dataset.ndx==='1';
+let ixok=true;if(ix==='sp')ixok=sp;else if(ix==='ndx')ixok=nd;else if(ix==='any')ixok=sp||nd;else if(ix==='none')ixok=!sp&&!nd;
+r.style.display=(tx.includes(q)&&(!s||sec===s)&&(!d||ti===d)&&(!c||ca===c)&&(!cp||cap===cp)&&ixok)?'':'none';}}}}
 </script></body></html>"""
 (OUT/'winners.html').write_text(page1)
 
@@ -205,9 +248,10 @@ def win_rows():
     ws=[w for w in funnel['winners'] if (w['low2high_pct'] or 0)<=3000]
     ws.sort(key=lambda x:(order.get(x['exit_layer'],9), -(x['low2high_pct'] or 0)))
     for w in ws:
-        r+=f"""<tr data-layer="{w['exit_layer']}">
+        r+=f"""<tr data-layer="{w['exit_layer']}" data-cap="{w.get('cap_tier','')}" data-sp="{1 if w.get('in_sp500') else 0}" data-ndx="{1 if w.get('in_ndx') else 0}">
 <td class=l data-v="{w['ticker']}">{tk_link(w['ticker'])} <span class=mut style=font-size:11px>{(w['name']or'')[:18]}</span></td>
 <td class=l>{w['sector'] or ''}</td>
+<td data-v="{w.get('mcap_pit_b') or 0}">{cap_cell(w)}</td>
 <td data-v="{w['low2high_pct']}">{fmtPct_py(cap(w['low2high_pct']))}</td>
 <td class=l>{sig_tags(w['signal_type']) if w['signal_type'] else '<span class=mut>未触发</span>'}</td>
 <td class=l>{badge(w['exit_layer'])}</td>
@@ -247,11 +291,13 @@ page2=f"""<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=view
 <div class=stat><div class="v pos">{wc['passed']}</div><div class=l>通过全部三层</div></div>
 </div>
 <div class=ctrl><input id=wq placeholder="搜索..." oninput=filtW()>
-<select id=wl onchange=filtW()><option value="">全部退出层</option><option value=signal>信号层漏掉</option><option value=mcap>市值门槛剔除</option><option value=curation>curation剔除</option><option value=passed>通过全部三层</option></select></div>
+<select id=wl onchange=filtW()><option value="">全部退出层</option><option value=signal>信号层漏掉</option><option value=mcap>市值门槛剔除</option><option value=curation>curation剔除</option><option value=passed>通过全部三层</option></select>
+{cap_sel('wcap','filtW()')}
+{ix_sel('wi','filtW()')}</div>
 <div class=wrap><table id=wt><thead><tr>
-<th class=l onclick=srtW(0,0)>股票</th><th class=l>行业</th><th onclick=srtW(2,1)>低→高</th><th class=l>信号类型</th><th class=l>退出层</th><th class=l>原因</th>
+<th class=l onclick=srtW(0,0)>股票</th><th class=l>行业</th><th onclick=srtW(2,1)>触发市值/分层</th><th onclick=srtW(3,1)>低→高</th><th class=l>信号类型</th><th class=l>退出层</th><th class=l>原因</th>
 </tr></thead><tbody>{win_rows()}</tbody></table></div>
-<div class=note>信号层漏掉多为:信号滞后于股价(暴涨在财报确认前)/不达阈值/币-仙股-生物二元等非基本面驱动(框架本就不抓)。市值门槛剔除=触发当时市值不足${funnel.get('floor_b',1):.0f}B的大牛(多为最猛的微盘,如QBTS/DAVE入场时仅$0.1-0.3B)</div>
+<div class=note>信号层漏掉多为:信号滞后于股价(暴涨在财报确认前)/不达阈值/币-仙股-生物二元等非基本面驱动(框架本就不抓)。市值门槛剔除=触发当时市值不足${funnel.get('floor_b',1):.0f}B的大牛(多为最猛的微盘,如QBTS/DAVE入场时仅$0.1-0.3B)。市值分层按触发时PIT市值;指数标注为截至{IDX_ASOF}的<b>当前</b>成分(非触发时)</div>
 
 <h2>暴雷股(回撤>70%,共{len(funnel['blowups'])}只;已触发信号的按"首次入场后回撤"计,入场前的崩盘不算) — 有多少漏过了过滤网</h2>
 <div class=stats>
@@ -274,6 +320,12 @@ window['srt'+pfx]=(c,n)=>{{a[tid+c]=!a[tid+c];sortTable(t,c,n,a[tid+c]);}};
 window['filt'+pfx]=()=>{{const q=document.getElementById(pfx.toLowerCase()+'q').value.toUpperCase(),l=document.getElementById(pfx.toLowerCase()+'l').value;
 for(const r of t.tBodies[0].rows){{const tx=r.cells[0].innerText.toUpperCase();r.style.display=(tx.includes(q)&&(!l||r.dataset.layer===l))?'':'none';}}}};}}
 mk('wt','W');mk('bt','B');
+// 大牛表额外支持 市值分层 + 指数 筛选(覆盖mk生成的filtW)
+(function(){{const t=document.getElementById('wt');
+window.filtW=()=>{{const q=document.getElementById('wq').value.toUpperCase(),l=document.getElementById('wl').value,cp=document.getElementById('wcap').value,ix=document.getElementById('wi').value;
+for(const r of t.tBodies[0].rows){{const tx=r.cells[0].innerText.toUpperCase(),cap=r.dataset.cap,sp=r.dataset.sp==='1',nd=r.dataset.ndx==='1';
+let ixok=true;if(ix==='sp')ixok=sp;else if(ix==='ndx')ixok=nd;else if(ix==='any')ixok=sp||nd;else if(ix==='none')ixok=!sp&&!nd;
+r.style.display=(tx.includes(q)&&(!l||r.dataset.layer===l)&&(!cp||cap===cp)&&ixok)?'':'none';}}}};}})();
 </script></body></html>"""
 (OUT/'index.html').write_text(page2)
 print(f"→ ../site/index.html (漏斗) + ../site/winners.html (大牛股列表)")

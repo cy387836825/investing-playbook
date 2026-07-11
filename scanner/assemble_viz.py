@@ -4,9 +4,32 @@ import json, pandas as pd, time
 from backtest import _price_hist, _px_from_hist, _companyfacts_cached, _cik_map, REV_TAGS
 from curation import _units, _pit_latest, _ttm, _lumpy, SHARE_TAGS, curate_pass
 from signals import pit_qseries, yoy
+from index_membership import membership
 
 TODAY = time.strftime('%Y-%m-%d')
 FLOOR_B = 1.0   # 第一层过滤:信号触发时市值(股数×入场价)≥$1B。调此一处即可换下限
+
+# 传统市值分层(美元十亿),阈值降序;用触发时point-in-time市值(mcap_pit_b)分箱
+CAP_TIERS = [(200, 'mega'), (10, 'large'), (2, 'mid'), (0.3, 'small'), (0.05, 'micro'), (0.0, 'nano')]
+def cap_tier(mcap_b):
+    """按传统定义给触发时市值分层。返回代码(mega/large/mid/small/micro/nano),缺失/≤0返回''。
+    真实市值恒>0;_mcp()对缺失PIT股数返回0.0,故≤0一律当"未知"而非纳盘,避免把数据缺口误标成纳米盘。"""
+    if mcap_b is None or mcap_b != mcap_b or mcap_b <= 0:
+        return ''
+    for thr, code in CAP_TIERS:
+        if mcap_b >= thr:
+            return code
+    return 'nano'
+
+# 指数成分(当前,非触发时PIT——免费数据无历史成分)。抓取失败则空集,标注全为False。
+try:
+    SP500, NDX, IDX_ASOF = membership()
+except Exception as _e:
+    print(f"⚠️指数成分抓取失败({_e}),指数标注跳过", flush=True)
+    SP500, NDX, IDX_ASOF = set(), set(), ''
+def _ix(tk):
+    t = str(tk).upper()
+    return (t in SP500, t in NDX)
 
 def annualize(mult, d0, d1):
     """把总倍数mult(=终值/初值)按d0→d1的时长年化。返回百分数(int)或None(时长<30天不年化)。"""
@@ -165,6 +188,8 @@ for r in ee.itertuples():
         'driver': driver, 'driver_tier': tier, 'rev_growth_pct': revg,
         'hit_n': hit_n[r.ticker],              # 该票第几次命中(按财报日升序)
         'mcap_pit_b': round(_mcp(r), 2),       # 触发时市值($B)
+        'cap_tier': cap_tier(_mcp(r)),         # 传统市值分层(触发时PIT)
+        'in_sp500': _ix(r.ticker)[0], 'in_ndx': _ix(r.ticker)[1],  # 指数成分(当前,非触发时)
         'ticker': r.ticker, 'name': nm, 'sector': sec,
         'low': f.get('low'), 'low_date': f.get('low_date'),
         'high': f.get('high'), 'high_date': f.get('high_date'),
@@ -276,6 +301,8 @@ for tk, f in feat.items():
     else:
         layer, why = 'passed', '通过全部三层'
     rec = {'ticker':tk,'name':nm,'sector':sec,'mcap_b':mc,'mcap_pit_b':round(mcap_pit,2) if mcap_pit is not None else None,
+           'cap_tier':cap_tier(mcap_pit) if mcap_pit is not None else '',   # 触发时市值分层(未触发者无PIT市值)
+           'in_sp500':_ix(tk)[0],'in_ndx':_ix(tk)[1],                       # 指数成分(当前)
            'low2high_pct':round(f['low2high']*100),'dd_peak_pct':round(f['dd_peak']*100),
            'blow_dd_pct':round(blow_dd*100),   # 暴雷回撤:已触发=入场后,未触发=全期
            'signal_type':sig,'exit_layer':layer,'why':why,'triggered':triggered,
