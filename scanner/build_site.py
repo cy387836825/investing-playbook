@@ -33,6 +33,10 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 .d-part{background:#4a9eff22;color:#58a6ff;border:1px solid #4a9eff55}
 .d-weak{background:#d2992222;color:#e3b341;border:1px solid #d2992255}
 .d-none{background:#8b949e22;color:#8b949e;border:1px solid #8b949e55}
+.ctag{display:inline-block;padding:2px 7px;border-radius:5px;font-size:11px;font-weight:600;white-space:nowrap}
+.c-win{background:#3fb95022;color:#3fb950;border:1px solid #3fb95055}
+.c-pass{background:#4a9eff22;color:#58a6ff;border:1px solid #4a9eff55}
+.c-miss{background:#d2992222;color:#e3b341;border:1px solid #d2992255}
 /* funnel */
 .funnel{display:flex;flex-direction:column;gap:6px;margin:20px 0;align-items:center}
 .flayer{border-radius:8px;padding:14px 20px;text-align:center;color:#fff;transition:.2s;position:relative}
@@ -79,11 +83,17 @@ def hit_mark(w):
         out+=f'<br><span class=mut style=font-size:11px>第{w.get("hit_n","?")}/{w["hit_total"]}次命中</span>'
     return out
 
+CAT_CLS={'大牛·过三层':'c-win','过三层·非大牛':'c-pass','大牛·被curation挡':'c-miss'}
+def cat_tag(w):
+    c=w.get('cat','')
+    return f'<span class="ctag {CAT_CLS.get(c,"c-pass")}">{c}</span>'
+
 def winners_rows():
     r=''
     for w in winners:
-        r+=f"""<tr data-tier="{w.get('driver_tier','')}">
+        r+=f"""<tr data-tier="{w.get('driver_tier','')}" data-cat="{w.get('cat','')}">
 <td class=l data-v="{w['ticker']}">{tk_link(w['ticker'])}<br><span class=mut style=font-size:11px>{(w['name'] or '')[:22]}</span></td>
+<td class=l data-v="{w.get('cat','')}">{cat_tag(w)}</td>
 <td class=l data-v="{w.get('driver_tier','')}">{driver_tag(w)}</td>
 <td class=l data-v="{w['sector'] or ''}">{w['sector'] or ''}</td>
 <td data-v="{w['low'] or 0}">${w['low']}<br><span class=mut style=font-size:11px>{w['low_date'] or ''}</span></td>
@@ -107,41 +117,47 @@ def fmtPct_py(v):
 
 secs=sorted({w['sector'] for w in winners if w['sector']})
 sec_opts=''.join(f'<option>{s}</option>' for s in secs)
-# 每票可有多次命中:统计卡按"股票"计(取首次命中那行),表格按"命中"逐行展示
-firsts=[w for w in winners if w.get('hit_n',1)==1]
-n_stk=len({w['ticker'] for w in winners})
+# 每票可有多次命中:统计卡按"股票"计,表格按"命中"逐行展示
+def _utk(pred): return len({w['ticker'] for w in winners if pred(w)})
+n_win_pass=_utk(lambda w: w['is_winner'] and w['curation_pass'])       # 大牛·过三层
+n_pass_non=_utk(lambda w: (not w['is_winner']) and w['curation_pass']) # 过三层·非大牛
+n_win_block=_utk(lambda w: w['is_winner'] and not w['curation_pass'])  # 大牛·被curation挡
+n_win=_utk(lambda w: w['is_winner'])                                   # 大牛总数
+n_passed_all=n_win_pass+n_pass_non                                     # 通过三层(所有推荐)
+precision=round(100*n_win_pass/n_passed_all) if n_passed_all else 0
 page1=f"""<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
-<title>回测大牛股列表</title><style>{CSS}</style></head><body>
-<div class=nav><a href=index.html>← 漏斗视图</a><a href=winners.html>大牛股列表</a></div>
-<h1>回测大牛股列表</h1>
-<div class=sub>第一层=信号触发当时市值≥$1B(股数×入场价,point-in-time),且"首次触发财报次日入场→峰值>300%"的股票,每次信号命中一行 · ⚠️事后选中的赢家,非可复制策略</div>
+<title>回测 · 三层候选与大牛股</title><style>{CSS}</style></head><body>
+<div class=nav><a href=index.html>← 漏斗视图</a><a href=winners.html>候选与大牛股</a></div>
+<h1>回测 · 通过三层的候选 + 大牛股</h1>
+<div class=sub>含两类(用「类别」列区分、可筛选):① 大牛股(峰值>300%);② 通过全部三层的其他股票(信号命中+触发时市值≥$1B+curation过,但未成大牛)。前者看框架抓到什么,后者看框架推荐里没兑现的。⚠️point-in-time回测,非可复制策略</div>
 <div class=stats>
-<div class=stat><div class=v>{n_stk}</div><div class=l>大牛股(峰值>300%) · 共{len(winners)}次命中</div></div>
-<div class=stat><div class="v pos">{sum(1 for w in firsts if w.get('driver_tier') in ('fund','partial'))}</div><div class=l>基本面驱动(营收兑现)</div></div>
-<div class=stat><div class="v" style=color:#e3b341>{sum(1 for w in firsts if w.get('driver_tier') in ('weak','none'))}</div><div class=l>非基本面(商品/加密/投机)</div></div>
-<div class=stat><div class=v>{round(sum(w['maxdd_pct'] for w in firsts)/len(firsts))}%</div><div class=l>平均最大回调(首次入场)</div></div>
-<div class=stat><div class=v>{round(sum(w['maxloss_pct'] for w in firsts)/len(firsts))}%</div><div class=l>平均最大浮亏(首次入场)</div></div>
+<div class=stat><div class="v pos">{n_win_pass}</div><div class=l>大牛·过三层(框架抓到)</div></div>
+<div class=stat><div class="v" style=color:#58a6ff>{n_pass_non}</div><div class=l>过三层·非大牛(推荐未兑现)</div></div>
+<div class=stat><div class=v>{precision}%</div><div class=l>框架精度(过三层中成大牛比例)</div></div>
+<div class=stat><div class="v" style=color:#e3b341>{n_win_block}</div><div class=l>大牛·被curation挡(漏掉的)</div></div>
+<div class=stat><div class=v>{n_win}</div><div class=l>大牛股总数 · 共{len(winners)}次命中</div></div>
 </div>
 <div class=ctrl>
 <input id=q placeholder="搜索代码/名称..." oninput=filt()>
+<select id=fc onchange=filt()><option value="">全部类别</option><option value=大牛·过三层>大牛·过三层</option><option value=过三层·非大牛>过三层·非大牛</option><option value=大牛·被curation挡>大牛·被curation挡</option></select>
 <select id=fd onchange=filt()><option value="">全部驱动</option><option value=fund>基本面·营收翻倍+</option><option value=partial>基本面·营收增长</option><option value=weak>弱基本面(商品/加密/生物/投机)</option><option value=none>无营收·投机叙事</option></select>
 <select id=fs onchange=filt()><option value="">全部行业</option>{sec_opts}</select>
 </div>
 <div class=wrap><table id=t>
 <thead><tr>
-<th class=l onclick=srt(0,0)>股票</th><th class=l onclick=srt(1,0)>驱动类型</th><th class=l onclick=srt(2,0)>行业</th>
-<th onclick=srt(3,1)>低点/日期</th><th onclick=srt(4,1)>高点/日期</th><th onclick=srt(5,1)>低→高</th>
-<th class=l onclick=srt(6,0)>信号日期</th><th class=l onclick=srt(7,0)>信号类型</th>
-<th onclick=srt(8,1)>入场价</th><th onclick=srt(9,1)>持有至今</th>
-<th onclick=srt(10,1)>峰值(潜在)</th><th onclick=srt(11,1)>最大回调</th><th onclick=srt(12,1)>最大浮亏</th>
+<th class=l onclick=srt(0,0)>股票</th><th class=l onclick=srt(1,0)>类别</th><th class=l onclick=srt(2,0)>驱动类型</th><th class=l onclick=srt(3,0)>行业</th>
+<th onclick=srt(4,1)>低点/日期</th><th onclick=srt(5,1)>高点/日期</th><th onclick=srt(6,1)>低→高</th>
+<th class=l onclick=srt(7,0)>信号日期</th><th class=l onclick=srt(8,0)>信号类型</th>
+<th onclick=srt(9,1)>入场价</th><th onclick=srt(10,1)>持有至今</th>
+<th onclick=srt(11,1)>峰值(潜在)</th><th onclick=srt(12,1)>最大回调</th><th onclick=srt(13,1)>最大浮亏</th>
 </tr></thead><tbody>{winners_rows()}</tbody></table></div>
-<div class=note>低点/高点=2020-06至今全期极值(yfinance,回溯复权;极端值可能含仙股/拆股artifact) · 持有至今/峰值/回调/浮亏=从信号财报次日买入起算</div>
+<div class=note>类别:大牛·过三层=框架推荐且峰值>300% · 过三层·非大牛=框架推荐但未成大牛 · 大牛·被curation挡=成了大牛但curation会剔除(框架漏掉) · 持有至今/峰值/回调/浮亏=从信号财报次日买入起算</div>
 <script>{JS_TABLE}
 let asc={{}};const t=document.getElementById('t');
 function srt(c,n){{asc[c]=!asc[c];sortTable(t,c,n,asc[c]);}}
-function filt(){{const q=document.getElementById('q').value.toUpperCase(),s=document.getElementById('fs').value,d=document.getElementById('fd').value;
-for(const r of t.tBodies[0].rows){{const tx=r.cells[0].innerText.toUpperCase(),sec=r.cells[2].innerText,ti=r.dataset.tier;
-r.style.display=(tx.includes(q)&&(!s||sec===s)&&(!d||ti===d))?'':'none';}}}}
+function filt(){{const q=document.getElementById('q').value.toUpperCase(),s=document.getElementById('fs').value,d=document.getElementById('fd').value,c=document.getElementById('fc').value;
+for(const r of t.tBodies[0].rows){{const tx=r.cells[0].innerText.toUpperCase(),sec=r.cells[3].innerText,ti=r.dataset.tier,ca=r.dataset.cat;
+r.style.display=(tx.includes(q)&&(!s||sec===s)&&(!d||ti===d)&&(!c||ca===c))?'':'none';}}}}
 </script></body></html>"""
 (OUT/'winners.html').write_text(page1)
 

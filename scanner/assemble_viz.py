@@ -69,16 +69,58 @@ for tk in uni['ticker']:
                 'low2high': round(hi/lo-1,3), 'dd_peak': round(dd_from_peak(h),3),
                 'now': round(float(h.iloc[-1]),2)}
 
-# ==== 1) winners.json: 信号命中的大牛股(峰值>300%),每次命中一行 ====
+# ==== 1) winners.json: 通过三层的候选(大牛 + 通过三层的非大牛),每次命中一行 ====
 ciks = _cik_map()
 def _mcp(r):   # 触发时市值($B),缺失当0
     v = getattr(r, 'mcap_pit', None)
     return float(v) if v == v and v is not None else 0.0
-# 大牛股定义:首次触发时市值≥$1B(第一层) + 入场→峰值>300%
+
+def curation_status(tk):
+    """返回(pass:bool, reason:str, sig:str) — 信号命中股的signal-specific curation"""
+    if tk not in ee_map: return (None, '未触发信号', '')
+    r = ee_map[tk]; cik = ciks.get(str(tk).upper())
+    if not cik: return (True, '', r.sig)
+    fc = _companyfacts_cached(cik)
+    if not fc: return (True, '', r.sig)
+    a = r.earn_date; rev_u = None
+    for tg in REV_TAGS:
+        rev_u = _units(fc, tg)
+        if rev_u: break
+    ni_u = _units(fc, 'NetIncomeLoss')
+    sh = _pit_latest(fc, SHARE_TAGS, a); tr=_ttm(rev_u,a) if rev_u else None; tn=_ttm(ni_u,a) if ni_u else None
+    mc=(r.entry*sh) if(r.entry and sh) else None
+    ps=(mc/tr) if(mc and tr and tr>0) else None; pe=(mc/tn) if(mc and tn and tn>0) else None
+    g=yoy(pit_qseries(rev_u,a),0) if rev_u else None
+    prof=(tn is not None and tn>0); lum=_lumpy(ni_u,a) if ni_u else False
+    peg=(pe/(g*100)) if(pe and g and g>0) else None
+    if prof and pe: valok=(peg<=3) if peg is not None else(pe<=50)
+    elif ps: valok=ps<=15
+    else: valok=True
+    sigset={s for s in('S1','S1超','S2a','S2b') if s in r.sig}
+    ok = curate_pass(sigset, prof, lum, valok)
+    if ok: return (True, '', r.sig)
+    reasons=[]
+    if ('S2a' in sigset) and not prof: reasons.append('S2a要求盈利未过')
+    if (('S1' in sigset)or('S1超'in sigset)) and lum: reasons.append('S1非一次性未过')
+    if ('S2b' in sigset) and not valok:
+        vm = (f"PE{pe:.0f}" if pe else "") + (f" PS{ps:.0f}" if ps else "")
+        reasons.append(f'S2b估值透支({vm.strip()})' if vm.strip() else 'S2b估值透支')
+    return (False, '+'.join(reasons) or '未过curation', r.sig)
+
+# 逐票(首次触发)判定: 是否大牛(峰>300%) / 是否通过三层(curation过)。第一层市值门槛内。
+cur_pass = {tk: (curation_status(tk)[0] is True) for tk in ee_map}
+def _cat(tk):
+    r = ee_map[tk]; w = r.pkr > 3.0; c = cur_pass.get(tk, False)
+    if w and c: return ('大牛·过三层', w, c)
+    if w and not c: return ('大牛·被curation挡', w, c)
+    return ('过三层·非大牛', w, c)
+# 候选 = 触发时市值≥$1B, 且(是大牛 或 通过三层)
 big = {tk for tk, r in ee_map.items() if r.pkr > 3.0 and _mcp(r) >= FLOOR_B}
+qualify = {tk for tk, r in ee_map.items()
+           if _mcp(r) >= FLOOR_B and (r.pkr > 3.0 or cur_pass.get(tk))}
 winners = []; hit_n = {}
 for r in ee.itertuples():
-    if r.ticker not in big: continue    # 大牛股的每一次命中都出一行
+    if r.ticker not in qualify: continue   # 候选的每一次命中都出一行
     hit_n[r.ticker] = hit_n.get(r.ticker, 0) + 1
     f = feat.get(r.ticker, {})
     nm, sec, mc = meta.get(r.ticker, ('','',None))
@@ -97,7 +139,9 @@ for r in ee.itertuples():
             ni_sig=_ttm(niu,r.earn_date) if niu else None
             ni_now=_ttm(niu,TODAY) if niu else None
     driver, tier, revg = classify_driver(rev_sig, rev_now, ni_sig, ni_now, sec)
+    cat, is_win, cpass = _cat(r.ticker)        # 类别(票级,按首次触发判定)
     winners.append({
+        'cat': cat, 'is_winner': is_win, 'curation_pass': cpass,
         'driver': driver, 'driver_tier': tier, 'rev_growth_pct': revg,
         'hit_n': hit_n[r.ticker],              # 该票第几次命中(按财报日升序)
         'mcap_pit_b': round(_mcp(r), 2),       # 触发时市值($B)
@@ -120,7 +164,8 @@ for w in winners:
     w['hit_total'] = hit_n[w['ticker']]
 winners.sort(key=lambda x: (-peak_tk[x['ticker']], x['ticker'], x['signal_date']))
 json.dump(winners, open('winners.json','w'), ensure_ascii=False)
-print(f"winners.json: {len(big)}只大牛股 / {len(winners)}次命中")
+n_pass_nonwin = len({w['ticker'] for w in winners if w['curation_pass'] and not w['is_winner']})
+print(f"winners.json: 大牛{len(big)}只 + 过三层非大牛{n_pass_nonwin}只 / {len(winners)}次命中")
 
 def diagnose_miss(rev_u, ni_u, gp_u):
     """诊断一只'从未触发信号'的股票,具体卡在哪(用全历史数据看各信号为何都不触发)。"""
@@ -156,40 +201,7 @@ def diagnose_miss(rev_u, ni_u, gp_u):
 
 
 # ==== 2) funnel.json ====
-# 定义大牛股(全≥5B universe中低→高>300%)、暴雷股(峰值后回调>70%)  (ciks 已在上方定义)
-def curation_status(tk):
-    """返回(pass:bool, reason:str, sig:str) — 信号命中股的signal-specific curation"""
-    if tk not in ee_map: return (None, '未触发信号', '')
-    r = ee_map[tk]; cik = ciks.get(str(tk).upper())
-    if not cik: return (True, '', r.sig)
-    fc = _companyfacts_cached(cik)
-    if not fc: return (True, '', r.sig)
-    a = r.earn_date; rev_u = None
-    for tg in REV_TAGS:
-        rev_u = _units(fc, tg)
-        if rev_u: break
-    ni_u = _units(fc, 'NetIncomeLoss')
-    sh = _pit_latest(fc, SHARE_TAGS, a); tr=_ttm(rev_u,a) if rev_u else None; tn=_ttm(ni_u,a) if ni_u else None
-    mc=(r.entry*sh) if(r.entry and sh) else None
-    ps=(mc/tr) if(mc and tr and tr>0) else None; pe=(mc/tn) if(mc and tn and tn>0) else None
-    g=yoy(pit_qseries(rev_u,a),0) if rev_u else None
-    prof=(tn is not None and tn>0); lum=_lumpy(ni_u,a) if ni_u else False
-    peg=(pe/(g*100)) if(pe and g and g>0) else None
-    if prof and pe: valok=(peg<=3) if peg is not None else(pe<=50)
-    elif ps: valok=ps<=15
-    else: valok=True
-    sigset={s for s in('S1','S1超','S2a','S2b') if s in r.sig}
-    ok = curate_pass(sigset, prof, lum, valok)
-    if ok: return (True, '', r.sig)
-    # 剔除原因
-    reasons=[]
-    if ('S2a' in sigset) and not prof: reasons.append('S2a要求盈利未过')
-    if (('S1' in sigset)or('S1超'in sigset)) and lum: reasons.append('S1非一次性未过')
-    if ('S2b' in sigset) and not valok:
-        vm = (f"PE{pe:.0f}" if pe else "") + (f" PS{ps:.0f}" if ps else "")
-        reasons.append(f'S2b估值透支({vm.strip()})' if vm.strip() else 'S2b估值透支')
-    return (False, '+'.join(reasons) or '未过curation', r.sig)
-
+# 暴雷股(峰值后回调>70%)。curation_status 已在上方(winners段)定义并复用。
 def facts_and_driver(tk):
     """拉EDGAR,算全期营收/利润→驱动分类。返回(rev_u,ni_u,gp_u,driver,tier)"""
     cik = ciks.get(str(tk).upper())
