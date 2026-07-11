@@ -79,7 +79,7 @@ def sig_s2b(f, asof):
     y0, y1 = yoy(s, 0), yoy(s, 1)
     if y0 is None or y1 is None:
         return None
-    return (y0 >= 0.25) and (y0 > y1)
+    return bool((y0 >= 0.25) and (y0 > y1))
 
 
 def sig_s2a(f, asof):
@@ -88,7 +88,7 @@ def sig_s2a(f, asof):
     if s is None or len(s) < 5:
         return None
     v = list(s.values)
-    return v[0] > 0 and sum(1 for x in v[1:5] if x <= 0) >= 3
+    return bool(v[0] > 0 and sum(1 for x in v[1:5] if x <= 0) >= 3)
 
 
 def sig_s1(f, asof):
@@ -97,7 +97,7 @@ def sig_s1(f, asof):
     if c is None:
         return None
     consec, ttm, hist, _ = c
-    return consec >= 2 and ttm < hist
+    return bool(consec >= 2 and ttm < hist)
 
 
 def sig_s1super(f, asof):
@@ -106,7 +106,7 @@ def sig_s1super(f, asof):
     if c is None:
         return None
     consec, ttm, hist, ry = c
-    return consec >= 2 and ttm >= hist and ry >= 0.4
+    return bool(consec >= 2 and ttm >= hist and ry >= 0.4)
 
 
 SIGNALS = {"S1": sig_s1, "S1超": sig_s1super, "S2a": sig_s2a, "S2b": sig_s2b}
