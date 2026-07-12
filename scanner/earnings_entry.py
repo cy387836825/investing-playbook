@@ -10,7 +10,8 @@
 import time
 import pandas as pd
 from pathlib import Path
-from backtest import _fetch_all, _companyfacts_cached, _cik_map, _price_hist, REV_TAGS, SIGNALS
+from backtest import (_fetch_all, _companyfacts_cached, _cik_map, _price_hist,
+                      _split_factor_after, REV_TAGS, SIGNALS)
 from curation import _pit_shares
 
 BASE = Path(__file__).resolve().parent
@@ -88,9 +89,10 @@ def run():
             if entry > 1000 and now < entry / 100:
                 continue
             peak_date = str(after.idxmax().date())   # 峰值出现日期(用于峰值年化)
-            # 触发时市值($B) = filed<=F的最新股数 × 入场价 (point-in-time,无前视)
+            # 触发时市值($B) = filed<=F的最新股数 × 入场价 × F之后累计拆股因子 (point-in-time,无前视)
+            # 拆股因子对齐"当期(未复权)股数"与"已复权入场价"的基准,修正触发后拆股导致的市值失真。
             sh = _pit_shares(facts, F) if facts else None
-            mcap_pit = round(sh * entry / 1e9, 3) if sh else None
+            mcap_pit = round(sh * entry * _split_factor_after(tk, F) / 1e9, 3) if sh else None
             rows.append({"ticker": tk, "earn_date": F, "sig": "+".join(fl), "first": not seen,
                          "entry": round(entry, 2), "now": round(now, 2), "mcap_pit": mcap_pit,
                          "peak_date": peak_date,

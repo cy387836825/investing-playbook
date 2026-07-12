@@ -26,7 +26,8 @@ BASE = Path(__file__).resolve().parent
 CACHE = BASE / "cache"
 EDGAR_CACHE = CACHE / "edgar"
 PX_CACHE = CACHE / "prices"
-for _d in (EDGAR_CACHE, PX_CACHE):
+SPLITS_CACHE = CACHE / "splits"
+for _d in (EDGAR_CACHE, PX_CACHE, SPLITS_CACHE):
     _d.mkdir(parents=True, exist_ok=True)
 UA = {"User-Agent": "Personal investment research cy387836825@gmail.com"}
 REV_TAGS = ["RevenueFromContractWithCustomerExcludingAssessedTax", "Revenues",
@@ -127,6 +128,40 @@ def _price_hist(tk, start, end):
     s, e = pd.Timestamp(start), pd.Timestamp(end)
     sub = ser[(ser.index >= s) & (ser.index <= e)]
     return sub if not sub.empty else None
+
+
+def _splits(tk):
+    """该票拆股历史 {date_iso: ratio}(正向拆股>1,反向<1),磁盘缓存。空=无拆股。
+    用于市值复权:SEC股数是当期(未复权),yfinance价格已复权,两者拆股基准需对齐。"""
+    import yfinance as yf
+    fp = SPLITS_CACHE / f"{tk}.csv"
+    if fp.exists():
+        try:
+            df = pd.read_csv(fp)
+            return {str(r['date'])[:10]: float(r['ratio']) for _, r in df.iterrows()}
+        except Exception:
+            pass
+    out = {}
+    try:
+        sp = yf.Ticker(tk).splits
+        for d, r in sp.items():
+            if r and r > 0:
+                out[pd.Timestamp(d).tz_localize(None).strftime('%Y-%m-%d')] = float(r)
+    except Exception:
+        pass
+    pd.DataFrame([{'date': k, 'ratio': v} for k, v in out.items()]).to_csv(fp, index=False)
+    return out
+
+
+def _split_factor_after(tk, date):
+    """date 之后发生的累计拆股因子 = ∏ratio(仅拆股日>date)。
+    真实价(date)=已复权价(date)×该因子;故 市值(date)=当期股数×已复权入场价×该因子。"""
+    f = 1.0
+    d = str(date)[:10]
+    for sd, ratio in _splits(tk).items():
+        if sd > d:
+            f *= ratio
+    return f
 
 
 def _px_from_hist(h, date, window=15):

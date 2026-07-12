@@ -2,7 +2,7 @@
 """装配两个可视化页面的数据: winners.json(大牛股列表) + funnel.json(漏斗)"""
 import json, sys, pandas as pd, time
 from pathlib import Path
-from backtest import _price_hist, _px_from_hist, _companyfacts_cached, _cik_map, REV_TAGS
+from backtest import _price_hist, _px_from_hist, _companyfacts_cached, _cik_map, _split_factor_after, REV_TAGS
 from curation import _units, _pit_shares, _ttm, _lumpy, curate_pass
 from signals import pit_qseries, yoy
 sys.path.insert(0, str(Path(__file__).resolve().parent / 'market_index_history'))
@@ -140,7 +140,7 @@ def curation_status(tk):
         if rev_u: break
     ni_u = _units(fc, 'NetIncomeLoss')
     sh = _pit_shares(fc, a); tr=_ttm(rev_u,a) if rev_u else None; tn=_ttm(ni_u,a) if ni_u else None
-    mc=(r.entry*sh) if(r.entry and sh) else None
+    mc=(r.entry*sh*_split_factor_after(tk,a)) if(r.entry and sh) else None   # 拆股复权,与earnings_entry市值口径一致
     ps=(mc/tr) if(mc and tr and tr>0) else None; pe=(mc/tn) if(mc and tn and tn>0) else None
     g=yoy(pit_qseries(rev_u,a),0) if rev_u else None
     prof=(tn is not None and tn>0); lum=_lumpy(ni_u,a) if ni_u else False
