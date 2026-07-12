@@ -3,7 +3,7 @@
 import json, sys, pandas as pd, time
 from pathlib import Path
 from backtest import _price_hist, _px_from_hist, _companyfacts_cached, _cik_map, REV_TAGS
-from curation import _units, _pit_latest, _ttm, _lumpy, SHARE_TAGS, curate_pass
+from curation import _units, _pit_shares, _ttm, _lumpy, curate_pass
 from signals import pit_qseries, yoy
 sys.path.insert(0, str(Path(__file__).resolve().parent / 'market_index_history'))
 import wiki_index as wi
@@ -139,7 +139,7 @@ def curation_status(tk):
         rev_u = _units(fc, tg)
         if rev_u: break
     ni_u = _units(fc, 'NetIncomeLoss')
-    sh = _pit_latest(fc, SHARE_TAGS, a); tr=_ttm(rev_u,a) if rev_u else None; tn=_ttm(ni_u,a) if ni_u else None
+    sh = _pit_shares(fc, a); tr=_ttm(rev_u,a) if rev_u else None; tn=_ttm(ni_u,a) if ni_u else None
     mc=(r.entry*sh) if(r.entry and sh) else None
     ps=(mc/tr) if(mc and tr and tr>0) else None; pe=(mc/tn) if(mc and tn and tn>0) else None
     g=yoy(pit_qseries(rev_u,a),0) if rev_u else None

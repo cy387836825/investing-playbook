@@ -11,7 +11,7 @@ import time
 import pandas as pd
 from pathlib import Path
 from backtest import _fetch_all, _companyfacts_cached, _cik_map, _price_hist, REV_TAGS, SIGNALS
-from curation import _pit_latest, SHARE_TAGS
+from curation import _pit_shares
 
 BASE = Path(__file__).resolve().parent
 WIN_START, WIN_END = "2021-01-01", "2025-06-30"   # 财报日窗口(留12月远期)
@@ -85,7 +85,7 @@ def run():
             now = float(after.iloc[-1]); peak = float(after.max())
             peak_date = str(after.idxmax().date())   # 峰值出现日期(用于峰值年化)
             # 触发时市值($B) = filed<=F的最新股数 × 入场价 (point-in-time,无前视)
-            sh = _pit_latest(facts, SHARE_TAGS, F) if facts else None
+            sh = _pit_shares(facts, F) if facts else None
             mcap_pit = round(sh * entry / 1e9, 3) if sh else None
             rows.append({"ticker": tk, "earn_date": F, "sig": "+".join(fl), "first": not seen,
                          "entry": round(entry, 2), "now": round(now, 2), "mcap_pit": mcap_pit,
