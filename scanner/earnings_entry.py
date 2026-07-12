@@ -83,6 +83,10 @@ def run():
             if after.empty:
                 continue
             now = float(after.iloc[-1]); peak = float(after.max())
+            # 脏价过滤:反向拆股未复权时,入场价停留在拆股前的天价(如XTIA $1.89M/现$1.70、NXTT $314K/现$1.33),
+            # 整行(入场价/收益/市值)都不可用→跳过。阈值放宽以保住真高价股(BRK-A $434K→$751K、NVR $5K 均不误伤)。
+            if entry > 1000 and now < entry / 100:
+                continue
             peak_date = str(after.idxmax().date())   # 峰值出现日期(用于峰值年化)
             # 触发时市值($B) = filed<=F的最新股数 × 入场价 (point-in-time,无前视)
             sh = _pit_shares(facts, F) if facts else None

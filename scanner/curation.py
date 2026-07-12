@@ -20,6 +20,7 @@ ANCHORS = ["2021-06-30", "2022-06-30", "2023-06-30"]
 # 股本标签,按可靠性排序(_pit_shares 用):dei封面股数(永远full-unit、SEC必填)最稳,
 # 其次加权平均(算EPS用、量级可靠),CommonStockSharesOutstanding最易脏(陈旧/按千股/垃圾值)放最后。
 SHARE_TAGS = ["EntityCommonStockSharesOutstanding", "WeightedAverageNumberOfSharesOutstandingBasic",
+              "WeightedAverageNumberOfShareOutstandingBasicAndDiluted",   # 部分公司(如NET早期)只用这个合并标签
               "WeightedAverageNumberOfDilutedSharesOutstanding", "CommonStockSharesOutstanding"]
 
 
@@ -68,13 +69,14 @@ def _pit_shares(facts, asof, window_days=400):
     垃圾值(MBUU=12、FOXA的dei=1)。策略:取每个标签 filed<=asof 的最新读数,
     只保留 end 距最新读数在 window_days 内的(剔除陈旧垃圾——垃圾几乎都带很旧的end),
     再按标签可靠性(SHARE_TAGS顺序:dei封面 > 加权平均 > CommonStock)返回第一个不陈旧的。"""
+    MAX_SHARES = 2.5e10   # 上限:美股最多约170亿股(AAPL峰值),超此必是脏值(如MAX的WBD误报321亿)
     reads = {}
     for t in SHARE_TAGS:
         best = None
         for ns in ("us-gaap", "dei"):
             for _u, rows in facts.get("facts", {}).get(ns, {}).get(t, {}).get("units", {}).items():
                 cand = [(r["end"], r["val"]) for r in rows
-                        if r.get("filed", "") <= asof and "end" in r and r.get("val", 0) > 0]
+                        if r.get("filed", "") <= asof and "end" in r and 0 < r.get("val", 0) <= MAX_SHARES]
                 if cand:
                     cand.sort()
                     if best is None or cand[-1][0] > best[0]:
