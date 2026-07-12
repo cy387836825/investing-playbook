@@ -1,10 +1,13 @@
 #!/usr/bin/env python3
 """装配两个可视化页面的数据: winners.json(大牛股列表) + funnel.json(漏斗)"""
-import json, pandas as pd, time
+import json, sys, pandas as pd, time
+from pathlib import Path
 from backtest import _price_hist, _px_from_hist, _companyfacts_cached, _cik_map, REV_TAGS
 from curation import _units, _pit_latest, _ttm, _lumpy, SHARE_TAGS, curate_pass
 from signals import pit_qseries, yoy
-from index_membership import membership
+sys.path.insert(0, str(Path(__file__).resolve().parent / 'market_index_history'))
+import wiki_index as wi
+import sp500_history, nasdaq100_history
 
 TODAY = time.strftime('%Y-%m-%d')
 FLOOR_B = 1.0   # 第一层过滤:信号触发时市值(股数×入场价)≥$1B。调此一处即可换下限
@@ -21,15 +24,22 @@ def cap_tier(mcap_b):
             return code
     return 'nano'
 
-# 指数成分(当前,非触发时PIT——免费数据无历史成分)。抓取失败则空集,标注全为False。
+# 指数成分:point-in-time——按信号触发当日回滚变更日志判定是否成分(维基变更日志盖住2021+触发窗口)。
+# 抓取失败则空集+空日志,标注全为False。
 try:
-    SP500, NDX, IDX_ASOF = membership()
+    _sp_rows, SP_CH, IDX_ASOF = sp500_history.load_tables()
+    _nd_rows, ND_CH, _ = nasdaq100_history.load_tables()
+    SP500 = {r['ticker'] for r in _sp_rows}
+    NDX = {r['ticker'] for r in _nd_rows}
+    SP_CH = sorted(SP_CH, key=lambda x: x['date'])   # member_asof 需升序
+    ND_CH = sorted(ND_CH, key=lambda x: x['date'])
 except Exception as _e:
     print(f"⚠️指数成分抓取失败({_e}),指数标注跳过", flush=True)
-    SP500, NDX, IDX_ASOF = set(), set(), ''
-def _ix(tk):
-    t = str(tk).upper()
-    return (t in SP500, t in NDX)
+    SP500, NDX, SP_CH, ND_CH, IDX_ASOF = set(), set(), [], [], ''
+def _ix(tk, date=None):
+    """返回 (是否S&P500成分, 是否N100成分)。date=触发日则为point-in-time;date=None退化为当前成分。"""
+    return (wi.member_asof(SP500, SP_CH, tk, date),
+            wi.member_asof(NDX, ND_CH, tk, date))
 
 def annualize(mult, d0, d1):
     """把总倍数mult(=终值/初值)按d0→d1的时长年化。返回百分数(int)或None(时长<30天不年化)。"""
@@ -189,7 +199,7 @@ for r in ee.itertuples():
         'hit_n': hit_n[r.ticker],              # 该票第几次命中(按财报日升序)
         'mcap_pit_b': round(_mcp(r), 2),       # 触发时市值($B)
         'cap_tier': cap_tier(_mcp(r)),         # 传统市值分层(触发时PIT)
-        'in_sp500': _ix(r.ticker)[0], 'in_ndx': _ix(r.ticker)[1],  # 指数成分(当前,非触发时)
+        'in_sp500': _ix(r.ticker, r.earn_date)[0], 'in_ndx': _ix(r.ticker, r.earn_date)[1],  # 指数成分(触发当日PIT)
         'ticker': r.ticker, 'name': nm, 'sector': sec,
         'low': f.get('low'), 'low_date': f.get('low_date'),
         'high': f.get('high'), 'high_date': f.get('high_date'),
@@ -302,7 +312,8 @@ for tk, f in feat.items():
         layer, why = 'passed', '通过全部三层'
     rec = {'ticker':tk,'name':nm,'sector':sec,'mcap_b':mc,'mcap_pit_b':round(mcap_pit,2) if mcap_pit is not None else None,
            'cap_tier':cap_tier(mcap_pit) if mcap_pit is not None else '',   # 触发时市值分层(未触发者无PIT市值)
-           'in_sp500':_ix(tk)[0],'in_ndx':_ix(tk)[1],                       # 指数成分(当前)
+           'in_sp500':_ix(tk, ee_map[tk].earn_date if triggered else None)[0],  # 指数成分:已触发按触发日PIT,
+           'in_ndx':_ix(tk, ee_map[tk].earn_date if triggered else None)[1],    # 未触发无触发日→退化为当前成分
            'low2high_pct':round(f['low2high']*100),'dd_peak_pct':round(f['dd_peak']*100),
            'blow_dd_pct':round(blow_dd*100),   # 暴雷回撤:已触发=入场后,未触发=全期
            'signal_type':sig,'exit_layer':layer,'why':why,'triggered':triggered,

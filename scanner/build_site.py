@@ -5,7 +5,7 @@ OUT = pathlib.Path('../site'); OUT.mkdir(exist_ok=True)
 winners = json.load(open('winners.json'))
 funnel = json.load(open('funnel.json'))
 try:
-    IDX_ASOF = json.load(open('cache/index_membership.json')).get('asof', '')
+    IDX_ASOF = json.load(open('market_index_history/cache/sp500_history.json')).get('asof', '')
 except Exception:
     IDX_ASOF = ''
 
@@ -215,7 +215,7 @@ page1=f"""<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=view
 <th onclick=srt(13,1)>峰值(潜在)</th><th onclick=srt(14,1)>峰值年化</th><th onclick=srt(15,1)>最大回调</th><th onclick=srt(16,1)>最大浮亏</th>
 </tr></thead><tbody>{winners_rows()}</tbody></table></div>
 <div class=note>类别:大牛·过三层=框架推荐且峰值>300% · 过三层·非大牛=框架推荐但未成大牛 · 大牛·被curation挡=成了大牛但curation会剔除(框架漏掉) · 持有至今/峰值/回调/浮亏=从信号财报次日买入起算 · 持有年化=入场到今日的复合年化;峰值年化=入场到峰值日的复合年化(到峰时间短则年化偏高,仅供横向比较)</div>
-<div class=note>市值分层=传统定义,按<b>信号触发当时</b>的point-in-time市值(股数×入场价)分箱:巨盘≥$200B · 大盘$10–200B · 中盘$2–10B · 小盘$0.3–2B · 微盘$50–300M · 纳盘<$50M。⚠️第一层按<b>首次触发</b>市值≥$1B过滤,故首次入选时至少是小盘;但同一票<b>后续命中</b>若已崩成微盘/纳盘,会作为独立行出现(如TDUP $1.86B→$0.07B、BBBY)。触发时市值本就<$1B的那批大牛在<a href=index.html style=color:#58a6ff>漏斗页</a>的"市值门槛剔除"里。市值缺失(股数数据缺口)不分层。指数标注 <span class="ixtag ix-sp">S&amp;P 500</span>/<span class="ixtag ix-ndx">N100</span> 为<b>截至{IDX_ASOF}的当前成分</b>,非触发当时——免费数据无历史成分,很多是触发后才成长纳入指数的。</div>
+<div class=note>市值分层=传统定义,按<b>信号触发当时</b>的point-in-time市值(股数×入场价)分箱:巨盘≥$200B · 大盘$10–200B · 中盘$2–10B · 小盘$0.3–2B · 微盘$50–300M · 纳盘<$50M。⚠️第一层按<b>首次触发</b>市值≥$1B过滤,故首次入选时至少是小盘;但同一票<b>后续命中</b>若已崩成微盘/纳盘,会作为独立行出现(如TDUP $1.86B→$0.07B、BBBY)。触发时市值本就<$1B的那批大牛在<a href=index.html style=color:#58a6ff>漏斗页</a>的"市值门槛剔除"里。市值缺失(股数数据缺口)不分层。指数标注 <span class="ixtag ix-sp">S&amp;P 500</span>/<span class="ixtag ix-ndx">N100</span> 为<b>信号触发当日的point-in-time成分</b>(按维基变更日志回滚判定),故未标注者=触发时尚未进指数,不少是命中后才成长纳入的。日志数据截至{IDX_ASOF}。</div>
 <script>{JS_TABLE}
 let asc={{}};const t=document.getElementById('t');
 function srt(c,n){{asc[c]=!asc[c];sortTable(t,c,n,asc[c]);}}
@@ -297,7 +297,7 @@ page2=f"""<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=view
 <div class=wrap><table id=wt><thead><tr>
 <th class=l onclick=srtW(0,0)>股票</th><th class=l>行业</th><th onclick=srtW(2,1)>触发市值/分层</th><th onclick=srtW(3,1)>低→高</th><th class=l>信号类型</th><th class=l>退出层</th><th class=l>原因</th>
 </tr></thead><tbody>{win_rows()}</tbody></table></div>
-<div class=note>信号层漏掉多为:信号滞后于股价(暴涨在财报确认前)/不达阈值/币-仙股-生物二元等非基本面驱动(框架本就不抓)。市值门槛剔除=触发当时市值不足${funnel.get('floor_b',1):.0f}B的大牛(多为最猛的微盘,如QBTS/DAVE入场时仅$0.1-0.3B)。市值分层按触发时PIT市值;指数标注为截至{IDX_ASOF}的<b>当前</b>成分(非触发时)</div>
+<div class=note>信号层漏掉多为:信号滞后于股价(暴涨在财报确认前)/不达阈值/币-仙股-生物二元等非基本面驱动(框架本就不抓)。市值门槛剔除=触发当时市值不足${funnel.get('floor_b',1):.0f}B的大牛(多为最猛的微盘,如QBTS/DAVE入场时仅$0.1-0.3B)。市值分层按触发时PIT市值;指数标注为<b>触发当日point-in-time成分</b>(已触发按触发日回滚判定,未触发者按当前成分)</div>
 
 <h2>暴雷股(回撤>70%,共{len(funnel['blowups'])}只;已触发信号的按"首次入场后回撤"计,入场前的崩盘不算) — 有多少漏过了过滤网</h2>
 <div class=stats>

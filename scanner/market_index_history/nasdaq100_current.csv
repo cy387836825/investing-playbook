@@ -1,0 +1,104 @@
+ticker,company,icb_industry,icb_subsector,date_added
+AAPL,Apple Inc.,Technology,Computer Hardware,
+ABNB,Airbnb,Consumer Discretionary,Diversified Commercial Services,2021-12-20
+ADBE,Adobe Inc.,Technology,Software,
+ADI,Analog Devices,Technology,Semiconductors,2012-12-24
+ADP,Automatic Data Processing,Industrials,Diversified Commercial Services,2008-12-22
+ADSK,Autodesk,Technology,Software,
+AEP,American Electric Power,Utilities,Electric Utilities,2020-12-21
+ALAB,Astera Labs,Technology,Semiconductors,2026-06-22
+ALNY,Alnylam Pharmaceuticals,Health Care,Biotechnology,2025-12-22
+AMAT,Applied Materials,Technology,Semiconductors,
+AMD,Advanced Micro Devices,Technology,Semiconductors,2018-12-24
+AMGN,Amgen,Health Care,Biotechnology,
+AMZN,Amazon,Consumer Discretionary,Catalog/Specialty Distribution,
+APP,AppLovin,Technology,Software,2024-11-18
+ARM,Arm Holdings,Technology,Semiconductors,2024-06-24
+ASML,ASML Holding,Technology,Industrial Machinery,2017-12-18
+AVGO,Broadcom,Technology,Semiconductors,2016-02-01
+AXON,Axon Enterprise,Industrials,Ordnance & Accessories,2024-12-23
+BKNG,Booking Holdings,Consumer Discretionary,Transportation Services,
+BKR,Baker Hughes,Energy,Oil Equipment & Services,2022-12-19
+CCEP,Coca-Cola Europacific Partners,Consumer Staples,Soft Drinks,2023-12-18
+CDNS,Cadence Design Systems,Technology,Software,2017-12-18
+CEG,Constellation Energy,Utilities,Electric Utilities,2022-02-02
+CMCSA,Comcast,Telecommunications,Cable & Other Pay Television Services,2014-12-22
+COST,Costco,Consumer Discretionary,Department/Specialty Retail Stores,
+CPRT,Copart,Consumer Discretionary,Retail,2019-12-23
+CRWD,CrowdStrike,Technology,Software,2021-08-26
+CRWV,CoreWeave,Technology,Computer Services,2026-06-22
+CSCO,Cisco,Telecommunications,Computer Communications Equipment,
+CSX,CSX Corporation,Industrials,Railroads,2016-02-16
+CTAS,Cintas,Industrials,Garments & Clothing,2016-12-19
+DASH,DoorDash,Technology,Software,2023-12-18
+DDOG,Datadog,Technology,Software,2021-12-20
+DXCM,DexCom,Health Care,Medical/Dental Instruments,2020-04-20
+EA,Electronic Arts,Consumer Discretionary,Miscellaneous Amusement & Recreation Services,2014-12-22
+EXC,Exelon,Utilities,Power Generation,2019-11-21
+FANG,Diamondback Energy,Energy,Oil & Gas Production,2022-12-19
+FAST,Fastenal,Industrials,Construction & Materials,
+FER,Ferrovial,Industrials,"Military, Government, Technical",2025-12-22
+FTNT,Fortinet,Technology,Computer Peripheral Equipment,2021-12-20
+GEHC,GE HealthCare,Health Care,Medical Electronics,2023-06-07
+GILD,Gilead Sciences,Health Care,Biotechnology,
+GOOG,Alphabet Inc. (Class C),Technology,Software,2014-04-03
+GOOGL,Alphabet Inc. (Class A),Technology,Software,
+HON,Honeywell Technologies,Industrials,Diversified Industrials,2021-07-21
+HONA,Honeywell Aerospace,Industrials,Aerospace,2026-06-29
+IDXX,Idexx Laboratories,Health Care,Biotechnology,2017-03-20
+INTC,Intel,Technology,Semiconductors,
+INTU,Intuit,Technology,Computer Software,
+ISRG,Intuitive Surgical,Health Care,Industrial Specialties,
+KDP,Keurig Dr Pepper,Consumer Staples,Soft Drinks,2020-10-19
+KHC,Kraft Heinz,Consumer Staples,Packaged Foods,2015-07-02
+KLAC,KLA Corporation,Technology,Electronic Components,2016-12-19
+LIN,Linde plc,Basic Materials,Major Chemicals,2024-03-18
+LITE,Lumentum,Technology,Communication Equipment,2026-05-18
+LRCX,Lam Research,Technology,Industrial Machinery,2014-12-22
+MAR,Marriott International,Consumer Discretionary,Hotels/Resorts,2013-11-18
+MCHP,Microchip Technology,Technology,Semiconductors,2016-07-18
+MDLZ,Mondelez International,Consumer Staples,Packaged Foods,
+MELI,Mercado Libre,Consumer Discretionary,Catalog/Specialty Distribution,2017-06-19
+META,Meta Platforms,Technology,Software,2012-12-12
+MNST,Monster Beverage,Consumer Staples,Soft Drinks,2011-12-19
+MPWR,Monolithic Power Systems,Technology,Semiconductors,2025-12-22
+MRVL,Marvell Technology,Technology,Semiconductors,2020-12-21
+MSFT,Microsoft,Technology,Software,
+MSTR,MicroStrategy,Technology,Software,2024-12-23
+MU,Micron Technology,Technology,Semiconductors,2010-12-20
+NBIS,Nebius Group,Technology,Computer Services,2026-06-22
+NFLX,"Netflix, Inc.",Consumer Discretionary,Consumer Electronics,2013-06-06
+NVDA,Nvidia,Technology,Semiconductors,
+NXPI,NXP Semiconductors,Technology,Semiconductors,2018-11-05
+ODFL,Old Dominion Freight Line,Industrials,Trucking,2022-01-24
+ORLY,O'Reilly Automotive,Consumer Discretionary,Specialty Retailers,2008-12-22
+PANW,Palo Alto Networks,Technology,Computer Peripheral Equipment,2021-12-20
+PAYX,Paychex,Industrials,Diversified Commercial Services,
+PCAR,Paccar,Consumer Discretionary,Motor Vehicles,
+PDD,PDD Holdings,Technology,EDP Services,2020-08-24
+PEP,PepsiCo,Consumer Staples,Soft Drinks,2018-07-23
+PLTR,Palantir Technologies,Technology,Software,2024-12-23
+PYPL,PayPal,Industrials,Diversified Commercial Services,2015-11-11
+QCOM,Qualcomm,Technology,Semiconductors,
+REGN,Regeneron Pharmaceuticals,Health Care,Biotechnology,2012-12-24
+RKLB,Rocket Lab,Industrials,Aerospace,2026-06-22
+ROP,Roper Technologies,Technology,Software,2023-12-18
+ROST,Ross Stores,Consumer Discretionary,Clothing/Shoe/Accessory Stores,2008-12-22
+SBUX,Starbucks,Consumer Discretionary,Restaurants,
+SHOP,Shopify,Technology,Software,2025-05-19
+SNDK,Sandisk,Technology,Electronic Components,2026-04-20
+SNPS,Synopsys,Technology,Software,2017-12-18
+SPCX,SpaceX,Telecommunications,Telecommunications Services,2026-07-01
+STX,Seagate Technology,Technology,Electronic Components,2025-12-22
+TER,Teradyne,Technology,Semiconductors,2026-06-22
+TMUS,T-Mobile US,Telecommunications,Telecommunications Services,2015-12-21
+TRI,Thomson Reuters,Technology,Software,2025-07-28
+TSLA,"Tesla, Inc.",Consumer Discretionary,Automobiles & Parts,2013-07-15
+TTWO,Take-Two Interactive,Consumer Discretionary,Miscellaneous Amusement & Recreation Services,2023-12-14
+TXN,Texas Instruments,Technology,Semiconductors,2012-04-23
+VRTX,Vertex Pharmaceuticals,Health Care,Biotechnology,
+WBD,Warner Bros. Discovery,Consumer Discretionary,Entertainment,2022-12-19
+WDAY,"Workday, Inc.",Technology,Software,2017-12-18
+WDC,Western Digital,Technology,Electronic Components,2025-12-22
+WMT,Walmart,Consumer Discretionary,Department/Specialty Retail Stores,2026-01-20
+XEL,Xcel Energy,Utilities,Conventional Electricity,2018-11-19
