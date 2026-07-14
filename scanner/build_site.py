@@ -49,6 +49,7 @@ table{border-collapse:collapse;width:100%;font-size:13px;white-space:nowrap}
 th{background:#161b22;text-align:right;padding:9px 12px;position:sticky;top:0;cursor:pointer;user-select:none;font-weight:600;border-bottom:1px solid #30363d}
 th:first-child,td:first-child,th.l,td.l{text-align:left}
 th:hover{color:#58a6ff}
+.arw{color:#58a6ff}
 td{padding:8px 12px;border-bottom:1px solid #21262d;font-variant-numeric:tabular-nums}
 tr:hover td{background:#161b22}
 .pos{color:#3fb950}.neg{color:#f85149}.mut{color:#8b949e}
@@ -78,8 +79,15 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 .ix-ndx{background:#1f6feb;color:#fff}
 /* funnel */
 .funnel{display:flex;flex-direction:column;gap:6px;margin:20px 0;align-items:center}
-.flayer{border-radius:8px;padding:14px 20px;text-align:center;color:#fff;transition:.2s;position:relative}
+.flayer{border-radius:8px;padding:14px 20px;text-align:center;color:#fff;transition:.2s;position:relative;cursor:pointer}
+.flayer:hover{filter:brightness(1.13)}
+.flayer.sel{outline:2px solid #58a6ff;outline-offset:2px}
 .flayer .fn{font-size:15px;font-weight:600}.flayer .fc{font-size:26px;font-weight:700}.flayer .fnote{font-size:11px;opacity:.85}
+.flayer .fclick{font-size:10px;opacity:.7;margin-top:2px}
+.critbox{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:14px 18px;margin-bottom:12px}
+.crittitle{font-weight:600;color:#e6edf3;margin-bottom:8px;font-size:15px}
+.critbox ul{margin:0 0 0 18px}.critbox li{margin:4px 0;font-size:13px;color:#c9d1d9}
+.critnote{color:#8b949e;font-size:12px;margin-top:8px;font-style:italic}
 .chip{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;margin:2px;background:#21262d;border:1px solid #30363d}
 .reason{color:#8b949e;font-size:12px;white-space:normal}
 .badge{padding:2px 8px;border-radius:10px;font-size:11px;font-weight:600}
@@ -87,6 +95,7 @@ a.tk{color:inherit;text-decoration:none}a.tk:hover{color:#58a6ff;text-decoration
 .b-mcap{background:#db6d2822;color:#db6d28;border:1px solid #db6d2844}
 .b-cur{background:#d2992222;color:#d29922;border:1px solid #d2992244}
 .b-pass{background:#3fb95022;color:#3fb950;border:1px solid #3fb95044}
+.b-sector{background:#39c5cf22;color:#39c5cf;border:1px solid #39c5cf44}
 """
 
 JS_TABLE = """
@@ -95,8 +104,8 @@ function sortTable(tbl,col,num,asc){const rows=[...tbl.tBodies[0].rows];rows.sor
 """
 
 def tk_link(t):
-    """ticker→Google Finance报价页(?q=会自动重定向到带交易所的URL)"""
-    return f'<a class=tk href="https://www.google.com/finance?q={t}" target=_blank rel=noopener><b>{t}</b></a>'
+    """ticker→Yahoo Finance报价页(裸ticker即可解析;Google Finance的?q=已失效会跳首页)"""
+    return f'<a class=tk href="https://finance.yahoo.com/quote/{t}" target=_blank rel=noopener><b>{t}</b></a>'
 
 def sig_tags(s):
     out=''
@@ -132,7 +141,7 @@ def winners_rows():
 <td class=l data-v="{w['ticker']}">{tk_link(w['ticker'])}<br><span class=mut style=font-size:11px>{(w['name'] or '')[:22]}</span></td>
 <td class=l data-v="{w.get('cat','')}">{cat_tag(w)}</td>
 <td class=l data-v="{w.get('driver_tier','')}">{driver_tag(w)}</td>
-<td class=l data-v="{w['sector'] or ''}">{w['sector'] or ''}</td>
+<td class=l data-v="{w['sector'] or ''}">{w['sector'] or ''}<br><span class=mut style=font-size:11px>{w.get('industry') or ''}</span></td>
 <td data-v="{w.get('mcap_pit_b') or 0}">{cap_cell(w)}</td>
 <td data-v="{w['low'] or 0}">${w['low']}<br><span class=mut style=font-size:11px>{w['low_date'] or ''}</span></td>
 <td data-v="{w['high'] or 0}">${w['high']}<br><span class=mut style=font-size:11px>{w['high_date'] or ''}</span></td>
@@ -182,7 +191,7 @@ def sig_hit_rows():
     return out
 page1=f"""<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
 <title>回测 · 三层候选与大牛股</title><style>{CSS}</style></head><body>
-<div class=nav><a href=index.html>← 漏斗视图</a><a href=winners.html>候选与大牛股</a></div>
+<div class=nav><a href=index.html>← 漏斗视图</a><a href=winners.html>候选与大牛股</a><a href=live.html>当日实时 →</a></div>
 <h1>回测 · 通过三层的候选 + 大牛股</h1>
 <div class=sub>含两类(用「类别」列区分、可筛选):① 大牛股(峰值>300%);② 通过全部三层的其他股票(信号命中+触发时市值≥$1B+curation过,但未成大牛)。前者看框架抓到什么,后者看框架推荐里没兑现的。⚠️point-in-time回测,非可复制策略</div>
 <div class=stats>
@@ -207,7 +216,7 @@ page1=f"""<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=view
 </div>
 <div class=wrap><table id=t>
 <thead><tr>
-<th class=l onclick=srt(0,0)>股票</th><th class=l onclick=srt(1,0)>类别</th><th class=l onclick=srt(2,0)>驱动类型</th><th class=l onclick=srt(3,0)>行业</th>
+<th class=l onclick=srt(0,0)>股票</th><th class=l onclick=srt(1,0)>类别</th><th class=l onclick=srt(2,0)>驱动类型</th><th class=l onclick=srt(3,0)>板块 / 细分行业</th>
 <th onclick=srt(4,1)>触发市值/分层</th>
 <th onclick=srt(5,1)>低点/日期</th><th onclick=srt(6,1)>高点/日期</th><th onclick=srt(7,1)>低→高</th>
 <th class=l onclick=srt(8,0)>信号日期</th><th class=l onclick=srt(9,0)>信号类型</th>
@@ -227,16 +236,20 @@ r.style.display=(tx.includes(q)&&(!s||sec===s)&&(!d||ti===d)&&(!c||ca===c)&&(!cp
 (OUT/'winners.html').write_text(page1)
 
 # ============ PAGE 2: index.html (funnel) ============
-LC=['#30363d','#1f6feb','#8957e5','#db6d28','#238636']
+# 层色:市场/universe/sector(青)/signal/mcap/curation
+LC=['#30363d','#1f6feb','#39c5cf','#8957e5','#db6d28','#238636']
 def flayer(L,w,c):
-    n=L['n'];note=L.get('note','')
-    return f'<div class=flayer style="width:{w}%;background:{c}"><div class=fn>{L["name"]}</div><div class=fc>{n}</div><div class=fnote>{note}</div></div>'
+    n=L['n'];note=L.get('note','');code=L.get('code','')
+    clickable=' <div class=fclick>▸ 点击看标准/被排股票</div>' if L.get('criteria') else ''
+    return (f'<div class=flayer data-code="{code}" onclick="selLayer(\'{code}\')" '
+            f'style="width:{w}%;background:{c}"><div class=fn>{L["name"]}</div>'
+            f'<div class=fc>{n}</div><div class=fnote>{note}</div>{clickable}</div>')
 lys=funnel['layers']
-widths=[100,90,62,46,36][:len(lys)]
+widths=[100,92,76,60,46,36][:len(lys)]
 fun_html=''.join(flayer(L,widths[i],LC[i]) for i,L in enumerate(lys))
 
 def badge(layer):
-    return {'signal':'<span class="badge b-sig">信号层漏掉</span>','mcap':'<span class="badge b-mcap">市值门槛剔除</span>','curation':'<span class="badge b-cur">curation剔除</span>','passed':'<span class="badge b-pass">通过全部三层</span>'}.get(layer,layer)
+    return {'sector':'<span class="badge b-sector">行业板块排除</span>','signal':'<span class="badge b-sig">信号层漏掉</span>','mcap':'<span class="badge b-mcap">市值门槛剔除</span>','curation':'<span class="badge b-cur">curation剔除</span>','passed':'<span class="badge b-pass">通过全部三层</span>'}.get(layer,layer)
 
 def cap(v):  # 极端值截断显示
     return '&gt;5000' if v and v>5000 else v
@@ -244,13 +257,13 @@ def cap(v):  # 极端值截断显示
 def win_rows():
     r=''
     # 过滤极端artifact(低→高>3000%多为仙股/拆股),按退出层重要性+涨幅排,全量展示(可筛选)
-    order={'mcap':0,'curation':1,'passed':2,'signal':3}
+    order={'sector':0,'mcap':1,'curation':2,'passed':3,'signal':4}
     ws=[w for w in funnel['winners'] if (w['low2high_pct'] or 0)<=3000]
     ws.sort(key=lambda x:(order.get(x['exit_layer'],9), -(x['low2high_pct'] or 0)))
     for w in ws:
         r+=f"""<tr data-layer="{w['exit_layer']}" data-cap="{w.get('cap_tier','')}" data-sp="{1 if w.get('in_sp500') else 0}" data-ndx="{1 if w.get('in_ndx') else 0}">
 <td class=l data-v="{w['ticker']}">{tk_link(w['ticker'])} <span class=mut style=font-size:11px>{(w['name']or'')[:18]}</span></td>
-<td class=l>{w['sector'] or ''}</td>
+<td class=l>{w['sector'] or ''}<br><span class=mut style=font-size:11px>{w.get('industry') or ''}</span></td>
 <td data-v="{w.get('mcap_pit_b') or 0}">{cap_cell(w)}</td>
 <td data-v="{w['low2high_pct']}">{fmtPct_py(cap(w['low2high_pct']))}</td>
 <td class=l>{sig_tags(w['signal_type']) if w['signal_type'] else '<span class=mut>未触发</span>'}</td>
@@ -260,14 +273,14 @@ def win_rows():
 
 def blow_rows():
     r=''
-    # 漏网(passed)优先显示(关键洞察),再mcap/curation/signal,全量展示(可筛选)
-    order={'passed':0,'mcap':1,'curation':2,'signal':3}
+    # 漏网(passed)优先显示(关键洞察),再sector/mcap/curation/signal,全量展示(可筛选)
+    order={'passed':0,'sector':1,'mcap':2,'curation':3,'signal':4}
     bs=sorted(funnel['blowups'], key=lambda x:(order.get(x['exit_layer'],9), x.get('blow_dd_pct',x['dd_peak_pct'])))
     for b in bs:
         dd=b.get('blow_dd_pct',b['dd_peak_pct'])
         r+=f"""<tr data-layer="{b['exit_layer']}">
 <td class=l data-v="{b['ticker']}">{tk_link(b['ticker'])} <span class=mut style=font-size:11px>{(b['name']or'')[:18]}</span></td>
-<td class=l>{b['sector'] or ''}</td>
+<td class=l>{b['sector'] or ''}<br><span class=mut style=font-size:11px>{b.get('industry') or ''}</span></td>
 <td data-v="{dd}">{fmtPct_py(dd)}</td>
 <td class=l>{sig_tags(b['signal_type']) if b['signal_type'] else '<span class=mut>未触发</span>'}</td>
 <td class=l>{badge(b['exit_layer'])}</td></tr>"""
@@ -276,40 +289,70 @@ def blow_rows():
 from collections import Counter
 wc=Counter(w['exit_layer'] for w in funnel['winners'])
 bc=Counter(b['exit_layer'] for b in funnel['blowups'])
+
+# 层详情(点击漏斗层展开):合并牛股+暴雷股,每行标注类别,客户端按选中层渲染
+def _layerrows():
+    rows=[]
+    for w in funnel['winners']:
+        rows.append({'tk':w['ticker'],'nm':(w['name'] or '')[:20],'sec':w['sector'] or '','ind':w.get('industry','') or '',
+                     'layer':w['exit_layer'],'why':w['why'],'kind':'win','metric':w['low2high_pct'] or 0})
+    for b in funnel['blowups']:
+        rows.append({'tk':b['ticker'],'nm':(b['name'] or '')[:20],'sec':b['sector'] or '','ind':b.get('industry','') or '',
+                     'layer':b['exit_layer'],'why':b['why'],'kind':'blow','metric':b.get('blow_dd_pct',b['dd_peak_pct'])})
+    return rows
+LAYERROWS=json.dumps(_layerrows(), ensure_ascii=False)
+LAYERCRIT=json.dumps({L['code']:L['criteria'] for L in funnel['layers'] if L.get('criteria')}, ensure_ascii=False)
+LAYERNAME=json.dumps({L['code']:L['name'] for L in funnel['layers']}, ensure_ascii=False)
 page2=f"""<!doctype html><html lang=zh><head><meta charset=utf-8><meta name=viewport content="width=device-width,initial-scale=1">
 <title>漏斗视图 · 大牛股与暴雷股</title><style>{CSS}</style></head><body>
-<div class=nav><a href=index.html>漏斗视图</a><a href=winners.html>大牛股列表 →</a></div>
+<div class=nav><a href=index.html>漏斗视图</a><a href=winners.html>大牛股列表 →</a><a href=live.html>当日实时 →</a></div>
 <h1>过滤漏斗 · 大牛股在哪层被过滤 / 暴雷股是否漏网</h1>
-<div class=sub>全市场 → 信号命中 → 触发时市值≥${funnel.get('floor_b',1):.0f}B → curation通过 · 第一层市值门槛按信号触发当时(股数×入场价)计,非今天市值 · 追踪每只大牛股的退出层,每只暴雷股是否穿过过滤网</div>
+<div class=sub>全市场 → <b>行业板块排除</b> → 信号命中 → 触发时市值≥${funnel.get('floor_b',1):.0f}B → curation通过 · 追踪每只大牛股在哪层退出、每只暴雷股是否穿过过滤网 · <b>点击下方漏斗任意一层</b>查看该层具体标准 + 被过滤的股票(牛股/暴雷股标注)</div>
 <div class=funnel>{fun_html}</div>
+<div id=layerPanel style="display:none;margin:8px 0 24px">
+<div id=layerCrit class=critbox></div>
+<div class=ctrl><span id=layerCount class=mut></span></div>
+<div class=ctrl>
+<input id=LfQ placeholder="搜索代码/名称..." oninput=LrenderRows()>
+<select id=LfSec onchange=LonSecChange()></select>
+<select id=LfInd onchange=LrenderRows()></select>
+<select id=LfKind onchange=LrenderRows()><option value="">全部类别</option><option value=win>牛股</option><option value=blow>暴雷股</option></select>
+</div>
+<div class=wrap><table id=lt><thead><tr>
+<th class=l data-key=tk onclick="LsortBy('tk')">股票</th><th class=l data-key=sec onclick="LsortBy('sec')">板块 / 细分行业</th><th class=l data-key=kind onclick="LsortBy('kind')">类别</th><th data-key=metric onclick="LsortBy('metric')">关键指标</th><th class=l data-key=why onclick="LsortBy('why')">被过滤原因</th>
+</tr></thead><tbody id=ltb></tbody></table></div>
+<div class=note>关键指标:牛股=低→高涨幅(被此层排除=框架为控风险付出的代价),暴雷股=峰值后最大回撤(被此层拦下=风控收益)。同一只票若既暴涨又暴跌会各出一行。</div>
+</div>
 
 <h2>大牛股(低→高>300%,共{len(funnel['winners'])}只)在哪一层被过滤</h2>
 <div class=stats>
+<div class=stat><div class="v" style=color:#39c5cf">{wc['sector']}</div><div class=l>行业板块排除(最上游)</div></div>
 <div class=stat><div class="v neg">{wc['signal']}</div><div class=l>信号层漏掉(未触发)</div></div>
 <div class=stat><div class="v" style=color:#db6d28>{wc['mcap']}</div><div class=l>触发时市值&lt;${funnel.get('floor_b',1):.0f}B剔除</div></div>
 <div class=stat><div class="v" style=color:#d29922>{wc['curation']}</div><div class=l>curation剔除</div></div>
-<div class=stat><div class="v pos">{wc['passed']}</div><div class=l>通过全部三层</div></div>
+<div class=stat><div class="v pos">{wc['passed']}</div><div class=l>通过全部四层</div></div>
 </div>
 <div class=ctrl><input id=wq placeholder="搜索..." oninput=filtW()>
-<select id=wl onchange=filtW()><option value="">全部退出层</option><option value=signal>信号层漏掉</option><option value=mcap>市值门槛剔除</option><option value=curation>curation剔除</option><option value=passed>通过全部三层</option></select>
+<select id=wl onchange=filtW()><option value="">全部退出层</option><option value=sector>行业板块排除</option><option value=signal>信号层漏掉</option><option value=mcap>市值门槛剔除</option><option value=curation>curation剔除</option><option value=passed>通过全部四层</option></select>
 {cap_sel('wcap','filtW()')}
 {ix_sel('wi','filtW()')}</div>
 <div class=wrap><table id=wt><thead><tr>
-<th class=l onclick=srtW(0,0)>股票</th><th class=l>行业</th><th onclick=srtW(2,1)>触发市值/分层</th><th onclick=srtW(3,1)>低→高</th><th class=l>信号类型</th><th class=l>退出层</th><th class=l>原因</th>
+<th class=l onclick=srtW(0,0)>股票</th><th class=l>板块 / 细分行业</th><th onclick=srtW(2,1)>触发市值/分层</th><th onclick=srtW(3,1)>低→高</th><th class=l>信号类型</th><th class=l>退出层</th><th class=l>原因</th>
 </tr></thead><tbody>{win_rows()}</tbody></table></div>
 <div class=note>信号层漏掉多为:信号滞后于股价(暴涨在财报确认前)/不达阈值/币-仙股-生物二元等非基本面驱动(框架本就不抓)。市值门槛剔除=触发当时市值不足${funnel.get('floor_b',1):.0f}B的大牛(多为最猛的微盘,如QBTS/DAVE入场时仅$0.1-0.3B)。市值分层按触发时PIT市值;指数标注为<b>触发当日point-in-time成分</b>(已触发按触发日回滚判定,未触发者按当前成分)</div>
 
 <h2>暴雷股(回撤>70%,共{len(funnel['blowups'])}只;已触发信号的按"首次入场后回撤"计,入场前的崩盘不算) — 有多少漏过了过滤网</h2>
 <div class=stats>
-<div class=stat><div class="v neg">{bc['passed']}</div><div class=l>⚠️漏网(通过全部三层)</div></div>
+<div class=stat><div class="v neg">{bc['passed']}</div><div class=l>⚠️漏网(通过全部四层)</div></div>
+<div class=stat><div class="v" style=color:#39c5cf">{bc['sector']}</div><div class=l>被行业板块排除挡住</div></div>
 <div class=stat><div class="v" style=color:#8b949e>{bc['signal']}</div><div class=l>被信号层挡住(未触发)</div></div>
 <div class=stat><div class="v" style=color:#db6d28>{bc['mcap']}</div><div class=l>被市值门槛挡住</div></div>
 <div class=stat><div class="v" style=color:#d29922>{bc['curation']}</div><div class=l>被curation挡住</div></div>
 </div>
 <div class=ctrl><input id=bq placeholder="搜索..." oninput=filtB()>
-<select id=bl onchange=filtB()><option value="">全部</option><option value=passed>⚠️漏网</option><option value=signal>信号层挡住</option><option value=mcap>市值门槛挡住</option><option value=curation>curation挡住</option></select></div>
+<select id=bl onchange=filtB()><option value="">全部</option><option value=passed>⚠️漏网</option><option value=sector>行业板块排除挡住</option><option value=signal>信号层挡住</option><option value=mcap>市值门槛挡住</option><option value=curation>curation挡住</option></select></div>
 <div class=wrap><table id=bt><thead><tr>
-<th class=l onclick=srtB(0,0)>股票</th><th class=l>行业</th><th onclick=srtB(2,1)>暴雷回撤(入场后/全期)</th><th class=l>信号类型</th><th class=l>过滤结果</th>
+<th class=l onclick=srtB(0,0)>股票</th><th class=l>板块 / 细分行业</th><th onclick=srtB(2,1)>暴雷回撤(入场后/全期)</th><th class=l>信号类型</th><th class=l>过滤结果</th>
 </tr></thead><tbody>{blow_rows()}</tbody></table></div>
 <div class=note>⚠️{bc['passed']}只暴雷股穿过全部三层=框架假阳性(如CVNA/OPEN/PTON疫情泡沫:峰值时营收加速触发S2b+通过curation,随后崩99%)。这是"营收加速信号无法区分真成长与泡沫"的直接证据</div>
 
@@ -326,6 +369,65 @@ window.filtW=()=>{{const q=document.getElementById('wq').value.toUpperCase(),l=d
 for(const r of t.tBodies[0].rows){{const tx=r.cells[0].innerText.toUpperCase(),cap=r.dataset.cap,sp=r.dataset.sp==='1',nd=r.dataset.ndx==='1';
 let ixok=true;if(ix==='sp')ixok=sp;else if(ix==='ndx')ixok=nd;else if(ix==='any')ixok=sp||nd;else if(ix==='none')ixok=!sp&&!nd;
 r.style.display=(tx.includes(q)&&(!l||r.dataset.layer===l)&&(!cp||cap===cp)&&ixok)?'':'none';}}}};}})();
+// ==== 漏斗层点击 → 展开该层标准 + 被过滤股票(牛股/暴雷股标注)====
+const LAYERROWS={LAYERROWS},LAYERCRIT={LAYERCRIT},LAYERNAME={LAYERNAME};
+const tkl=function(t){{return '<a class=tk href="https://finance.yahoo.com/quote/'+encodeURIComponent(t)+'" target=_blank rel=noopener><b>'+t+'</b></a>';}};
+function critHtml(c){{if(!c)return '<div class=critnote>该层为数据覆盖层,无逐票排除标准</div>';var h='<div class=crittitle>'+c.title+'</div><ul>';for(var i=0;i<c.rules.length;i++)h+='<li>'+c.rules[i]+'</li>';h+='</ul>';if(c.note)h+='<div class=critnote>'+c.note+'</div>';return h;}}
+var LROWS=[],LBASE='',LKEY='metric',LASC=false;var LNUM=['metric'];
+function Lopts(arr){{return '<option value="">'+arr[0]+'</option>'+arr[1].map(function(s){{return '<option>'+s+'</option>';}}).join('');}}
+function Luniq(rows,f){{var out=[],seen={{}};for(var i=0;i<rows.length;i++){{var v=f(rows[i]);if(v&&!seen[v]){{seen[v]=1;out.push(v);}}}}out.sort();return out;}}
+function LrowHtml(r){{
+var kind=r.kind==='win'?'<span class="ctag c-win">牛股</span>':'<span class="badge b-sig">暴雷股</span>';
+var mtxt=(r.kind==='win'&&r.metric>5000)?'<span class=pos>&gt;5000%</span>':fmtPct(r.metric);
+return '<tr><td class=l>'+tkl(r.tk)+' <span class=mut style=font-size:11px>'+r.nm+'</span></td><td class=l>'+(r.sec||'')+'<br><span class=mut style=font-size:11px>'+(r.ind||'')+'</span></td><td class=l>'+kind+'</td><td>'+mtxt+'</td><td class="l reason">'+r.why+'</td></tr>';
+}}
+function LfillFilters(rows){{
+document.getElementById('LfSec').innerHTML=Lopts(['全部板块',Luniq(rows,function(r){{return r.sec;}})]);
+document.getElementById('LfInd').innerHTML=Lopts(['全部细分行业',Luniq(rows,function(r){{return r.ind;}})]);
+document.getElementById('LfQ').value='';document.getElementById('LfKind').value='';
+}}
+function LonSecChange(){{
+var fs=document.getElementById('LfSec').value;
+document.getElementById('LfInd').innerHTML=Lopts(['全部细分行业',Luniq(LROWS.filter(function(r){{return !fs||r.sec===fs;}}),function(r){{return r.ind;}})]);
+LrenderRows();
+}}
+function LsortBy(key){{if(LKEY===key)LASC=!LASC;else{{LKEY=key;LASC=(LNUM.indexOf(key)<0);}}LrenderRows();}}
+function LrenderRows(){{
+var q=(document.getElementById('LfQ').value||'').toUpperCase();
+var fs=document.getElementById('LfSec').value,fi=document.getElementById('LfInd').value,fk=document.getElementById('LfKind').value;
+var rows=LROWS.filter(function(r){{
+if(q&&((r.tk+' '+(r.nm||'')).toUpperCase().indexOf(q)<0))return false;
+if(fs&&(r.sec||'')!==fs)return false;
+if(fi&&(r.ind||'')!==fi)return false;
+if(fk&&r.kind!==fk)return false;
+return true;}});
+var num=LNUM.indexOf(LKEY)>=0;
+rows.sort(function(a,b){{
+var x,y;
+if(LKEY==='sec'){{x=(a.sec||'')+'|'+(a.ind||'');y=(b.sec||'')+'|'+(b.ind||'');}}
+else{{x=a[LKEY];y=b[LKEY];}}
+if(num){{x=(x==null||x!==x)?-1e15:x;y=(y==null||y!==y)?-1e15:y;return LASC?x-y:y-x;}}
+return LASC?String(x||'').localeCompare(String(y||'')):String(y||'').localeCompare(String(x||''));}});
+var ths=document.querySelectorAll('#lt thead th[data-key]');
+for(var t=0;t<ths.length;t++){{var old=ths[t].querySelector('.arw');if(old)old.remove();if(ths[t].dataset.key===LKEY){{var sp=document.createElement('span');sp.className='arw';sp.textContent=LASC?' ▲':' ▼';ths[t].appendChild(sp);}}}}
+document.getElementById('layerCount').innerHTML=LBASE+(rows.length!==LROWS.length?' <span class=mut>(筛后 '+rows.length+'/'+LROWS.length+')</span>':'');
+var h='';for(var j=0;j<rows.length;j++)h+=LrowHtml(rows[j]);
+document.getElementById('ltb').innerHTML=h||'<tr><td colspan=5 class=mut>无匹配</td></tr>';
+}}
+function selLayer(code){{
+var fl=document.querySelectorAll('.flayer');for(var i=0;i<fl.length;i++)fl[i].classList.toggle('sel',fl[i].dataset.code===code);
+document.getElementById('layerCrit').innerHTML=critHtml(LAYERCRIT[code]);
+LROWS=LAYERROWS.filter(function(r){{return r.layer===code;}});
+var nw=LROWS.filter(function(r){{return r.kind==='win';}}).length,nb=LROWS.length-nw;
+LBASE=(LAYERNAME[code]||code)+' — 该层涉及 <span class=pos>'+nw+'</span> 只牛股 · <span class=neg>'+nb+'</span> 只暴雷股';
+LKEY='metric';LASC=false;
+LfillFilters(LROWS);
+LrenderRows();
+document.getElementById('layerPanel').style.display='';
+var wl=document.getElementById('wl');if(wl){{for(var k=0;k<wl.options.length;k++)if(wl.options[k].value===code){{wl.value=code;filtW();break;}}}}
+var bl=document.getElementById('bl');if(bl){{for(var k2=0;k2<bl.options.length;k2++)if(bl.options[k2].value===code){{bl.value=code;filtB();break;}}}}
+document.getElementById('layerPanel').scrollIntoView({{behavior:'smooth',block:'start'}});
+}}
 </script></body></html>"""
 (OUT/'index.html').write_text(page2)
 print(f"→ ../site/index.html (漏斗) + ../site/winners.html (大牛股列表)")

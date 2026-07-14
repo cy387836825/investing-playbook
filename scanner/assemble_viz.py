@@ -5,24 +5,14 @@ from pathlib import Path
 from backtest import _price_hist, _px_from_hist, _companyfacts_cached, _cik_map, _split_factor_after, REV_TAGS
 from curation import _units, _pit_shares, _ttm, _lumpy, curate_pass
 from signals import pit_qseries, yoy
+from sector_exclusion import classify_exclusion, LAYER_CRITERIA
 sys.path.insert(0, str(Path(__file__).resolve().parent / 'market_index_history'))
 import wiki_index as wi
 import sp500_history, nasdaq100_history
 
 TODAY = time.strftime('%Y-%m-%d')
-FLOOR_B = 1.0   # 第一层过滤:信号触发时市值(股数×入场价)≥$1B。调此一处即可换下限
-
-# 传统市值分层(美元十亿),阈值降序;用触发时point-in-time市值(mcap_pit_b)分箱
-CAP_TIERS = [(200, 'mega'), (10, 'large'), (2, 'mid'), (0.3, 'small'), (0.05, 'micro'), (0.0, 'nano')]
-def cap_tier(mcap_b):
-    """按传统定义给触发时市值分层。返回代码(mega/large/mid/small/micro/nano),缺失/≤0返回''。
-    真实市值恒>0;_mcp()对缺失PIT股数返回0.0,故≤0一律当"未知"而非纳盘,避免把数据缺口误标成纳米盘。"""
-    if mcap_b is None or mcap_b != mcap_b or mcap_b <= 0:
-        return ''
-    for thr, code in CAP_TIERS:
-        if mcap_b >= thr:
-            return code
-    return 'nano'
+# 市值门槛与分层:单一真源在 funnel_common(回测与实时共用同一 FLOOR_B/cap_tier)
+from funnel_common import FLOOR_B, CAP_TIERS, cap_tier
 
 # 指数成分:point-in-time——按信号触发当日回滚变更日志判定是否成分(维基变更日志盖住2021+触发窗口)。
 # 抓取失败则空集+空日志,标注全为False。
@@ -85,7 +75,9 @@ def classify_driver(rev_sig, rev_now, ni_sig, ni_now, sector):
 uni = pd.read_csv('universe.csv')
 uni['mcap_b'] = pd.to_numeric(uni['mcap_b'], errors='coerce')
 if uni['mcap_b'].max() > 1e5: uni['mcap_b'] = uni['mcap_b']/1e6  # 与scan.py一致(universe.csv市值单位需/1e6得十亿)
-meta = {r['ticker']: (r['name'], r['sector'], round(r['mcap_b'],1)) for _,r in uni.iterrows()}
+def _s(v):  # NaN/缺失 → 空串
+    return v if isinstance(v, str) else ('' if v is None or v != v else str(v))
+meta = {r['ticker']: (r['name'], r['sector'], _s(r.get('industry')), round(r['mcap_b'],1)) for _,r in uni.iterrows()}
 ee = pd.read_csv('earnings_entry.csv')
 ee_map = {}
 for _r in ee.itertuples():
@@ -127,6 +119,30 @@ def _mcp(r):   # 触发时市值($B),缺失当0
     v = getattr(r, 'mcap_pit', None)
     return float(v) if v == v and v is not None else 0.0
 
+# ==== 行业与板块排除层(universe之后、信号之前的最上游硬切)====
+RND_TAG = 'ResearchAndDevelopmentExpense'
+_excl_cache = {}
+def sector_excl(tk):
+    """(excluded:bool, why:str)——缓存。仅生物科技票需拉EDGAR算TTM营收/研发。"""
+    if tk in _excl_cache: return _excl_cache[tk]
+    _n, _sec, ind, mc = meta.get(tk, ('', '', '', None))
+    ttm_rev = ttm_rnd = None
+    if ind == 'Biotechnology':
+        cik = ciks.get(str(tk).upper())
+        if cik:
+            fc = _companyfacts_cached(cik)
+            if fc:
+                ru = None
+                for tg in REV_TAGS:
+                    ru = _units(fc, tg)
+                    if ru: break
+                ttm_rev = _ttm(ru, TODAY) if ru else None
+                rd = _units(fc, RND_TAG)
+                ttm_rnd = _ttm(rd, TODAY) if rd else None
+    res = classify_exclusion(ind, mc, ttm_rev, ttm_rnd)
+    _excl_cache[tk] = res
+    return res
+
 def curation_status(tk):
     """返回(pass:bool, reason:str, sig:str) — 信号命中股的signal-specific curation"""
     if tk not in ee_map: return (None, '未触发信号', '')
@@ -167,16 +183,16 @@ def _cat(tk):
     if w and c: return ('大牛·过三层', w, c)
     if w and not c: return ('大牛·被curation挡', w, c)
     return ('过三层·非大牛', w, c)
-# 候选 = 触发时市值≥$1B, 且(是大牛 或 通过三层)
-big = {tk for tk, r in ee_map.items() if r.pkr > 3.0 and _mcp(r) >= FLOOR_B}
+# 候选 = 未被行业板块排除, 且触发时市值≥$1B, 且(是大牛 或 通过三层)。sector层在最上游先切
+big = {tk for tk, r in ee_map.items() if r.pkr > 3.0 and _mcp(r) >= FLOOR_B and not sector_excl(tk)[0]}
 qualify = {tk for tk, r in ee_map.items()
-           if _mcp(r) >= FLOOR_B and (r.pkr > 3.0 or cur_pass.get(tk))}
+           if _mcp(r) >= FLOOR_B and not sector_excl(tk)[0] and (r.pkr > 3.0 or cur_pass.get(tk))}
 winners = []; hit_n = {}
 for r in ee.itertuples():
     if r.ticker not in qualify: continue   # 候选的每一次命中都出一行
     hit_n[r.ticker] = hit_n.get(r.ticker, 0) + 1
     f = feat.get(r.ticker, {})
-    nm, sec, mc = meta.get(r.ticker, ('','',None))
+    nm, sec, ind, mc = meta.get(r.ticker, ('','','',None))
     # 持有期营收增长(信号日TTM vs 今日TTM) → 驱动分类
     cik = ciks.get(str(r.ticker).upper()); rev_sig=rev_now=ni_sig=ni_now=None
     if cik:
@@ -200,7 +216,7 @@ for r in ee.itertuples():
         'mcap_pit_b': round(_mcp(r), 2),       # 触发时市值($B)
         'cap_tier': cap_tier(_mcp(r)),         # 传统市值分层(触发时PIT)
         'in_sp500': _ix(r.ticker, r.earn_date)[0], 'in_ndx': _ix(r.ticker, r.earn_date)[1],  # 指数成分(触发当日PIT)
-        'ticker': r.ticker, 'name': nm, 'sector': sec,
+        'ticker': r.ticker, 'name': nm, 'sector': sec, 'industry': ind,
         'low': f.get('low'), 'low_date': f.get('low_date'),
         'high': f.get('high'), 'high_date': f.get('high_date'),
         'low2high_pct': round(f.get('low2high',0)*100) if f else None,
@@ -280,13 +296,13 @@ def facts_and_driver(tk):
     rev_now = float(rs.iloc[:4].sum()) if (rs is not None and len(rs) >= 4) else None
     ni_early = float(ns.iloc[-4:].sum()) if (ns is not None and len(ns) >= 8) else None
     ni_now = float(ns.iloc[:4].sum()) if (ns is not None and len(ns) >= 4) else None
-    _, _, sector = meta.get(tk, ('', '', '')), None, meta.get(tk, ('', '', ''))[1]
+    sector = meta.get(tk, ('', '', '', None))[1]
     driver, tier, _ = classify_driver(rev_early, rev_now, ni_early, ni_now, sector)
     return (ru, niu, gpu, driver, tier)
 
 winset, blowset = [], []
 for tk, f in feat.items():
-    nm, sec, mc = meta.get(tk, ('','',None))
+    nm, sec, ind, mc = meta.get(tk, ('','','',None))
     triggered = tk in ee_map
     mcap_pit = _mcp(ee_map[tk]) if triggered else None   # 触发时市值($B)
     is_win = f['low2high'] > 3.0                 # 低→高>300%
@@ -296,8 +312,11 @@ for tk, f in feat.items():
     if not (is_win or is_blow): continue
     cur_pass, cur_reason, sig = curation_status(tk)
     ru, niu, gpu, driver, tier = facts_and_driver(tk)
-    # 判定退出层 + 具体原因(第一层已改为"触发时市值≥$1B")
-    if not triggered:
+    # 判定退出层 + 具体原因。sector(行业板块排除)在最上游,先于信号/市值/curation切断
+    sexcl, swhy = sector_excl(tk)
+    if sexcl:
+        layer, why = 'sector', swhy
+    elif not triggered:
         layer = 'signal'
         # 基本面驱动的漏网股→跑具体诊断; 非基本面→标注驱动
         if tier in ('fund', 'partial'):
@@ -310,7 +329,7 @@ for tk, f in feat.items():
         layer, why = 'curation', cur_reason
     else:
         layer, why = 'passed', '通过全部三层'
-    rec = {'ticker':tk,'name':nm,'sector':sec,'mcap_b':mc,'mcap_pit_b':round(mcap_pit,2) if mcap_pit is not None else None,
+    rec = {'ticker':tk,'name':nm,'sector':sec,'industry':ind,'mcap_b':mc,'mcap_pit_b':round(mcap_pit,2) if mcap_pit is not None else None,
            'cap_tier':cap_tier(mcap_pit) if mcap_pit is not None else '',   # 触发时市值分层(未触发者无PIT市值)
            'in_sp500':_ix(tk, ee_map[tk].earn_date if triggered else None)[0],  # 指数成分:已触发按触发日PIT,
            'in_ndx':_ix(tk, ee_map[tk].earn_date if triggered else None)[1],    # 未触发无触发日→退化为当前成分
@@ -323,20 +342,48 @@ for tk, f in feat.items():
 
 winset.sort(key=lambda x:-x['low2high_pct'])
 blowset.sort(key=lambda x: x['blow_dd_pct'])
-# 漏斗层计数(第一层市值门槛现按触发时市值算,故排在信号命中之后)
-trig = [tk for tk in uni['ticker'] if tk in ee_map]
+# 漏斗层计数。sector(行业板块排除)是最上游硬切,故信号/市值/curation 均在"未排除"票中计
+non_excl = {tk for tk in uni['ticker'] if not sector_excl(tk)[0]}
 n_all = len(uni)
+n_excl = n_all - len(non_excl)              # 被行业板块排除的票数
+n_after_excl = len(non_excl)                # 排除后剩余
+trig = [tk for tk in uni['ticker'] if tk in ee_map and tk in non_excl]
 n_sig = len(trig)
 n_mcap = sum(1 for tk in trig if _mcp(ee_map[tk]) >= FLOOR_B)
 n_cur = sum(1 for tk in trig if _mcp(ee_map[tk]) >= FLOOR_B and curation_status(tk)[0] is True)
+
+# 各层"具体标准"文案(点击漏斗层展开)
+CRIT = {
+    'universe': {'title':'universe·有数据(数据覆盖上界)',
+        'rules':['Finviz 当前快照,剔除 ETF/基金(Stocks only)','需 EDGAR companyfacts + 价格数据可得,才进入回测'],
+        'note':'当前快照有幸存者偏差,是数据覆盖上界而非全域'},
+    'sector': LAYER_CRITERIA,
+    'signal': {'title':'信号命中(S1/S1超/S2a/S2b 任一,财报次日)',
+        'rules':['S1 周期反转:毛利率连续≥2季改善 且 TTM毛利率 < 历史基线',
+                 'S1超 超级周期:连续≥2季改善 且 TTM≥历史基线 且 营收同比≥40%',
+                 'S2a 首次盈利:最新季 GAAP 净利>0 且 前4季中≥3季≤0',
+                 'S2b 营收加速:最新季营收同比≥25% 且 > 上一季同比'],
+        'note':'财报次日入场,回测窗口 2021–2025'},
+    'mcap': {'title':f'触发时市值 ≥ ${FLOOR_B:.0f}B(point-in-time)',
+        'rules':[f'PIT市值 = 触发当时股数 × 入场价(拆股复权,无前视)',
+                 f'< ${FLOOR_B:.0f}B 的触发在此剔除(多为最猛的微盘 moonshot)'],
+        'note':'按触发当时市值,非今天市值'},
+    'curation': {'title':'curation 通过(信号专属质量门)',
+        'rules':['S1/S1超 → 要求非一次性(排除 lumpy 利润)',
+                 'S1超 / S2a → 要求盈利(TTM 净利>0)',
+                 'S2b → 要求估值合格:盈利用 PEG≤3(无PEG则PE≤50);不盈利回退 PS≤15',
+                 '关键数据缺失时不剔除(避免误杀)'],
+        'note':'见 curation.py::curate_pass'},
+}
 funnel = {
     'floor_b': FLOOR_B,
     'layers': [
-        {'name':'全市场美股','n':'~4000+','note':'免费数据未覆盖全域,此层不可枚举'},
-        {'name':'universe·有数据','n':n_all,'note':'Finviz当前快照(EDGAR+价数据可得),数据覆盖上界'},
-        {'name':'第1层·信号命中','n':n_sig,'note':'S1/S1超/S2a/S2b任一触发(财报次日,2021-2025)'},
-        {'name':f'第2层·触发时市值≥${FLOOR_B:.0f}B','n':n_mcap,'note':'point-in-time市值=当时股数×入场价(无前视)'},
-        {'name':'第3层·curation通过','n':n_cur,'note':'信号专属过滤(估值/盈利/非一次性)'},
+        {'code':'market','name':'全市场美股','n':'~4000+','note':'免费数据未覆盖全域,此层不可枚举'},
+        {'code':'universe','name':'universe·有数据','n':n_all,'note':'Finviz当前快照(EDGAR+价数据可得),数据覆盖上界','criteria':CRIT['universe']},
+        {'code':'sector','name':'第1层·行业板块排除','n':n_after_excl,'note':'空壳/早期生物/航空海运/小资源商/衰退传统(最上游硬切)','criteria':CRIT['sector']},
+        {'code':'signal','name':'第2层·信号命中','n':n_sig,'note':'S1/S1超/S2a/S2b任一触发(财报次日,2021-2025)','criteria':CRIT['signal']},
+        {'code':'mcap','name':f'第3层·触发时市值≥${FLOOR_B:.0f}B','n':n_mcap,'note':'point-in-time市值=当时股数×入场价(无前视)','criteria':CRIT['mcap']},
+        {'code':'curation','name':'第4层·curation通过','n':n_cur,'note':'信号专属过滤(估值/盈利/非一次性)','criteria':CRIT['curation']},
     ],
     'winners': winset,      # 大牛股(低→高>300%)及其退出层
     'blowups': blowset,     # 暴雷股(峰值后回调>70%)及是否漏过滤网
@@ -346,5 +393,6 @@ json.dump(funnel, open('funnel.json','w'), ensure_ascii=False)
 from collections import Counter
 wc = Counter(w['exit_layer'] for w in winset)
 bc = Counter(b['exit_layer'] for b in blowset)
-print(f"funnel.json: 大牛股{len(winset)}只 (信号层漏{wc['signal']}/市值<${FLOOR_B:.0f}B剔{wc['mcap']}/curation剔{wc['curation']}/通过{wc['passed']})")
-print(f"           暴雷股{len(blowset)}只 (漏网{bc['passed']}/被信号层挡{bc['signal']}/被市值门槛挡{bc['mcap']}/被curation挡{bc['curation']})")
+print(f"行业板块排除: universe {n_all} → 排除 {n_excl} → 剩 {n_after_excl}")
+print(f"funnel.json: 大牛股{len(winset)}只 (行业排除{wc['sector']}/信号层漏{wc['signal']}/市值<${FLOOR_B:.0f}B剔{wc['mcap']}/curation剔{wc['curation']}/通过{wc['passed']})")
+print(f"           暴雷股{len(blowset)}只 (行业排除{bc['sector']}/漏网{bc['passed']}/被信号层挡{bc['signal']}/被市值门槛挡{bc['mcap']}/被curation挡{bc['curation']})")

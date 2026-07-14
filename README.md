@@ -14,6 +14,8 @@ scanner/
   edgar_rev.csv               SEC EDGAR 完整营收历史补充（S2b 加速确认）
   signals.md                  信号报告（S1 周期反转 / S2a 首次盈利 / S2b 营收加速 + 确认层任务清单）
   deep.md                     深度卷宗（价格位置/估值/EPS修正/财报日/空头占比）
+  alpha_proof.py              alpha存在性收口验证（固定horizon+逐事件SPY超额，结论见 docs/findings/alpha-proof.md）
+  exit_discipline.py          退出纪律回测（信号条件破坏才卖；右尾引擎非alpha，同上文档）
   theses/                     个股论点卡（论点/三情景/分批/KPI/否决条件/决断日）
 ```
 
